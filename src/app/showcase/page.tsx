@@ -42,7 +42,7 @@ export default function ShowcasePage() {
               </div>
               <div>
                 <p className="text-sm text-[var(--text-muted)] mb-2">Heading 3 (Neuton)</p>
-                <Heading level={3}>Case Studies in Market Failure</Heading>
+                <Heading as="h3" animate={false}>Case Studies in Market Failure</Heading>
               </div>
               <div>
                 <p className="text-sm text-[var(--text-muted)] mb-2">Body Text (Encode Sans)</p>
@@ -154,7 +154,7 @@ export default function ShowcasePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card variant="default">
               <CardHeader>
-                <Heading level={4}>Default Card</Heading>
+                <Heading as="h4" animate={false}>Default Card</Heading>
               </CardHeader>
               <CardContent>
                 <p className="text-[var(--text-body)]">
@@ -164,7 +164,7 @@ export default function ShowcasePage() {
             </Card>
             <Card variant="highlighted">
               <CardHeader>
-                <Heading level={4}>Highlighted Card</Heading>
+                <Heading as="h4" animate={false}>Highlighted Card</Heading>
               </CardHeader>
               <CardContent>
                 <p className="text-[var(--text-body)]">
@@ -174,7 +174,7 @@ export default function ShowcasePage() {
             </Card>
             <Card variant="success">
               <CardHeader>
-                <Heading level={4}>Success Card</Heading>
+                <Heading as="h4" animate={false}>Success Card</Heading>
               </CardHeader>
               <CardContent>
                 <p className="text-[var(--text-body)]">
@@ -184,7 +184,7 @@ export default function ShowcasePage() {
             </Card>
             <Card variant="danger">
               <CardHeader>
-                <Heading level={4}>Danger Card</Heading>
+                <Heading as="h4" animate={false}>Danger Card</Heading>
               </CardHeader>
               <CardContent>
                 <p className="text-[var(--text-body)]">
@@ -318,7 +318,7 @@ export default function ShowcasePage() {
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <Heading level={2} className="mb-8">{children}</Heading>
+    <Heading as="h2" className="mb-8">{children}</Heading>
   );
 }
 
