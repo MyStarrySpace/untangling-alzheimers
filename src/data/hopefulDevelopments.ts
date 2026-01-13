@@ -61,8 +61,8 @@ export const hopefulDevelopments: HopefulDevelopment[] = [
         trialPhase: 'Phase 3',
         participants: 1795,
         duration: '18 months',
-        primaryOutcome: 'Change in CDR-SB (Clinical Dementia Rating)',
-        result: '27% slowing of cognitive decline vs placebo',
+        primaryOutcome: 'CDR-SB (Clinical Dementia Rating - Sum of Boxes): clinician rates 6 domains (memory, orientation, judgment, community affairs, home/hobbies, personal care) from 0-3 each; total 0-18 where higher = more impaired',
+        result: '27% slowing of cognitive decline vs placebo (0.45 points difference on 18-point scale)',
         limitation: 'ARIA (brain swelling/bleeding) in 12.6% of patients',
       },
       {
@@ -101,8 +101,8 @@ export const hopefulDevelopments: HopefulDevelopment[] = [
         trialPhase: 'Phase 3',
         participants: 1736,
         duration: '18 months',
-        primaryOutcome: 'iADRS (integrated Alzheimer\'s Disease Rating Scale)',
-        result: '35% slowing of decline; 47% showed no decline at 1 year vs 29% placebo',
+        primaryOutcome: 'iADRS (integrated Alzheimer\'s Disease Rating Scale): combines ADAS-cog13 (memory, language, praxis tests) + ADCS-iADL (daily activities like using phone, managing finances); 0-144 scale where higher = better function',
+        result: '35% slowing of decline (3.25 points difference on 144-point scale); 47% showed no decline at 1 year vs 29% placebo',
         limitation: 'ARIA-E in 24% of patients (vs 1.9% placebo)',
       },
     ],
@@ -115,6 +115,126 @@ export const hopefulDevelopments: HopefulDevelopment[] = [
       'Long-term durability unclear',
     ],
     sourceIds: ['donanemab-trailblazer-2024'],
+  },
+
+  {
+    id: 'donepezil',
+    name: 'Donepezil (Aricept)',
+    category: 'approved_drug',
+    status: 'fda_approved',
+    description:
+      'Cholinesterase inhibitor that boosts acetylcholine levels in the brain. The most widely prescribed AD medication for over 25 years.',
+    mechanism:
+      'Inhibits acetylcholinesterase, the enzyme that breaks down acetylcholine, thereby increasing ACh availability at synapses.',
+    whyHopeful:
+      'Provides modest but real symptomatic benefit. Can slow symptom progression for 6-12 months. Now generic and affordable (<$20/month).',
+    evidence: [
+      {
+        trialName: 'Multiple Phase 3 trials',
+        trialPhase: 'Phase 3',
+        participants: 2000,
+        duration: '12-52 weeks',
+        primaryOutcome: 'ADAS-cog (Alzheimer\'s Disease Assessment Scale - Cognitive Subscale): 11 tasks testing word recall, naming objects, following commands, copying shapes, and orientation to time/place; higher scores = worse cognition (0-70 scale)',
+        result: '2-3 point improvement on 70-point scale maintained for up to 1 year',
+        limitation: 'Does not slow disease progression; symptomatic only',
+      },
+    ],
+    cost: '<$20/month (generic)',
+    availability: 'FDA approved 1996; generic available',
+    caveats: [
+      'Symptomatic only—does not slow underlying disease',
+      'Benefits typically last 6-12 months before decline resumes',
+      'GI side effects (nausea, diarrhea) in some patients',
+    ],
+    sourceIds: ['donepezil-fda-1996'],
+  },
+
+  {
+    id: 'rivastigmine',
+    name: 'Rivastigmine (Exelon)',
+    category: 'approved_drug',
+    status: 'fda_approved',
+    description:
+      'Cholinesterase inhibitor available as oral medication or transdermal patch. Also approved for Parkinson\'s disease dementia.',
+    mechanism:
+      'Inhibits both acetylcholinesterase and butyrylcholinesterase. Patch formulation provides steady drug levels and fewer GI side effects.',
+    whyHopeful:
+      'Patch delivery reduces GI side effects. Only AD drug also approved for Parkinson\'s dementia. Now generic and affordable.',
+    evidence: [
+      {
+        trialName: 'Phase 3 trials',
+        trialPhase: 'Phase 3',
+        primaryOutcome: 'ADAS-cog (Alzheimer\'s Disease Assessment Scale - Cognitive Subscale): 11 tasks testing word recall, naming objects, following commands, copying shapes, and orientation to time/place; higher scores = worse cognition (0-70 scale)',
+        result: 'Similar efficacy to donepezil (2-3 point improvement on 70-point scale)',
+        limitation: 'Symptomatic only',
+      },
+    ],
+    cost: '<$30/month (generic)',
+    availability: 'FDA approved 2000; generic available',
+    caveats: [
+      'Symptomatic only',
+      'Requires dose titration to minimize side effects',
+    ],
+    sourceIds: ['rivastigmine-fda-2000'],
+  },
+
+  {
+    id: 'galantamine',
+    name: 'Galantamine (Razadyne)',
+    category: 'approved_drug',
+    status: 'fda_approved',
+    description:
+      'Cholinesterase inhibitor with additional nicotinic receptor modulation. Derived from daffodil bulbs.',
+    mechanism:
+      'Inhibits acetylcholinesterase and also modulates nicotinic acetylcholine receptors, potentially enhancing cholinergic neurotransmission through dual mechanisms.',
+    whyHopeful:
+      'Dual mechanism may provide additional benefit. Now generic and affordable.',
+    evidence: [
+      {
+        trialName: 'Phase 3 trials',
+        trialPhase: 'Phase 3',
+        primaryOutcome: 'ADAS-cog (Alzheimer\'s Disease Assessment Scale - Cognitive Subscale): 11 tasks testing word recall, naming objects, following commands, copying shapes, and orientation to time/place; higher scores = worse cognition (0-70 scale)',
+        result: 'Similar efficacy to other cholinesterase inhibitors (2-3 point improvement on 70-point scale)',
+        limitation: 'Symptomatic only',
+      },
+    ],
+    cost: '<$30/month (generic)',
+    availability: 'FDA approved 2001; generic available',
+    caveats: [
+      'Symptomatic only',
+      'No clear advantage over other cholinesterase inhibitors',
+    ],
+    sourceIds: ['galantamine-fda-2001'],
+  },
+
+  {
+    id: 'memantine',
+    name: 'Memantine (Namenda)',
+    category: 'approved_drug',
+    status: 'fda_approved',
+    description:
+      'NMDA receptor antagonist for moderate-to-severe AD. Works through a different mechanism than cholinesterase inhibitors and can be used in combination.',
+    mechanism:
+      'Blocks excessive NMDA receptor activation by glutamate, which can cause excitotoxic neuronal damage. Allows normal signaling while blocking pathological overstimulation.',
+    whyHopeful:
+      'Different mechanism allows combination with cholinesterase inhibitors. Approved for moderate-to-severe AD when other drugs are less effective. Now generic.',
+    evidence: [
+      {
+        trialName: 'Phase 3 trials',
+        trialPhase: 'Phase 3',
+        primaryOutcome: 'SIB (Severe Impairment Battery): 40 simple tasks for patients with advanced dementia—naming colors, counting fingers, following one-step commands (0-100 scale, higher = better). ADCS-ADL (Activities of Daily Living): 23 items rating ability to eat, dress, use telephone, manage money (0-54 scale, higher = more independent)',
+        result: 'Modest improvement: ~3 points on 100-point SIB and ~1.5 points on 54-point ADCS-ADL',
+        limitation: 'Smaller effect size than cholinesterase inhibitors in mild AD',
+      },
+    ],
+    cost: '<$20/month (generic)',
+    availability: 'FDA approved 2003; generic available',
+    caveats: [
+      'Symptomatic only',
+      'Primarily for moderate-to-severe stages',
+      'Effect size modest',
+    ],
+    sourceIds: ['memantine-fda-2003'],
   },
 
   // ============================================

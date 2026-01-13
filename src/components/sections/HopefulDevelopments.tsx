@@ -145,6 +145,12 @@ function DevelopmentCard({ development }: { development: HopefulDevelopment }) {
                                 </span>
                               )}
                             </div>
+                            {ev.primaryOutcome && (
+                              <p className="text-xs text-[var(--text-muted)] mb-2 italic">
+                                <span className="font-medium">Outcome measure:</span>{' '}
+                                <TextWithAbbreviations text={ev.primaryOutcome} />
+                              </p>
+                            )}
                             <p className="text-sm text-[var(--text-body)]">
                               <TextWithAbbreviations text={ev.result} />
                             </p>

@@ -315,6 +315,8 @@ export function HistoricalTimeline() {
   const [isFilterSticky, setIsFilterSticky] = useState(false);
   const filterRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const storedScrollPosition = useRef<number | null>(null);
 
   // Handle sticky filter bar
   useEffect(() => {
@@ -337,6 +339,44 @@ export function HistoricalTimeline() {
     const nextSection = document.getElementById('trial-barriers');
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Handle filter change with scroll position management
+  const handleFilterChange = (newFilter: FrameworkId | 'all') => {
+    if (newFilter === activeFilter) return;
+
+    if (newFilter !== 'all' && activeFilter === 'all') {
+      // Turning on a filter: store current position and scroll to top of timeline
+      storedScrollPosition.current = window.scrollY;
+      setActiveFilter(newFilter);
+      // Wait for state update then scroll to timeline
+      setTimeout(() => {
+        if (timelineRef.current) {
+          const offset = 100; // Account for sticky header
+          const elementPosition = timelineRef.current.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+        }
+      }, 50);
+    } else if (newFilter === 'all' && activeFilter !== 'all') {
+      // Turning off filter: restore stored position
+      setActiveFilter(newFilter);
+      if (storedScrollPosition.current !== null) {
+        setTimeout(() => {
+          window.scrollTo({ top: storedScrollPosition.current!, behavior: 'smooth' });
+          storedScrollPosition.current = null;
+        }, 50);
+      }
+    } else {
+      // Switching between filters: scroll to top of timeline
+      setActiveFilter(newFilter);
+      setTimeout(() => {
+        if (timelineRef.current) {
+          const offset = 100;
+          const elementPosition = timelineRef.current.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+        }
+      }, 50);
     }
   };
 
@@ -404,7 +444,7 @@ export function HistoricalTimeline() {
                 <div className="flex items-center gap-1 min-w-max">
                   {/* All toggle */}
                   <button
-                    onClick={() => setActiveFilter('all')}
+                    onClick={() => handleFilterChange('all')}
                     className={`
                       px-3 py-1.5 text-sm font-medium transition-all duration-200 rounded
                       ${activeFilter === 'all'
@@ -425,7 +465,7 @@ export function HistoricalTimeline() {
                     return (
                       <button
                         key={framework}
-                        onClick={() => setActiveFilter(framework as FrameworkId)}
+                        onClick={() => handleFilterChange(framework as FrameworkId)}
                         className={`
                           flex items-center gap-1.5 px-2.5 py-1.5 text-sm font-medium
                           transition-all duration-200 rounded border
@@ -449,7 +489,7 @@ export function HistoricalTimeline() {
                     <>
                       <span className="text-[var(--border)] mx-1">·</span>
                       <button
-                        onClick={() => setActiveFilter(null)}
+                        onClick={() => handleFilterChange(null)}
                         className={`
                           flex items-center gap-1.5 px-2.5 py-1.5 text-sm font-medium
                           transition-all duration-200 rounded border
@@ -488,7 +528,7 @@ export function HistoricalTimeline() {
         {isFilterSticky && <div className="h-12" />}
 
         {/* Timeline */}
-        <div className="relative">
+        <div className="relative" ref={timelineRef}>
           {/* Eras */}
           <AnimatePresence mode="wait">
             <motion.div

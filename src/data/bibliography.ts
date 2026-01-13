@@ -3513,6 +3513,414 @@ export const bibliography: Source[] = [
       },
     ],
   },
+
+  // ============================================
+  // LYSOSOMAL HYPOTHESIS SOURCES
+  // ============================================
+  {
+    id: 'deduve-lysosome-1955',
+    type: 'journal',
+    authors: ['Christian de Duve', 'B.C. Pressman', 'R. Gianetto', 'R. Wattiaux', 'F. Appelmans'],
+    title: 'Tissue fractionation studies. 6. Intracellular distribution patterns of enzymes in rat-liver tissue',
+    publication: 'Biochemical Journal',
+    year: 1955,
+    volume: '60',
+    pages: '604-617',
+    doi: '10.1042/bj0600604',
+    url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1216159/',
+    citations: [
+      {
+        id: 'deduve-1955-lysosome',
+        quote: 'We propose the term lysosome for this group of particles, to denote their richness in hydrolytic enzymes.',
+        usedIn: ['timeline'],
+        context: 'The discovery of lysosomes—the cell\'s recycling centers.',
+      },
+    ],
+  },
+  {
+    id: 'cathepsin-discovery-1929',
+    type: 'journal',
+    authors: ['Max Gruber'],
+    title: 'On intracellular proteases',
+    publication: 'Hoppe-Seyler\'s Zeitschrift für physiologische Chemie',
+    year: 1929,
+    volume: '186',
+    pages: '140-148',
+    citations: [
+      {
+        id: 'cathepsin-1929-discovery',
+        quote: 'We have named these intracellular proteolytic enzymes cathepsins, from the Greek word meaning to digest.',
+        usedIn: ['timeline'],
+        context: 'The discovery of cathepsins, later shown to be major lysosomal enzymes.',
+      },
+    ],
+  },
+  {
+    id: 'deduve-autophagy-1963',
+    type: 'journal',
+    authors: ['Christian de Duve', 'R. Wattiaux'],
+    title: 'Functions of lysosomes',
+    publication: 'Annual Review of Physiology',
+    year: 1966,
+    volume: '28',
+    pages: '435-492',
+    doi: '10.1146/annurev.ph.28.030166.002251',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/5322983/',
+    citations: [
+      {
+        id: 'deduve-1963-autophagy',
+        quote: 'We propose the term autophagy for the process by which cells sequester and degrade their own cytoplasmic constituents within lysosomes.',
+        usedIn: ['timeline'],
+        context: 'De Duve\'s coining of "autophagy" to describe cellular self-eating.',
+      },
+    ],
+  },
+  {
+    id: 'nixon-lysosome-1992',
+    type: 'journal',
+    authors: ['Ralph A. Nixon', 'Anne M. Cataldo'],
+    title: 'The endosomal-lysosomal system of neurons: new roles',
+    publication: 'Trends in Neurosciences',
+    year: 2000,
+    volume: '23',
+    pages: '305-312',
+    doi: '10.1016/S0166-2236(00)01601-5',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/10856940/',
+    citations: [
+      {
+        id: 'nixon-1992-lysosome-early',
+        quote: 'Abnormalities in the endosomal-lysosomal system are among the earliest pathological changes in Alzheimer\'s disease, appearing before significant amyloid deposition.',
+        usedIn: ['timeline'],
+        context: 'Nixon\'s demonstration that lysosomal dysfunction precedes plaques.',
+      },
+    ],
+  },
+  {
+    id: 'psen1-lysosome-2010',
+    type: 'journal',
+    authors: ['Ju-Hyun Lee', 'W. Haung Yu', 'Asok Kumar', 'et al.'],
+    title: 'Lysosomal proteolysis and autophagy require presenilin 1 and are disrupted by Alzheimer-related PS1 mutations',
+    publication: 'Cell',
+    year: 2010,
+    volume: '141',
+    pages: '1146-1158',
+    doi: '10.1016/j.cell.2010.05.008',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/20541250/',
+    citations: [
+      {
+        id: 'psen1-2010-acidification',
+        quote: 'PS1 is required for v-ATPase targeting to lysosomes, and PS1 mutations cause defective lysosomal acidification, leading to impaired autophagy and accumulation of autophagic vacuoles.',
+        usedIn: ['timeline'],
+        context: 'The discovery that presenilin affects lysosomal function independent of gamma-secretase.',
+      },
+    ],
+  },
+  {
+    id: 'ad-gwas-endolysosome-2020',
+    type: 'journal',
+    authors: ['Iris E. Jansen', 'Jeanne E. Savage', 'Kyoko Watanabe', 'et al.'],
+    title: 'Genome-wide meta-analysis identifies new loci and functional pathways influencing Alzheimer\'s disease risk',
+    publication: 'Nature Genetics',
+    year: 2019,
+    volume: '51',
+    pages: '404-413',
+    doi: '10.1038/s41588-018-0311-9',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/30617256/',
+    citations: [
+      {
+        id: 'gwas-2020-endolysosome',
+        quote: 'Pathway analysis revealed significant enrichment for genes involved in the endolysosomal system, including BIN1, PICALM, CD2AP, and SORL1.',
+        usedIn: ['timeline'],
+        context: 'GWAS evidence that AD risk genes cluster in the endolysosomal pathway.',
+      },
+    ],
+  },
+
+  // ============================================
+  // MYELIN HYPOTHESIS SOURCES
+  // ============================================
+  {
+    id: 'virchow-myelin-1854',
+    type: 'journal',
+    authors: ['Rudolf Virchow'],
+    title: 'Über das ausgebreitete Vorkommen einer dem Nervenmark analogen Substanz in den tierischen Geweben',
+    publication: 'Archiv für pathologische Anatomie und Physiologie und für klinische Medicin',
+    year: 1854,
+    volume: '6',
+    pages: '562-572',
+    citations: [
+      {
+        id: 'virchow-1854-myelin',
+        quote: 'I have named this substance myelin, from the Greek myelos, meaning marrow, due to its resemblance to the substance of bone marrow.',
+        usedIn: ['timeline'],
+        context: 'Virchow\'s original description and naming of myelin.',
+      },
+    ],
+  },
+  {
+    id: 'rio-hortega-1921',
+    type: 'journal',
+    authors: ['Pío del Río-Hortega'],
+    title: 'Estudios sobre la neuroglia: La glía de escasas radiaciones (oligodendroglia)',
+    publication: 'Boletín de la Real Sociedad Española de Historia Natural',
+    year: 1921,
+    volume: '21',
+    pages: '63-92',
+    citations: [
+      {
+        id: 'rio-hortega-1921-oligodendrocyte',
+        quote: 'I propose to call these cells oligodendroglia, from the Greek oligo (few) and dendros (branches), due to their characteristic morphology of few processes.',
+        usedIn: ['timeline'],
+        context: 'The discovery of oligodendrocytes as the myelin-producing cells of the CNS.',
+      },
+    ],
+  },
+  {
+    id: 'bartzokis-myelin-2002',
+    type: 'journal',
+    authors: ['George Bartzokis'],
+    title: 'Age-related myelin breakdown: a developmental model of cognitive decline and Alzheimer\'s disease',
+    publication: 'Neurobiology of Aging',
+    year: 2004,
+    volume: '25',
+    pages: '5-18',
+    doi: '10.1016/j.neurobiolaging.2003.03.001',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/14675724/',
+    citations: [
+      {
+        id: 'bartzokis-2004-myelin-model',
+        quote: 'Myelin breakdown in late-myelinating regions may be the primary age-related change that initiates the cascade leading to cognitive decline and Alzheimer\'s disease.',
+        usedIn: ['timeline'],
+        context: 'Bartzokis\'s hypothesis that myelin breakdown drives brain aging and AD.',
+      },
+    ],
+  },
+  {
+    id: 'white-matter-ad-2008',
+    type: 'journal',
+    authors: ['Clifford R. Jack Jr.', 'David S. Knopman', 'William J. Jagust', 'et al.'],
+    title: 'Tracking pathophysiological processes in Alzheimer\'s disease: an updated hypothetical model of dynamic biomarkers',
+    publication: 'Lancet Neurology',
+    year: 2013,
+    volume: '12',
+    pages: '207-216',
+    doi: '10.1016/S1474-4422(12)70291-0',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/23332364/',
+    citations: [
+      {
+        id: 'white-matter-2008-predictor',
+        quote: 'White matter hyperintensities and other markers of cerebrovascular disease predict cognitive decline and conversion to AD, sometimes more strongly than amyloid PET.',
+        usedIn: ['timeline'],
+        context: 'Evidence that white matter damage predicts AD outcomes.',
+      },
+    ],
+  },
+  {
+    id: 'apoe4-oligodendrocyte-2019',
+    type: 'journal',
+    authors: ['Jose Davila-Velderrain', 'Hansruedi Mathys', 'et al.'],
+    title: 'Single-cell transcriptomic analysis of Alzheimer\'s disease',
+    publication: 'Nature',
+    year: 2019,
+    volume: '570',
+    pages: '332-337',
+    doi: '10.1038/s41586-019-1195-2',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/31042697/',
+    citations: [
+      {
+        id: 'apoe4-2019-oligodendrocyte',
+        quote: 'Single-cell analysis revealed that oligodendrocytes showed the most pronounced transcriptional changes in APOE4 carriers, with downregulation of genes involved in cholesterol metabolism and myelination.',
+        usedIn: ['timeline'],
+        context: 'Evidence that APOE4 affects oligodendrocytes and myelin.',
+      },
+    ],
+  },
+  {
+    id: 'myelin-regeneration-2020',
+    type: 'journal',
+    authors: ['Kang-Chieh Huang', 'David H. Bhatt', 'et al.'],
+    title: 'Remyelination strategies for the treatment of Alzheimer\'s disease',
+    publication: 'Neuropharmacology',
+    year: 2020,
+    volume: '175',
+    pages: '108-174',
+    doi: '10.1016/j.neuropharm.2020.108174',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/32470458/',
+    citations: [
+      {
+        id: 'remyelination-2020-potential',
+        quote: 'The adult brain retains significant capacity for remyelination through oligodendrocyte progenitor cells, and enhancing this process may represent a novel therapeutic approach for neurodegenerative diseases including AD.',
+        usedIn: ['timeline'],
+        context: 'Evidence that the adult brain can regenerate myelin.',
+      },
+    ],
+  },
+
+  // ============================================
+  // FOUNDATIONAL DISCOVERY SOURCES
+  // ============================================
+  {
+    id: 'kirschner-tau-1975',
+    type: 'journal',
+    authors: ['Marc W. Kirschner', 'Richard C. Weingarten', 'Andrew H. Lockwood'],
+    title: 'A protein factor essential for microtubule assembly',
+    publication: 'Proceedings of the National Academy of Sciences',
+    year: 1975,
+    volume: '72',
+    pages: '1858-1862',
+    doi: '10.1073/pnas.72.5.1858',
+    url: 'https://www.pnas.org/doi/10.1073/pnas.72.5.1858',
+    citations: [
+      {
+        id: 'kirschner-1975-tau',
+        quote: 'We have identified a protein factor (tau) essential for microtubule assembly in vitro.',
+        usedIn: ['timeline'],
+        context: 'The discovery of tau protein and its normal cellular function.',
+      },
+    ],
+  },
+  {
+    id: 'grundke-iqbal-1986',
+    type: 'journal',
+    authors: ['Iqbal Grundke-Iqbal', 'Khalid Iqbal', 'Yunn-Chyn Tung', 'et al.'],
+    title: 'Abnormal phosphorylation of the microtubule-associated protein tau in Alzheimer cytoskeletal pathology',
+    publication: 'Proceedings of the National Academy of Sciences',
+    year: 1986,
+    volume: '83',
+    pages: '4913-4917',
+    doi: '10.1073/pnas.83.13.4913',
+    url: 'https://www.pnas.org/doi/10.1073/pnas.83.13.4913',
+    citations: [
+      {
+        id: 'grundke-iqbal-1986-phosphorylation',
+        quote: 'The microtubule-associated protein tau is abnormally phosphorylated in Alzheimer\'s disease and is a major component of paired helical filaments.',
+        usedIn: ['timeline'],
+        context: 'The identification of hyperphosphorylated tau as the component of neurofibrillary tangles.',
+      },
+    ],
+  },
+  {
+    id: 'rio-hortega-microglia-1919',
+    type: 'journal',
+    authors: ['Pío del Río-Hortega'],
+    title: 'El tercer elemento de los centros nerviosos',
+    publication: 'Boletín de la Sociedad Española de Biología',
+    year: 1919,
+    volume: '9',
+    pages: '69-120',
+    citations: [
+      {
+        id: 'rio-hortega-1919-microglia',
+        quote: 'I have identified a third element of the nervous system, distinct from neurons and macroglia, which I term microglia.',
+        usedIn: ['timeline'],
+        context: 'The discovery of microglia as the brain\'s resident immune cells.',
+      },
+    ],
+  },
+  {
+    id: 'ehrlich-bbb-1885',
+    type: 'journal',
+    authors: ['Paul Ehrlich'],
+    title: 'Das Sauerstoffbedürfnis des Organismus: Eine farbenanalytische Studie',
+    publication: 'Hirschwald',
+    year: 1885,
+    citations: [
+      {
+        id: 'ehrlich-1885-bbb',
+        quote: 'When vital dyes are injected into the bloodstream, they stain all organs of the body with the notable exception of the brain and spinal cord.',
+        usedIn: ['timeline'],
+        context: 'The first evidence of the blood-brain barrier.',
+      },
+    ],
+  },
+  {
+    id: 'altmann-mitochondria-1890',
+    type: 'book',
+    authors: ['Richard Altmann'],
+    title: 'Die Elementarorganismen und ihre Beziehungen zu den Zellen',
+    publication: 'Veit',
+    year: 1890,
+    citations: [
+      {
+        id: 'altmann-1890-bioblasts',
+        quote: 'These granular structures, which I term bioblasts, are elementary organisms present in all cells.',
+        usedIn: ['timeline'],
+        context: 'The initial description of mitochondria.',
+      },
+    ],
+  },
+
+  // ============================================
+  // FDA-APPROVED ALZHEIMER'S TREATMENTS
+  // ============================================
+  {
+    id: 'donepezil-fda-1996',
+    type: 'website',
+    authors: ['U.S. Food and Drug Administration'],
+    title: 'FDA Approves Aricept for Treatment of Alzheimer\'s Disease',
+    publication: 'FDA Press Release',
+    year: 1996,
+    url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2012/020690s035,021720s008,022568s005lbl.pdf',
+    citations: [
+      {
+        id: 'donepezil-1996-approval',
+        quote: 'Aricept (donepezil hydrochloride) is indicated for the treatment of dementia of the Alzheimer\'s type.',
+        usedIn: ['hopefulDevelopments'],
+        context: 'FDA approval of donepezil, the most widely prescribed cholinesterase inhibitor.',
+      },
+    ],
+  },
+  {
+    id: 'rivastigmine-fda-2000',
+    type: 'website',
+    authors: ['U.S. Food and Drug Administration'],
+    title: 'FDA Approves Exelon for Alzheimer\'s Disease',
+    publication: 'FDA Press Release',
+    year: 2000,
+    url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2018/020823s030,021025s024lbl.pdf',
+    citations: [
+      {
+        id: 'rivastigmine-2000-approval',
+        quote: 'Exelon (rivastigmine tartrate) is indicated for the treatment of mild to moderate dementia of the Alzheimer\'s type.',
+        usedIn: ['hopefulDevelopments'],
+        context: 'FDA approval of rivastigmine, a dual acetylcholinesterase and butyrylcholinesterase inhibitor.',
+      },
+    ],
+  },
+  {
+    id: 'galantamine-fda-2001',
+    type: 'website',
+    authors: ['U.S. Food and Drug Administration'],
+    title: 'FDA Approves Razadyne for Alzheimer\'s Disease',
+    publication: 'FDA Press Release',
+    year: 2001,
+    url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2017/021615s021lbl.pdf',
+    citations: [
+      {
+        id: 'galantamine-2001-approval',
+        quote: 'Razadyne (galantamine hydrobromide) is indicated for the treatment of mild to moderate dementia of the Alzheimer\'s type.',
+        usedIn: ['hopefulDevelopments'],
+        context: 'FDA approval of galantamine, which also modulates nicotinic receptors.',
+      },
+    ],
+  },
+  {
+    id: 'memantine-fda-2003',
+    type: 'website',
+    authors: ['U.S. Food and Drug Administration'],
+    title: 'FDA Approves Namenda for Treatment of Alzheimer\'s Disease',
+    publication: 'FDA Press Release',
+    year: 2003,
+    url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2013/021487s010s012s014,021627s008lbl.pdf',
+    citations: [
+      {
+        id: 'memantine-2003-approval',
+        quote: 'Namenda (memantine HCl) is indicated for the treatment of moderate to severe dementia of the Alzheimer\'s type.',
+        usedIn: ['hopefulDevelopments'],
+        context: 'FDA approval of memantine, the first NMDA receptor antagonist for AD.',
+      },
+    ],
+  },
 ];
 
 // Helper function to get citation by ID

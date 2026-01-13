@@ -66,16 +66,21 @@ export const timelineEvents: TimelineEvent[] = [
     significance: 'major',
     sourceIds: ['alzheimer-1906', 'maurer-alzheimer-biography-2003'],
     citationIds: ['alzheimer-1906-presentation', 'alzheimer-1906-pathology', 'maurer-2003-reception', 'maurer-2003-chairman'],
+    researcher: {
+      name: 'Alois Alzheimer',
+      institution: 'Frankfurt Asylum / Munich',
+      hypothesis: 'Disease Discovery',
+    },
   },
 
   // ============================================
   // THE CHOLINERGIC ERA (1970s-1980s)
   // ============================================
   {
-    id: 'cholinergic-hypothesis',
+    id: 'cholinergic-discovery',
     year: 1976,
-    title: 'The cholinergic hypothesis: first biochemical theory of AD',
-    shortTitle: 'Cholinergic hypothesis',
+    title: 'Davies discovers acetylcholine depletion in AD brains',
+    shortTitle: 'ACh deficit found',
     description:
       'Peter Davies and A.J.F. Maloney discover severe depletion of acetylcholine (ACh) in AD brains—the first biochemical abnormality linked to the disease.',
     expandedDescription:
@@ -161,6 +166,11 @@ export const timelineEvents: TimelineEvent[] = [
     significance: 'major',
     sourceIds: ['hardy-higgins-1992'],
     citationIds: ['hardy-1992-hypothesis', 'hardy-1992-framework'],
+    researcher: {
+      name: 'John Hardy',
+      institution: 'St. Mary\'s Hospital / UCL',
+      hypothesis: 'Amyloid Cascade Hypothesis',
+    },
   },
 
   {
@@ -504,22 +514,6 @@ export const timelineEvents: TimelineEvent[] = [
   },
 
   {
-    id: 'tacrine-approved',
-    year: 1993,
-    title: 'FDA approves tacrine—the first Alzheimer\'s drug',
-    shortTitle: 'Tacrine approved',
-    description:
-      'The FDA approves tacrine (Cognex), the first drug specifically for Alzheimer\'s. It boosts acetylcholine and provides modest cognitive benefit—proving the cholinergic hypothesis has therapeutic value.',
-    expandedDescription:
-      'Tacrine (tetrahydroaminoacridine or THA) inhibits acetylcholinesterase, the enzyme that breaks down acetylcholine, thereby increasing acetylcholine levels in synapses. Clinical trials showed improvement of 2-4 points on the ADAS-cog scale in responding patients. However, tacrine required dosing four times daily and caused liver toxicity (elevated transaminases) in about 50% of patients, requiring regular monitoring. These limitations spurred development of better-tolerated cholinesterase inhibitors. Tacrine was voluntarily withdrawn from the market in 2013, replaced by safer alternatives.',
-    type: 'approval',
-    framework: 'cholinergic',
-    significance: 'major',
-    sourceIds: ['tacrine-fda-1993'],
-    citationIds: ['tacrine-approval'],
-  },
-
-  {
     id: 'donepezil-approved',
     year: 1996,
     month: 11,
@@ -555,6 +549,41 @@ export const timelineEvents: TimelineEvent[] = [
   // THE TAU HYPOTHESIS (1990s-2020s)
   // ============================================
   {
+    id: 'tau-protein-discovery',
+    year: 1975,
+    title: 'Tau protein discovered as microtubule-associated protein',
+    shortTitle: 'Tau discovered',
+    description:
+      'Marc Bhavani Kirschner and colleagues discover tau as a protein that promotes microtubule assembly—the structural scaffolding inside neurons that the tangles Alzheimer saw would later be shown to contain.',
+    expandedDescription:
+      'Kirschner\'s team at Princeton identified tau while studying how microtubules (the cell\'s internal scaffolding) assemble. They found tau was essential for stabilizing microtubules, which form the "tracks" along which cargo is transported in neurons. Tau\'s name comes from the Greek letter τ (the initial of "tubulin-associated unit"). In healthy neurons, tau binds to microtubules and keeps them stable. In AD, tau becomes hyperphosphorylated (too many phosphate groups attached), causing it to detach from microtubules and aggregate into the neurofibrillary tangles Alzheimer observed in 1906. The discovery of tau\'s normal function helped explain why tangles are so destructive.',
+    type: 'discovery',
+    framework: 'tau',
+    significance: 'major',
+    sourceIds: ['kirschner-tau-1975'],
+  },
+
+  {
+    id: 'tau-in-tangles',
+    year: 1985,
+    title: 'Neurofibrillary tangles identified as hyperphosphorylated tau',
+    shortTitle: 'Tangles are tau',
+    description:
+      'Multiple groups independently show that the neurofibrillary tangles Alzheimer described in 1906 are composed of hyperphosphorylated tau protein—finally revealing the molecular identity of the second hallmark.',
+    expandedDescription:
+      'Grundke-Iqbal, Iqbal, and colleagues showed that AD tangles contained abnormally phosphorylated tau. Normally, tau has 2-3 phosphate groups; in AD, it has 8-10. This hyperphosphorylation causes tau to detach from microtubules and aggregate into paired helical filaments (PHFs)—the building blocks of tangles. The finding explained a paradox: tau\'s normal job is to stabilize microtubules, but in disease it forms toxic aggregates. It also provided therapeutic targets: kinases that phosphorylate tau (like GSK-3β and CDK5) and phosphatases that remove phosphates. Understanding tau\'s role took 80 years after Alzheimer\'s initial observation.',
+    type: 'discovery',
+    framework: 'tau',
+    significance: 'major',
+    sourceIds: ['grundke-iqbal-1986'],
+    researcher: {
+      name: 'Iqbal Grundke-Iqbal',
+      institution: 'NYU / Staten Island',
+      hypothesis: 'Tau Phosphorylation',
+    },
+  },
+
+  {
     id: 'braak-staging',
     year: 1991,
     title: 'Braak & Braak establish tau staging of AD',
@@ -568,6 +597,11 @@ export const timelineEvents: TimelineEvent[] = [
     significance: 'major',
     sourceIds: ['braak-braak-1991'],
     citationIds: ['braak-1991-staging', 'braak-1991-correlation'],
+    researcher: {
+      name: 'Heiko & Eva Braak',
+      institution: 'Goethe University Frankfurt',
+      hypothesis: 'Tau Staging / Spread',
+    },
   },
 
   {
@@ -635,6 +669,11 @@ export const timelineEvents: TimelineEvent[] = [
     significance: 'major',
     sourceIds: ['itzhaki-1997'],
     citationIds: ['itzhaki-1997-risk', 'itzhaki-1997-synergy'],
+    researcher: {
+      name: 'Ruth Itzhaki',
+      institution: 'University of Manchester',
+      hypothesis: 'Infection Hypothesis',
+    },
   },
 
   {
@@ -690,6 +729,28 @@ export const timelineEvents: TimelineEvent[] = [
   // THE NEUROINFLAMMATION HYPOTHESIS (2000s-2020s)
   // ============================================
   {
+    id: 'microglia-discovery',
+    year: 1919,
+    title: 'del Río-Hortega discovers microglia—the brain\'s immune cells',
+    shortTitle: 'Microglia discovered',
+    description:
+      'Spanish neuroscientist Pío del Río-Hortega identifies microglia as a distinct cell type in the brain—the resident immune cells that would later be implicated in AD neuroinflammation.',
+    expandedDescription:
+      'Using his silver carbonate staining method, del Río-Hortega distinguished microglia from other brain cells based on their morphology and behavior. He recognized them as distinct from neurons, astrocytes, and oligodendrocytes (which he also discovered in 1921). Microglia comprise 5-10% of brain cells and serve as the brain\'s immune system: they survey the environment, engulf debris and pathogens, and release inflammatory signals. In healthy brains, they maintain a "resting" state with ramified branches; when activated, they retract branches and become amoeboid. In AD, chronically activated microglia surround plaques and release inflammatory cytokines that may damage neurons.',
+    type: 'discovery',
+    framework: 'neuroinflammation',
+    significance: 'major',
+    sourceIds: ['rio-hortega-microglia-1919'],
+    researcher: {
+      name: 'Pío del Río-Hortega',
+      institution: 'Cajal Institute, Madrid',
+      hypothesis: 'Glial Cell Biology',
+    },
+  },
+
+  //
+  // ============================================
+  {
     id: 'mcgeer-nsaids',
     year: 1996,
     title: 'McGeer shows NSAIDs reduce Alzheimer\'s risk',
@@ -703,6 +764,11 @@ export const timelineEvents: TimelineEvent[] = [
     significance: 'major',
     sourceIds: ['mcgeer-nsaids-1996'],
     citationIds: ['mcgeer-1996-risk'],
+    researcher: {
+      name: 'Patrick & Edith McGeer',
+      institution: 'University of British Columbia',
+      hypothesis: 'Neuroinflammation Hypothesis',
+    },
   },
 
   {
@@ -741,6 +807,28 @@ export const timelineEvents: TimelineEvent[] = [
   // ADDITIONAL VASCULAR HYPOTHESIS EVENTS
   // ============================================
   {
+    id: 'bbb-discovery',
+    year: 1885,
+    title: 'Ehrlich discovers the blood-brain barrier',
+    shortTitle: 'BBB discovered',
+    description:
+      'Paul Ehrlich observes that dyes injected into the bloodstream stain all organs except the brain—the first evidence of the blood-brain barrier that protects the brain but also complicates drug delivery.',
+    expandedDescription:
+      'Ehrlich, who would later win the Nobel Prize for immunology, noticed that when he injected vital dyes (like trypan blue) into animals, all tissues were stained except the brain and spinal cord. His student Edwin Goldmann later showed the reverse: dye injected into cerebrospinal fluid stained the brain but not peripheral tissues. This demonstrated a selective barrier between blood and brain. The BBB is formed by specialized endothelial cells with tight junctions, surrounded by astrocyte "feet" and pericytes. It protects the brain from pathogens and toxins but also blocks 98% of small-molecule drugs and essentially all large molecules—a major obstacle for AD drug development.',
+    type: 'discovery',
+    framework: 'vascular',
+    significance: 'major',
+    sourceIds: ['ehrlich-bbb-1885'],
+    researcher: {
+      name: 'Paul Ehrlich',
+      institution: 'Berlin',
+      hypothesis: 'Blood-Brain Barrier',
+    },
+  },
+
+  //
+  // ============================================
+  {
     id: 'snowdon-nun-study',
     year: 1997,
     title: 'Nun Study reveals stroke + amyloid = dementia',
@@ -764,7 +852,7 @@ export const timelineEvents: TimelineEvent[] = [
     description:
       'Berislav Zlokovic demonstrates that blood-brain barrier dysfunction occurs early in AD and may initiate the cascade—before significant amyloid accumulation.',
     expandedDescription:
-      'The brain\'s protective barrier breaks down before Alzheimer\'s strikes. Zlokovic shows that blood-brain barrier dysfunction precedes amyloid accumulation. Toxic blood proteins leak into the brain. The vascular hypothesis gains molecular support. Treatment implications go unexplored.',
+      'Zlokovic\'s research identified specific mechanisms of BBB dysfunction in AD: loss of pericytes (cells that maintain barrier integrity), reduced expression of tight junction proteins, and impaired transport of Aβ across the barrier. In mouse models, pericyte loss led to BBB breakdown, accumulation of blood-derived proteins in brain, neurodegeneration, and cognitive deficits—before significant amyloid deposition. Human imaging studies showed that BBB permeability increases in the hippocampus early in cognitive decline, correlating with pericyte injury markers in CSF. This suggests vascular dysfunction may be an early, potentially preventable step in AD pathogenesis.',
     type: 'discovery',
     framework: 'vascular',
     significance: 'major',
@@ -783,7 +871,7 @@ export const timelineEvents: TimelineEvent[] = [
     description:
       'Suzanne Craft shows that intranasal insulin improves memory and cognition in AD patients—providing clinical validation of the "Type 3 Diabetes" hypothesis.',
     expandedDescription:
-      'The brain needs insulin. Craft delivers it directly via nasal spray, bypassing the blood-brain barrier. AD patients improve. A cheap, safe intervention that treats brain insulin resistance. But insulin is generic. Large trials remain unfunded.',
+      'Intranasal insulin delivery bypasses the blood-brain barrier by traveling along olfactory and trigeminal nerve pathways directly to the brain. Craft\'s trial tested 40 IU of regular insulin or insulin detemir intranasally twice daily in 60 adults with MCI or early AD. The regular insulin group showed improved delayed memory recall (primary endpoint) and preserved brain glucose metabolism on FDG-PET compared to placebo. Effects were most pronounced in APOE4-negative participants. A larger follow-up trial (SNIFF 120) showed similar trends but missed its primary endpoint. The approach remains promising given its low cost and safety profile.',
     type: 'milestone',
     framework: 'metabolic',
     significance: 'major',
@@ -799,7 +887,7 @@ export const timelineEvents: TimelineEvent[] = [
     description:
       'Researchers show that medium-chain triglycerides (which produce ketones) improve cognition in AD patients. The brain can use ketones when glucose metabolism fails.',
     expandedDescription:
-      'The Alzheimer\'s brain is starving. Glucose metabolism is impaired. But the brain can burn ketones instead. A study shows that MCT oil—which produces ketones—improves cognition in AD patients. The intervention costs pennies per day. No drug company funds large trials.',
+      'This study tested whether providing an alternative brain fuel could bypass the glucose hypometabolism seen in AD. Medium-chain triglycerides (MCTs) are converted by the liver to ketone bodies, which the brain can use for energy. In a randomized crossover trial of 20 AD patients, a single dose of MCT oil improved performance on the ADAS-cog cognitive test. Improvement correlated with higher blood ketone levels. The effect was most pronounced in APOE4-negative patients. A marketed "medical food" (Axona) based on this approach showed modest effects in some studies. Ketogenic diets and ketone ester supplements are being studied as potential supportive therapies.',
     type: 'discovery',
     framework: 'metabolic',
     significance: 'supporting',
@@ -811,6 +899,23 @@ export const timelineEvents: TimelineEvent[] = [
   // ADDITIONAL MITOCHONDRIAL HYPOTHESIS EVENTS
   // ============================================
   {
+    id: 'mitochondria-discovery',
+    year: 1890,
+    title: 'Altmann identifies mitochondria as the cell\'s power plants',
+    shortTitle: 'Mitochondria discovered',
+    description:
+      'Richard Altmann describes "bioblasts"—later named mitochondria—as ubiquitous cellular structures. Their role as energy producers would be established over the following decades.',
+    expandedDescription:
+      'Altmann observed granular structures in cells using a special staining technique and proposed they were fundamental living units ("bioblasts"). The name "mitochondria" (Greek: thread + granule) was coined by Carl Benda in 1898. Over subsequent decades, researchers established that mitochondria are the cell\'s primary energy producers, generating ATP through oxidative phosphorylation. Neurons are especially dependent on mitochondria—the brain uses 20% of the body\'s energy despite being only 2% of body weight. Mitochondria also regulate calcium, generate reactive oxygen species, and control cell death. Their dysfunction would later be implicated in AD and aging.',
+    type: 'discovery',
+    framework: 'mitochondrial',
+    significance: 'major',
+    sourceIds: ['altmann-mitochondria-1890'],
+  },
+
+  //
+  // ============================================
+  {
     id: 'cytoplasmic-hybrid',
     year: 1997,
     title: 'Cybrid studies prove mitochondrial defects are primary',
@@ -818,7 +923,7 @@ export const timelineEvents: TimelineEvent[] = [
     description:
       'Swerdlow creates "cybrids"—cells with AD patient mitochondria in healthy cell backgrounds. The AD mitochondria alone produce AD-like changes, proving mitochondrial dysfunction is upstream.',
     expandedDescription:
-      'An elegant experiment. Take mitochondria from AD patients. Put them in healthy cells. The cells develop AD-like features—oxidative stress, altered amyloid processing. The mitochondria themselves carry the disease program. Amyloid is downstream.',
+      'Cybrids (cytoplasmic hybrids) are created by depleting cells of their mitochondria and repopulating them with mitochondria from donor patients. Swerdlow created cybrids using mitochondria from AD patients placed into neuroblastoma cells with deleted mitochondrial DNA. These AD-cybrids showed: reduced cytochrome oxidase activity, increased oxidative stress, altered calcium handling, and changes in APP processing that favored Aβ production—even though the nuclear DNA was identical. This demonstrated that mitochondrial DNA variation can drive AD-like cellular phenotypes, supporting the hypothesis that mitochondrial dysfunction is upstream of amyloid pathology in sporadic AD.',
     type: 'discovery',
     framework: 'mitochondrial',
     significance: 'major',
@@ -834,12 +939,208 @@ export const timelineEvents: TimelineEvent[] = [
     description:
       'Studies using FDG-PET show that reduced brain glucose metabolism (reflecting mitochondrial dysfunction) occurs before amyloid accumulation and predicts progression to AD.',
     expandedDescription:
-      'Brain scans reveal the true order of events. Glucose metabolism—driven by mitochondria—declines first. Years before amyloid becomes visible. The energy failure precedes the plaques. But no drug targeting mitochondria enters clinical trials.',
+      'FDG-PET measures brain glucose uptake, which reflects synaptic activity and mitochondrial function. Studies tracking cognitively normal individuals showed that FDG-PET hypometabolism (especially in posterior cingulate and parietal regions) precedes amyloid-PET positivity and predicts conversion to MCI/AD. In familial AD mutation carriers, hypometabolism is detectable 10+ years before expected symptom onset. This temporal sequence—metabolism decline → amyloid accumulation → symptoms—supports models where bioenergetic failure is an early driver of pathology. Some trials are now testing mitochondrial-targeted interventions (CoQ10, nicotinamide, PGC-1α activators) but none have advanced past Phase 2.',
     type: 'milestone',
     framework: 'mitochondrial',
     significance: 'major',
     sourceIds: ['fdg-pet-early-2020'],
     citationIds: ['fdg-2020-earliest'],
+  },
+
+  // ============================================
+  // THE LYSOSOMAL HYPOTHESIS
+  // ============================================
+  {
+    id: 'lysosome-discovery',
+    year: 1955,
+    title: 'Christian de Duve discovers lysosomes',
+    shortTitle: 'Lysosomes discovered',
+    description:
+      'Belgian biochemist Christian de Duve discovers lysosomes—membrane-bound organelles that serve as the cell\'s recycling centers, breaking down proteins, lipids, and other cellular debris.',
+    expandedDescription:
+      'De Duve identified lysosomes while studying insulin action on liver cells at the Catholic University of Louvain. Using differential centrifugation, he found a fraction containing acid hydrolases (enzymes active at low pH) enclosed in membrane-bound vesicles. He coined the term "lysosome" (from Greek: "digestive body"). His discovery revealed that cells have a sophisticated waste disposal system—lysosomes contain 50+ enzymes that break down proteins, carbohydrates, lipids, and nucleic acids. Lysosomal dysfunction would later be implicated in 70+ "lysosomal storage diseases" and, eventually, Alzheimer\'s. De Duve received the Nobel Prize in 1974.',
+    type: 'discovery',
+    framework: 'lysosomal',
+    significance: 'major',
+    sourceIds: ['deduve-lysosome-1955'],
+  },
+
+  {
+    id: 'cathepsin-discovery',
+    year: 1929,
+    title: 'Cathepsins discovered—the lysosomal proteases',
+    shortTitle: 'Cathepsins discovered',
+    description:
+      'Scientists identify cathepsins, the primary protein-degrading enzymes within lysosomes that will later be implicated in both normal APP processing and AD pathology.',
+    expandedDescription:
+      'Cathepsins are a family of proteases (protein-cutting enzymes) that function optimally at the acidic pH inside lysosomes. The name derives from Greek "kathepsein" (to digest). Major cathepsins include cathepsin B, D, and L. In healthy neurons, cathepsins degrade damaged proteins and organelles delivered to lysosomes. In AD, cathepsin activity is reduced due to lysosomal dysfunction, leading to accumulation of undegraded material. Paradoxically, cathepsin D can also cleave APP to generate Aβ, and when lysosomes rupture, cathepsins leak into the cytoplasm and cause cell damage.',
+    type: 'discovery',
+    framework: 'lysosomal',
+    significance: 'supporting',
+    sourceIds: ['cathepsin-discovery-1929'],
+  },
+
+  {
+    id: 'autophagy-discovery',
+    year: 1963,
+    title: 'Autophagy discovered—cells eating themselves',
+    shortTitle: 'Autophagy discovered',
+    description:
+      'De Duve coins "autophagy" to describe the process by which cells engulf their own components and deliver them to lysosomes for recycling—a process critical for neuronal health.',
+    expandedDescription:
+      'Autophagy (from Greek "self-eating") is the process by which cells sequester damaged organelles and protein aggregates into double-membrane vesicles (autophagosomes) that fuse with lysosomes for degradation. De Duve observed this process in rat liver cells after glucagon treatment. Neurons are especially dependent on autophagy because they are post-mitotic (cannot dilute damaged components by division) and extremely long-lived. Yoshinori Ohsumi later characterized the molecular machinery of autophagy, receiving the 2016 Nobel Prize. In AD, autophagy is impaired at multiple steps: autophagosome formation, lysosomal fusion, and lysosomal degradation.',
+    type: 'discovery',
+    framework: 'lysosomal',
+    significance: 'major',
+    sourceIds: ['deduve-autophagy-1963'],
+  },
+
+  {
+    id: 'nixon-lysosome-ad-early',
+    year: 1992,
+    title: 'Nixon shows lysosomal abnormalities are early AD feature',
+    shortTitle: 'Lysosomes abnormal in AD',
+    description:
+      'Ralph Nixon\'s research demonstrates that lysosomal system dysfunction is one of the earliest detectable abnormalities in Alzheimer\'s neurons, preceding plaque formation.',
+    expandedDescription:
+      'Nixon\'s lab at NYU/Nathan Kline Institute showed that AD neurons exhibit dramatic upregulation of lysosomal enzymes (cathepsins) and accumulation of lysosomes in dystrophic neurites (swollen axonal processes) surrounding plaques. Critically, these lysosomal abnormalities appeared in brain regions before amyloid plaques were visible—suggesting lysosomal dysfunction precedes or causes plaque formation, not vice versa. Nixon\'s work proposed that neurons failing to properly degrade material through lysosomes might be generating and accumulating Aβ intracellularly.',
+    type: 'discovery',
+    framework: 'lysosomal',
+    significance: 'major',
+    sourceIds: ['nixon-lysosome-1992'],
+    researcher: {
+      name: 'Ralph Nixon',
+      institution: 'NYU / Nathan Kline Institute',
+      hypothesis: 'Lysosome Hypothesis (PANTHOS)',
+    },
+  },
+
+  {
+    id: 'presenilin-lysosome-connection',
+    year: 2010,
+    title: 'Presenilin linked to lysosomal acidification',
+    shortTitle: 'PSEN affects lysosomes',
+    description:
+      'Research reveals that presenilin 1—mutated in familial AD—is required for proper lysosomal acidification. Without it, lysosomes cannot digest their contents.',
+    expandedDescription:
+      'Lee and colleagues showed that PSEN1 is essential for the proper function of v-ATPase, the proton pump that acidifies lysosomes. AD-causing PSEN1 mutations impair this function, raising lysosomal pH and inactivating acid-dependent enzymes. This provided a mechanism by which familial AD mutations could cause disease independent of gamma-secretase activity and Aβ production: by disabling the cell\'s recycling system. The finding suggested that lysosomal dysfunction might be the primary driver of familial AD, with increased Aβ42/40 ratio being a secondary consequence of gamma-secretase dysfunction.',
+    type: 'discovery',
+    framework: 'lysosomal',
+    significance: 'major',
+    sourceIds: ['psen1-lysosome-2010'],
+  },
+
+  {
+    id: 'endolysosomal-genetics',
+    year: 2020,
+    title: 'AD genetics converge on endolysosomal pathway',
+    shortTitle: 'Genetics point to lysosomes',
+    description:
+      'Genome-wide association studies reveal that many AD risk genes function in the endolysosomal pathway, independent of amyloid production.',
+    expandedDescription:
+      'Analysis of AD GWAS data showed that risk genes cluster in specific pathways, with the endolysosomal system being prominently represented. Key genes include: BIN1 (endocytosis), PICALM (clathrin-mediated endocytosis), CD2AP (endosome trafficking), SORL1 (endosomal recycling), and several others. Many of these genes affect how cells internalize, sort, and degrade material—the same pathway that handles APP and Aβ. The genetic convergence suggests that endolysosomal dysfunction may be a central disease mechanism, with amyloid accumulation being one consequence among many.',
+    type: 'discovery',
+    framework: 'lysosomal',
+    significance: 'major',
+    sourceIds: ['ad-gwas-endolysosome-2020'],
+  },
+
+  // ============================================
+  // THE MYELIN HYPOTHESIS
+  // ============================================
+  {
+    id: 'myelin-discovery',
+    year: 1854,
+    title: 'Rudolf Virchow describes myelin',
+    shortTitle: 'Myelin described',
+    description:
+      'German physician Rudolf Virchow describes and names myelin—the lipid-rich insulation surrounding nerve fibers that enables rapid electrical signaling.',
+    expandedDescription:
+      'Virchow, the father of cellular pathology, identified a white, fatty substance surrounding nerve fibers and named it "myelin" from the Greek "myelos" (marrow). Myelin is produced by oligodendrocytes in the central nervous system and Schwann cells in the peripheral nervous system. It wraps around axons in a spiral fashion, creating an insulating sheath interrupted by gaps (nodes of Ranvier) where electrical signals regenerate. This enables saltatory conduction—signals jumping between nodes—which speeds neural transmission 10-100 fold. Myelin comprises about 80% lipid and 20% protein, making it the most lipid-rich structure in the body.',
+    type: 'discovery',
+    framework: 'myelin',
+    significance: 'major',
+    sourceIds: ['virchow-myelin-1854'],
+  },
+
+  {
+    id: 'oligodendrocyte-discovery',
+    year: 1921,
+    title: 'del Río-Hortega discovers oligodendrocytes',
+    shortTitle: 'Oligodendrocytes found',
+    description:
+      'Spanish neuroscientist Pío del Río-Hortega identifies oligodendrocytes as the cells that produce myelin in the central nervous system.',
+    expandedDescription:
+      'Using silver carbonate staining techniques he developed, del Río-Hortega distinguished oligodendrocytes from other glial cells based on their morphology: smaller cell bodies with fewer processes ("oligo" = few, "dendro" = branches). He correctly inferred their function as myelin-producing cells. A single oligodendrocyte can myelinate up to 50 axon segments from different neurons. These cells are metabolically demanding—maintaining extensive myelin membranes requires high energy and lipid synthesis. Oligodendrocyte dysfunction or death leads to demyelination, as seen in multiple sclerosis and, as later research showed, in normal aging and AD.',
+    type: 'discovery',
+    framework: 'myelin',
+    significance: 'major',
+    sourceIds: ['rio-hortega-1921'],
+  },
+
+  {
+    id: 'myelin-aging',
+    year: 2002,
+    title: 'Bartzokis proposes myelin breakdown as aging\'s primary driver',
+    shortTitle: 'Myelin-aging hypothesis',
+    description:
+      'UCLA neurologist George Bartzokis proposes that age-related myelin breakdown is a primary driver of cognitive decline and neurodegenerative disease.',
+    expandedDescription:
+      'Bartzokis used MRI to track myelin changes across the lifespan and found that myelination follows an inverted-U trajectory: increasing until ~50-60 years then declining. His "myelin model of the aging brain" proposed that late-myelinating regions (prefrontal cortex, hippocampus) are most vulnerable to age-related breakdown, explaining why executive function and memory decline first. He argued that myelin breakdown releases iron (stored in oligodendrocytes), causing oxidative damage and promoting amyloid aggregation. AD, in this view, is accelerated brain aging driven by myelin failure.',
+    type: 'hypothesis',
+    framework: 'myelin',
+    significance: 'major',
+    sourceIds: ['bartzokis-myelin-2002'],
+    researcher: {
+      name: 'George Bartzokis',
+      institution: 'UCLA',
+      hypothesis: 'Myelin Model of Aging',
+    },
+  },
+
+  {
+    id: 'myelin-ad-correlation',
+    year: 2008,
+    title: 'White matter damage predicts AD better than amyloid',
+    shortTitle: 'White matter predicts AD',
+    description:
+      'Imaging studies show that white matter (myelin) damage on MRI predicts cognitive decline and conversion to AD better than amyloid PET imaging.',
+    expandedDescription:
+      'Multiple studies using diffusion tensor imaging (DTI) and other MRI techniques showed that white matter integrity—reflecting myelin health—correlates strongly with cognitive function in aging and AD. White matter hyperintensities (WMH), visible on MRI as bright spots indicating myelin damage, predict conversion from MCI to AD. Some studies found white matter changes were more predictive of cognitive outcomes than amyloid PET positivity. This supported models where myelin/vascular damage and amyloid represent parallel pathologies that interact to produce clinical symptoms.',
+    type: 'discovery',
+    framework: 'myelin',
+    significance: 'major',
+    sourceIds: ['white-matter-ad-2008'],
+  },
+
+  {
+    id: 'oligodendrocyte-apoe4',
+    year: 2019,
+    title: 'APOE4 damages oligodendrocytes independent of amyloid',
+    shortTitle: 'APOE4 harms myelin',
+    description:
+      'Single-cell sequencing reveals that APOE4—the strongest AD genetic risk factor—is highly expressed in and damages oligodendrocytes, independent of neurons or amyloid.',
+    expandedDescription:
+      'Single-cell RNA sequencing of human brains showed that APOE is most highly expressed not in neurons (as often assumed) but in astrocytes and oligodendrocytes. In APOE4 carriers, oligodendrocytes showed gene expression changes indicating cellular stress, reduced cholesterol synthesis, and impaired myelination. Oligodendrocytes require massive lipid synthesis to maintain myelin, and APOE4 impairs lipid transport. This provided a mechanism for APOE4\'s effect independent of amyloid: poor lipid supply → oligodendrocyte dysfunction → myelin breakdown → cognitive decline and secondary amyloid accumulation.',
+    type: 'discovery',
+    framework: 'myelin',
+    significance: 'major',
+    sourceIds: ['apoe4-oligodendrocyte-2019'],
+  },
+
+  {
+    id: 'myelin-regeneration-potential',
+    year: 2020,
+    title: 'Myelin regeneration shown possible in adult brain',
+    shortTitle: 'Myelin can regenerate',
+    description:
+      'Research demonstrates that adult brains retain capacity for myelin regeneration, raising hope that remyelination therapies could treat AD.',
+    expandedDescription:
+      'Studies using carbon-14 dating (from Cold War nuclear tests) and other techniques showed that myelin in the adult human brain is not static—it turns over and can be regenerated by oligodendrocyte progenitor cells (OPCs) that persist throughout life. In mouse models, enhancing remyelination improved cognitive function in aged animals. Several drugs that promote OPC differentiation and remyelination (clemastine, bexarotene, GSK inhibitors) are being studied. If myelin damage contributes to AD, promoting remyelination could be a novel therapeutic approach independent of amyloid-targeting.',
+    type: 'milestone',
+    framework: 'myelin',
+    significance: 'major',
+    sourceIds: ['myelin-regeneration-2020'],
   },
 ];
 
