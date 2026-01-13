@@ -12,7 +12,7 @@ export function CaseStudies() {
   const currentCase = caseStudies.find((c) => c.id === activeCase) || caseStudies[0];
 
   return (
-    <Section id="cases" className="bg-slate-950/50">
+    <Section id="cases" className="bg-[var(--bg-secondary)]">
       <Container>
         <SectionHeader
           title="Case Studies in Market Failure"
@@ -45,12 +45,12 @@ export function CaseStudies() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Main content */}
               <div className="lg:col-span-2">
-                <Card variant="highlighted" hover={false}>
+                <Card variant="default" hover={false}>
                   <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-white mb-2">
+                    <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2">
                       {currentCase.title}
                     </h3>
-                    <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400 mb-6">
+                    <div className="flex flex-wrap items-center gap-4 text-sm text-[var(--text-muted)] mb-6">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
                         {currentCase.year}
@@ -59,44 +59,44 @@ export function CaseStudies() {
                         <DollarSign className="w-4 h-4" />
                         {currentCase.cost}
                       </span>
-                      <span className="px-2 py-1 rounded bg-slate-700 text-xs capitalize">
+                      <span className="px-2 py-1 rounded bg-[var(--bg-secondary)] text-xs capitalize">
                         {currentCase.patentStatus}
                       </span>
                     </div>
 
                     <div className="space-y-6">
                       <div>
-                        <h4 className="text-sm font-medium text-blue-400 uppercase tracking-wide mb-2">
+                        <h4 className="text-sm font-medium text-[var(--category-amyloid)] uppercase tracking-wide mb-2">
                           Key Finding
                         </h4>
-                        <p className="text-slate-300 text-lg">{currentCase.keyFinding}</p>
+                        <p className="text-[var(--text-body)] text-lg">{currentCase.keyFinding}</p>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="p-4 rounded-lg bg-emerald-900/20 border border-emerald-500/30">
-                          <h4 className="text-sm font-medium text-emerald-400 mb-2 flex items-center gap-2">
+                        <div className="p-4 rounded-lg bg-[var(--success-light)] border border-[var(--success)]">
+                          <h4 className="text-sm font-medium text-[var(--success)] mb-2 flex items-center gap-2">
                             <ChevronRight className="w-4 h-4" />
                             What Should Happen
                           </h4>
-                          <p className="text-slate-300">{currentCase.whatShouldHappen}</p>
+                          <p className="text-[var(--text-body)]">{currentCase.whatShouldHappen}</p>
                         </div>
-                        <div className="p-4 rounded-lg bg-red-900/20 border border-red-500/30">
-                          <h4 className="text-sm font-medium text-red-400 mb-2 flex items-center gap-2">
+                        <div className="p-4 rounded-lg bg-[var(--danger-light)] border border-[var(--danger)]">
+                          <h4 className="text-sm font-medium text-[var(--danger)] mb-2 flex items-center gap-2">
                             <AlertCircle className="w-4 h-4" />
                             What Actually Happened
                           </h4>
-                          <p className="text-slate-300">{currentCase.whatActuallyHappened}</p>
+                          <p className="text-[var(--text-body)]">{currentCase.whatActuallyHappened}</p>
                         </div>
                       </div>
 
                       {currentCase.quote && (
-                        <div className="mt-6 p-6 rounded-lg bg-slate-800/50 border-l-4 border-amber-500">
-                          <Quote className="w-6 h-6 text-amber-500 mb-2" />
-                          <blockquote className="text-slate-300 italic text-lg">
+                        <div className="mt-6 p-6 rounded-lg bg-[var(--accent-orange-light)] border-l-4 border-[var(--accent-orange)]">
+                          <Quote className="w-6 h-6 text-[var(--accent-orange)] mb-2" />
+                          <blockquote className="text-[var(--text-body)] italic text-lg">
                             &ldquo;{currentCase.quote}&rdquo;
                           </blockquote>
                           {currentCase.quoteSource && (
-                            <cite className="text-sm text-slate-500 mt-2 block not-italic">
+                            <cite className="text-sm text-[var(--text-muted)] mt-2 block not-italic">
                               — {currentCase.quoteSource}
                             </cite>
                           )}
@@ -109,7 +109,7 @@ export function CaseStudies() {
 
               {/* Sidebar with other cases */}
               <div className="space-y-4">
-                <h4 className="text-sm font-medium text-slate-400 uppercase tracking-wide">
+                <h4 className="text-sm font-medium text-[var(--text-muted)] uppercase tracking-wide">
                   Other Cases
                 </h4>
                 {caseStudies
@@ -117,12 +117,12 @@ export function CaseStudies() {
                   .map((study) => (
                     <motion.button
                       key={study.id}
-                      className="w-full text-left p-4 rounded-lg bg-slate-800/50 border border-slate-700 hover:border-slate-600 transition-colors"
+                      className="w-full text-left p-4 rounded-lg bg-white border border-[var(--border)] hover:border-[var(--accent-orange)] transition-colors"
                       onClick={() => setActiveCase(study.id)}
                       whileHover={{ x: 4 }}
                     >
-                      <h5 className="font-medium text-white mb-1">{study.drug}</h5>
-                      <p className="text-sm text-slate-400 line-clamp-2">
+                      <h5 className="font-medium text-[var(--text-primary)] mb-1">{study.drug}</h5>
+                      <p className="text-sm text-[var(--text-muted)] line-clamp-2">
                         {study.keyFinding}
                       </p>
                     </motion.button>

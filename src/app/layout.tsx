@@ -52,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${neuton.variable} ${encodeSans.variable} ${geistMono.variable} antialiased bg-slate-900 text-slate-100`}
+        className={`${neuton.variable} ${encodeSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>

@@ -7,7 +7,7 @@ import { sidelinedResearchers } from '@/data';
 
 export function SidelinedResearchers() {
   return (
-    <Section id="researchers" className="bg-slate-950/50">
+    <Section id="researchers">
       <Container>
         <SectionHeader
           title="The Sidelined Researchers"
@@ -35,15 +35,15 @@ export function SidelinedResearchers() {
           transition={{ delay: 0.5, duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <Card variant="warning" hover={false}>
+          <Card variant="highlighted" hover={false}>
             <CardContent>
-              <p className="text-slate-300 text-lg">
+              <p className="text-[var(--text-body)] text-lg">
                 Each of these researchers proposed that amyloid was a{' '}
-                <span className="text-amber-400 font-semibold">consequence</span>—not a{' '}
-                <span className="text-amber-400 font-semibold">cause</span>—of upstream
+                <span className="text-[var(--accent-orange)] font-semibold">consequence</span>—not a{' '}
+                <span className="text-[var(--accent-orange)] font-semibold">cause</span>—of upstream
                 dysfunction. Each was marginalized as the field consolidated around the
                 amyloid cascade hypothesis.{' '}
-                <span className="text-white font-semibold">Each may have been right.</span>
+                <span className="text-[var(--text-primary)] font-semibold">Each may have been right.</span>
               </p>
             </CardContent>
           </Card>
@@ -62,29 +62,29 @@ function ResearcherCard({ researcher }: ResearcherCardProps) {
     <Card variant="default" className="h-full">
       <CardContent className="space-y-4">
         <div className="flex items-start gap-3">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--category-amyloid)] to-[var(--category-vascular)] flex items-center justify-center flex-shrink-0">
             <User className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h3 className="font-bold text-white">{researcher.name}</h3>
-            <p className="text-sm text-slate-400">{researcher.institution}</p>
+            <h3 className="font-bold text-[var(--text-primary)]">{researcher.name}</h3>
+            <p className="text-sm text-[var(--text-muted)]">{researcher.institution}</p>
           </div>
         </div>
 
         <div className="space-y-3">
           <div className="flex items-center gap-2">
-            <Lightbulb className="w-4 h-4 text-amber-400" />
-            <span className="text-amber-400 font-medium">{researcher.hypothesis}</span>
-            <span className="text-xs text-slate-500">({researcher.year})</span>
+            <Lightbulb className="w-4 h-4 text-[var(--accent-orange)]" />
+            <span className="text-[var(--accent-orange)] font-medium">{researcher.hypothesis}</span>
+            <span className="text-xs text-[var(--text-muted)]">({researcher.year})</span>
           </div>
 
-          <p className="text-sm text-slate-300">{researcher.keyFinding}</p>
+          <p className="text-sm text-[var(--text-body)]">{researcher.keyFinding}</p>
 
-          <div className="flex items-center gap-2 pt-2 border-t border-slate-700">
-            <ArrowRight className="w-4 h-4 text-blue-400" />
-            <span className="text-xs text-slate-400">
+          <div className="flex items-center gap-2 pt-2 border-t border-[var(--border)]">
+            <ArrowRight className="w-4 h-4 text-[var(--category-amyloid)]" />
+            <span className="text-xs text-[var(--text-muted)]">
               Cascade Stage {researcher.cascadeStage}:{' '}
-              <span className="text-blue-400">{researcher.stageName}</span>
+              <span className="text-[var(--category-amyloid)]">{researcher.stageName}</span>
             </span>
           </div>
         </div>

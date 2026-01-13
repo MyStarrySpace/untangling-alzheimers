@@ -18,7 +18,9 @@ src/
 ├── app/                    # Next.js app router pages
 │   ├── layout.tsx          # Root layout
 │   ├── page.tsx            # Main scrollytelling page
-│   └── globals.css         # Global styles
+│   ├── globals.css         # Global styles
+│   └── showcase/           # Component library showcase
+│       └── page.tsx        # /showcase - visual component reference
 ├── components/
 │   ├── ui/                 # Reusable UI primitives
 │   │   ├── Button.tsx
@@ -80,30 +82,40 @@ src/
 
 ## Design System
 
-### Color Palette
+**IMPORTANT**: Always refer to the component library at `/showcase` for visual reference when building new components or modifying existing ones. The showcase demonstrates proper usage of colors, typography, buttons, cards, badges, alerts, and tables.
+
+### Color Palette (GoInvo-inspired Light Theme)
 ```css
-/* Primary - Deep blue for trust and seriousness */
---primary-50: #eff6ff;
---primary-100: #dbeafe;
---primary-500: #3b82f6;
---primary-600: #2563eb;
---primary-900: #1e3a8a;
+/* Backgrounds - Warm off-whites */
+--bg-primary: #faf9f7;      /* Main background - warm off-white */
+--bg-secondary: #f5f3f0;    /* Section backgrounds - slightly darker */
+--bg-card: #ffffff;         /* Card backgrounds - pure white */
 
-/* Accent - Amber for warnings and highlights */
---accent-50: #fffbeb;
---accent-500: #f59e0b;
---accent-600: #d97706;
+/* Text - Dark grays for readability */
+--text-primary: #2d2d2d;    /* Headings - near black */
+--text-body: #4a4a4a;       /* Body text - dark gray */
+--text-muted: #7a7a7a;      /* Secondary text - muted gray */
 
-/* Semantic Colors */
---success: #10b981;     /* Generic drugs, positive outcomes, upstream stages */
---danger: #ef4444;      /* Failed trials, market failures, Stage 8 (current target) */
---warning: #f59e0b;     /* Caution, underfunded */
---neutral: #6b7280;     /* Secondary information */
+/* Accent - GoInvo signature orange */
+--accent-orange: #e36216;
+--accent-orange-light: #f8e8de;
 
-/* Background */
---bg-dark: #0f172a;     /* Slate 900 - main background */
---bg-card: #1e293b;     /* Slate 800 - card backgrounds */
---bg-highlight: #334155; /* Slate 700 - hover states */
+/* Category Colors - Soft pastels for hypothesis coding */
+--category-amyloid: #60a5fa;    /* Soft blue */
+--category-vascular: #a78bfa;   /* Soft purple */
+--category-metabolic: #fbbf24;  /* Warm yellow */
+--category-lysosomal: #34d399;  /* Soft green */
+--category-mitochondrial: #8ecae6; /* Soft teal */
+--category-myelin: #f472b6;     /* Soft pink */
+
+/* Semantic Colors - Muted for professionalism */
+--danger: #c75146;          /* Muted brick red - failures */
+--danger-light: #fae8e6;
+--success: #5a8a6e;         /* Sage green - alternatives */
+--success-light: #e8f3ec;
+
+/* Borders */
+--border: #e5e2dd;          /* Warm gray border */
 ```
 
 ### Typography
@@ -122,12 +134,37 @@ src/
 
 ### Component Patterns
 
+See `/showcase` for live examples of all components.
+
+#### Buttons
+```tsx
+<Button variant="primary | secondary | ghost" size="sm | md | lg">
+  Action Text
+</Button>
+```
+
 #### Cards
 ```tsx
-<Card variant="default | highlighted | warning | success | danger">
+<Card variant="default | highlighted | success | danger">
   <CardHeader>...</CardHeader>
   <CardContent>...</CardContent>
 </Card>
+```
+
+#### Badges
+```tsx
+// Status badges
+<Badge variant="default | primary | success | warning | danger">Status</Badge>
+
+// Category tags (for hypothesis coding)
+<Badge variant="amyloid | vascular | metabolic | lysosomal">Category</Badge>
+```
+
+#### Alerts
+```tsx
+<Alert variant="info | success | warning | danger">
+  <Icon /> Alert message
+</Alert>
 ```
 
 #### Sections
@@ -150,6 +187,11 @@ src/
 >
   {/* Content */}
 </motion.div>
+```
+
+#### Statistics Display
+```tsx
+<StatDisplay value="55 million+" label="Description text" highlight />
 ```
 
 ## Data Conventions

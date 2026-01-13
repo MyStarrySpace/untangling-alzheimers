@@ -22,7 +22,7 @@ export function Heading({ children, as = 'h2', className, animate = true }: Head
 
   if (!animate) {
     return (
-      <Component className={cn(headingStyles[as], 'text-white', className)}>
+      <Component className={cn(headingStyles[as], 'text-[var(--text-primary)]', className)}>
         {children}
       </Component>
     );
@@ -35,7 +35,7 @@ export function Heading({ children, as = 'h2', className, animate = true }: Head
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
     >
-      <Component className={cn(headingStyles[as], 'text-white', className)}>
+      <Component className={cn(headingStyles[as], 'text-[var(--text-primary)]', className)}>
         {children}
       </Component>
     </motion.div>
@@ -54,7 +54,7 @@ export function SectionHeader({ title, subtitle, className }: SectionHeaderProps
       <Heading as="h2">{title}</Heading>
       {subtitle && (
         <motion.p
-          className="mt-4 text-lg text-slate-400 max-w-3xl mx-auto"
+          className="mt-4 text-lg text-[var(--text-muted)] max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}

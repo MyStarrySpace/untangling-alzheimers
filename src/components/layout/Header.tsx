@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Brain } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Container } from '@/components/ui';
@@ -20,28 +19,30 @@ export function Header() {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-40 bg-slate-900/80 backdrop-blur-sm border-b border-slate-800"
+      className="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-b border-[var(--border)]"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
       <Container>
         <nav className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2 text-white font-semibold">
-            <Brain className="w-6 h-6 text-blue-500" />
-            <span className="hidden sm:inline">Untangling Alzheimer's</span>
+          <Link
+            href="/"
+            className="font-serif text-xl font-bold text-[var(--text-primary)] hover:text-[var(--accent-orange)] transition-colors"
+          >
+            Untangling Alzheimer&apos;s
           </Link>
-          <ul className="flex items-center gap-1 sm:gap-4">
+          <ul className="flex items-center gap-1 sm:gap-6">
             {navItems.map((item) => {
               const isActive = item.href === '/methodology' && pathname === '/methodology';
               return (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className={`px-2 sm:px-3 py-2 text-sm transition-colors ${
+                    className={`px-2 sm:px-3 py-2 text-sm font-medium transition-colors ${
                       isActive
-                        ? 'text-blue-400'
-                        : 'text-slate-400 hover:text-white'
+                        ? 'text-[var(--accent-orange)]'
+                        : 'text-[var(--text-muted)] hover:text-[var(--accent-orange)]'
                     }`}
                   >
                     {item.label}

@@ -22,11 +22,11 @@ export function FailureCascade() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <Card variant="warning" hover={false}>
+          <Card variant="highlighted" hover={false}>
             <CardContent>
               <div className="flex gap-4">
-                <AlertTriangle className="w-6 h-6 text-amber-500 flex-shrink-0 mt-1" />
-                <div className="space-y-4 text-slate-300">
+                <AlertTriangle className="w-6 h-6 text-[var(--accent-orange)] flex-shrink-0 mt-1" />
+                <div className="space-y-4 text-[var(--text-body)]">
                   {failureCascadeNarrative.split('\n\n').map((paragraph, i) => (
                     <p key={i}>{paragraph}</p>
                   ))}
@@ -39,7 +39,7 @@ export function FailureCascade() {
         {/* Failure cascade flow */}
         <div className="relative">
           {/* Vertical line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-amber-500 to-red-500 hidden lg:block" />
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[var(--category-amyloid)] via-[var(--accent-orange)] to-[var(--danger)] hidden lg:block" />
 
           <div className="space-y-8">
             {marketFailures
@@ -58,11 +58,11 @@ export function FailureCascade() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-red-900/30 border border-red-500/50">
-            <span className="text-red-400 font-mono text-lg">Result:</span>
-            <span className="text-white font-bold text-lg">99% Trial Failure Rate</span>
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--danger-light)] border border-[var(--danger)]">
+            <span className="text-[var(--danger)] font-mono text-lg">Result:</span>
+            <span className="text-[var(--text-primary)] font-bold text-lg">99% Trial Failure Rate</span>
           </div>
-          <p className="mt-4 text-slate-400 max-w-2xl mx-auto">
+          <p className="mt-4 text-[var(--text-muted)] max-w-2xl mx-auto">
             The standard explanation is that the disease is complex. The real explanation
             is that the system is designed to fail.
           </p>
@@ -94,27 +94,27 @@ function FailureNode({ failure, index }: FailureNodeProps) {
         <Card variant="default">
           <CardHeader>
             <div className={`flex items-center gap-3 ${isEven ? 'lg:justify-end' : ''}`}>
-              <div className="w-10 h-10 rounded-lg bg-slate-700 flex items-center justify-center">
-                <Icon className="w-5 h-5 text-blue-400" />
+              <div className="w-10 h-10 rounded-lg bg-[var(--bg-secondary)] flex items-center justify-center">
+                <Icon className="w-5 h-5 text-[var(--category-amyloid)]" />
               </div>
               <div>
-                <span className="text-xs text-slate-500 font-mono">0{failure.order}</span>
-                <h3 className="text-lg font-bold text-white">{failure.title}</h3>
+                <span className="text-xs text-[var(--text-muted)] font-mono">0{failure.order}</span>
+                <h3 className="text-lg font-bold text-[var(--text-primary)]">{failure.title}</h3>
               </div>
             </div>
           </CardHeader>
           <CardContent>
-            <p className="text-slate-300 mb-3">{failure.description}</p>
-            <p className="text-sm text-amber-400/80 italic">{failure.impact}</p>
+            <p className="text-[var(--text-body)] mb-3">{failure.description}</p>
+            <p className="text-sm text-[var(--accent-orange)] italic">{failure.impact}</p>
           </CardContent>
         </Card>
       </div>
 
       {/* Center node */}
       <div className="hidden lg:flex flex-col items-center">
-        <div className="w-4 h-4 rounded-full bg-slate-700 border-2 border-blue-500 z-10" />
+        <div className="w-4 h-4 rounded-full bg-white border-2 border-[var(--category-amyloid)] z-10" />
         {index < marketFailures.length - 1 && (
-          <ArrowDown className="w-4 h-4 text-slate-600 my-2" />
+          <ArrowDown className="w-4 h-4 text-[var(--text-muted)] my-2" />
         )}
       </div>
 

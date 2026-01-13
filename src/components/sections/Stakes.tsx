@@ -52,48 +52,48 @@ export function Stakes() {
         >
           <Card variant="default" hover={false}>
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold text-white mb-6 text-center">
+              <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-6 text-center">
                 What If Funding Followed Evidence?
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-amber-400">The Current Reality</h4>
-                  <ul className="space-y-3 text-slate-300">
+                  <h4 className="font-semibold text-[var(--accent-orange)]">The Current Reality</h4>
+                  <ul className="space-y-3 text-[var(--text-body)]">
                     <li className="flex items-start gap-3">
-                      <span className="text-red-500 mt-1">-</span>
+                      <span className="text-[var(--danger)] mt-1">-</span>
                       <span>$50B+ invested in patented amyloid drugs</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="text-red-500 mt-1">-</span>
+                      <span className="text-[var(--danger)] mt-1">-</span>
                       <span>27-35% slowing of decline (best case)</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="text-red-500 mt-1">-</span>
+                      <span className="text-[var(--danger)] mt-1">-</span>
                       <span>$26,500/year per patient</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="text-red-500 mt-1">-</span>
+                      <span className="text-[var(--danger)] mt-1">-</span>
                       <span>Treatment only after diagnosis</span>
                     </li>
                   </ul>
                 </div>
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-emerald-400">The Alternative</h4>
-                  <ul className="space-y-3 text-slate-300">
+                  <h4 className="font-semibold text-[var(--success)]">The Alternative</h4>
+                  <ul className="space-y-3 text-[var(--text-body)]">
                     <li className="flex items-start gap-3">
-                      <span className="text-emerald-500 mt-1">+</span>
+                      <span className="text-[var(--success)] mt-1">+</span>
                       <span>Trials for TNF inhibitors, lithium, nebivolol</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="text-emerald-500 mt-1">+</span>
+                      <span className="text-[var(--success)] mt-1">+</span>
                       <span>50-70% prevention potential (TNF data)</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="text-emerald-500 mt-1">+</span>
+                      <span className="text-[var(--success)] mt-1">+</span>
                       <span>$50-200/year per patient</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="text-emerald-500 mt-1">+</span>
+                      <span className="text-[var(--success)] mt-1">+</span>
                       <span>Prevention before symptoms</span>
                     </li>
                   </ul>
@@ -111,11 +111,11 @@ export function Stakes() {
           transition={{ delay: 0.3, duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-[var(--text-body)] max-w-3xl mx-auto mb-8">
             The goal is not to argue for any specific treatment, but to make visible
             the structural forces that shape—and distort—Alzheimer&apos;s research.
           </p>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg text-[var(--text-muted)] max-w-2xl mx-auto">
             Understanding the system is the first step toward changing it.
           </p>
         </motion.div>
@@ -132,10 +132,10 @@ interface StakeCardProps {
 }
 
 const colorClasses = {
-  blue: 'text-blue-400 bg-blue-900/20 border-blue-500/30',
-  amber: 'text-amber-400 bg-amber-900/20 border-amber-500/30',
-  red: 'text-red-400 bg-red-900/20 border-red-500/30',
-  purple: 'text-purple-400 bg-purple-900/20 border-purple-500/30',
+  blue: 'text-[var(--category-amyloid)] bg-blue-50 border-[var(--category-amyloid)]',
+  amber: 'text-[var(--accent-orange)] bg-[var(--accent-orange-light)] border-[var(--accent-orange)]',
+  red: 'text-[var(--danger)] bg-[var(--danger-light)] border-[var(--danger)]',
+  purple: 'text-[var(--category-vascular)] bg-purple-50 border-[var(--category-vascular)]',
 };
 
 function StakeCard({ icon, value, label, color }: StakeCardProps) {
@@ -148,8 +148,8 @@ function StakeCard({ icon, value, label, color }: StakeCardProps) {
       viewport={{ once: true }}
     >
       <div className={`${colorClasses[color].split(' ')[0]} mb-4`}>{icon}</div>
-      <div className="text-3xl font-bold text-white font-mono mb-2">{value}</div>
-      <p className="text-sm text-slate-400">{label}</p>
+      <div className="text-3xl font-bold text-[var(--text-primary)] font-mono mb-2">{value}</div>
+      <p className="text-sm text-[var(--text-muted)]">{label}</p>
     </motion.div>
   );
 }

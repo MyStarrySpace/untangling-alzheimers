@@ -46,7 +46,7 @@ function PhaseCostBar({
   phase: (typeof adTrialPhaseCosts)[0];
   index: number;
 }) {
-  const maxCost = 462_000_000; // Phase 3 cost
+  const maxCost = 462_000_000;
   const widthPercent = (phase.perDrugCost / maxCost) * 100;
 
   return (
@@ -58,15 +58,15 @@ function PhaseCostBar({
       viewport={{ once: true }}
     >
       <div className="flex items-center justify-between mb-2">
-        <span className="text-white font-medium">{phase.phase}</span>
-        <span className="text-slate-400 text-sm">{phase.typicalDuration}</span>
+        <span className="text-[var(--text-primary)] font-medium">{phase.phase}</span>
+        <span className="text-[var(--text-muted)] text-sm">{phase.typicalDuration}</span>
       </div>
-      <div className="relative h-10 bg-slate-800 rounded-lg overflow-hidden">
+      <div className="relative h-10 bg-[var(--bg-secondary)] rounded-lg overflow-hidden border border-[var(--border)]">
         <motion.div
           className={`h-full rounded-lg ${
             index === 2
-              ? 'bg-gradient-to-r from-red-600 to-red-400'
-              : 'bg-gradient-to-r from-blue-600 to-blue-400'
+              ? 'bg-gradient-to-r from-[var(--danger)] to-red-400'
+              : 'bg-gradient-to-r from-blue-500 to-blue-400'
           }`}
           initial={{ width: 0 }}
           whileInView={{ width: `${widthPercent}%` }}
@@ -74,22 +74,22 @@ function PhaseCostBar({
           viewport={{ once: true }}
         />
         <div className="absolute inset-0 flex items-center px-4">
-          <span className="text-white font-bold font-mono text-lg">
+          <span className="text-white font-bold font-mono text-lg drop-shadow">
             {formatLargeNumber(phase.perDrugCost)}
           </span>
         </div>
       </div>
       <div className="flex justify-between mt-1">
-        <span className="text-xs text-slate-500">
+        <span className="text-xs text-[var(--text-muted)]">
           {phase.typicalPatients} patients
         </span>
-        <span className="text-xs text-red-400">{phase.failureRate}% failure rate</span>
+        <span className="text-xs text-[var(--danger)]">{phase.failureRate}% failure rate</span>
       </div>
     </motion.div>
   );
 }
 
-// Funding source bubble
+// Funding source card
 function FundingBubble({
   source,
   index,
@@ -101,13 +101,11 @@ function FundingBubble({
 }) {
   const budgetUSD = source.annualBudget * 1_000_000;
   const percentOfPhase3 = (budgetUSD / phase3Cost) * 100;
-  // Size bubbles proportionally (but with a minimum)
-  const size = Math.max(40, Math.min(150, Math.sqrt(budgetUSD / 1_000_000) * 8));
 
   const typeColors = {
-    government: 'bg-blue-500/20 border-blue-500/50 text-blue-400',
-    nonprofit: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400',
-    industry: 'bg-purple-500/20 border-purple-500/50 text-purple-400',
+    government: 'bg-blue-50 border-blue-200 text-blue-600',
+    nonprofit: 'bg-emerald-50 border-emerald-200 text-emerald-600',
+    industry: 'bg-purple-50 border-purple-200 text-purple-600',
   };
 
   const typeIcons = {
@@ -135,7 +133,7 @@ function FundingBubble({
           ? `${(source.annualBudget / 1000).toFixed(1)}B`
           : `${source.annualBudget}M`}
       </span>
-      <span className="text-xs text-slate-500">
+      <span className="text-xs opacity-70">
         {percentOfPhase3 >= 100
           ? `${Math.floor(percentOfPhase3 / 100)} trials/yr`
           : `${percentOfPhase3.toFixed(0)}% of 1 trial`}
@@ -155,11 +153,11 @@ function RedirectedDrugCard({
   const [expanded, setExpanded] = useState(false);
 
   const statusColors = {
-    none: 'text-red-400 bg-red-500/20',
-    phase_1: 'text-yellow-400 bg-yellow-500/20',
-    phase_2: 'text-blue-400 bg-blue-500/20',
-    phase_3: 'text-emerald-400 bg-emerald-500/20',
-    abandoned: 'text-slate-400 bg-slate-500/20',
+    none: 'text-[var(--danger)] bg-[var(--danger-light)]',
+    phase_1: 'text-amber-600 bg-amber-50',
+    phase_2: 'text-blue-600 bg-blue-50',
+    phase_3: 'text-[var(--success)] bg-[var(--success-light)]',
+    abandoned: 'text-[var(--text-muted)] bg-gray-100',
   };
 
   const statusLabels = {
@@ -172,8 +170,8 @@ function RedirectedDrugCard({
 
   return (
     <motion.div
-      className="p-4 rounded-lg bg-slate-800/50 border border-slate-700 cursor-pointer
-        hover:border-slate-600 transition-colors"
+      className="p-4 rounded-lg bg-white border border-[var(--border)] cursor-pointer
+        hover:shadow-md hover:-translate-y-0.5 transition-all"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -182,11 +180,11 @@ function RedirectedDrugCard({
     >
       <div className="flex items-start justify-between gap-2">
         <div>
-          <h4 className="text-white font-semibold">{drug.name}</h4>
-          <p className="text-slate-400 text-sm">{drug.mechanism}</p>
+          <h4 className="text-[var(--text-primary)] font-semibold">{drug.name}</h4>
+          <p className="text-[var(--text-muted)] text-sm">{drug.mechanism}</p>
         </div>
         <span
-          className={`text-xs px-2 py-1 rounded ${statusColors[drug.adTrialStatus]}`}
+          className={`text-xs px-2 py-1 rounded font-medium ${statusColors[drug.adTrialStatus]}`}
         >
           {statusLabels[drug.adTrialStatus]}
         </span>
@@ -198,21 +196,21 @@ function RedirectedDrugCard({
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="mt-3 pt-3 border-t border-slate-700"
+            className="mt-3 pt-3 border-t border-[var(--border)]"
           >
-            <p className="text-sm text-slate-300 mb-2">
-              <strong className="text-emerald-400">AD Rationale:</strong>{' '}
+            <p className="text-sm text-[var(--text-body)] mb-2">
+              <strong className="text-[var(--success)]">AD Rationale:</strong>{' '}
               {drug.adRationale}
             </p>
-            <p className="text-sm text-slate-300 mb-2">
-              <strong className="text-amber-400">Why not AD:</strong>{' '}
+            <p className="text-sm text-[var(--text-body)] mb-2">
+              <strong className="text-[var(--accent-orange)]">Why not AD:</strong>{' '}
               {drug.whyNotAD}
             </p>
             <div className="flex flex-wrap gap-1 mt-2">
               {drug.currentIndications.map((ind) => (
                 <span
                   key={ind}
-                  className="text-xs px-2 py-0.5 rounded bg-slate-700 text-slate-300"
+                  className="text-xs px-2 py-0.5 rounded bg-[var(--bg-secondary)] text-[var(--text-muted)]"
                 >
                   {ind}
                 </span>
@@ -246,31 +244,31 @@ export function TrialBarriers() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="p-4 rounded-lg bg-slate-800/50 text-center">
-            <DollarSign className="w-6 h-6 mx-auto text-blue-400 mb-2" />
-            <span className="text-2xl font-bold font-mono text-white">$42.5B</span>
-            <p className="text-xs text-slate-400 mt-1">Invested 1995-2021</p>
+          <div className="p-4 rounded-lg bg-white border border-[var(--border)] text-center">
+            <DollarSign className="w-6 h-6 mx-auto text-blue-500 mb-2" />
+            <span className="text-2xl font-bold font-mono text-[var(--text-primary)]">$42.5B</span>
+            <p className="text-xs text-[var(--text-muted)] mt-1">Invested 1995-2021</p>
           </div>
-          <div className="p-4 rounded-lg bg-slate-800/50 text-center">
-            <AlertTriangle className="w-6 h-6 mx-auto text-red-400 mb-2" />
-            <span className="text-2xl font-bold font-mono text-red-400">
+          <div className="p-4 rounded-lg bg-[var(--danger-light)] border border-[var(--danger)] text-center">
+            <AlertTriangle className="w-6 h-6 mx-auto text-[var(--danger)] mb-2" />
+            <span className="text-2xl font-bold font-mono text-[var(--danger)]">
               {adDevelopmentStatistics.overallFailureRate}%
             </span>
-            <p className="text-xs text-slate-400 mt-1">Failure rate</p>
+            <p className="text-xs text-[var(--text-muted)] mt-1">Failure rate</p>
           </div>
-          <div className="p-4 rounded-lg bg-slate-800/50 text-center">
-            <Users className="w-6 h-6 mx-auto text-emerald-400 mb-2" />
-            <span className="text-2xl font-bold font-mono text-white">
+          <div className="p-4 rounded-lg bg-white border border-[var(--border)] text-center">
+            <Users className="w-6 h-6 mx-auto text-[var(--success)] mb-2" />
+            <span className="text-2xl font-bold font-mono text-[var(--text-primary)]">
               {(adDevelopmentStatistics.totalParticipants / 1000).toFixed(0)}K
             </span>
-            <p className="text-xs text-slate-400 mt-1">Trial participants</p>
+            <p className="text-xs text-[var(--text-muted)] mt-1">Trial participants</p>
           </div>
-          <div className="p-4 rounded-lg bg-slate-800/50 text-center">
-            <Clock className="w-6 h-6 mx-auto text-amber-400 mb-2" />
-            <span className="text-2xl font-bold font-mono text-white">
+          <div className="p-4 rounded-lg bg-white border border-[var(--border)] text-center">
+            <Clock className="w-6 h-6 mx-auto text-[var(--accent-orange)] mb-2" />
+            <span className="text-2xl font-bold font-mono text-[var(--text-primary)]">
               {adDevelopmentStatistics.fdaApprovals}
             </span>
-            <p className="text-xs text-slate-400 mt-1">FDA approvals (26 yrs)</p>
+            <p className="text-xs text-[var(--text-muted)] mt-1">FDA approvals (26 yrs)</p>
           </div>
         </motion.div>
 
@@ -282,7 +280,7 @@ export function TrialBarriers() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-xl font-bold text-white mb-6">
+          <h3 className="text-xl font-bold text-[var(--text-primary)] mb-6 font-serif">
             Cost Per Drug by Phase
           </h3>
           <div className="max-w-2xl">
@@ -290,8 +288,8 @@ export function TrialBarriers() {
               <PhaseCostBar key={phase.phase} phase={phase} index={index} />
             ))}
           </div>
-          <p className="text-sm text-slate-400 mt-4 max-w-2xl">
-            Phase 3 alone costs <span className="text-red-400 font-bold">$462 million</span> per drug.
+          <p className="text-sm text-[var(--text-muted)] mt-4 max-w-2xl">
+            Phase 3 alone costs <span className="text-[var(--danger)] font-bold">$462 million</span> per drug.
             This is why generic drugs with expired patents are rarely tested—no one can recoup the investment.
           </p>
         </motion.div>
@@ -304,8 +302,8 @@ export function TrialBarriers() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-xl font-bold text-white mb-2">The Funding Gap</h3>
-          <p className="text-slate-400 mb-6">
+          <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2 font-serif">The Funding Gap</h3>
+          <p className="text-[var(--text-muted)] mb-6">
             Who funds AD research, and can they afford a Phase 3 trial?
           </p>
 
@@ -322,13 +320,13 @@ export function TrialBarriers() {
 
           {/* Key insight */}
           <motion.div
-            className="p-6 rounded-lg bg-red-500/10 border border-red-500/30"
+            className="p-6 rounded-lg bg-[var(--danger-light)] border border-[var(--danger)]"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
             viewport={{ once: true }}
           >
-            <p className="text-red-400 text-lg">
+            <p className="text-[var(--danger)] text-lg">
               <strong>The math doesn&apos;t work:</strong> All AD nonprofits combined
               (~${(analysis.totalNonprofitAnnualUSD / 1_000_000).toFixed(0)}M/year)
               cannot fund a single Phase 3 trial (${(phase3Cost / 1_000_000).toFixed(0)}M).
@@ -345,7 +343,7 @@ export function TrialBarriers() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-xl font-bold text-white mb-6">
+          <h3 className="text-xl font-bold text-[var(--text-primary)] mb-6 font-serif">
             Why Companies Test Elsewhere First
           </h3>
           <Card variant="default" hover={false}>
@@ -353,14 +351,14 @@ export function TrialBarriers() {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-slate-700">
-                      <th className="text-left py-3 px-4 text-slate-400 font-medium">
+                    <tr className="border-b border-[var(--border)]">
+                      <th className="text-left py-3 px-4 text-[var(--text-muted)] font-medium">
                         Factor
                       </th>
-                      <th className="text-left py-3 px-4 text-red-400 font-medium">
+                      <th className="text-left py-3 px-4 text-[var(--danger)] font-medium">
                         AD Trials
                       </th>
-                      <th className="text-left py-3 px-4 text-emerald-400 font-medium">
+                      <th className="text-left py-3 px-4 text-[var(--success)] font-medium">
                         Other Diseases
                       </th>
                     </tr>
@@ -369,17 +367,17 @@ export function TrialBarriers() {
                     {trialRequirements.slice(0, 5).map((req, index) => (
                       <motion.tr
                         key={req.factor}
-                        className="border-b border-slate-800 last:border-0"
+                        className="border-b border-[var(--border)] last:border-0"
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
                         viewport={{ once: true }}
                       >
-                        <td className="py-3 px-4 text-white font-medium">
+                        <td className="py-3 px-4 text-[var(--text-primary)] font-medium">
                           {req.factor}
                         </td>
-                        <td className="py-3 px-4 text-slate-300">{req.adTrials}</td>
-                        <td className="py-3 px-4 text-slate-300">
+                        <td className="py-3 px-4 text-[var(--text-body)]">{req.adTrials}</td>
+                        <td className="py-3 px-4 text-[var(--text-body)]">
                           {req.otherIndications}
                         </td>
                       </motion.tr>
@@ -398,10 +396,10 @@ export function TrialBarriers() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-xl font-bold text-white mb-2">
+          <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2 font-serif">
             Drugs That Might Help—Tested Elsewhere
           </h3>
-          <p className="text-slate-400 mb-6">
+          <p className="text-[var(--text-muted)] mb-6">
             These drugs have plausible mechanisms for AD but were tested in faster, cheaper indications first.
           </p>
 
@@ -415,7 +413,7 @@ export function TrialBarriers() {
 
           {redirectedDrugs.length > 4 && (
             <button
-              className="mt-4 flex items-center gap-2 text-blue-400 hover:text-blue-300 mx-auto"
+              className="mt-4 flex items-center gap-2 text-[var(--accent-orange)] hover:underline mx-auto font-medium"
               onClick={() => setShowAllDrugs(!showAllDrugs)}
             >
               {showAllDrugs ? (
@@ -433,21 +431,21 @@ export function TrialBarriers() {
 
         {/* Investment Asymmetry Section */}
         <motion.div
-          className="mt-20 pt-16 border-t border-slate-800"
+          className="mt-20 pt-16 border-t border-[var(--border)]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-bold text-white mb-2 text-center">
+          <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2 text-center font-serif">
             The Investment Asymmetry
           </h3>
-          <p className="text-slate-400 mb-12 text-center max-w-2xl mx-auto">
+          <p className="text-[var(--text-muted)] mb-12 text-center max-w-2xl mx-auto">
             The drugs that receive investment are selected based on patent status, not scientific promise.
           </p>
 
           {/* Waterfall visualization */}
-          <div className="mb-16">
+          <div className="mb-16 p-8 bg-white rounded-xl border border-[var(--border)]">
             <div className="flex flex-col md:flex-row items-end justify-center gap-8 md:gap-16">
               {/* Patented bar */}
               <motion.div
@@ -461,9 +459,9 @@ export function TrialBarriers() {
                 <div className="relative">
                   <motion.div
                     className="w-32 sm:w-40 bg-gradient-to-t from-blue-600 to-blue-400 rounded-t-lg"
-                    style={{ height: '300px' }}
+                    style={{ height: '280px' }}
                     initial={{ height: 0 }}
-                    whileInView={{ height: 300 }}
+                    whileInView={{ height: 280 }}
                     transition={{ duration: 1.2, ease: 'easeOut' }}
                     viewport={{ once: true }}
                   >
@@ -483,11 +481,11 @@ export function TrialBarriers() {
                     transition={{ delay: 1, duration: 0.5 }}
                     viewport={{ once: true }}
                   >
-                    <TrendingUp className="w-6 h-6 text-blue-400" />
+                    <TrendingUp className="w-6 h-6 text-blue-500" />
                   </motion.div>
                 </div>
-                <p className="mt-4 text-white font-semibold">{investmentData.patented.label}</p>
-                <p className="text-sm text-slate-400 mt-1">
+                <p className="mt-4 text-[var(--text-primary)] font-semibold">{investmentData.patented.label}</p>
+                <p className="text-sm text-[var(--text-muted)] mt-1">
                   {investmentData.patented.examples.join(', ')}
                 </p>
               </motion.div>
@@ -500,10 +498,10 @@ export function TrialBarriers() {
                 transition={{ delay: 1.2, duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <span className="text-4xl sm:text-5xl font-bold font-mono text-amber-500">
+                <span className="text-4xl sm:text-5xl font-bold font-serif text-[var(--accent-orange)]">
                   {investmentData.ratio}:1
                 </span>
-                <p className="text-slate-400 mt-2">Investment Ratio</p>
+                <p className="text-[var(--text-muted)] mt-2">Investment Ratio</p>
               </motion.div>
 
               {/* Generic bar */}
@@ -515,9 +513,9 @@ export function TrialBarriers() {
                 viewport={{ once: true }}
                 style={{ transformOrigin: 'bottom' }}
               >
-                <div className="relative h-[300px] flex items-end">
+                <div className="relative h-[280px] flex items-end">
                   <motion.div
-                    className="w-32 sm:w-40 bg-gradient-to-t from-emerald-600 to-emerald-400 rounded-t-lg flex items-center justify-center"
+                    className="w-32 sm:w-40 bg-gradient-to-t from-[var(--success)] to-emerald-400 rounded-t-lg flex items-center justify-center"
                     initial={{ height: 0 }}
                     whileInView={{ height: 3 }}
                     transition={{ duration: 1.2, delay: 0.3, ease: 'easeOut' }}
@@ -531,14 +529,14 @@ export function TrialBarriers() {
                     transition={{ delay: 1.3, duration: 0.5 }}
                     viewport={{ once: true }}
                   >
-                    <span className="text-xl sm:text-2xl font-bold font-mono text-emerald-400 block">
+                    <span className="text-xl sm:text-2xl font-bold font-mono text-[var(--success)] block">
                       {formatCurrency(investmentData.generic.total, true)}
                     </span>
-                    <TrendingDown className="w-5 h-5 text-emerald-400 mx-auto mt-1" />
+                    <TrendingDown className="w-5 h-5 text-[var(--success)] mx-auto mt-1" />
                   </motion.div>
                 </div>
-                <p className="mt-4 text-white font-semibold">{investmentData.generic.label}</p>
-                <p className="text-sm text-slate-400 mt-1">
+                <p className="mt-4 text-[var(--text-primary)] font-semibold">{investmentData.generic.label}</p>
+                <p className="text-sm text-[var(--text-muted)] mt-1">
                   {investmentData.generic.examples.join(', ')}
                 </p>
               </motion.div>
@@ -557,27 +555,27 @@ export function TrialBarriers() {
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="border-b border-slate-700">
-                        <th className="text-left py-3 px-4 text-slate-400 font-medium">Category</th>
-                        <th className="text-left py-3 px-4 text-blue-400 font-medium">Patented Drugs</th>
-                        <th className="text-left py-3 px-4 text-emerald-400 font-medium">Generic/Supplement</th>
-                        <th className="text-left py-3 px-4 text-amber-400 font-medium">Delta</th>
+                      <tr className="border-b border-[var(--border)]">
+                        <th className="text-left py-3 px-4 text-[var(--text-muted)] font-medium">Category</th>
+                        <th className="text-left py-3 px-4 text-blue-600 font-medium">Patented Drugs</th>
+                        <th className="text-left py-3 px-4 text-[var(--success)] font-medium">Generic/Supplement</th>
+                        <th className="text-left py-3 px-4 text-[var(--accent-orange)] font-medium">Delta</th>
                       </tr>
                     </thead>
                     <tbody>
                       {comparisonData.map((row, index) => (
                         <motion.tr
                           key={row.category}
-                          className="border-b border-slate-800 last:border-0"
+                          className="border-b border-[var(--border)] last:border-0"
                           initial={{ opacity: 0, x: -20 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.1, duration: 0.4 }}
                           viewport={{ once: true }}
                         >
-                          <td className="py-3 px-4 text-white font-medium">{row.category}</td>
-                          <td className="py-3 px-4 text-slate-300">{row.patented}</td>
-                          <td className="py-3 px-4 text-slate-300">{row.generic}</td>
-                          <td className="py-3 px-4 text-amber-400 font-mono">{row.delta || '—'}</td>
+                          <td className="py-3 px-4 text-[var(--text-primary)] font-medium">{row.category}</td>
+                          <td className="py-3 px-4 text-[var(--text-body)]">{row.patented}</td>
+                          <td className="py-3 px-4 text-[var(--text-body)]">{row.generic}</td>
+                          <td className="py-3 px-4 text-[var(--accent-orange)] font-mono">{row.delta || '—'}</td>
                         </motion.tr>
                       ))}
                     </tbody>

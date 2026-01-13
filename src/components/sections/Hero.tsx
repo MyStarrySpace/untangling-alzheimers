@@ -1,49 +1,41 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ChevronDown, Brain, TrendingDown } from 'lucide-react';
-import { Container, Section } from '@/components/ui';
-import { keyStatistics } from '@/data';
-import { formatNumber } from '@/lib/utils';
+import { ChevronDown } from 'lucide-react';
 
 export function Hero() {
+  const scrollToContent = () => {
+    const contentSection = document.getElementById('paradox');
+    contentSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <Section id="hero" className="relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent" />
-
-      <Container className="relative z-10">
-        <div className="text-center max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="mb-8"
-          >
-            <Brain className="w-16 h-16 mx-auto text-blue-500 mb-6" />
-          </motion.div>
-
+    <section
+      id="hero"
+      className="flex items-center justify-center relative px-6 overflow-hidden"
+      style={{
+        minHeight: 'calc(100vh - 64px)',
+        paddingBottom: '80px',
+      }}
+    >
+      <div className="max-w-5xl mx-auto text-center relative z-10">
+        <div className="relative px-6 py-10">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight"
+            className="text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--text-primary)] tracking-tight font-serif leading-tight"
           >
-            Alzheimer&apos;s Disease:
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-              Anatomy of Market Failure
-            </span>
+            Untangling Alzheimer&apos;s
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-6 text-xl sm:text-2xl text-slate-400 max-w-3xl mx-auto"
+            className="mt-6 text-lg text-[var(--text-muted)] max-w-2xl mx-auto"
           >
-            Why the drugs that might help you will never be tested
+            The science, the system, and the search for a cure
           </motion.p>
 
           {/* Key stats */}
@@ -51,76 +43,60 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6"
+            className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto"
           >
             <StatCard
-              value={formatNumber(keyStatistics.globalPatients)}
-              label="People affected globally"
-              icon={<Brain className="w-5 h-5" />}
+              value="55 million+"
+              label="People living with dementia worldwide (2020)"
             />
             <StatCard
-              value={`${keyStatistics.trialFailureRate}%`}
-              label="Clinical trial failure rate"
-              icon={<TrendingDown className="w-5 h-5" />}
-              highlight
+              value="99%"
+              label="Clinical trial failure rate (2002-2012)"
             />
             <StatCard
-              value={`${keyStatistics.investmentRatio}:1`}
-              label="Patent vs generic investment"
+              value="~850:1"
+              label="Novel molecule vs. repurposed drug trial ratio"
             />
             <StatCard
-              value="3x"
-              label="Projected increase by 2050"
+              value="$42.5 Billion"
+              label="Cumulative private R&D expenditure (1995 - 2001)"
             />
           </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-12 text-lg text-slate-500 max-w-2xl mx-auto"
-          >
-            This is not a failure of science.{' '}
-            <span className="text-amber-500 font-medium">It is a failure of markets.</span>
-          </motion.p>
         </div>
+      </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            <ChevronDown className="w-8 h-8 text-slate-600" />
-          </motion.div>
-        </motion.div>
-      </Container>
-    </Section>
+      {/* Scroll indicator */}
+      <motion.button
+        onClick={scrollToContent}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer group"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 8, 0] }}
+        transition={{
+          opacity: { duration: 0.8, delay: 1 },
+          y: { duration: 2, repeat: Infinity, ease: 'easeInOut' },
+        }}
+      >
+        <span className="text-sm text-[var(--text-muted)] mb-2 group-hover:text-[var(--text-body)] transition-colors">
+          Scroll to explore
+        </span>
+        <ChevronDown className="w-8 h-8 text-[var(--text-muted)] group-hover:text-[var(--text-body)] transition-colors" />
+      </motion.button>
+    </section>
   );
 }
 
 interface StatCardProps {
   value: string;
   label: string;
-  icon?: React.ReactNode;
-  highlight?: boolean;
 }
 
-function StatCard({ value, label, icon, highlight }: StatCardProps) {
+function StatCard({ value, label }: StatCardProps) {
   return (
-    <div className={`p-4 rounded-lg ${highlight ? 'bg-red-900/20 border border-red-500/30' : 'bg-slate-800/50'}`}>
-      <div className="flex items-center justify-center gap-2 mb-2">
-        {icon && <span className={highlight ? 'text-red-400' : 'text-blue-400'}>{icon}</span>}
-        <span className={`text-2xl sm:text-3xl font-bold font-mono ${highlight ? 'text-red-400' : 'text-white'}`}>
-          {value}
-        </span>
-      </div>
-      <p className="text-xs sm:text-sm text-slate-400">{label}</p>
+    <div className="bg-[var(--bg-secondary)] rounded-lg p-6 text-center">
+      <span className="text-2xl sm:text-3xl font-bold font-serif text-[var(--text-primary)] block">
+        {value}
+      </span>
+      <p className="mt-2 text-sm text-[var(--text-muted)]">{label}</p>
     </div>
   );
 }

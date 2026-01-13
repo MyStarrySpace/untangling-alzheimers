@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoInvo Style - Alzheimer's Visualization</title>
+  <link href="https://fonts.googleapis.com/css2?family=Neuton:wght@400;700;800&family=Encode+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* GoInvo-inspired palette */
+      --bg-primary: #faf9f7;        /* Warm off-white */
+      --bg-secondary: #f5f3f0;      /* Slightly darker warm gray */
+      --bg-card: #ffffff;           /* Pure white for cards */
+
+      --text-primary: #2d2d2d;      /* Near-black for headings */
+      --text-body: #4a4a4a;         /* Dark gray for body */
+      --text-muted: #7a7a7a;        /* Muted gray for secondary */
+
+      --accent-orange: #e36216;     /* GoInvo signature orange */
+      --accent-orange-light: #f8e8de;
+
+      --category-genetics: #8ecae6; /* Soft teal */
+      --category-vascular: #a78bfa; /* Soft purple */
+      --category-metabolic: #fbbf24; /* Warm yellow */
+      --category-amyloid: #60a5fa;  /* Soft blue */
+      --category-lysosomal: #34d399; /* Soft green */
+
+      --danger: #c75146;            /* Muted brick red */
+      --danger-light: #fae8e6;
+      --success: #5a8a6e;           /* Sage green */
+      --success-light: #e8f3ec;
+
+      --border: #e5e2dd;            /* Warm border */
+
+      --font-serif: 'Neuton', Georgia, serif;
+      --font-sans: 'Encode Sans', system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-primary);
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    /* Header */
+    .header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: var(--accent-orange);
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    .hero .subtitle {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+    }
+
+    /* Stats Row */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent-orange);
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    /* Section */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .card-icon.danger {
+      background: var(--danger-light);
+      color: var(--danger);
+    }
+
+    .card-icon.success {
+      background: var(--success-light);
+      color: var(--success);
+    }
+
+    .card h3 {
+      font-size: 1.125rem;
+      font-family: var(--font-sans);
+      font-weight: 600;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Timeline Card */
+    .timeline-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--category-amyloid);
+      border-radius: 0 8px 8px 0;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-card.vascular {
+      border-left-color: var(--category-vascular);
+    }
+
+    .timeline-card.metabolic {
+      border-left-color: var(--category-metabolic);
+    }
+
+    .timeline-card.failure {
+      border-left-color: var(--danger);
+    }
+
+    .timeline-year {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0.25rem 0;
+    }
+
+    .timeline-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Investment Comparison */
+    .investment-viz {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .bars-container {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 4rem;
+      height: 300px;
+      margin: 2rem 0;
+    }
+
+    .bar-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .bar {
+      width: 120px;
+      border-radius: 4px 4px 0 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 1rem;
+    }
+
+    .bar.patented {
+      height: 280px;
+      background: linear-gradient(to top, #3b82f6, #60a5fa);
+    }
+
+    .bar.generic {
+      height: 3px;
+      background: var(--success);
+      min-height: 3px;
+    }
+
+    .bar-label {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .bar-title {
+      margin-top: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .ratio-badge {
+      display: inline-block;
+      background: var(--accent-orange-light);
+      color: var(--accent-orange);
+      padding: 0.5rem 1.5rem;
+      border-radius: 100px;
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-top: 2rem;
+    }
+
+    /* Table */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .comparison-table th {
+      background: var(--bg-secondary);
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .comparison-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge.danger {
+      background: var(--danger-light);
+      color: var(--danger);
+    }
+
+    .badge.success {
+      background: var(--success-light);
+      color: var(--success);
+    }
+
+    /* Category Pills */
+    .category-pills {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .pill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .pill:hover {
+      border-color: var(--text-muted);
+    }
+
+    .pill.active {
+      background: var(--text-primary);
+      color: white;
+      border-color: var(--text-primary);
+    }
+
+    .pill-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--text-primary);
+      color: white;
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">Untangling Alzheimer's</div>
+      <nav class="nav">
+        <a href="#">Timeline</a>
+        <a href="#">Trials</a>
+        <a href="#">System</a>
+        <a href="#">Science</a>
+        <a href="#">Stakes</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Untangling Alzheimer's</h1>
+    <p class="subtitle">The science, the system, and the search for a cure. An exploration of what's blocking progress.</p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-number">55M</div>
+        <div class="stat-label">People living with dementia</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">99%</div>
+        <div class="stat-label">Clinical trial failure rate</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">$50B</div>
+        <div class="stat-label">Invested in one hypothesis</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="section-header">
+      <h2>Historical Timeline</h2>
+      <p>Key discoveries, hypotheses, and failures in Alzheimer's research</p>
+    </div>
+
+    <div class="category-pills">
+      <div class="pill active">
+        <span class="pill-dot" style="background: var(--category-amyloid)"></span>
+        Amyloid
+      </div>
+      <div class="pill">
+        <span class="pill-dot" style="background: var(--category-vascular)"></span>
+        Vascular
+      </div>
+      <div class="pill">
+        <span class="pill-dot" style="background: var(--category-metabolic)"></span>
+        Metabolic
+      </div>
+      <div class="pill">
+        <span class="pill-dot" style="background: var(--danger)"></span>
+        Trial Failures
+      </div>
+    </div>
+
+    <div class="timeline-card">
+      <div class="timeline-year">1906</div>
+      <div class="timeline-title">Alois Alzheimer describes "a peculiar disease"</div>
+      <div class="timeline-desc">At a psychiatry conference, Alzheimer presents his findings on plaques and tangles. The audience, eager to hear the next talk on "compulsive masturbation," sends him away without questions.</div>
+    </div>
+
+    <div class="timeline-card">
+      <div class="timeline-year">1992</div>
+      <div class="timeline-title">Hardy & Higgins publish the Amyloid Cascade Hypothesis</div>
+      <div class="timeline-desc">A one-page Science paper proposes amyloid deposition as the initiating event in AD. Written in "possibly a week," it would dominate research for 30+ years.</div>
+    </div>
+
+    <div class="timeline-card vascular">
+      <div class="timeline-year">1993</div>
+      <div class="timeline-title">de la Torre proposes the vascular hypothesis</div>
+      <div class="timeline-desc">Research shows chronic brain hypoperfusion can initiate neurodegeneration. The field largely ignores it.</div>
+    </div>
+
+    <div class="timeline-card failure">
+      <div class="timeline-year">2012</div>
+      <div class="timeline-title">Bapineuzumab fails Phase 3 trials</div>
+      <div class="timeline-desc">The first anti-amyloid antibody successfully clears amyloid but shows no cognitive benefit. The field's response: "We're treating too late."</div>
+    </div>
+  </section>
+
+  <!-- Investment Section -->
+  <section class="section">
+    <div class="section-header">
+      <h2>The Investment Asymmetry</h2>
+      <p>Drugs are funded based on patent status, not scientific promise</p>
+    </div>
+
+    <div class="investment-viz">
+      <div class="bars-container">
+        <div class="bar-group">
+          <div class="bar patented">
+            <span class="bar-label">$50B</span>
+          </div>
+          <div class="bar-title">Patented Drugs</div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Lecanemab, Donanemab, Aduhelm</p>
+        </div>
+
+        <div class="bar-group">
+          <div style="height: 280px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center;">
+            <span style="color: var(--success); font-weight: 700; margin-bottom: 0.5rem;">$50M</span>
+            <div class="bar generic"></div>
+          </div>
+          <div class="bar-title">Generics & Supplements</div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Lithium, TNF inhibitors, Metformin</p>
+        </div>
+      </div>
+
+      <div class="ratio-badge">1000:1</div>
+    </div>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Patented Drugs</th>
+          <th>Generic/Supplement</th>
+          <th>Difference</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Best Outcome</strong></td>
+          <td>27-35% slowing of decline</td>
+          <td>50-70% prevention (TNFi)</td>
+          <td><span class="badge success">Generics outperform</span></td>
+        </tr>
+        <tr>
+          <td><strong>Annual Cost</strong></td>
+          <td>$26,500 (lecanemab)</td>
+          <td>$4-180/year</td>
+          <td><span class="badge success">100-1000x cheaper</span></td>
+        </tr>
+        <tr>
+          <td><strong>FDA Status</strong></td>
+          <td><span class="badge" style="background: #dbeafe; color: #3b82f6;">APPROVED</span></td>
+          <td><span class="badge danger">"Needs more research"</span></td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>An open source visualization by GoInvo</p>
+    </div>
+  </footer>
+
+</body>
+</html>

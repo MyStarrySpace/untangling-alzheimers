@@ -7,7 +7,7 @@ import { evidenceGraveyardData } from '@/data';
 
 export function EvidenceGraveyard() {
   return (
-    <Section id="graveyard" className="bg-slate-950/50">
+    <Section id="graveyard" className="bg-[var(--bg-secondary)]">
       <Container>
         <SectionHeader
           title="The Evidence Graveyard"
@@ -29,7 +29,7 @@ export function EvidenceGraveyard() {
         </div>
 
         <motion.p
-          className="mt-12 text-center text-slate-400 text-lg max-w-2xl mx-auto"
+          className="mt-12 text-center text-[var(--text-muted)] text-lg max-w-2xl mx-auto"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.6 }}
@@ -62,21 +62,21 @@ function Tombstone({
 }: TombstoneProps) {
   return (
     <div className="relative group">
-      {/* Tombstone shape */}
-      <div className="bg-gradient-to-b from-slate-700 to-slate-800 rounded-t-[100px] rounded-b-lg p-6 border border-slate-600 min-h-[320px] flex flex-col">
+      {/* Tombstone shape - light theme with subtle stone appearance */}
+      <div className="bg-gradient-to-b from-gray-100 to-gray-200 rounded-t-[100px] rounded-b-lg p-6 border border-[var(--border)] min-h-[320px] flex flex-col shadow-sm">
         {/* Cross/Skull icon */}
         <div className="absolute top-4 left-1/2 -translate-x-1/2">
-          <Skull className="w-8 h-8 text-slate-500" />
+          <Skull className="w-8 h-8 text-[var(--text-muted)]" />
         </div>
 
         {/* Drug name */}
-        <h3 className="text-xl font-bold text-white text-center mt-8 mb-4">{drug}</h3>
+        <h3 className="text-xl font-bold text-[var(--text-primary)] text-center mt-8 mb-4">{drug}</h3>
 
         {/* Evidence */}
-        <p className="text-sm text-slate-300 text-center mb-4 flex-grow">{evidence}</p>
+        <p className="text-sm text-[var(--text-body)] text-center mb-4 flex-grow">{evidence}</p>
 
         {/* Year and source */}
-        <div className="flex items-center justify-center gap-4 text-xs text-slate-400 mb-4">
+        <div className="flex items-center justify-center gap-4 text-xs text-[var(--text-muted)] mb-4">
           <span className="flex items-center gap-1">
             <Calendar className="w-3 h-3" />
             {year}
@@ -88,18 +88,18 @@ function Tombstone({
         </div>
 
         {/* Divider */}
-        <div className="border-t border-slate-600 pt-4">
+        <div className="border-t border-[var(--border)] pt-4">
           {/* What should happen vs what happened */}
           <div className="space-y-2">
             <div className="flex items-start gap-2">
-              <ArrowRight className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
-              <p className="text-xs text-emerald-400">
+              <ArrowRight className="w-4 h-4 text-[var(--success)] mt-0.5 flex-shrink-0" />
+              <p className="text-xs text-[var(--success)]">
                 <span className="font-medium">Should:</span> {shouldHappen}
               </p>
             </div>
             <div className="flex items-start gap-2">
-              <XCircle className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
-              <p className="text-xs text-red-400">
+              <XCircle className="w-4 h-4 text-[var(--danger)] mt-0.5 flex-shrink-0" />
+              <p className="text-xs text-[var(--danger)]">
                 <span className="font-medium">Reality:</span> {actuallyHappened}
               </p>
             </div>
@@ -108,7 +108,7 @@ function Tombstone({
       </div>
 
       {/* Ground shadow */}
-      <div className="h-2 bg-gradient-to-b from-slate-800 to-transparent rounded-b-lg" />
+      <div className="h-2 bg-gradient-to-b from-gray-200 to-transparent rounded-b-lg" />
     </div>
   );
 }

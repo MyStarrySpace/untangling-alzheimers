@@ -29,7 +29,7 @@ export function InvestmentWaterfall() {
             >
               <div className="relative">
                 <motion.div
-                  className="w-32 sm:w-40 bg-gradient-to-t from-blue-600 to-blue-400 rounded-t-lg"
+                  className="w-32 sm:w-40 bg-gradient-to-t from-[var(--category-amyloid)] to-blue-300 rounded-t-lg"
                   style={{ height: '300px' }}
                   initial={{ height: 0 }}
                   whileInView={{ height: 300 }}
@@ -52,11 +52,11 @@ export function InvestmentWaterfall() {
                   transition={{ delay: 1, duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  <TrendingUp className="w-6 h-6 text-blue-400" />
+                  <TrendingUp className="w-6 h-6 text-[var(--category-amyloid)]" />
                 </motion.div>
               </div>
-              <p className="mt-4 text-white font-semibold">{investmentData.patented.label}</p>
-              <p className="text-sm text-slate-400 mt-1">
+              <p className="mt-4 text-[var(--text-primary)] font-semibold">{investmentData.patented.label}</p>
+              <p className="text-sm text-[var(--text-muted)] mt-1">
                 {investmentData.patented.examples.join(', ')}
               </p>
             </motion.div>
@@ -69,10 +69,10 @@ export function InvestmentWaterfall() {
               transition={{ delay: 1.2, duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <span className="text-4xl sm:text-5xl font-bold font-mono text-amber-500">
+              <span className="text-4xl sm:text-5xl font-bold font-mono text-[var(--accent-orange)]">
                 {investmentData.ratio}:1
               </span>
-              <p className="text-slate-400 mt-2">Investment Ratio</p>
+              <p className="text-[var(--text-muted)] mt-2">Investment Ratio</p>
             </motion.div>
 
             {/* Generic bar */}
@@ -86,7 +86,7 @@ export function InvestmentWaterfall() {
             >
               <div className="relative h-[300px] flex items-end">
                 <motion.div
-                  className="w-32 sm:w-40 bg-gradient-to-t from-emerald-600 to-emerald-400 rounded-t-lg flex items-center justify-center"
+                  className="w-32 sm:w-40 bg-gradient-to-t from-[var(--success)] to-emerald-300 rounded-t-lg flex items-center justify-center"
                   initial={{ height: 0 }}
                   whileInView={{ height: 3 }}
                   transition={{ duration: 1.2, delay: 0.3, ease: 'easeOut' }}
@@ -100,14 +100,14 @@ export function InvestmentWaterfall() {
                   transition={{ delay: 1.3, duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  <span className="text-xl sm:text-2xl font-bold font-mono text-emerald-400 block">
+                  <span className="text-xl sm:text-2xl font-bold font-mono text-[var(--success)] block">
                     {formatCurrency(investmentData.generic.total, true)}
                   </span>
-                  <TrendingDown className="w-5 h-5 text-emerald-400 mx-auto mt-1" />
+                  <TrendingDown className="w-5 h-5 text-[var(--success)] mx-auto mt-1" />
                 </motion.div>
               </div>
-              <p className="mt-4 text-white font-semibold">{investmentData.generic.label}</p>
-              <p className="text-sm text-slate-400 mt-1">
+              <p className="mt-4 text-[var(--text-primary)] font-semibold">{investmentData.generic.label}</p>
+              <p className="text-sm text-[var(--text-muted)] mt-1">
                 {investmentData.generic.examples.join(', ')}
               </p>
             </motion.div>
@@ -126,27 +126,27 @@ export function InvestmentWaterfall() {
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-slate-700">
-                      <th className="text-left py-3 px-4 text-slate-400 font-medium">Category</th>
-                      <th className="text-left py-3 px-4 text-blue-400 font-medium">Patented Drugs</th>
-                      <th className="text-left py-3 px-4 text-emerald-400 font-medium">Generic/Supplement</th>
-                      <th className="text-left py-3 px-4 text-amber-400 font-medium">Delta</th>
+                    <tr className="border-b border-[var(--border)]">
+                      <th className="text-left py-3 px-4 text-[var(--text-muted)] font-medium">Category</th>
+                      <th className="text-left py-3 px-4 text-[var(--category-amyloid)] font-medium">Patented Drugs</th>
+                      <th className="text-left py-3 px-4 text-[var(--success)] font-medium">Generic/Supplement</th>
+                      <th className="text-left py-3 px-4 text-[var(--accent-orange)] font-medium">Delta</th>
                     </tr>
                   </thead>
                   <tbody>
                     {comparisonData.map((row, index) => (
                       <motion.tr
                         key={row.category}
-                        className="border-b border-slate-800 last:border-0"
+                        className="border-b border-[var(--border)] last:border-0"
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1, duration: 0.4 }}
                         viewport={{ once: true }}
                       >
-                        <td className="py-3 px-4 text-white font-medium">{row.category}</td>
-                        <td className="py-3 px-4 text-slate-300">{row.patented}</td>
-                        <td className="py-3 px-4 text-slate-300">{row.generic}</td>
-                        <td className="py-3 px-4 text-amber-400 font-mono">{row.delta || '—'}</td>
+                        <td className="py-3 px-4 text-[var(--text-primary)] font-medium">{row.category}</td>
+                        <td className="py-3 px-4 text-[var(--text-body)]">{row.patented}</td>
+                        <td className="py-3 px-4 text-[var(--text-body)]">{row.generic}</td>
+                        <td className="py-3 px-4 text-[var(--accent-orange)] font-mono">{row.delta || '—'}</td>
                       </motion.tr>
                     ))}
                   </tbody>

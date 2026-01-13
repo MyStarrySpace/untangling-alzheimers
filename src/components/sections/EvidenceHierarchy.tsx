@@ -38,17 +38,17 @@ interface EvidenceLevelCardProps {
 
 function EvidenceLevelCard({ level }: EvidenceLevelCardProps) {
   const getColorClasses = (stars: number) => {
-    if (stars >= 5) return 'border-emerald-500/50 bg-emerald-900/10';
-    if (stars >= 4) return 'border-blue-500/50 bg-blue-900/10';
-    if (stars >= 3) return 'border-amber-500/50 bg-amber-900/10';
-    return 'border-slate-600 bg-slate-800/30';
+    if (stars >= 5) return 'border-[var(--success)] bg-[var(--success-light)]';
+    if (stars >= 4) return 'border-[var(--category-amyloid)] bg-blue-50';
+    if (stars >= 3) return 'border-[var(--accent-orange)] bg-[var(--accent-orange-light)]';
+    return 'border-[var(--border)] bg-[var(--bg-secondary)]';
   };
 
   const getStarColor = (stars: number) => {
-    if (stars >= 5) return 'text-emerald-400';
-    if (stars >= 4) return 'text-blue-400';
-    if (stars >= 3) return 'text-amber-400';
-    return 'text-slate-500';
+    if (stars >= 5) return 'text-[var(--success)]';
+    if (stars >= 4) return 'text-[var(--category-amyloid)]';
+    if (stars >= 3) return 'text-[var(--accent-orange)]';
+    return 'text-[var(--text-muted)]';
   };
 
   return (
@@ -60,7 +60,7 @@ function EvidenceLevelCard({ level }: EvidenceLevelCardProps) {
             {Array.from({ length: 5 }).map((_, i) => (
               <Star
                 key={i}
-                className={`w-5 h-5 ${i < level.stars ? getStarColor(level.stars) : 'text-slate-700'}`}
+                className={`w-5 h-5 ${i < level.stars ? getStarColor(level.stars) : 'text-[var(--border)]'}`}
                 fill={i < level.stars ? 'currentColor' : 'none'}
               />
             ))}
@@ -68,13 +68,13 @@ function EvidenceLevelCard({ level }: EvidenceLevelCardProps) {
 
           {/* Content */}
           <div className="flex-grow">
-            <h3 className="font-bold text-white mb-1">{level.type}</h3>
-            <p className="text-sm text-slate-400 mb-3">{level.description}</p>
+            <h3 className="font-bold text-[var(--text-primary)] mb-1">{level.type}</h3>
+            <p className="text-sm text-[var(--text-muted)] mb-3">{level.description}</p>
 
             {/* Examples */}
             <div className="space-y-1">
               {level.examples.map((example, i) => (
-                <p key={i} className="text-xs text-slate-500 pl-3 border-l-2 border-slate-700">
+                <p key={i} className="text-xs text-[var(--text-muted)] pl-3 border-l-2 border-[var(--border)]">
                   {example}
                 </p>
               ))}
