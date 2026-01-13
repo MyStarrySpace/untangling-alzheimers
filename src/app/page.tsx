@@ -6,11 +6,9 @@ import {
   HistoricalTimeline,
   TrialBarriers,
   EvidenceGraveyard,
-  SidelinedResearchers,
   FailureCascade,
   CaseStudies,
-  MechanisticCascade,
-  Stakes,
+  HopefulDevelopments,
 } from '@/components/sections';
 
 export default function Home() {
@@ -26,15 +24,11 @@ export default function Home() {
 
         {/* Act II: The System */}
         <EvidenceGraveyard />
-        <SidelinedResearchers />
         <FailureCascade />
         <CaseStudies />
 
-        {/* Act III: The Science */}
-        <MechanisticCascade />
-
-        {/* Act IV: The Stakes */}
-        <Stakes />
+        {/* Act III: Reasons for Hope */}
+        <HopefulDevelopments />
       </main>
       <Footer />
     </>

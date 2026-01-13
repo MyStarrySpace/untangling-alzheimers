@@ -75,7 +75,7 @@ export const evidenceHierarchy: EvidenceLevel[] = [
     type: 'Humanization',
     description: 'If giving mice human gene/protein X produces human-like pathology, X is causal',
     examples: [
-      'Humanized Abeta knock-in mice: 3x more amyloid (Saito 2014)',
+      'Humanized Aβ knock-in mice: 3x more amyloid (Saito 2014)',
       'APOE4 knock-in: reproduces human lipid dysregulation (Knoferle 2014)',
     ],
   },
@@ -102,7 +102,7 @@ export const evidenceHierarchy: EvidenceLevel[] = [
     type: 'Genetic KO/KI',
     description: 'Knockout/knockin of gene X changes phenotype Y in predicted direction',
     examples: [
-      'Myelin gene mutations lead to increased Abeta deposition (Depp 2023 Nature)',
+      'Myelin gene mutations lead to increased Aβ deposition (Depp 2023 Nature)',
       'v-ATPase KO leads to lysosomal failure and PANTHOS (Nixon 2022)',
     ],
   },
@@ -198,7 +198,7 @@ export const mechanisticCascade: CascadeStage[] = [
     stage: 5,
     title: 'Oligodendrocyte Dysfunction',
     shortTitle: 'Myelin',
-    description: 'Myelin dysfunction DRIVES amyloid-beta deposition (Depp 2023 Nature title).',
+    description: 'Myelin dysfunction DRIVES Aβ deposition (Depp 2023 Nature title).',
     mechanisms: [
       'Iron starvation: Astrocytes cannot supply Fe, decreased myelination enzymes',
       'Cholesterol starvation: Poorly lipidated APOE cannot deliver cholesterol',
@@ -209,13 +209,13 @@ export const mechanisticCascade: CascadeStage[] = [
   },
   {
     stage: 6,
-    title: 'Dual Amyloid-beta Production',
-    shortTitle: 'Abeta Production',
+    title: 'Dual Aβ Production',
+    shortTitle: 'Aβ Production',
     description: 'Amyloid is produced through both neuronal and oligodendrocyte pathways.',
     mechanisms: [
       'Neuronal pathway: Axonal swellings accumulate APP/BACE1 machinery',
-      'OL pathway: OLs directly produce Abeta (~25% of plaques)',
-      'PANTHOS: Lysosomal failure leads to intracellular Abeta aggregation',
+      'OL pathway: OLs directly produce Aβ (~25% of plaques)',
+      'PANTHOS: Lysosomal failure leads to intracellular Aβ aggregation',
     ],
     evidenceLevel: '5-star (Depp 2023; Sasmita 2024)',
   },
@@ -237,7 +237,7 @@ export const mechanisticCascade: CascadeStage[] = [
     shortTitle: 'Plaques',
     description: 'This is where current drugs target—but it\'s DOWNSTREAM.',
     mechanisms: [
-      'Abeta production >> Abeta clearance leads to plaque accumulation',
+      'Aβ production >> Aβ clearance leads to plaque accumulation',
       'Lecanemab, donanemab work HERE (Stage 8)',
       'Only 27-35% slowing because Stages 1-7 keep producing pathology',
     ],

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Skull, Calendar, BookOpen, ArrowRight, XCircle } from 'lucide-react';
-import { Container, Section, SectionHeader } from '@/components/ui';
+import { Container, Section, SectionHeader, TextWithAbbreviations } from '@/components/ui';
 import { evidenceGraveyardData } from '@/data';
 
 export function EvidenceGraveyard() {
@@ -73,7 +73,9 @@ function Tombstone({
         <h3 className="text-xl font-bold text-[var(--text-primary)] text-center mt-8 mb-4">{drug}</h3>
 
         {/* Evidence */}
-        <p className="text-sm text-[var(--text-body)] text-center mb-4 flex-grow">{evidence}</p>
+        <p className="text-sm text-[var(--text-body)] text-center mb-4 flex-grow">
+          <TextWithAbbreviations text={evidence} />
+        </p>
 
         {/* Year and source */}
         <div className="flex items-center justify-center gap-4 text-xs text-[var(--text-muted)] mb-4">
@@ -94,13 +96,15 @@ function Tombstone({
             <div className="flex items-start gap-2">
               <ArrowRight className="w-4 h-4 text-[var(--success)] mt-0.5 flex-shrink-0" />
               <p className="text-xs text-[var(--success)]">
-                <span className="font-medium">Should:</span> {shouldHappen}
+                <span className="font-medium">Should:</span>{' '}
+                <TextWithAbbreviations text={shouldHappen} />
               </p>
             </div>
             <div className="flex items-start gap-2">
               <XCircle className="w-4 h-4 text-[var(--danger)] mt-0.5 flex-shrink-0" />
               <p className="text-xs text-[var(--danger)]">
-                <span className="font-medium">Reality:</span> {actuallyHappened}
+                <span className="font-medium">Reality:</span>{' '}
+                <TextWithAbbreviations text={actuallyHappened} />
               </p>
             </div>
           </div>

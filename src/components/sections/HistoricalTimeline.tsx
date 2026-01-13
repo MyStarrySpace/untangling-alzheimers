@@ -12,8 +12,10 @@ import {
   ChevronDown,
   ChevronUp,
   ArrowDown,
+  User,
+  Building2,
 } from 'lucide-react';
-import { Container, Section, SectionHeader } from '@/components/ui';
+import { Container, Section, SectionHeader, TextWithAbbreviations } from '@/components/ui';
 import { getTimelineEras, TimelineEvent, TimelineEventType, FrameworkId } from '@/data';
 
 // Event type icons
@@ -47,6 +49,20 @@ const frameworkInfo: Record<string, { label: string; borderColor: string; bgHove
     dot: 'bg-[var(--category-amyloid)]',
     textColor: 'text-blue-600',
   },
+  cholinergic: {
+    label: 'Cholinergic',
+    borderColor: 'border-l-[#10b981]', // emerald-500
+    bgHover: 'hover:bg-emerald-50',
+    dot: 'bg-[#10b981]',
+    textColor: 'text-emerald-600',
+  },
+  tau: {
+    label: 'Tau',
+    borderColor: 'border-l-[#f59e0b]', // amber-500
+    bgHover: 'hover:bg-amber-50',
+    dot: 'bg-[#f59e0b]',
+    textColor: 'text-amber-600',
+  },
   vascular: {
     label: 'Vascular',
     borderColor: 'border-l-[var(--category-vascular)]',
@@ -74,6 +90,20 @@ const frameworkInfo: Record<string, { label: string; borderColor: string; bgHove
     bgHover: 'hover:bg-emerald-50',
     dot: 'bg-[var(--category-lysosomal)]',
     textColor: 'text-emerald-600',
+  },
+  infection: {
+    label: 'Infection',
+    borderColor: 'border-l-[#ef4444]', // red-500
+    bgHover: 'hover:bg-red-50',
+    dot: 'bg-[#ef4444]',
+    textColor: 'text-red-600',
+  },
+  neuroinflammation: {
+    label: 'Neuroinflammation',
+    borderColor: 'border-l-[#ec4899]', // pink-500
+    bgHover: 'hover:bg-pink-50',
+    dot: 'bg-[#ec4899]',
+    textColor: 'text-pink-600',
   },
   myelin: {
     label: 'Myelin',
@@ -106,6 +136,7 @@ function EventCard({
 }) {
   const [expanded, setExpanded] = useState(false);
   const info = getFrameworkInfo(event.framework);
+  const hasResearcher = !!event.researcher;
 
   return (
     <motion.div
@@ -117,8 +148,10 @@ function EventCard({
     >
       {/* Event card */}
       <div
-        className={`bg-white border border-[var(--border)] border-l-4 ${info.borderColor}
-          rounded-r-lg p-5 cursor-pointer transition-all ${info.bgHover}`}
+        className={`border border-l-4 ${info.borderColor} rounded-r-lg p-5 cursor-pointer transition-all ${info.bgHover}
+          ${hasResearcher
+            ? 'bg-gradient-to-r from-amber-50 to-white border-amber-200 shadow-md ring-1 ring-amber-100'
+            : 'bg-white border-[var(--border)]'}`}
         onClick={() => setExpanded(!expanded)}
       >
         {/* Header */}
@@ -129,7 +162,7 @@ function EventCard({
             </span>
             <span className={info.textColor}>{getEventIcon(event.type)}</span>
           </div>
-          {event.dramaticDescription && (
+          {event.expandedDescription && (
             <button className="text-[var(--text-muted)] hover:text-[var(--text-primary)]">
               {expanded ? (
                 <ChevronUp className="w-4 h-4" />
@@ -141,19 +174,21 @@ function EventCard({
         </div>
 
         {/* Title */}
-        <h4 className="text-[var(--text-primary)] font-semibold mb-2">{event.title}</h4>
+        <h4 className="text-[var(--text-primary)] font-semibold mb-2">
+          <TextWithAbbreviations text={event.title} />
+        </h4>
 
         {/* Description */}
         <AnimatePresence mode="wait">
-          {expanded && event.dramaticDescription ? (
+          {expanded && event.expandedDescription ? (
             <motion.p
-              key="dramatic"
+              key="expanded"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               className="text-[var(--text-body)] text-sm leading-relaxed"
             >
-              {event.dramaticDescription}
+              <TextWithAbbreviations text={event.expandedDescription} />
             </motion.p>
           ) : (
             <motion.p
@@ -162,10 +197,33 @@ function EventCard({
               animate={{ opacity: 1 }}
               className="text-[var(--text-muted)] text-sm"
             >
-              {event.description}
+              <TextWithAbbreviations text={event.description} />
             </motion.p>
           )}
         </AnimatePresence>
+
+        {/* Researcher callout */}
+        {hasResearcher && (
+          <div className="mt-4 pt-3 border-t border-amber-200">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
+                <User className="w-5 h-5 text-amber-600" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-[var(--text-primary)]">
+                  {event.researcher!.name}
+                </p>
+                <div className="flex items-center gap-2 text-xs text-[var(--text-muted)]">
+                  <Building2 className="w-3 h-3" />
+                  <span>{event.researcher!.institution}</span>
+                </div>
+                <span className="inline-block mt-1 px-2 py-0.5 text-xs font-medium bg-amber-100 text-amber-700 rounded-full">
+                  {event.researcher!.hypothesis}
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </motion.div>
   );
@@ -225,7 +283,7 @@ function EraSection({
         transition={{ delay: 0.2 }}
         viewport={{ once: true }}
       >
-        {era.description}
+        <TextWithAbbreviations text={era.description} />
       </motion.p>
 
       {/* Events */}
@@ -433,20 +491,23 @@ export function HistoricalTimeline() {
         <div className="relative">
           {/* Eras */}
           <AnimatePresence mode="wait">
-            {filteredEras.length > 0 ? (
-              filteredEras.map((era, index) => (
-                <EraSection key={era.id} era={era} eraIndex={index} />
-              ))
-            ) : (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="text-center py-12 text-[var(--text-muted)]"
-              >
-                No events match this filter.
-              </motion.div>
-            )}
+            <motion.div
+              key={activeFilter === 'all' ? 'all' : activeFilter || 'general'}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              {filteredEras.length > 0 ? (
+                filteredEras.map((era, index) => (
+                  <EraSection key={era.id} era={era} eraIndex={index} />
+                ))
+              ) : (
+                <div className="text-center py-12 text-[var(--text-muted)]">
+                  No events match this filter.
+                </div>
+              )}
+            </motion.div>
           </AnimatePresence>
         </div>
 

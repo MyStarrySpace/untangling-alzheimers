@@ -62,15 +62,15 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'lesne-scandal',
     title: 'The Lesne Scandal',
-    drug: 'Amyloid Oligomer (Abeta*56)',
+    drug: 'Amyloid Oligomer (Aβ*56)',
     year: 2024,
     keyFinding:
-      'In 2006, a Nature paper claimed Abeta*56 was THE causative agent of AD memory loss. It became the 5th most-cited AD paper with 2,300+ citations. NIH funding for amyloid oligomer research rose from near zero to $287 million annually.',
+      'In 2006, a Nature paper claimed Aβ*56 was THE causative agent of AD memory loss. It became the 5th most-cited AD paper with 2,300+ citations. NIH funding for amyloid oligomer research rose from near zero to $287 million annually.',
     whatShouldHappen: 'Rigorous replication before field-wide adoption',
     whatActuallyHappened:
       'In 2022, Science exposed evidence of image fabrication. In 2024, Nature retracted the paper. The lead author resigned after receiving $7M+ in NIH funding. Alternative hypotheses were starved of funding for 18 years.',
     quote:
-      'Even researchers who couldn\'t replicate Abeta*56 couldn\'t publish negative results. The amyloid hypothesis had become unfalsifiable.',
+      'Even researchers who couldn\'t replicate Aβ*56 couldn\'t publish negative results. The amyloid hypothesis had become unfalsifiable.',
     quoteSource: 'Science investigation, 2022',
     cost: '$287M/year misdirected',
     patentStatus: 'patented',

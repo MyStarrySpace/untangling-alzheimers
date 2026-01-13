@@ -47,9 +47,9 @@ export const frameworks: ResearchFramework[] = [
     id: 'amyloid',
     name: 'Amyloid Cascade Hypothesis',
     shortName: 'Amyloid',
-    coreClaim: 'Amyloid-beta deposition is the initial pathological event that causes all downstream damage.',
+    coreClaim: 'Aβ deposition is the initial pathological event that causes all downstream damage.',
     detailedClaim:
-      'The amyloid cascade hypothesis proposes that deposition of β-amyloid (Aβ) is the initial pathological event in AD, leading to the formation of senile plaques and then to neurofibrillary tangles, neuronal cell death, and ultimately dementia. Remove the plaques, cure the disease.',
+      'The amyloid cascade hypothesis proposes that deposition of Aβ is the initial pathological event in AD, leading to the formation of senile plaques and then to neurofibrillary tangles, neuronal cell death, and ultimately dementia. Remove the plaques, cure the disease.',
     yearProposed: 1992,
     cascadeStage: 8,
     stageName: 'Clearance Failure',
@@ -79,7 +79,7 @@ export const frameworks: ResearchFramework[] = [
       'Amyloid plaques are present in all AD brains',
       'Anti-amyloid antibodies can remove plaques from the brain',
     ],
-    interventionTargets: ['Amyloid-beta clearance', 'Secretase inhibition', 'Amyloid aggregation'],
+    interventionTargets: ['Aβ clearance', 'Secretase inhibition', 'Amyloid aggregation'],
     potentialInterventions: [
       {
         name: 'Lecanemab (Leqembi)',

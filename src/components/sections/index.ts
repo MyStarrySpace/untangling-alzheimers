@@ -8,3 +8,4 @@ export { Stakes } from './Stakes';
 export { SidelinedResearchers } from './SidelinedResearchers';
 export { MechanisticCascade } from './MechanisticCascade';
 export { EvidenceHierarchy } from './EvidenceHierarchy';
+export { HopefulDevelopments } from './HopefulDevelopments';

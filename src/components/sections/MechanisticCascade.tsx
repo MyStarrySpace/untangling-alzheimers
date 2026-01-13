@@ -25,7 +25,7 @@ const stageIcons = [
   Shield,    // Stage 3: BBB
   Cpu,       // Stage 4: Lysosomal
   Network,   // Stage 5: Myelin
-  Activity,  // Stage 6: Abeta Production
+  Activity,  // Stage 6: Aβ Production
   Brain,     // Stage 7: Microglia
   AlertTriangle, // Stage 8: Plaques
   Skull,     // Stage 9: Dementia
@@ -53,7 +53,7 @@ export function MechanisticCascade() {
           <Card variant="highlighted" hover={false}>
             <CardContent>
               <p className="text-[var(--text-body)]">
-                A key insight from recent research is that amyloid-beta deposition appears to be a{' '}
+                A key insight from recent research is that Aβ deposition appears to be a{' '}
                 <span className="text-[var(--accent-orange)] font-semibold">consequence</span>—not a cause—of
                 upstream dysfunction. The &quot;sidelined researchers&quot; weren&apos;t wrong—they were each
                 describing different stages of the same cascade.

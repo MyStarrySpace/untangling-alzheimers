@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Quote, Calendar, DollarSign, AlertCircle, ChevronRight } from 'lucide-react';
-import { Container, Section, SectionHeader, Card, CardContent, Button } from '@/components/ui';
+import { Container, Section, SectionHeader, Card, CardContent, Button, TextWithAbbreviations } from '@/components/ui';
 import { caseStudies } from '@/data';
 
 export function CaseStudies() {
@@ -69,7 +69,9 @@ export function CaseStudies() {
                         <h4 className="text-sm font-medium text-[var(--category-amyloid)] uppercase tracking-wide mb-2">
                           Key Finding
                         </h4>
-                        <p className="text-[var(--text-body)] text-lg">{currentCase.keyFinding}</p>
+                        <p className="text-[var(--text-body)] text-lg">
+                          <TextWithAbbreviations text={currentCase.keyFinding} />
+                        </p>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -78,14 +80,18 @@ export function CaseStudies() {
                             <ChevronRight className="w-4 h-4" />
                             What Should Happen
                           </h4>
-                          <p className="text-[var(--text-body)]">{currentCase.whatShouldHappen}</p>
+                          <p className="text-[var(--text-body)]">
+                            <TextWithAbbreviations text={currentCase.whatShouldHappen} />
+                          </p>
                         </div>
                         <div className="p-4 rounded-lg bg-[var(--danger-light)] border border-[var(--danger)]">
                           <h4 className="text-sm font-medium text-[var(--danger)] mb-2 flex items-center gap-2">
                             <AlertCircle className="w-4 h-4" />
                             What Actually Happened
                           </h4>
-                          <p className="text-[var(--text-body)]">{currentCase.whatActuallyHappened}</p>
+                          <p className="text-[var(--text-body)]">
+                            <TextWithAbbreviations text={currentCase.whatActuallyHappened} />
+                          </p>
                         </div>
                       </div>
 
@@ -123,7 +129,7 @@ export function CaseStudies() {
                     >
                       <h5 className="font-medium text-[var(--text-primary)] mb-1">{study.drug}</h5>
                       <p className="text-sm text-[var(--text-muted)] line-clamp-2">
-                        {study.keyFinding}
+                        <TextWithAbbreviations text={study.keyFinding} />
                       </p>
                     </motion.button>
                   ))}

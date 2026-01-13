@@ -93,7 +93,7 @@ interface StatCardProps {
 function StatCard({ value, label }: StatCardProps) {
   return (
     <div className="bg-[var(--bg-secondary)] rounded-lg p-6 text-center">
-      <span className="text-2xl sm:text-3xl font-bold font-serif text-[var(--text-primary)] block">
+      <span className="text-2xl sm:text-3xl font-bold font-serif text-[var(--accent-orange)] block">
         {value}
       </span>
       <p className="mt-2 text-sm text-[var(--text-muted)]">{label}</p>

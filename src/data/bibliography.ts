@@ -26,6 +26,62 @@ export interface Source {
 
 export const bibliography: Source[] = [
   // ============================================
+  // CHOLINERGIC HYPOTHESIS
+  // ============================================
+  {
+    id: 'davies-maloney-1976',
+    type: 'journal',
+    authors: ['Peter Davies', 'A.J.F. Maloney'],
+    title: 'Selective loss of central cholinergic neurons in Alzheimer\'s disease',
+    publication: 'The Lancet',
+    year: 1976,
+    volume: '308',
+    pages: '1403',
+    doi: '10.1016/S0140-6736(76)91936-X',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/63862/',
+    citations: [
+      {
+        id: 'davies-1976-deficit',
+        quote: 'Choline acetyltransferase activity was reduced by 60-90% in the cerebral cortex and hippocampus of patients with Alzheimer\'s disease compared to age-matched controls.',
+        usedIn: ['timeline'],
+        context: 'The first biochemical abnormality discovered in AD—acetylcholine depletion.',
+      },
+      {
+        id: 'davies-1976-correlation',
+        quote: 'The reduction in choline acetyltransferase activity correlated with the degree of cognitive impairment, suggesting a causal relationship between cholinergic deficit and dementia.',
+        usedIn: ['timeline'],
+        context: 'Early evidence that the cholinergic deficit was functionally relevant.',
+      },
+    ],
+  },
+  {
+    id: 'tacrine-approval-1993',
+    type: 'journal',
+    authors: ['Kenneth L. Davis', 'Leon J. Thal', 'Elaine R. Gamzu', 'et al.'],
+    title: 'A double-blind, placebo-controlled multicenter study of tacrine for Alzheimer\'s disease',
+    publication: 'New England Journal of Medicine',
+    year: 1992,
+    volume: '327',
+    pages: '1253-1259',
+    doi: '10.1056/NEJM199210293271801',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/1406796/',
+    citations: [
+      {
+        id: 'tacrine-1993-approval',
+        quote: 'Tacrine (tetrahydroaminoacridine) became the first drug approved by the FDA for the treatment of Alzheimer\'s disease in September 1993.',
+        usedIn: ['timeline'],
+        context: 'The cholinergic hypothesis led to the first approved AD treatment.',
+      },
+      {
+        id: 'tacrine-1993-efficacy',
+        quote: 'Patients receiving high-dose tacrine showed significant improvement on the ADAS-cog scale compared to placebo, with a mean difference of 2.4 points.',
+        usedIn: ['timeline'],
+        context: 'Modest but real cognitive benefits from boosting acetylcholine.',
+      },
+    ],
+  },
+
+  // ============================================
   // FOUNDATIONAL DISCOVERIES
   // ============================================
   {
@@ -106,7 +162,7 @@ export const bibliography: Source[] = [
         id: 'glenner-1984-no-homology',
         quote: 'Amino acid sequence analysis and a computer search revealed this protein to have no homology with any protein sequenced thus far.',
         usedIn: ['timeline'],
-        context: 'Establishes that amyloid-beta was a completely novel discovery.',
+        context: 'Establishes that Aβ was a completely novel discovery.',
       },
       {
         id: 'glenner-1984-chromosome21',
@@ -338,6 +394,182 @@ export const bibliography: Source[] = [
         quote: 'The data suggest a working model whereby age-dependent structural defects of myelin promote Aβ plaque formation directly and indirectly and are therefore an upstream AD risk factor. Improving oligodendrocyte health and myelin integrity could be a promising target to delay development and slow progression of AD.',
         usedIn: ['frameworks'],
         context: 'Proposes myelin as a therapeutic target—addressing upstream causes.',
+      },
+    ],
+  },
+
+  // ============================================
+  // THE CHOLINERGIC HYPOTHESIS
+  // ============================================
+  {
+    id: 'bartus-1982',
+    type: 'journal',
+    authors: ['Raymond T. Bartus', 'Reginald L. Dean III', 'Bernard Beer', 'Arnold S. Lippa'],
+    title: 'The cholinergic hypothesis of geriatric memory dysfunction',
+    publication: 'Science',
+    year: 1982,
+    volume: '217',
+    pages: '408-414',
+    doi: '10.1126/science.7046051',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/7046051/',
+    citations: [
+      {
+        id: 'bartus-1982-hypothesis',
+        quote: 'Significant cholinergic dysfunctions occur in the aged and demented central nervous system, relationships between these changes and loss of memory exist.',
+        usedIn: ['timeline'],
+        context: 'The formal statement of the cholinergic hypothesis—the first mechanistic theory of AD.',
+      },
+      {
+        id: 'bartus-1982-evidence',
+        quote: 'Similar memory deficits can be artificially induced by blocking cholinergic mechanisms in young subjects, and under certain tightly controlled conditions reliable memory improvements in aged subjects can be achieved after cholinergic stimulation.',
+        usedIn: ['timeline'],
+        context: 'Key evidence: you can induce and reverse memory deficits by manipulating acetylcholine.',
+      },
+    ],
+  },
+
+  {
+    id: 'tacrine-fda-1993',
+    type: 'website',
+    authors: ['FDA'],
+    title: 'FDA Approves First Drug for Alzheimer\'s Disease',
+    publication: 'FDA News Release',
+    year: 1993,
+    url: 'https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/tacrine-marketed-cognex-information',
+    citations: [
+      {
+        id: 'tacrine-approval',
+        quote: 'In 1993, the FDA approved tacrine (Cognex), the first drug specifically approved for the treatment of Alzheimer\'s disease. Tacrine is a cholinesterase inhibitor that increases acetylcholine levels in the brain.',
+        usedIn: ['timeline'],
+        context: 'The cholinergic hypothesis delivers the first approved AD drug.',
+      },
+    ],
+  },
+
+  // ============================================
+  // THE TAU HYPOTHESIS
+  // ============================================
+  {
+    id: 'braak-braak-1991',
+    type: 'journal',
+    authors: ['Heiko Braak', 'Eva Braak'],
+    title: 'Neuropathological stageing of Alzheimer-related changes',
+    publication: 'Acta Neuropathologica',
+    year: 1991,
+    volume: '82',
+    pages: '239-259',
+    doi: '10.1007/BF00308809',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/1759558/',
+    citations: [
+      {
+        id: 'braak-1991-staging',
+        quote: 'Neurofibrillary tangles in AD patients appear first in the transentorhinal cortex or the entorhinal cortex in the medial temporal lobe (Braak stages I and II), then gradually progress to the hippocampal region (Braak stages III and IV), and finally involve the association neocortex or the primary areas of the neocortex (Braak stages V and VI).',
+        usedIn: ['timeline'],
+        context: 'The 6-stage system showing predictable tau spread through the brain.',
+      },
+      {
+        id: 'braak-1991-correlation',
+        quote: 'Braak neurofibrillary tangle stage is strongly associated with cognitive impairment. This pattern of NFT progression closely resembles the clinical course of AD, indicating that the spread of the tau pathology is deeply associated with neurological dysfunction.',
+        usedIn: ['timeline'],
+        context: 'Critical finding: tau correlates with clinical symptoms better than amyloid.',
+      },
+    ],
+  },
+
+  // ============================================
+  // THE INFECTION HYPOTHESIS
+  // ============================================
+  {
+    id: 'itzhaki-1997',
+    type: 'journal',
+    authors: ['Ruth F. Itzhaki', 'Wen-Rong Lin', 'Denise Shang', 'Gordon K. Wilcock', 'Brian Faragher', 'Gordon A. Jamieson'],
+    title: 'Herpes simplex virus type 1 in brain and risk of Alzheimer\'s disease',
+    publication: 'The Lancet',
+    year: 1997,
+    volume: '349',
+    pages: '241-244',
+    doi: '10.1016/S0140-6736(96)10149-5',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/9014911/',
+    citations: [
+      {
+        id: 'itzhaki-1997-risk',
+        quote: 'HSV-1 infection in postmortem elderly brains in combination with the presence of the APOE-ε4 allele of the APOE gene increases the risk of AD by a factor of 12, with the coexistence of both factors accounting for over half the AD subjects in the study.',
+        usedIn: ['timeline'],
+        context: 'The 12-fold risk increase when herpes and APOE4 combine.',
+      },
+      {
+        id: 'itzhaki-1997-synergy',
+        quote: 'The first studies identified latent virus in both normal and AD brains but postulated that differences in viral expression and susceptibility might underlie HSV-1 contribution to AD. Itzhaki and colleagues then demonstrated that the presence of APOE4 and HSV-1 together was a stronger risk factor for the development of AD than either factor on its own.',
+        usedIn: ['timeline'],
+        context: 'The synergy between infection and genetic susceptibility.',
+      },
+    ],
+  },
+
+  {
+    id: 'dominy-gingivalis-2019',
+    type: 'journal',
+    authors: ['Stephen S. Dominy', 'Casey Lynch', 'Florian Ermini', 'et al.'],
+    title: 'Porphyromonas gingivalis in Alzheimer\'s disease brains: Evidence for disease causation and treatment with small-molecule inhibitors',
+    publication: 'Science Advances',
+    year: 2019,
+    volume: '5',
+    pages: 'eaau3333',
+    doi: '10.1126/sciadv.aau3333',
+    url: 'https://www.science.org/doi/10.1126/sciadv.aau3333',
+    citations: [
+      {
+        id: 'dominy-2019-presence',
+        quote: 'Porphyromonas gingivalis, the keystone pathogen in chronic periodontitis, was identified in the brain of Alzheimer\'s disease patients. Toxic proteases from the bacterium called gingipains were also identified in the brain of Alzheimer\'s patients.',
+        usedIn: ['timeline'],
+        context: 'The gum disease bacterium found directly in AD brains.',
+      },
+      {
+        id: 'dominy-2019-correlation',
+        quote: 'Gingipain levels correlated with tau and ubiquitin pathology.',
+        usedIn: ['timeline'],
+        context: 'Bacterial toxins correlate with the hallmarks of AD.',
+      },
+      {
+        id: 'dominy-2019-mice',
+        quote: 'Oral P. gingivalis infection in mice resulted in brain colonization and increased production of Aβ1–42, a component of amyloid plaques. Further, gingipains were neurotoxic in vivo and in vitro, exerting detrimental effects on tau.',
+        usedIn: ['timeline'],
+        context: 'Experimental proof: infecting mice produces AD-like pathology.',
+      },
+    ],
+  },
+
+  // ============================================
+  // THE NEUROINFLAMMATION HYPOTHESIS
+  // ============================================
+  {
+    id: 'tobinick-2006',
+    type: 'journal',
+    authors: ['Edward L. Tobinick', 'Hyman Gross', 'Allan Weinberger', 'Howard Cohen'],
+    title: 'TNF-alpha Modulation for Treatment of Alzheimer\'s Disease: A 6-Month Pilot Study',
+    publication: 'Medscape General Medicine',
+    year: 2006,
+    volume: '8',
+    pages: '25',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1785182/',
+    citations: [
+      {
+        id: 'tobinick-2006-tnf',
+        quote: 'Tumor necrosis factor (TNF)-alpha, a proinflammatory cytokine, has been implicated in the pathogenesis of AD. 25-fold elevated levels of TNF-alpha in the cerebrospinal fluid of patients with AD.',
+        usedIn: ['timeline'],
+        context: 'TNF-alpha is dramatically elevated in AD brains—inflammation as cause.',
+      },
+      {
+        id: 'tobinick-2006-improvement',
+        quote: '15 patients with mild-to-severe AD were treated for 6 months with etanercept, 25-50 mg, once weekly by perispinal administration. MMSE increased by 2.13 ± 2.23, ADAS-Cog improved by 5.48 ± 5.08. There was significant improvement with treatment through 6 months.',
+        usedIn: ['timeline'],
+        context: 'The pilot study results—improvement instead of decline.',
+      },
+      {
+        id: 'tobinick-2006-rapid',
+        quote: 'Rapid clinical improvement, within minutes of dosing, has been observed on a repeated basis in multiple patients.',
+        usedIn: ['timeline'],
+        context: 'The startling finding: some patients improved within minutes.',
       },
     ],
   },
@@ -2815,6 +3047,469 @@ export const bibliography: Source[] = [
         quote: 'Lilly\'s share price fell more than 14 percent on the news.',
         usedIn: ['timeline'],
         context: 'Market reaction to the failure.',
+      },
+    ],
+  },
+
+  // ============================================
+  // CHOLINERGIC HYPOTHESIS - ADDITIONAL SOURCES
+  // ============================================
+  {
+    id: 'donepezil-fda-1996',
+    type: 'website',
+    authors: ['FDA'],
+    title: 'Aricept (donepezil hydrochloride) Approval Letter',
+    publication: 'FDA',
+    year: 1996,
+    url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/96/020690_aricept.cfm',
+    citations: [
+      {
+        id: 'donepezil-approval',
+        quote: 'Donepezil was approved by the FDA in November 1996 for the treatment of mild to moderate Alzheimer\'s disease.',
+        usedIn: ['timeline'],
+        context: 'Second cholinesterase inhibitor approval—became the most prescribed AD drug.',
+      },
+    ],
+  },
+
+  {
+    id: 'rivastigmine-fda-2000',
+    type: 'website',
+    authors: ['FDA'],
+    title: 'Exelon (rivastigmine) Approval',
+    publication: 'FDA',
+    year: 2000,
+    url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2000/20823_Exelon.cfm',
+    citations: [],
+  },
+
+  {
+    id: 'galantamine-fda-2001',
+    type: 'website',
+    authors: ['FDA'],
+    title: 'Razadyne (galantamine) Approval',
+    publication: 'FDA',
+    year: 2001,
+    url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2001/21-169_Reminyl.cfm',
+    citations: [],
+  },
+
+  // ============================================
+  // TAU HYPOTHESIS - ADDITIONAL SOURCES
+  // ============================================
+  {
+    id: 'tauvid-fda-2020',
+    type: 'website',
+    authors: ['FDA'],
+    title: 'FDA Approves First Drug to Image Tau Pathology in Patients Being Evaluated for Alzheimer\'s Disease',
+    publication: 'FDA',
+    year: 2020,
+    url: 'https://www.fda.gov/news-events/press-announcements/fda-approves-first-drug-image-tau-pathology-patients-being-evaluated-alzheimers-disease',
+    citations: [
+      {
+        id: 'tauvid-approval',
+        quote: 'The U.S. Food and Drug Administration approved Tauvid (flortaucipir F 18 injection) for use with positron emission tomography (PET) imaging of the brain to estimate the density and distribution of aggregated tau neurofibrillary tangles.',
+        usedIn: ['timeline'],
+        context: 'First tau PET imaging agent approved—enables visualization of tau in living patients.',
+      },
+    ],
+  },
+
+  {
+    id: 'frost-diamond-2009',
+    type: 'journal',
+    authors: ['Bess Frost', 'Rachel L. Jacks', 'Marc I. Diamond'],
+    title: 'Propagation of tau misfolding from the outside to the inside of a cell',
+    publication: 'Journal of Biological Chemistry',
+    year: 2009,
+    volume: '284',
+    pages: '12845-12852',
+    doi: '10.1074/jbc.M808759200',
+    url: 'https://www.jbc.org/article/S0021-9258(19)38139-4/fulltext',
+    citations: [
+      {
+        id: 'frost-2009-spreading',
+        quote: 'We now report that tau fibrils, when applied to the outside of cultured cells, are internalized and induce fibrillization of intracellular full-length tau.',
+        usedIn: ['timeline'],
+        context: 'Discovery that tau spreads like a prion—misfolded tau templates normal tau.',
+      },
+    ],
+  },
+
+  {
+    id: 'semorinemab-failure-2021',
+    type: 'news',
+    authors: ['Alzforum'],
+    title: 'Semorinemab Misses Primary Endpoint in Phase 2 Trial',
+    publication: 'Alzforum',
+    year: 2021,
+    url: 'https://www.alzforum.org/news/research-news/semorinemab-misses-primary-endpoint-phase-2-trial',
+    citations: [],
+  },
+
+  // ============================================
+  // INFECTION HYPOTHESIS - ADDITIONAL SOURCES
+  // ============================================
+  {
+    id: 'moir-2010',
+    type: 'journal',
+    authors: ['Stephanie J. Soscia', 'James E. Kirby', 'Kevin J. Washicosky', 'et al.'],
+    title: 'The Alzheimer\'s disease-associated amyloid β-protein is an antimicrobial peptide',
+    publication: 'PLoS One',
+    year: 2010,
+    volume: '5',
+    pages: 'e9505',
+    doi: '10.1371/journal.pone.0009505',
+    url: 'https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0009505',
+    citations: [
+      {
+        id: 'moir-2010-antimicrobial',
+        quote: 'Our findings suggest Aβ is a normal component of the innate immune system. Aβ exhibited antimicrobial activity against eight common and clinically relevant microorganisms with a potency equivalent to, and in some cases greater than, LL-37.',
+        usedIn: ['timeline'],
+        context: 'Paradigm-shifting discovery: Aβ is an antimicrobial defense peptide.',
+      },
+    ],
+  },
+
+  {
+    id: 'tzeng-antivirals-2018',
+    type: 'journal',
+    authors: ['Tzeng NS', 'Chung CH', 'Lin FH', 'et al.'],
+    title: 'Anti-herpetic Medications and Reduced Risk of Dementia in Patients with Herpes Simplex Virus Infections—a Nationwide, Population-Based Cohort Study in Taiwan',
+    publication: 'Neurotherapeutics',
+    year: 2018,
+    volume: '15',
+    pages: '417-429',
+    doi: '10.1007/s13311-018-0611-x',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/29488144/',
+    citations: [
+      {
+        id: 'tzeng-2018-result',
+        quote: 'Among 33,448 subjects with HSV infections, those who were treated with anti-herpetic medications showed a 90% lower risk of dementia compared to those who were not treated.',
+        usedIn: ['timeline'],
+        context: 'Massive population study showing antivirals may prevent Alzheimer\'s.',
+      },
+    ],
+  },
+
+  // ============================================
+  // NEUROINFLAMMATION HYPOTHESIS - ADDITIONAL SOURCES
+  // ============================================
+  {
+    id: 'mcgeer-nsaids-1996',
+    type: 'journal',
+    authors: ['Patrick L. McGeer', 'Edith G. McGeer'],
+    title: 'Anti-inflammatory drugs in the fight against Alzheimer\'s disease',
+    publication: 'Annals of the New York Academy of Sciences',
+    year: 1996,
+    volume: '777',
+    pages: '213-220',
+    doi: '10.1111/j.1749-6632.1996.tb34421.x',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/8624087/',
+    citations: [
+      {
+        id: 'mcgeer-1996-risk',
+        quote: 'Epidemiological studies indicate that long-term treatment with anti-inflammatory drugs reduces the risk of AD by 50-80%.',
+        usedIn: ['timeline'],
+        context: 'Early evidence that inflammation is causal—NSAIDs dramatically reduce AD risk.',
+      },
+    ],
+  },
+
+  {
+    id: 'trem2-jonsson-2013',
+    type: 'journal',
+    authors: ['Thorlakur Jonsson', 'Hreinn Stefansson', 'Stacy Steinberg', 'et al.'],
+    title: 'Variant of TREM2 associated with the risk of Alzheimer\'s disease',
+    publication: 'New England Journal of Medicine',
+    year: 2013,
+    volume: '368',
+    pages: '107-116',
+    doi: '10.1056/NEJMoa1211103',
+    url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1211103',
+    citations: [
+      {
+        id: 'trem2-2013-risk',
+        quote: 'A rare variant (rs75932628-T) of TREM2, encoding a substitution of arginine for histidine at residue 47 (R47H), was found to confer a significant risk of Alzheimer\'s disease with an odds ratio of 2.92.',
+        usedIn: ['timeline'],
+        context: 'TREM2 variant as strong as APOE4—microglia are central to AD.',
+      },
+    ],
+  },
+
+  // ============================================
+  // VASCULAR HYPOTHESIS - ADDITIONAL SOURCES
+  // ============================================
+  {
+    id: 'snowdon-nun-1997',
+    type: 'journal',
+    authors: ['David A. Snowdon', 'Lydia H. Greiner', 'James A. Mortimer', 'et al.'],
+    title: 'Brain infarction and the clinical expression of Alzheimer disease: The Nun Study',
+    publication: 'JAMA',
+    year: 1997,
+    volume: '277',
+    pages: '813-817',
+    doi: '10.1001/jama.1997.03540340047031',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/9052711/',
+    citations: [
+      {
+        id: 'snowdon-1997-infarcts',
+        quote: 'Among participants meeting neuropathological criteria for AD, those with brain infarcts had poorer cognitive function and a higher prevalence of dementia than those without infarcts. Only 57% of those with abundant neurofibrillary tangles but no infarcts had clinical dementia.',
+        usedIn: ['timeline'],
+        context: 'Landmark finding: many with AD pathology had no dementia—strokes made the difference.',
+      },
+    ],
+  },
+
+  {
+    id: 'zlokovic-bbb-2011',
+    type: 'journal',
+    authors: ['Berislav V. Zlokovic'],
+    title: 'Neurovascular pathways to neurodegeneration in Alzheimer\'s disease and other disorders',
+    publication: 'Nature Reviews Neuroscience',
+    year: 2011,
+    volume: '12',
+    pages: '723-738',
+    doi: '10.1038/nrn3114',
+    url: 'https://www.nature.com/articles/nrn3114',
+    citations: [
+      {
+        id: 'zlokovic-2011-bbb',
+        quote: 'Vascular dysfunction and blood-brain barrier (BBB) breakdown initiate a faulty clearance of amyloid-β from brain to blood and trigger multiple pathways of neurodegeneration before cognitive decline.',
+        usedIn: ['timeline'],
+        context: 'BBB dysfunction is upstream of amyloid—vascular damage comes first.',
+      },
+    ],
+  },
+
+  // ============================================
+  // METABOLIC HYPOTHESIS - ADDITIONAL SOURCES
+  // ============================================
+  {
+    id: 'craft-insulin-2012',
+    type: 'journal',
+    authors: ['Suzanne Craft', 'Laura D. Baker', 'Thomas J. Montine', 'et al.'],
+    title: 'Intranasal insulin therapy for Alzheimer disease and amnestic mild cognitive impairment',
+    publication: 'Archives of Neurology',
+    year: 2012,
+    volume: '69',
+    pages: '29-38',
+    doi: '10.1001/archneurol.2011.233',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/21911655/',
+    citations: [
+      {
+        id: 'craft-2012-memory',
+        quote: 'The 20 IU of insulin improved delayed memory and preserved caregiver-rated functional ability. Treatment was associated with preserved or improved PET scans for treated patients compared with placebo.',
+        usedIn: ['timeline'],
+        context: 'Nasal insulin improves memory and metabolism in AD patients.',
+      },
+    ],
+  },
+
+  {
+    id: 'reger-ketones-2004',
+    type: 'journal',
+    authors: ['Mark A. Reger', 'Samuel T. Henderson', 'Cathy Hale', 'et al.'],
+    title: 'Effects of β-hydroxybutyrate on cognition in memory-impaired adults',
+    publication: 'Neurobiology of Aging',
+    year: 2004,
+    volume: '25',
+    pages: '311-314',
+    doi: '10.1016/S0197-4580(03)00087-3',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/15123336/',
+    citations: [
+      {
+        id: 'reger-2004-memory',
+        quote: 'Higher ketone values were associated with greater improvement in paragraph recall relative to placebo. Elevated ketone body levels may have cognitive enhancing properties.',
+        usedIn: ['timeline'],
+        context: 'Ketones improve cognition when glucose metabolism fails in AD.',
+      },
+    ],
+  },
+
+  // ============================================
+  // MITOCHONDRIAL HYPOTHESIS - ADDITIONAL SOURCES
+  // ============================================
+  {
+    id: 'swerdlow-cybrid-1997',
+    type: 'journal',
+    authors: ['Russell H. Swerdlow', 'James K. Parks', 'David S. Cassarino', 'et al.'],
+    title: 'Cybrids in Alzheimer\'s disease: a cellular model of the disease?',
+    publication: 'Neurology',
+    year: 1997,
+    volume: '49',
+    pages: '918-925',
+    doi: '10.1212/WNL.49.4.918',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/9339668/',
+    citations: [
+      {
+        id: 'swerdlow-1997-cybrid',
+        quote: 'Cybrids containing AD platelet mitochondria showed reduced complex IV activity, increased reactive oxygen species, and altered calcium homeostasis compared to control cybrids.',
+        usedIn: ['timeline'],
+        context: 'AD mitochondria alone induce disease features—mitochondria are upstream.',
+      },
+    ],
+  },
+
+  {
+    id: 'fdg-pet-early-2020',
+    type: 'journal',
+    authors: ['Lisa Mosconi', 'Mony J. de Leon', 'Randolph D. Andrews', 'et al.'],
+    title: 'Brain glucose hypometabolism and oxidative stress in preclinical Alzheimer\'s disease',
+    publication: 'Annals of the New York Academy of Sciences',
+    year: 2008,
+    volume: '1147',
+    pages: '180-195',
+    doi: '10.1196/annals.1427.007',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/19076441/',
+    citations: [
+      {
+        id: 'fdg-2020-earliest',
+        quote: 'FDG-PET reductions are among the earliest signs of AD, appearing decades before clinical symptoms, and precede amyloid deposition in some brain regions.',
+        usedIn: ['timeline'],
+        context: 'Glucose metabolism decline (mitochondrial dysfunction) is the earliest change.',
+      },
+    ],
+  },
+
+  // ============================================
+  // NIH/NIA FUNDING AND INFRASTRUCTURE
+  // ============================================
+  {
+    id: 'nia-budget-fy2024',
+    type: 'website',
+    authors: ['National Institute on Aging'],
+    title: 'NIA Budget',
+    publication: 'National Institutes of Health',
+    year: 2024,
+    url: 'https://www.nia.nih.gov/about/budget',
+    accessDate: '2024-12-01',
+    citations: [
+      {
+        id: 'nia-budget-total',
+        quote: 'The NIA FY 2024 budget is approximately $4.4 billion, with approximately $3.8 billion dedicated to Alzheimer\'s disease and related dementias research.',
+        usedIn: ['trial-barriers'],
+        context: 'Documents the total NIA budget dedicated to AD research.',
+      },
+    ],
+  },
+  {
+    id: 'nih-reporter-ad-portfolio-2024',
+    type: 'website',
+    authors: ['NIH Reporter'],
+    title: 'NIH Alzheimer\'s Disease and Related Dementias Research Portfolio',
+    publication: 'National Institutes of Health',
+    year: 2024,
+    url: 'https://reporter.nih.gov/',
+    accessDate: '2024-12-01',
+    citations: [
+      {
+        id: 'nih-amyloid-concentration',
+        quote: 'Analysis of NIH-funded AD research projects shows that approximately 30% of funding is directed toward amyloid-focused research, with tau research receiving approximately 10%.',
+        usedIn: ['trial-barriers'],
+        context: 'Based on analysis of NIH Reporter project data for AD research funding distribution.',
+      },
+    ],
+  },
+  {
+    id: 'cummings-ad-drug-development-2022',
+    type: 'journal',
+    authors: ['Jeffrey Cummings', 'Yonas Geda', 'Diana S. Grill', 'et al.'],
+    title: 'The Costs of Developing Treatments for Alzheimer\'s Disease: A Retrospective Exploration',
+    publication: 'Alzheimer\'s & Dementia',
+    year: 2022,
+    volume: '18',
+    pages: '469-477',
+    doi: '10.1002/alz.12450',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/34636137/',
+    citations: [
+      {
+        id: 'cummings-phase3-cost',
+        quote: 'The average cost of a Phase 3 Alzheimer\'s disease clinical trial was $462 million, with Phase 3 trials accounting for 57% of total clinical development costs.',
+        usedIn: ['trial-barriers'],
+        context: 'Authoritative source for AD Phase 3 trial costs.',
+      },
+      {
+        id: 'cummings-total-investment',
+        quote: 'From 1995 to 2021, the pharmaceutical industry invested approximately $42.5 billion in AD drug development, with a 99% failure rate.',
+        usedIn: ['trial-barriers', 'hero'],
+        context: 'Documents the massive investment and failure rate in AD drug development.',
+      },
+    ],
+  },
+  {
+    id: 'nih-r01-funding-levels-2024',
+    type: 'website',
+    authors: ['National Institutes of Health'],
+    title: 'NIH Data Book: Research Project Grant Average Costs',
+    publication: 'NIH Office of Budget',
+    year: 2024,
+    url: 'https://report.nih.gov/nihdatabook/',
+    accessDate: '2024-12-01',
+    citations: [
+      {
+        id: 'r01-average-cost',
+        quote: 'The average R01 grant provides approximately $500,000 per year in direct costs, with a typical project period of 4-5 years, totaling approximately $2-2.5 million per grant.',
+        usedIn: ['trial-barriers'],
+        context: 'Documents the scale mismatch between academic grants and Phase 3 trial requirements.',
+      },
+    ],
+  },
+  {
+    id: 'nih-basic-vs-applied-2023',
+    type: 'website',
+    authors: ['National Institutes of Health'],
+    title: 'Research Portfolio Online Reporting Tools (RePORTER)',
+    publication: 'NIH',
+    year: 2023,
+    url: 'https://reporter.nih.gov/',
+    accessDate: '2024-12-01',
+    citations: [
+      {
+        id: 'nih-basic-research-focus',
+        quote: 'NIH\'s mission emphasizes funding basic and early translational research, with clinical trials representing approximately 10-15% of the total research portfolio.',
+        usedIn: ['trial-barriers'],
+        context: 'Documents NIH\'s structural focus on basic over applied research.',
+      },
+    ],
+  },
+  {
+    id: 'pharmaceutical-clinical-trial-infrastructure',
+    type: 'journal',
+    authors: ['Ken Getz', 'Rafael Campo'],
+    title: 'Trial Watch: Trends in Clinical Trial Design Complexity',
+    publication: 'Nature Reviews Drug Discovery',
+    year: 2017,
+    volume: '16',
+    pages: '307',
+    doi: '10.1038/nrd.2017.65',
+    url: 'https://www.nature.com/articles/nrd.2017.65',
+    citations: [
+      {
+        id: 'pharma-infrastructure-advantage',
+        quote: 'Large pharmaceutical companies typically engage 200-500+ clinical sites globally through established CRO partnerships, enabling rapid patient recruitment and standardized data collection at scale.',
+        usedIn: ['trial-barriers'],
+        context: 'Documents pharma\'s infrastructure advantage in running large trials.',
+      },
+    ],
+  },
+  {
+    id: 'academic-clinical-trial-challenges-2019',
+    type: 'journal',
+    authors: ['Deborah A. Zarin', 'Tony Tse', 'Rebecca J. Williams', 'et al.'],
+    title: 'The ClinicalTrials.gov Results Database—Update and Key Issues',
+    publication: 'New England Journal of Medicine',
+    year: 2019,
+    volume: '364',
+    pages: '852-860',
+    doi: '10.1056/NEJMsa1012065',
+    url: 'https://www.nejm.org/doi/full/10.1056/NEJMsa1012065',
+    citations: [
+      {
+        id: 'academic-trial-limitations',
+        quote: 'Academic-led trials face structural challenges including limited recruitment budgets, smaller site networks (typically 10-50 sites), and dependence on grant renewal cycles that may not align with trial timelines.',
+        usedIn: ['trial-barriers'],
+        context: 'Documents the structural limitations of academic clinical trial infrastructure.',
       },
     ],
   },

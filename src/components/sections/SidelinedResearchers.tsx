@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { User, Calendar, Lightbulb, ArrowRight } from 'lucide-react';
-import { Container, Section, SectionHeader, Card, CardContent } from '@/components/ui';
+import { Container, Section, SectionHeader, Card, CardContent, TextWithAbbreviations } from '@/components/ui';
 import { sidelinedResearchers } from '@/data';
 
 export function SidelinedResearchers() {
@@ -78,7 +78,9 @@ function ResearcherCard({ researcher }: ResearcherCardProps) {
             <span className="text-xs text-[var(--text-muted)]">({researcher.year})</span>
           </div>
 
-          <p className="text-sm text-[var(--text-body)]">{researcher.keyFinding}</p>
+          <p className="text-sm text-[var(--text-body)]">
+            <TextWithAbbreviations text={researcher.keyFinding} />
+          </p>
 
           <div className="flex items-center gap-2 pt-2 border-t border-[var(--border)]">
             <ArrowRight className="w-4 h-4 text-[var(--category-amyloid)]" />

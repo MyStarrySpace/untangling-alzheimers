@@ -307,6 +307,261 @@ export const fundingSources: FundingSource[] = [
 ];
 
 // ============================================
+// NIH/NIA BUDGET BREAKDOWN
+// Why can't we just rely on NIH to fund generic drug trials?
+// Source: NIH Reporter, NIA Budget documents, estimates
+// ============================================
+
+export interface NIHBudgetCategory {
+  id: string;
+  category: string;
+  amount: number; // in millions USD
+  percentage: number;
+  description: string;
+  canFundGenericTrials: boolean;
+}
+
+export const nihBudgetBreakdown: NIHBudgetCategory[] = [
+  {
+    id: 'basic-research',
+    category: 'Basic Research',
+    amount: 1520, // ~40% of $3.8B
+    percentage: 40,
+    description: 'Fundamental biology, disease mechanisms, genetics, biomarkers. Essential but doesn\'t fund clinical trials.',
+    canFundGenericTrials: false,
+  },
+  {
+    id: 'amyloid-research',
+    category: 'Amyloid-Focused Research',
+    amount: 1140, // ~30% - estimated from NIH project data
+    percentage: 30,
+    description: 'Research specifically on amyloid hypothesis. Nearly half of all AD funding goes here.',
+    canFundGenericTrials: false,
+  },
+  {
+    id: 'clinical-trials',
+    category: 'Clinical Trials (Total)',
+    amount: 570, // ~15%
+    percentage: 15,
+    description: 'All clinical trial funding combined. Only a fraction goes to non-amyloid approaches.',
+    canFundGenericTrials: true,
+  },
+  {
+    id: 'care-research',
+    category: 'Care & Caregiving Research',
+    amount: 380, // ~10%
+    percentage: 10,
+    description: 'Research on care delivery, caregiver support, health services. Important but not drug development.',
+    canFundGenericTrials: false,
+  },
+  {
+    id: 'infrastructure',
+    category: 'Infrastructure & Training',
+    amount: 190, // ~5%
+    percentage: 5,
+    description: 'Training grants, research centers, ADNI, data sharing infrastructure.',
+    canFundGenericTrials: false,
+  },
+];
+
+// Detailed breakdown of why NIH can't fill the gap
+export const nihLimitations = {
+  totalBudget: 3800, // $3.8B in 2024
+  clinicalTrialBudget: 570, // $570M for ALL clinical trials
+  amyloidTrialBudget: 400, // Most clinical trial $ goes to amyloid approaches
+  nonAmyloidTrialBudget: 170, // Only ~$170M for non-amyloid trials
+  phase3Cost: 462, // A single Phase 3 costs $462M
+
+  keyProblems: [
+    {
+      problem: 'Amyloid Concentration',
+      detail: 'Nearly half of NIA\'s AD research budget is concentrated on amyloid-focused studies, leaving alternative hypotheses underfunded.',
+    },
+    {
+      problem: 'Basic vs Applied',
+      detail: 'NIH\'s mandate prioritizes understanding disease (basic research) over developing treatments (applied research like Phase 3 trials).',
+    },
+    {
+      problem: 'Grant Cycles',
+      detail: 'NIH grants are structured for academic timelines, not commercial drug development—making large, sustained Phase 3 investments structurally difficult.',
+    },
+    {
+      problem: 'Academic Infrastructure',
+      detail: 'Universities excel at discovery research but lack the operational capacity for large-scale clinical trials that pharmaceutical companies have built over decades.',
+    },
+    {
+      problem: 'Peer Review Conservatism',
+      detail: 'NIH peer review historically favored "safe" amyloid research over alternative hypotheses.',
+    },
+  ],
+
+  // Calculation showing the math doesn't work
+  mathDoesntWork: {
+    totalNonAmyloidTrialFunding: 170, // $170M
+    singlePhase3Cost: 462, // $462M
+    percentCovered: Math.round((170 / 462) * 100), // ~37%
+    conclusion: 'Even if NIH devoted ALL non-amyloid trial funding to a single generic drug trial, it would only cover 37% of costs.',
+  }
+};
+
+// NIA spending by research focus area (for pie/bar chart)
+// Source: NIH Reporter analysis (nih-reporter-ad-portfolio-2024)
+export const niaSpendingByFocus = [
+  { name: 'Amyloid-focused', amount: 1140, percentage: 30, color: '#60a5fa' },
+  { name: 'Tau-focused', amount: 380, percentage: 10, color: '#f59e0b' },
+  { name: 'Neuroinflammation', amount: 228, percentage: 6, color: '#ec4899' },
+  { name: 'Vascular/Metabolic', amount: 190, percentage: 5, color: '#a78bfa' },
+  { name: 'Care & Caregiving', amount: 380, percentage: 10, color: '#10b981' },
+  { name: 'Basic Neuroscience', amount: 760, percentage: 20, color: '#6b7280' },
+  { name: 'Infrastructure/Training', amount: 342, percentage: 9, color: '#94a3b8' },
+  { name: 'Other', amount: 380, percentage: 10, color: '#cbd5e1' },
+];
+export const niaSpendingSourceId = 'nih-reporter-ad-portfolio-2024';
+
+// Basic vs Applied research funding comparison
+// Source: NIH RePORTER (nih-basic-vs-applied-2023)
+export const basicVsAppliedFunding = [
+  {
+    category: 'NIH/NIA',
+    basic: 2660, // ~70% of $3.8B
+    applied: 570, // ~15% clinical trials
+    other: 570, // ~15% care, infrastructure
+    basicPercent: 70,
+    appliedPercent: 15,
+  },
+  {
+    category: 'Pharma Industry',
+    basic: 200, // ~10% of $2B
+    applied: 1600, // ~80% late-stage trials
+    other: 200, // ~10% other
+    basicPercent: 10,
+    appliedPercent: 80,
+  },
+];
+export const basicVsAppliedSourceId = 'nih-basic-vs-applied-2023';
+
+// Grant cycle limitations data
+// Sources: NIH Data Book (nih-r01-funding-levels-2024), Cummings 2022 (cummings-ad-drug-development-2022)
+export const grantCycleComparison = {
+  nihGrant: {
+    label: 'Typical NIH R01 Grant',
+    duration: '5 years',
+    totalBudget: 2.5, // $2.5M over 5 years
+    annualBudget: 0.5, // $500K/year
+    renewalRequired: true,
+    renewalUncertainty: 'High—must compete for renewal',
+  },
+  phase3Trial: {
+    label: 'AD Phase 3 Trial',
+    duration: '3-5 years',
+    totalBudget: 462, // $462M
+    annualBudget: 115, // ~$115M/year
+    renewalRequired: false,
+    commitmentRequired: 'Full funding must be secured upfront',
+  },
+  gap: {
+    budgetMultiple: 185, // Phase 3 costs 185x more than an R01
+    insight: 'A single Phase 3 trial costs as much as 185 R01 grants. NIH would need to consolidate nearly 200 grants to fund one trial—something the grant system isn\'t designed to do.',
+  },
+  sourceIds: ['nih-r01-funding-levels-2024', 'cummings-ad-drug-development-2022'],
+};
+
+// Academic vs Pharma infrastructure comparison
+// Sources: Getz & Campo 2017 (pharmaceutical-clinical-trial-infrastructure),
+//          Zarin et al. 2019 (academic-clinical-trial-challenges-2019)
+export const infrastructureComparison = [
+  {
+    capability: 'Clinical Sites',
+    academic: '10-50 sites via academic networks',
+    pharma: '200-500+ global sites via CRO partnerships',
+    advantage: 'pharma',
+  },
+  {
+    capability: 'Patient Recruitment',
+    academic: 'Months to years; limited marketing budget',
+    pharma: 'Dedicated teams, TV ads, patient databases',
+    advantage: 'pharma',
+  },
+  {
+    capability: 'Regulatory Affairs',
+    academic: 'Small teams; FDA interactions as needed',
+    pharma: 'Large dedicated teams; ongoing FDA relationships',
+    advantage: 'pharma',
+  },
+  {
+    capability: 'Data Management',
+    academic: 'REDCap, limited staff',
+    pharma: 'Enterprise systems, 24/7 monitoring centers',
+    advantage: 'pharma',
+  },
+  {
+    capability: 'Safety Monitoring',
+    academic: 'Local IRBs, DSMBs',
+    pharma: 'Global pharmacovigilance systems',
+    advantage: 'pharma',
+  },
+  {
+    capability: 'Manufacturing',
+    academic: 'Must partner or outsource',
+    pharma: 'In-house GMP facilities',
+    advantage: 'pharma',
+  },
+  {
+    capability: 'Budget Flexibility',
+    academic: 'Fixed grant amounts; competitive renewals',
+    pharma: 'Can increase investment if results promising',
+    advantage: 'pharma',
+  },
+  {
+    capability: 'Discovery Research',
+    academic: 'Strength: novel hypotheses, long-term questions',
+    pharma: 'Limited; prefer validated targets',
+    advantage: 'academic',
+  },
+];
+export const infrastructureSourceIds = ['pharmaceutical-clinical-trial-infrastructure', 'academic-clinical-trial-challenges-2019'];
+
+// Data for funding comparison bar chart
+export const fundingComparisonData = [
+  {
+    name: 'Pharma (Annual AD Spend)',
+    amount: 2000,
+    color: 'blue',
+    description: '~$2B/year on AD drug development',
+  },
+  {
+    name: 'NIH/NIA (Total Budget)',
+    amount: 3800,
+    color: 'emerald',
+    description: 'But only 15% funds clinical trials',
+  },
+  {
+    name: 'NIH Clinical Trials',
+    amount: 570,
+    color: 'cyan',
+    description: 'Most goes to amyloid approaches',
+  },
+  {
+    name: 'NIH Non-Amyloid Trials',
+    amount: 170,
+    color: 'amber',
+    description: 'Available for alternative approaches',
+  },
+  {
+    name: 'All Nonprofits Combined',
+    amount: 173,
+    color: 'purple',
+    description: 'Alzheimer\'s Assoc, ADDF, etc.',
+  },
+  {
+    name: 'Single Phase 3 Trial',
+    amount: 462,
+    color: 'red',
+    description: 'Cost of one AD Phase 3 trial',
+  },
+];
+
+// ============================================
 // FUNDING GAP ANALYSIS
 // ============================================
 

@@ -14,8 +14,23 @@ import {
   Pill,
   TrendingUp,
   TrendingDown,
+  Info,
 } from 'lucide-react';
-import { Container, Section, SectionHeader, Card, CardContent } from '@/components/ui';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  Cell,
+  ReferenceLine,
+  PieChart,
+  Pie,
+  Legend,
+} from 'recharts';
+import { Container, Section, SectionHeader, Card, CardContent, TextWithAbbreviations } from '@/components/ui';
 import {
   trialRequirements,
   adTrialPhaseCosts,
@@ -23,6 +38,12 @@ import {
   getFundingGapAnalysis,
   redirectedDrugs,
   adDevelopmentStatistics,
+  fundingComparisonData,
+  nihLimitations,
+  niaSpendingByFocus,
+  basicVsAppliedFunding,
+  grantCycleComparison,
+  infrastructureComparison,
 } from '@/data/trialBarriers';
 import { investmentData, comparisonData } from '@/data';
 import { formatCurrency } from '@/lib/utils';
@@ -181,7 +202,9 @@ function RedirectedDrugCard({
       <div className="flex items-start justify-between gap-2">
         <div>
           <h4 className="text-[var(--text-primary)] font-semibold">{drug.name}</h4>
-          <p className="text-[var(--text-muted)] text-sm">{drug.mechanism}</p>
+          <p className="text-[var(--text-muted)] text-sm">
+            <TextWithAbbreviations text={drug.mechanism} />
+          </p>
         </div>
         <span
           className={`text-xs px-2 py-1 rounded font-medium ${statusColors[drug.adTrialStatus]}`}
@@ -200,11 +223,11 @@ function RedirectedDrugCard({
           >
             <p className="text-sm text-[var(--text-body)] mb-2">
               <strong className="text-[var(--success)]">AD Rationale:</strong>{' '}
-              {drug.adRationale}
+              <TextWithAbbreviations text={drug.adRationale} />
             </p>
             <p className="text-sm text-[var(--text-body)] mb-2">
               <strong className="text-[var(--accent-orange)]">Why not AD:</strong>{' '}
-              {drug.whyNotAD}
+              <TextWithAbbreviations text={drug.whyNotAD} />
             </p>
             <div className="flex flex-wrap gap-1 mt-2">
               {drug.currentIndications.map((ind) => (
@@ -294,7 +317,7 @@ export function TrialBarriers() {
           </p>
         </motion.div>
 
-        {/* Funding gap visualization */}
+        {/* Funding gap visualization with bar chart */}
         <motion.div
           className="mb-12"
           initial={{ opacity: 0 }}
@@ -307,16 +330,342 @@ export function TrialBarriers() {
             Who funds AD research, and can they afford a Phase 3 trial?
           </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-6">
-            {fundingSources.map((source, index) => (
-              <FundingBubble
-                key={source.id}
-                source={source}
-                index={index}
-                phase3Cost={phase3Cost}
-              />
-            ))}
+          {/* Bar chart visualization */}
+          <div className="bg-white rounded-xl border border-[var(--border)] p-6 mb-6">
+            <ResponsiveContainer width="100%" height={350}>
+              <BarChart
+                data={fundingComparisonData}
+                layout="vertical"
+                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+                <XAxis
+                  type="number"
+                  tickFormatter={(value) => `$${value >= 1000 ? `${(value / 1000).toFixed(1)}B` : `${value}M`}`}
+                  stroke="var(--text-muted)"
+                  fontSize={12}
+                />
+                <YAxis
+                  type="category"
+                  dataKey="name"
+                  width={160}
+                  tick={{ fontSize: 12, fill: 'var(--text-body)' }}
+                />
+                <Tooltip
+                  formatter={(value) => [`$${(value as number) >= 1000 ? `${((value as number) / 1000).toFixed(1)}B` : `${value}M`}`, 'Amount']}
+                  contentStyle={{
+                    backgroundColor: 'white',
+                    border: '1px solid var(--border)',
+                    borderRadius: '8px',
+                    fontSize: '14px',
+                  }}
+                />
+                <ReferenceLine
+                  x={462}
+                  stroke="var(--danger)"
+                  strokeWidth={2}
+                  strokeDasharray="5 5"
+                  label={{
+                    value: 'Phase 3 Cost ($462M)',
+                    position: 'top',
+                    fill: 'var(--danger)',
+                    fontSize: 11,
+                  }}
+                />
+                <Bar dataKey="amount" radius={[0, 4, 4, 0]}>
+                  {fundingComparisonData.map((entry, index) => {
+                    const colors: Record<string, string> = {
+                      blue: '#3b82f6',
+                      emerald: '#10b981',
+                      cyan: '#06b6d4',
+                      amber: '#f59e0b',
+                      purple: '#8b5cf6',
+                      red: '#ef4444',
+                    };
+                    return <Cell key={`cell-${index}`} fill={colors[entry.color] || '#6b7280'} />;
+                  })}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+            <div className="flex flex-wrap justify-center gap-4 mt-4 text-xs">
+              <span className="flex items-center gap-1.5">
+                <span className="w-3 h-3 rounded bg-[#3b82f6]"></span>
+                Pharma
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-3 h-3 rounded bg-[#10b981]"></span>
+                NIH Total
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-3 h-3 rounded bg-[#06b6d4]"></span>
+                NIH Trials
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-3 h-3 rounded bg-[#f59e0b]"></span>
+                Non-Amyloid
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-3 h-3 rounded bg-[#8b5cf6]"></span>
+                Nonprofits
+              </span>
+              <span className="flex items-center gap-1.5 text-[var(--danger)]">
+                <span className="w-8 h-0.5 border-t-2 border-dashed border-[var(--danger)]"></span>
+                Phase 3 Cost
+              </span>
+            </div>
           </div>
+
+          {/* Why not just rely on NIH? - Expanded with visualizations */}
+          <motion.div
+            className="mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-start gap-3 mb-6">
+              <Info className="w-6 h-6 text-blue-500 mt-0.5 shrink-0" />
+              <div>
+                <h4 className="text-xl font-bold text-[var(--text-primary)] font-serif">
+                  &quot;Why not just rely on NIH?&quot;
+                </h4>
+                <p className="text-[var(--text-body)] mt-1">
+                  The NIH has ${nihLimitations.totalBudget.toLocaleString()}M for AD research—but structural constraints prevent it from filling the Phase 3 gap.
+                </p>
+              </div>
+            </div>
+
+            {/* 1. Amyloid Concentration - Pie Chart */}
+            <Card variant="default" hover={false} className="mb-4">
+              <CardContent className="p-6">
+                <h5 className="font-semibold text-[var(--text-primary)] mb-1">1. Amyloid Concentration</h5>
+                <p className="text-sm text-[var(--text-muted)] mb-4">
+                  Nearly half of NIA&apos;s AD research budget is concentrated on amyloid-focused studies, leaving alternative hypotheses underfunded.
+                </p>
+                <div className="flex flex-col lg:flex-row items-center gap-6">
+                  <div className="w-full lg:w-1/2">
+                    <ResponsiveContainer width="100%" height={280}>
+                      <PieChart>
+                        <Pie
+                          data={niaSpendingByFocus}
+                          cx="50%"
+                          cy="50%"
+                          innerRadius={60}
+                          outerRadius={100}
+                          paddingAngle={2}
+                          dataKey="amount"
+                          nameKey="name"
+                          label={({ percent }) => `${((percent || 0) * 100).toFixed(0)}%`}
+                          labelLine={false}
+                        >
+                          {niaSpendingByFocus.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={entry.color} />
+                          ))}
+                        </Pie>
+                        <Tooltip
+                          formatter={(value) => [`$${value}M`, 'Budget']}
+                          contentStyle={{
+                            backgroundColor: 'white',
+                            border: '1px solid var(--border)',
+                            borderRadius: '8px',
+                            fontSize: '12px',
+                          }}
+                        />
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </div>
+                  <div className="w-full lg:w-1/2">
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      {niaSpendingByFocus.map((item) => (
+                        <div key={item.name} className="flex items-center gap-2">
+                          <span
+                            className="w-3 h-3 rounded-sm shrink-0"
+                            style={{ backgroundColor: item.color }}
+                          />
+                          <span className="text-[var(--text-body)]">{item.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-4 p-3 rounded-lg bg-blue-50 border border-blue-200">
+                      <p className="text-sm text-blue-800">
+                        <strong>30%</strong> of the budget goes to amyloid-focused research alone—more than vascular, metabolic, and neuroinflammation research combined.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* 2. Basic vs Applied - Stacked Bar Chart */}
+            <Card variant="default" hover={false} className="mb-4">
+              <CardContent className="p-6">
+                <h5 className="font-semibold text-[var(--text-primary)] mb-1">2. Basic vs Applied Research</h5>
+                <p className="text-sm text-[var(--text-muted)] mb-4">
+                  NIH&apos;s mandate prioritizes understanding disease (basic research) over developing treatments (applied research like Phase 3 trials).
+                </p>
+                <div className="flex flex-col lg:flex-row items-center gap-6">
+                  <div className="w-full lg:w-2/3">
+                    <ResponsiveContainer width="100%" height={180}>
+                      <BarChart
+                        data={basicVsAppliedFunding}
+                        layout="vertical"
+                        margin={{ top: 5, right: 30, left: 80, bottom: 5 }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+                        <XAxis
+                          type="number"
+                          tickFormatter={(value) => `$${(value / 1000).toFixed(1)}B`}
+                          stroke="var(--text-muted)"
+                          fontSize={11}
+                        />
+                        <YAxis
+                          type="category"
+                          dataKey="category"
+                          tick={{ fontSize: 12, fill: 'var(--text-body)' }}
+                        />
+                        <Tooltip
+                          formatter={(value) => [`$${value}M`, '']}
+                          contentStyle={{
+                            backgroundColor: 'white',
+                            border: '1px solid var(--border)',
+                            borderRadius: '8px',
+                            fontSize: '12px',
+                          }}
+                        />
+                        <Bar dataKey="basic" stackId="a" fill="#94a3b8" name="Basic Research" />
+                        <Bar dataKey="applied" stackId="a" fill="#10b981" name="Applied (Trials)" />
+                        <Bar dataKey="other" stackId="a" fill="#e2e8f0" name="Other" />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                  <div className="w-full lg:w-1/3">
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-center gap-2">
+                        <span className="w-3 h-3 rounded-sm bg-[#94a3b8]" />
+                        <span>Basic Research</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="w-3 h-3 rounded-sm bg-[#10b981]" />
+                        <span>Applied (Clinical Trials)</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="w-3 h-3 rounded-sm bg-[#e2e8f0]" />
+                        <span>Other (Care, Infrastructure)</span>
+                      </div>
+                    </div>
+                    <div className="mt-4 p-3 rounded-lg bg-emerald-50 border border-emerald-200">
+                      <p className="text-sm text-emerald-800">
+                        NIH: <strong>70%</strong> basic, <strong>15%</strong> applied<br />
+                        Pharma: <strong>10%</strong> basic, <strong>80%</strong> applied
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* 3. Grant Cycles - Visual Comparison */}
+            <Card variant="default" hover={false} className="mb-4">
+              <CardContent className="p-6">
+                <h5 className="font-semibold text-[var(--text-primary)] mb-1">3. Grant Cycles Don&apos;t Scale</h5>
+                <p className="text-sm text-[var(--text-muted)] mb-4">
+                  NIH grants are structured for academic timelines, not commercial drug development—making large, sustained Phase 3 investments structurally difficult.
+                </p>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-lg border border-[var(--border)] bg-[var(--bg-secondary)]">
+                    <h6 className="font-medium text-[var(--text-primary)] text-sm mb-3">
+                      {grantCycleComparison.nihGrant.label}
+                    </h6>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-[var(--text-muted)]">Duration:</span>
+                        <span className="text-[var(--text-primary)]">{grantCycleComparison.nihGrant.duration}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[var(--text-muted)]">Total Budget:</span>
+                        <span className="text-[var(--text-primary)] font-mono">${grantCycleComparison.nihGrant.totalBudget}M</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[var(--text-muted)]">Annual:</span>
+                        <span className="text-[var(--text-primary)] font-mono">${grantCycleComparison.nihGrant.annualBudget}M/yr</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[var(--text-muted)]">Renewal:</span>
+                        <span className="text-amber-600 text-xs">{grantCycleComparison.nihGrant.renewalUncertainty}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-4 rounded-lg border-2 border-[var(--danger)] bg-[var(--danger-light)]">
+                    <h6 className="font-medium text-[var(--text-primary)] text-sm mb-3">
+                      {grantCycleComparison.phase3Trial.label}
+                    </h6>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-[var(--text-muted)]">Duration:</span>
+                        <span className="text-[var(--text-primary)]">{grantCycleComparison.phase3Trial.duration}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[var(--text-muted)]">Total Budget:</span>
+                        <span className="text-[var(--danger)] font-mono font-bold">${grantCycleComparison.phase3Trial.totalBudget}M</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[var(--text-muted)]">Annual:</span>
+                        <span className="text-[var(--text-primary)] font-mono">~${grantCycleComparison.phase3Trial.annualBudget}M/yr</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[var(--text-muted)]">Commitment:</span>
+                        <span className="text-[var(--danger)] text-xs">{grantCycleComparison.phase3Trial.commitmentRequired}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-4 p-3 rounded-lg bg-amber-50 border border-amber-200">
+                  <p className="text-sm text-amber-800">
+                    <strong>{grantCycleComparison.gap.budgetMultiple}x gap:</strong> {grantCycleComparison.gap.insight}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* 4. Academic Infrastructure - Comparison Table */}
+            <Card variant="default" hover={false} className="mb-4">
+              <CardContent className="p-6">
+                <h5 className="font-semibold text-[var(--text-primary)] mb-1">4. Academic Infrastructure Gaps</h5>
+                <p className="text-sm text-[var(--text-muted)] mb-4">
+                  Universities excel at discovery research but lack the operational capacity for large-scale clinical trials that pharmaceutical companies have built over decades.
+                </p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-[var(--border)]">
+                        <th className="text-left py-2 px-3 text-[var(--text-muted)] font-medium">Capability</th>
+                        <th className="text-left py-2 px-3 text-[var(--text-muted)] font-medium">Academic</th>
+                        <th className="text-left py-2 px-3 text-[var(--text-muted)] font-medium">Pharma</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {infrastructureComparison.map((row, idx) => (
+                        <tr key={idx} className="border-b border-[var(--border)] last:border-0">
+                          <td className="py-2 px-3 text-[var(--text-primary)] font-medium">{row.capability}</td>
+                          <td className={`py-2 px-3 ${row.advantage === 'academic' ? 'text-[var(--success)] bg-[var(--success-light)]' : 'text-[var(--text-body)]'}`}>
+                            {row.academic}
+                          </td>
+                          <td className={`py-2 px-3 ${row.advantage === 'pharma' ? 'text-[var(--success)] bg-[var(--success-light)]' : 'text-[var(--text-body)]'}`}>
+                            {row.pharma}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className="mt-4 p-3 rounded-lg bg-purple-50 border border-purple-200">
+                  <p className="text-sm text-purple-800">
+                    <strong>Key insight:</strong> Academia&apos;s strength is discovery. Pharma&apos;s strength is execution. Phase 3 trials require execution at scale—something the academic system was never designed to provide.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
 
           {/* Key insight */}
           <motion.div
@@ -327,9 +676,9 @@ export function TrialBarriers() {
             viewport={{ once: true }}
           >
             <p className="text-[var(--danger)] text-lg">
-              <strong>The math doesn&apos;t work:</strong> All AD nonprofits combined
-              (~${(analysis.totalNonprofitAnnualUSD / 1_000_000).toFixed(0)}M/year)
-              cannot fund a single Phase 3 trial (${(phase3Cost / 1_000_000).toFixed(0)}M).
+              <strong>The math doesn&apos;t work:</strong> NIH only allocates ~${nihLimitations.nonAmyloidTrialBudget}M/year for non-amyloid trials.
+              A single Phase 3 costs ${nihLimitations.phase3Cost}M. Even dedicating their entire non-amyloid trial budget would only cover{' '}
+              <span className="font-bold">{nihLimitations.mathDoesntWork.percentCovered}%</span> of one trial.
               This leaves Phase 3 entirely dependent on pharma—which only funds patentable compounds.
             </p>
           </motion.div>

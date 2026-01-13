@@ -21,7 +21,7 @@ He had just described a disease that would one day affect 55 million people.`,
   // The mystery
   mysteryNarrative: `For 80 years, no one knew what the plaques were made of.
 
-Then, in 1984, two biochemists isolated a small protein—just 4 kilodaltons—and gave it a name: amyloid-beta.
+Then, in 1984, two biochemists isolated a small protein—just 4 kilodaltons—and gave it a name: Aβ.
 
 A target had emerged.`,
 
@@ -171,7 +171,7 @@ export const timelineSectionCopy = {
     molecular: {
       title: 'The Target Emerges',
       years: '1984–1991',
-      description: 'Amyloid-beta is identified. Genetic mutations seem to confirm its role.',
+      description: 'Aβ is identified. Genetic mutations seem to confirm its role.',
       mood: 'hopeful',
     },
     hypothesis: {

@@ -51,8 +51,8 @@ export const hopefulDevelopments: HopefulDevelopment[] = [
     category: 'approved_drug',
     status: 'fda_approved',
     description:
-      'Monoclonal antibody that targets amyloid-beta protofibrils. First disease-modifying therapy with clear evidence of slowing decline.',
-    mechanism: 'Binds to soluble amyloid-beta protofibrils and promotes their clearance from the brain.',
+      'Monoclonal antibody that targets amyloid-beta (Aβ) protofibrils. First disease-modifying therapy with clear evidence of slowing decline.',
+    mechanism: 'Binds to soluble Aβ protofibrils and promotes their clearance from the brain.',
     whyHopeful:
       'First drug to demonstrate statistically significant slowing of cognitive decline in a Phase 3 trial. Validates that removing amyloid can have clinical benefit, though modest.',
     evidence: [
@@ -90,9 +90,9 @@ export const hopefulDevelopments: HopefulDevelopment[] = [
     category: 'approved_drug',
     status: 'fda_approved',
     description:
-      'Monoclonal antibody targeting a modified form of amyloid-beta (N3pG). Can be stopped once amyloid is cleared.',
+      'Monoclonal antibody targeting a modified form of Aβ (N3pG). Can be stopped once amyloid is cleared.',
     mechanism:
-      'Targets pyroglutamate amyloid-beta, a modified form found primarily in plaques. Designed for time-limited treatment.',
+      'Targets pyroglutamate Aβ, a modified form found primarily in plaques. Designed for time-limited treatment.',
     whyHopeful:
       'Showed 35% slowing of decline—the best result for any amyloid-targeting drug. Unique "treat to clear" approach may allow stopping therapy.',
     evidence: [
