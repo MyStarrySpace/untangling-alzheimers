@@ -18,7 +18,7 @@ export default function ShowcasePage() {
     <main className="min-h-screen bg-[var(--bg-primary)]">
       <Section id="showcase-hero" className="pt-24">
         <Container>
-          <Heading level={1} className="mb-4">Component Library</Heading>
+          <Heading as="h1" className="mb-4">Component Library</Heading>
           <p className="text-[var(--text-muted)] text-lg max-w-2xl">
             A collection of reusable components for the Untangling Alzheimer&apos;s project,
             following GoInvo design principles.
@@ -34,11 +34,11 @@ export default function ShowcasePage() {
             <CardContent className="space-y-8">
               <div>
                 <p className="text-sm text-[var(--text-muted)] mb-2">Heading 1 (Neuton)</p>
-                <Heading level={1}>Untangling Alzheimer&apos;s</Heading>
+                <Heading as="h1" animate={false}>Untangling Alzheimer&apos;s</Heading>
               </div>
               <div>
                 <p className="text-sm text-[var(--text-muted)] mb-2">Heading 2 (Neuton)</p>
-                <Heading level={2}>The Investment Paradox</Heading>
+                <Heading as="h2" animate={false}>The Investment Paradox</Heading>
               </div>
               <div>
                 <p className="text-sm text-[var(--text-muted)] mb-2">Heading 3 (Neuton)</p>
