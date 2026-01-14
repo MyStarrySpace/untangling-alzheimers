@@ -17,6 +17,8 @@ export const abbreviations = {
   'NMDA': 'N-Methyl-D-Aspartate',
   'NFT': 'Neurofibrillary Tangles',
   'LTP': 'Long-Term Potentiation',
+  'SIRT1': 'Sirtuin 1 (longevity-associated deacetylase enzyme)',
+  'GSK-3β': 'Glycogen Synthase Kinase 3 Beta',
 
   // Medical terms
   'AD': "Alzheimer's Disease",
@@ -25,11 +27,22 @@ export const abbreviations = {
   'CSF': 'Cerebrospinal Fluid',
   'RCT': 'Randomized Controlled Trial',
   'PET': 'Positron Emission Tomography',
+  'RA': 'Rheumatoid Arthritis',
 
-  // Organizations
+  // Clinical trials and studies
+  'TAME': 'Targeting Aging with Metformin (clinical trial)',
+  'FINGER': 'Finnish Geriatric Intervention Study to Prevent Cognitive Impairment and Disability',
+  'AMP-AD': 'Accelerating Medicines Partnership for Alzheimer\'s Disease',
+
+  // Organizations and frameworks
   'FDA': 'Food and Drug Administration',
   'NIH': 'National Institutes of Health',
   'NIA': 'National Institute on Aging',
+  'NIA-AA': 'National Institute on Aging - Alzheimer\'s Association',
+  'NAPA': 'National Alzheimer\'s Project Act',
+  'WHO': 'World Health Organization',
+  'CMS': 'Centers for Medicare & Medicaid Services',
+  'ATN': 'Amyloid/Tau/Neurodegeneration (biomarker classification)',
 } as const;
 
 export type AbbreviationKey = keyof typeof abbreviations;

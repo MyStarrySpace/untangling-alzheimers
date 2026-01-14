@@ -8,7 +8,8 @@ export type TimelineEventType =
   | 'failure' // Clinical trial failures, drug withdrawals
   | 'scandal' // Fraud, misconduct
   | 'approval' // Regulatory approvals
-  | 'rejection'; // Regulatory rejections
+  | 'rejection' // Regulatory rejections
+  | 'policy'; // Policy changes, funding decisions, institutional actions
 
 export type FrameworkId =
   | 'amyloid'
@@ -1141,6 +1142,131 @@ export const timelineEvents: TimelineEvent[] = [
     framework: 'myelin',
     significance: 'major',
     sourceIds: ['myelin-regeneration-2020'],
+  },
+
+  // ============================================
+  // POLICY & GENERAL MILESTONES
+  // ============================================
+  {
+    id: 'nia-doubles-funding',
+    year: 2011,
+    title: 'National Alzheimer\'s Project Act signed into law',
+    shortTitle: 'NAPA passed',
+    description:
+      'The U.S. Congress passes the National Alzheimer\'s Project Act, creating a national strategic plan and committing to find prevention or effective treatment by 2025.',
+    expandedDescription:
+      'NAPA created the first national strategic plan for AD and mandated annual updates on progress. The law led to substantial increases in NIH funding for AD research—from ~$500M in 2011 to over $3.5B by 2023. However, critics noted that the bulk of funding continued to flow to amyloid-focused research rather than being diversified across alternative hypotheses. The 2025 treatment goal was not met.',
+    type: 'policy',
+    framework: null,
+    significance: 'major',
+    sourceIds: ['napa-2011'],
+  },
+
+  {
+    id: 'finger-study-results',
+    year: 2015,
+    title: 'FINGER study proves lifestyle intervention works',
+    shortTitle: 'FINGER lifestyle trial',
+    description:
+      'The Finnish FINGER study—the first large RCT of lifestyle intervention for dementia prevention—shows that diet, exercise, cognitive training, and vascular risk management significantly improve cognition in at-risk elderly.',
+    expandedDescription:
+      'The FINGER trial randomized 1,260 at-risk elderly Finns to either intensive lifestyle intervention (diet, exercise, cognitive training, vascular monitoring) or standard care. After 2 years, the intervention group showed 25% better performance on cognitive tests, with particular benefits for executive function and processing speed. This was the first large RCT demonstrating that lifestyle modification could meaningfully slow cognitive decline—validating decades of observational data and providing hope independent of drug development.',
+    type: 'milestone',
+    framework: null,
+    significance: 'major',
+    sourceIds: ['finger-study-2015'],
+  },
+
+  {
+    id: 'nia-aa-framework-amyloid',
+    year: 2018,
+    title: 'NIA-AA redefines Alzheimer\'s as amyloid pathology',
+    shortTitle: 'AD redefined as amyloid',
+    description:
+      'The NIA-AA research framework controversially redefines Alzheimer\'s disease purely by biomarkers (amyloid/tau/neurodegeneration), potentially excluding patients with clinical symptoms but negative amyloid scans.',
+    expandedDescription:
+      'The 2018 NIA-AA research framework shifted AD definition from a clinical diagnosis (symptoms) to a biological one based on the "ATN" classification: Amyloid, Tau, Neurodegeneration biomarkers. Under this framework, a person with memory loss but no amyloid on PET would not have "Alzheimer\'s disease" by definition—even if they have every symptom. Critics argued this circular reasoning ensured amyloid-targeted therapies would always "work" by definition (if you don\'t have amyloid, you don\'t have AD). The framework was funded partly by amyloid PET imaging companies.',
+    type: 'policy',
+    framework: 'amyloid',
+    significance: 'major',
+    sourceIds: ['nia-aa-framework-2018'],
+  },
+
+  {
+    id: 'lancet-commission-prevention',
+    year: 2020,
+    title: 'Lancet Commission: 40% of dementia cases preventable',
+    shortTitle: '40% preventable',
+    description:
+      'The Lancet Commission on Dementia Prevention identifies 12 modifiable risk factors that together account for approximately 40% of worldwide dementia cases.',
+    expandedDescription:
+      'The 2020 Lancet Commission report—involving 28 leading dementia experts—concluded that 40% of dementia cases could theoretically be prevented or delayed by addressing 12 modifiable risk factors: less education, hypertension, hearing impairment, smoking, obesity, depression, physical inactivity, diabetes, low social contact, excessive alcohol, traumatic brain injury, and air pollution. This reinforced the importance of public health approaches and validated frameworks (vascular, metabolic) beyond amyloid. Yet prevention research continued to receive a tiny fraction of AD funding.',
+    type: 'milestone',
+    framework: null,
+    significance: 'major',
+    sourceIds: ['lancet-dementia-2020'],
+  },
+
+  {
+    id: 'aduhelm-controversy',
+    year: 2021,
+    month: 6,
+    title: 'FDA approves Aduhelm over advisory committee objections',
+    shortTitle: 'Aduhelm controversy',
+    description:
+      'The FDA grants accelerated approval to aducanumab (Aduhelm) despite its advisory committee voting nearly unanimously against approval, sparking resignations and investigations.',
+    expandedDescription:
+      'The FDA\'s approval of Aduhelm was unprecedented: the advisory committee had voted 10-0-1 that there was insufficient evidence of efficacy, yet the FDA approved it anyway. Three advisory committee members resigned in protest. The approval was based on amyloid reduction as a "surrogate endpoint" despite failed clinical endpoints. CMS later restricted coverage, and Biogen eventually withdrew the drug. The episode exposed tensions between desperate patients, pharmaceutical influence, and scientific rigor—and raised questions about whether the amyloid-focused research agenda had distorted regulatory standards.',
+    type: 'approval',
+    framework: 'amyloid',
+    significance: 'major',
+    sourceIds: ['aduhelm-approval-2021'],
+  },
+
+  {
+    id: 'biogen-withdraws-aduhelm',
+    year: 2024,
+    month: 1,
+    title: 'Biogen withdraws Aduhelm from market',
+    shortTitle: 'Aduhelm withdrawn',
+    description:
+      'After CMS limited coverage and sales collapsed, Biogen announces it will discontinue Aduhelm to focus resources on lecanemab.',
+    expandedDescription:
+      'Aduhelm\'s withdrawal marked a symbolic end to one of the most controversial drug approvals in FDA history. Despite initial pricing of $56,000/year (later reduced to $28,200), CMS coverage restrictions meant few patients could access it. Sales reached only $5M. The drug that was supposed to vindicate the amyloid hypothesis instead became a cautionary tale about surrogate endpoints, industry influence, and the gap between plaque clearance and clinical benefit.',
+    type: 'failure',
+    framework: 'amyloid',
+    significance: 'major',
+    sourceIds: ['aduhelm-withdrawal-2024'],
+  },
+
+  {
+    id: 'who-dementia-guidelines',
+    year: 2019,
+    title: 'WHO releases first dementia prevention guidelines',
+    shortTitle: 'WHO prevention guidelines',
+    description:
+      'The World Health Organization issues its first evidence-based guidelines for reducing dementia risk, emphasizing physical activity, diet, alcohol reduction, and vascular health.',
+    expandedDescription:
+      'WHO\'s 2019 guidelines represented the first global public health recommendations for dementia prevention. The guidelines provided strong recommendations for physical activity, tobacco cessation, and management of hypertension, diabetes, and dyslipidemia. They noted insufficient evidence for supplements, social engagement (alone), and cognitive training (alone). The guidelines implicitly validated vascular and metabolic frameworks for AD causation—the same frameworks that had been marginalized in drug development funding.',
+    type: 'policy',
+    framework: null,
+    significance: 'supporting',
+    sourceIds: ['who-dementia-guidelines-2019'],
+  },
+
+  {
+    id: 'accelerating-medicines-partnership',
+    year: 2014,
+    title: 'Accelerating Medicines Partnership for AD launched',
+    shortTitle: 'AMP-AD launched',
+    description:
+      'NIH, FDA, and 10 biopharmaceutical companies launch AMP-AD to identify and validate new therapeutic targets beyond amyloid.',
+    expandedDescription:
+      'AMP-AD was created to address the high failure rate of AD drugs by identifying new targets and biomarkers. The partnership generated extensive omics data from human brain tissue, identifying networks related to inflammation, metabolism, and other processes. However, critics noted that despite identifying many non-amyloid targets, the bulk of industry investment continued to flow to amyloid-targeting drugs. AMP-AD represented acknowledgment that diversification was needed—but didn\'t fundamentally change funding patterns.',
+    type: 'policy',
+    framework: null,
+    significance: 'supporting',
+    sourceIds: ['amp-ad-2014'],
   },
 ];
 

@@ -8,9 +8,9 @@ export const caseStudies: CaseStudy[] = [
     year: 2025,
     keyFinding:
       'Completely reversed memory loss in Alzheimer\'s mice at 1/1000th the dose used for bipolar disorder, without kidney or thyroid toxicity.',
-    whatShouldHappen: 'Large prevention trial',
+    whatShouldHappen: 'Large prevention trial to confirm human dosing',
     whatActuallyHappened:
-      '"Planning to start soon" — Previous lithium carbonate trial took 8 years to complete',
+      'Available now as supplement (~$10/month); clinical trial "planning to begin soon"',
     quote:
       'We are planning a clinical trial that will hopefully begin in the near future.',
     quoteSource: 'Lead author, Harvard team',
@@ -79,15 +79,6 @@ export const caseStudies: CaseStudy[] = [
 
 export const evidenceGraveyardData = [
   {
-    id: 'lithium-orotate',
-    drug: 'Lithium Orotate',
-    evidence: 'Reversed memory loss in AD mice; 1000x lower dose than bipolar treatment',
-    year: 2025,
-    source: 'Nature 2025',
-    shouldHappen: 'Large prevention trial',
-    actuallyHappened: '"Planning to start soon"',
-  },
-  {
     id: 'tnf-inhibitors',
     drug: 'TNF Inhibitors',
     evidence: '50-70% reduction in AD incidence in RA/psoriasis patients',
@@ -95,6 +86,7 @@ export const evidenceGraveyardData = [
     source: 'Multiple cohort studies',
     shouldHappen: 'Prevention trial in high-risk groups',
     actuallyHappened: 'Zero trials initiated',
+    whyNotFunded: 'Off-patent biologics with no commercial sponsor. Prevention trials require large cohorts over many years—pharma won\'t fund trials for drugs they can\'t sell exclusively.',
   },
   {
     id: 'nebivolol',
@@ -104,6 +96,7 @@ export const evidenceGraveyardData = [
     source: 'J Alzheimers Dis',
     shouldHappen: 'Head-to-head cognitive trial vs metoprolol',
     actuallyHappened: 'Nothing for 12+ years',
+    whyNotFunded: 'Generic beta-blocker ($4/month). No company can recoup trial costs. NIH prioritizes novel mechanisms over repurposed generics.',
   },
   {
     id: 'gv-971',
@@ -113,6 +106,7 @@ export const evidenceGraveyardData = [
     source: 'Cell Research',
     shouldHappen: 'Global Phase 3 confirmation',
     actuallyHappened: 'US trial terminated 2022 (funding)',
+    whyNotFunded: 'Small Chinese biotech couldn\'t raise Western capital amid geopolitical tensions and biotech market crash. Not because the science failed.',
   },
   {
     id: 'metformin',
@@ -122,6 +116,7 @@ export const evidenceGraveyardData = [
     source: 'Ongoing research',
     shouldHappen: 'Large prevention trial',
     actuallyHappened: 'TAME trial struggling (philanthropic funding only)',
+    whyNotFunded: 'Costs $4/month generic. The TAME aging trial has been trying to launch for years, relying entirely on philanthropy because no company will fund a trial for a drug anyone can make.',
   },
 ];
 

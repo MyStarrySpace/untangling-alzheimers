@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Skull, Calendar, BookOpen, ArrowRight, XCircle } from 'lucide-react';
+import { Skull, Calendar, BookOpen, ArrowRight, XCircle, Ban } from 'lucide-react';
 import { Container, Section, SectionHeader, TextWithAbbreviations } from '@/components/ui';
 import { evidenceGraveyardData } from '@/data';
 
@@ -50,6 +50,7 @@ interface TombstoneProps {
   source: string;
   shouldHappen: string;
   actuallyHappened: string;
+  whyNotFunded?: string;
 }
 
 function Tombstone({
@@ -59,6 +60,7 @@ function Tombstone({
   source,
   shouldHappen,
   actuallyHappened,
+  whyNotFunded,
 }: TombstoneProps) {
   return (
     <div className="relative group">
@@ -107,6 +109,15 @@ function Tombstone({
                 <TextWithAbbreviations text={actuallyHappened} />
               </p>
             </div>
+            {whyNotFunded && (
+              <div className="flex items-start gap-2 mt-2 pt-2 border-t border-[var(--border)]">
+                <Ban className="w-4 h-4 text-[var(--text-muted)] mt-0.5 flex-shrink-0" />
+                <p className="text-xs text-[var(--text-muted)]">
+                  <span className="font-medium">Why no funding:</span>{' '}
+                  <TextWithAbbreviations text={whyNotFunded} />
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
