@@ -319,3 +319,9 @@ export function Component({ ...props }: ComponentProps) {
 - Do NOT paraphrase or summarize in the quote field—use the exact text from the source
 - If the exact wording cannot be verified, mark the citation with a comment or use the `context` field for editorial notes
 - Each timeline event should reference specific `citationIds` that correspond to verifiable quotes in the bibliography
+
+## Research Requirements
+- **ALWAYS use web search** to verify factual claims before adding or modifying data content (drug information, trial results, researcher claims, statistics, etc.)
+- Only skip web search when making purely functional code changes (fixing bugs, refactoring, UI adjustments)
+- Never assume factual information is correct—verify with current sources
+- When adding drugs, treatments, or clinical trial information, search for the latest status and results

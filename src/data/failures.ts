@@ -96,11 +96,7 @@ export const marketFailures: MarketFailure[] = [
   },
 ];
 
-export const failureCascadeNarrative = `The Alzheimer's field has a 99% clinical trial failure rate—the worst of any therapeutic area. The standard explanation is that the disease is complex and poorly understood.
-
-While true, this explanation obscures a deeper structural problem: the drugs that receive investment are selected based on patent status, not scientific promise.
-
-Each market failure reinforces the others, creating a self-perpetuating system that excludes the most promising interventions.`;
+export const failureCascadeNarrative = `The drugs that receive investment are selected based on patent status, not scientific promise. Each market failure reinforces the others.`;
 
 export const cascadeFlow = [
   { from: 'patent-system', to: 'trial-economics' },

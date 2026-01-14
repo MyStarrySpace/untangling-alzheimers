@@ -28,6 +28,8 @@ export const abbreviations = {
   'RCT': 'Randomized Controlled Trial',
   'PET': 'Positron Emission Tomography',
   'RA': 'Rheumatoid Arthritis',
+  'MRI': 'Magnetic Resonance Imaging',
+  'FUS': 'Focused Ultrasound',
 
   // Clinical trials and studies
   'TAME': 'Targeting Aging with Metformin (clinical trial)',

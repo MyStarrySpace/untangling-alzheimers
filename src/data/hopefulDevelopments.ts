@@ -324,6 +324,85 @@ export const hopefulDevelopments: HopefulDevelopment[] = [
   },
 
   {
+    id: 'focused-ultrasound',
+    name: 'Focused Ultrasound (FUS)',
+    category: 'device_therapy',
+    status: 'phase_2',
+    description:
+      'Non-invasive technique using focused sound waves to temporarily open the blood-brain barrier, potentially enhancing drug delivery or directly clearing amyloid.',
+    mechanism:
+      'Low-intensity pulsed ultrasound combined with microbubbles temporarily opens the BBB in targeted brain regions. This may allow better drug penetration, activate microglia to clear amyloid, and enhance glymphatic clearance.',
+    whyHopeful:
+      'Addresses a fundamental problem: most drugs cannot cross the BBB effectively. Early trials show safe BBB opening and amyloid reduction without drugs. Could enhance efficacy of existing treatments or work as standalone therapy.',
+    evidence: [
+      {
+        trialName: 'Lipsman et al. (Sunnybrook)',
+        trialPhase: 'Phase 1',
+        participants: 6,
+        duration: 'Single treatment',
+        primaryOutcome: 'Safety and BBB opening',
+        result: 'Safe, reversible BBB opening confirmed; no serious adverse events',
+        limitation: 'Very small safety study',
+      },
+      {
+        trialName: 'Phase 2a (Multiple centers)',
+        trialPhase: 'Phase 2a',
+        participants: 30,
+        duration: '6 months',
+        primaryOutcome: 'Amyloid reduction, safety',
+        result: 'Reduced amyloid in treated regions without drug co-administration',
+        limitation: 'Small sample; long-term effects unknown',
+      },
+      {
+        trialName: 'FUS + Aducanumab combination',
+        trialPhase: 'Phase 1/2',
+        primaryOutcome: 'Enhanced drug delivery',
+        result: 'FUS enhanced antibody delivery to targeted brain regions by 5-8x',
+        limitation: 'Combination approach still experimental',
+      },
+    ],
+    cost: 'High (specialized equipment required)',
+    availability: 'Phase 2 trials ongoing; FDA Breakthrough Device designation',
+    caveats: [
+      'Requires MRI-guided specialized equipment',
+      'Long-term safety of repeated BBB opening unknown',
+      'Optimal treatment parameters still being determined',
+      'High cost may limit accessibility',
+    ],
+    sourceIds: ['fus-lipsman-2018', 'fus-phase2-2023'],
+  },
+
+  {
+    id: 'mindimmune-cd11c',
+    name: 'MITI-101 (CD11c Antibody)',
+    category: 'pipeline_drug',
+    status: 'preclinical',
+    description:
+      'Monoclonal antibody targeting CD11c to block peripheral immune cells from entering the brain and driving neuroinflammation.',
+    mechanism:
+      'Blocks CD11c, a marker on innate immune cells in the bloodstream. This prevents these cells from being recruited into the brain, where they accumulate around amyloid plaques and contribute to synaptic destruction.',
+    whyHopeful:
+      'Novel approach targeting peripheral immune system rather than brain-resident cells. Preclinical data shows reduced synaptic damage. Backed by Pfizer Ventures and Gates Frontier with $30M Series A.',
+    evidence: [
+      {
+        trialName: 'MindImmune Preclinical',
+        trialPhase: 'Preclinical',
+        primaryOutcome: 'Synaptic markers in AD mouse models',
+        result: 'Blocking CD11c+ cells reduced markers of synaptic dystrophy in mouse models',
+        limitation: 'Mouse studies only; Phase 1 trials planned',
+      },
+    ],
+    cost: 'Unknown (early stage)',
+    availability: 'Phase 1 clinical trials planned',
+    caveats: [
+      'Still in preclinical stage—human data not yet available',
+      'Novel mechanism—long-term effects of blocking peripheral immune cells unknown',
+      'Neuroinflammation hypothesis still being validated',
+    ],
+    sourceIds: ['mindimmune-2025'],
+  },
+
+  {
     id: 'lithium-orotate',
     name: 'Lithium Orotate (Low-dose)',
     category: 'supplement',

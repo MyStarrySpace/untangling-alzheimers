@@ -16,8 +16,9 @@ export interface RedirectedDrug {
   originalTarget?: string;
   adRationale: string;
   currentIndications: string[];
-  adTrialStatus: 'none' | 'phase_1' | 'phase_2' | 'phase_3' | 'abandoned';
+  adTrialStatus: 'none' | 'phase_1' | 'phase_2' | 'phase_3' | 'abandoned' | 'preclinical';
   whyNotAD: string;
+  potentialConcerns?: string[];
   sourceIds: string[];
 }
 
@@ -589,17 +590,6 @@ export function getFundingGapAnalysis() {
 // Examples of drugs tested elsewhere first (or instead of AD)
 export const redirectedDrugs: RedirectedDrug[] = [
   {
-    id: 'semaglutide-ozempic',
-    name: 'Semaglutide (Ozempic/Wegovy)',
-    mechanism: 'GLP-1 receptor agonist; improves insulin signaling, reduces inflammation',
-    originalTarget: 'Type 2 diabetes',
-    adRationale: 'Brain insulin resistance is implicated in AD ("Type 3 diabetes" hypothesis); GLP-1 may reduce neuroinflammation and improve neuronal metabolism',
-    currentIndications: ['Type 2 diabetes (Ozempic)', 'Obesity (Wegovy)', 'Cardiovascular risk reduction'],
-    adTrialStatus: 'phase_3',
-    whyNotAD: 'Diabetes trials are shorter (1-2 years), use clear biomarkers (HbA1c), and have faster FDA pathways. The EVOKE trial for AD failed, possibly due to limited blood-brain barrier penetration of oral formulation.',
-    sourceIds: ['semaglutide-evoke-2024'],
-  },
-  {
     id: 'riluzole',
     name: 'Riluzole',
     mechanism: 'Glutamate modulator; reduces excitotoxicity',
@@ -608,29 +598,23 @@ export const redirectedDrugs: RedirectedDrug[] = [
     currentIndications: ['ALS (FDA approved 1995)'],
     adTrialStatus: 'phase_2',
     whyNotAD: 'ALS trials are shorter (18 months), smaller (300-600 patients), and have clear functional endpoints. AD trials would need 3-5x more patients and 2x longer duration.',
-    sourceIds: ['riluzole-als-1994'],
+    potentialConcerns: [
+      'May protect neuronal cell bodies but not synapses from C1q-mediated complement attack',
+      'Does not address membrane vulnerability to oxidative stress',
+      'Risk of hepatotoxicity requires liver function monitoring',
+    ],
+    sourceIds: ['riluzole-als-1994', 'riluzole-hepatotoxicity-livertox', 'c1q-synapse-elimination-2022'],
   },
   {
-    id: 'pioglitazone',
-    name: 'Pioglitazone (Actos)',
-    mechanism: 'PPAR-γ agonist; improves insulin sensitivity, anti-inflammatory',
-    originalTarget: 'Type 2 diabetes',
-    adRationale: 'Metabolic dysfunction and insulin resistance are upstream drivers; PPAR-γ activation reduces neuroinflammation',
-    currentIndications: ['Type 2 diabetes'],
-    adTrialStatus: 'abandoned',
-    whyNotAD: 'TOMMORROW prevention trial ($260M) was terminated after 5 years when interim analysis showed no benefit. The massive cost and duration of AD prevention trials make them prohibitively risky—diabetes trials generated revenue in 1-2 years.',
-    sourceIds: ['pioglitazone-tommorrow-2019'],
-  },
-  {
-    id: 'etanercept',
-    name: 'Etanercept (Enbrel)',
-    mechanism: 'TNF-α inhibitor; reduces systemic and neuroinflammation',
-    originalTarget: 'Rheumatoid arthritis',
-    adRationale: 'TNF-α is elevated in AD brains; large insurance database studies showed 50-70% reduced AD risk in RA patients on TNF inhibitors',
-    currentIndications: ['Rheumatoid arthritis', 'Psoriasis', 'Ankylosing spondylitis', 'IBD'],
-    adTrialStatus: 'none',
-    whyNotAD: 'Autoimmune trials are 6-12 months with clear inflammatory biomarkers. An AD trial would need 3-4 years and thousands of patients. No pharma company has invested in an AD trial despite compelling observational data—the economics don\'t work for a generic drug.',
-    sourceIds: ['tnf-inhibitors-ad-2016'],
+    id: 'lysosome-acidifiers',
+    name: 'β2-Adrenergic Agonists (Lysosome Acidifiers)',
+    mechanism: 'Restore lysosomal acidification via β2-AR/PKA/ClC-7 pathway; rescues autophagy function',
+    originalTarget: 'Asthma, COPD (existing β2 agonists like isoproterenol)',
+    adRationale: 'Nixon lab showed lysosome acidification failure is the earliest pathology in AD—before amyloid plaques. Restoring lysosomal pH reverses autophagy dysfunction, reduces intraneuronal amyloid >50%, and improves memory in AD mice.',
+    currentIndications: ['β2 agonists approved for respiratory conditions; novel derivatives in preclinical development'],
+    adTrialStatus: 'preclinical',
+    whyNotAD: 'This is a paradigm shift from anti-amyloid approaches: "One has to now attack the process inside the cell... to cure the cell from inside rather than by removing amyloid." Novel brain-penetrant derivatives are being developed but lack pharma investment despite strong preclinical data.',
+    sourceIds: ['nixon-lysosome-2020', 'nixon-panthos-2022'],
   },
   {
     id: 'dasatinib',
@@ -641,6 +625,11 @@ export const redirectedDrugs: RedirectedDrug[] = [
     currentIndications: ['CML (dasatinib)', 'Quercetin is a supplement'],
     adTrialStatus: 'phase_2',
     whyNotAD: 'Cancer trials have short durations (months) and clear response criteria (tumor shrinkage). AD senolytic trials are exploratory, require years of follow-up, and the mechanism is speculative. Small pilot studies ongoing but no pharma investment.',
+    potentialConcerns: [
+      'Dasatinib inhibits Src family kinases required for DAP12 phosphorylation, potentially blocking TREM2-mediated DAM transition and phagocytosis—uncleared debris may activate TLR4',
+      'Rapid death of senescent glia may release iron, triggering ferroptosis in neighboring cells',
+      'Quercetin is a flavonoid iron chelator that may strip bioavailable iron from cytoplasm, starving mitochondria of Fe-S clusters and worsening metabolic failure even as inflammation drops',
+    ],
     sourceIds: ['senolytics-ad-2019'],
   },
   {
@@ -652,6 +641,10 @@ export const redirectedDrugs: RedirectedDrug[] = [
     currentIndications: ['Transplant rejection', 'Certain cancers', 'LAM'],
     adTrialStatus: 'phase_1',
     whyNotAD: 'Transplant trials are well-defined with clear endpoints. AD trials for an autophagy mechanism would need to prove cognitive benefit over years. No major pharma investment; only academic studies.',
+    potentialConcerns: [
+      'Increases autophagosome input without guaranteeing lysosomal output—if lysosomal pH > 5.5 or lipofuscin load is high, autolysosomes may accumulate with undegraded mtDNA, risking LMP and cGAS-STING activation',
+      'Potent immunosuppressant that inhibits translation of cytokines and receptors needed for DAM transition, potentially impairing microglial protective functions',
+    ],
     sourceIds: ['rapamycin-autophagy-2016'],
   },
   {
@@ -666,17 +659,69 @@ export const redirectedDrugs: RedirectedDrug[] = [
     sourceIds: ['telmisartan-pparg-2004'],
   },
   {
-    id: 'exenatide',
-    name: 'Exenatide (Byetta/Bydureon)',
-    mechanism: 'GLP-1 receptor agonist; first-in-class for diabetes',
+    id: 'metformin',
+    name: 'Metformin',
+    mechanism: 'AMPK activator; improves insulin sensitivity, reduces inflammation, may enhance autophagy',
     originalTarget: 'Type 2 diabetes',
-    adRationale: 'Similar rationale to semaglutide; showed neuroprotective effects in Parkinson\'s trials',
-    currentIndications: ['Type 2 diabetes'],
+    adRationale: 'Epidemiological studies show diabetics on metformin have lower AD risk. AMPK activation may reduce tau phosphorylation and improve neuronal metabolism.',
+    currentIndications: ['Type 2 diabetes (first-line treatment)'],
     adTrialStatus: 'phase_2',
-    whyNotAD: 'The company tested it in Parkinson\'s first—trials are shorter (1-2 years), smaller (60-100 patients in Phase 2), and motor endpoints are more objective than cognitive tests. The Parkinson\'s trial showed promising results; AD trial only recently started.',
-    sourceIds: ['exenatide-parkinsons-2017'],
+    whyNotAD: 'Metformin is off-patent and costs pennies per pill. The large prevention trial needed would cost hundreds of millions with no commercial return. Small academic trials ongoing but no pharma investment despite compelling observational data.',
+    sourceIds: ['metformin-ad-meta-2020'],
+  },
+  {
+    id: 'orforglipron',
+    name: 'Orforglipron',
+    mechanism: 'Oral small-molecule GLP-1 receptor agonist; designed for better CNS penetration than injectable peptide GLP-1s',
+    originalTarget: 'Type 2 diabetes and obesity',
+    adRationale: 'Brain insulin resistance is implicated in AD ("Type 3 diabetes" hypothesis); GLP-1 agonists may reduce neuroinflammation. As a small molecule, orforglipron may have better blood-brain barrier penetration than injectable peptides like semaglutide (which failed EVOKE).',
+    currentIndications: ['Phase 3 for diabetes/obesity (not yet approved)'],
+    adTrialStatus: 'none',
+    whyNotAD: 'Eli Lilly is prioritizing Phase 3 diabetes/obesity trials first—faster endpoints, higher success rates. If approved, physicians could prescribe off-label for AD patients while the company decides whether to run formal AD trials. This is the "test elsewhere first" strategy in action.',
+    potentialConcerns: [
+      'GFAP increases may cause myelin damage and white matter degeneration',
+      'mTORC1 activation could inhibit autophagy, preventing clearance of protein aggregates',
+      'Increased resting heart rate and sympathetic tone may disrupt glymphatic clearance, inhibiting amyloid plaque and tau clearance during sleep',
+    ],
+    sourceIds: ['orforglipron-lilly-2025', 'glp1-mtorc1-activation-2023', 'glp1-heart-rate-2016', 'glymphatic-heart-rate-2019', 'glymphatic-norepinephrine-2025'],
   },
 ];
+
+// Data for disease comparison charts
+export const diseaseComparisonChartData = {
+  // Phase 3 costs by disease
+  costComparison: [
+    { disease: "Alzheimer's", cost: 462, color: '#ef4444' },
+    { disease: "Parkinson's", cost: 150, color: '#f59e0b' },
+    { disease: 'Diabetes', cost: 120, color: '#3b82f6' },
+    { disease: 'ALS', cost: 80, color: '#10b981' },
+    { disease: 'Oncology', cost: 100, color: '#8b5cf6' },
+  ],
+  // Trial duration by disease (months)
+  durationComparison: [
+    { disease: "Alzheimer's", duration: 48, color: '#ef4444' },
+    { disease: "Parkinson's", duration: 30, color: '#f59e0b' },
+    { disease: 'Diabetes', cost: 18, duration: 18, color: '#3b82f6' },
+    { disease: 'ALS', duration: 18, color: '#10b981' },
+    { disease: 'Oncology', duration: 24, color: '#8b5cf6' },
+  ],
+  // Patients required by disease
+  patientsComparison: [
+    { disease: "Alzheimer's", patients: 2250, color: '#ef4444' },
+    { disease: "Parkinson's", patients: 600, color: '#f59e0b' },
+    { disease: 'Diabetes', patients: 1000, color: '#3b82f6' },
+    { disease: 'ALS', patients: 450, color: '#10b981' },
+    { disease: 'Oncology', patients: 500, color: '#8b5cf6' },
+  ],
+  // Failure rates by disease
+  failureRateComparison: [
+    { disease: "Alzheimer's", rate: 99, color: '#ef4444' },
+    { disease: "Parkinson's", rate: 92, color: '#f59e0b' },
+    { disease: 'Diabetes', rate: 70, color: '#3b82f6' },
+    { disease: 'ALS', rate: 95, color: '#10b981' },
+    { disease: 'Oncology', rate: 95, color: '#8b5cf6' },
+  ],
+};
 
 // Summary statistics
 export function getTrialBarriersSummary() {

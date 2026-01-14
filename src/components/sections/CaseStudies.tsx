@@ -19,20 +19,6 @@ export function CaseStudies() {
           subtitle="Real stories of promising treatments that were abandoned not for scientific reasons, but economic ones."
         />
 
-        {/* Case selector tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {caseStudies.map((study) => (
-            <Button
-              key={study.id}
-              variant={activeCase === study.id ? 'primary' : 'ghost'}
-              size="sm"
-              onClick={() => setActiveCase(study.id)}
-            >
-              {study.drug}
-            </Button>
-          ))}
-        </div>
-
         {/* Active case content */}
         <AnimatePresence mode="wait">
           <motion.div
@@ -114,25 +100,27 @@ export function CaseStudies() {
               </div>
 
               {/* Sidebar with other cases */}
-              <div className="space-y-4">
-                <h4 className="text-sm font-medium text-[var(--text-muted)] uppercase tracking-wide">
+              <div>
+                <h4 className="text-sm font-medium text-[var(--text-muted)] uppercase tracking-wide mb-4">
                   Other Cases
                 </h4>
-                {caseStudies
-                  .filter((c) => c.id !== currentCase.id)
-                  .map((study) => (
-                    <motion.button
-                      key={study.id}
-                      className="w-full text-left p-4 rounded-lg bg-white border border-[var(--border)] hover:border-[var(--accent-orange)] transition-colors"
-                      onClick={() => setActiveCase(study.id)}
-                      whileHover={{ x: 4 }}
-                    >
-                      <h5 className="font-medium text-[var(--text-primary)] mb-1">{study.drug}</h5>
-                      <p className="text-sm text-[var(--text-muted)] line-clamp-2">
-                        <TextWithAbbreviations text={study.keyFinding} />
-                      </p>
-                    </motion.button>
-                  ))}
+                <div className="divide-y divide-[var(--border)]">
+                  {caseStudies
+                    .filter((c) => c.id !== currentCase.id)
+                    .map((study) => (
+                      <motion.button
+                        key={study.id}
+                        className="w-full text-left py-4 hover:bg-[var(--bg-primary)] transition-colors"
+                        onClick={() => setActiveCase(study.id)}
+                        whileHover={{ x: 4 }}
+                      >
+                        <h5 className="font-medium text-[var(--text-primary)] mb-1">{study.drug}</h5>
+                        <p className="text-sm text-[var(--text-muted)] line-clamp-2">
+                          <TextWithAbbreviations text={study.keyFinding} />
+                        </p>
+                      </motion.button>
+                    ))}
+                </div>
               </div>
             </div>
           </motion.div>

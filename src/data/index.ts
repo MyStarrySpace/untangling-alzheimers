@@ -9,3 +9,4 @@ export * from './frameworks';
 export * from './sectionCopy';
 export * from './hopefulDevelopments';
 export * from './failedApproaches';
+export * from './sexAncestryEffects';

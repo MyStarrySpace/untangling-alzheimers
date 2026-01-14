@@ -44,6 +44,7 @@ import {
   basicVsAppliedFunding,
   grantCycleComparison,
   infrastructureComparison,
+  diseaseComparisonChartData,
 } from '@/data/trialBarriers';
 import { investmentData, comparisonData } from '@/data';
 import { formatCurrency } from '@/lib/utils';
@@ -684,7 +685,7 @@ export function TrialBarriers() {
           </motion.div>
         </motion.div>
 
-        {/* Requirements comparison table */}
+        {/* Why Companies Test Elsewhere First - Charts */}
         <motion.div
           className="mb-12"
           initial={{ opacity: 0 }}
@@ -692,50 +693,140 @@ export function TrialBarriers() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-xl font-bold text-[var(--text-primary)] mb-6 font-serif">
+          <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2 font-serif">
             Why Companies Test Elsewhere First
           </h3>
-          <Card variant="default" hover={false}>
-            <CardContent>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b border-[var(--border)]">
-                      <th className="text-left py-3 px-4 text-[var(--text-muted)] font-medium">
-                        Factor
-                      </th>
-                      <th className="text-left py-3 px-4 text-[var(--danger)] font-medium">
-                        AD Trials
-                      </th>
-                      <th className="text-left py-3 px-4 text-[var(--success)] font-medium">
-                        Other Diseases
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {trialRequirements.slice(0, 5).map((req, index) => (
-                      <motion.tr
-                        key={req.factor}
-                        className="border-b border-[var(--border)] last:border-0"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                      >
-                        <td className="py-3 px-4 text-[var(--text-primary)] font-medium">
-                          {req.factor}
-                        </td>
-                        <td className="py-3 px-4 text-[var(--text-body)]">{req.adTrials}</td>
-                        <td className="py-3 px-4 text-[var(--text-body)]">
-                          {req.otherIndications}
-                        </td>
-                      </motion.tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </CardContent>
-          </Card>
+          <p className="text-[var(--text-muted)] mb-6">
+            AD trials are dramatically more expensive, longer, and require more patients than almost any other disease.
+          </p>
+
+          {/* Comparison charts grid */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Cost comparison */}
+            <Card variant="default" hover={false}>
+              <CardContent className="p-5">
+                <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-4">
+                  Phase 3 Cost by Disease
+                </h4>
+                <ResponsiveContainer width="100%" height={200}>
+                  <BarChart data={diseaseComparisonChartData.costComparison} layout="vertical">
+                    <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+                    <XAxis type="number" tickFormatter={(v) => `$${v}M`} fontSize={11} />
+                    <YAxis type="category" dataKey="disease" width={80} fontSize={11} />
+                    <Tooltip
+                      formatter={(value) => [`$${value}M`, 'Cost']}
+                      contentStyle={{ fontSize: '12px', borderRadius: '8px' }}
+                    />
+                    <Bar dataKey="cost" radius={[0, 4, 4, 0]}>
+                      {diseaseComparisonChartData.costComparison.map((entry, index) => (
+                        <Cell key={`cost-${index}`} fill={entry.color} />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+                <p className="text-xs text-[var(--text-muted)] mt-2">
+                  AD trials cost <span className="text-[var(--danger)] font-semibold">3-5x more</span> than most other diseases
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Duration comparison */}
+            <Card variant="default" hover={false}>
+              <CardContent className="p-5">
+                <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-4">
+                  Trial Duration by Disease
+                </h4>
+                <ResponsiveContainer width="100%" height={200}>
+                  <BarChart data={diseaseComparisonChartData.durationComparison} layout="vertical">
+                    <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+                    <XAxis type="number" tickFormatter={(v) => `${v}mo`} fontSize={11} />
+                    <YAxis type="category" dataKey="disease" width={80} fontSize={11} />
+                    <Tooltip
+                      formatter={(value) => [`${value} months`, 'Duration']}
+                      contentStyle={{ fontSize: '12px', borderRadius: '8px' }}
+                    />
+                    <Bar dataKey="duration" radius={[0, 4, 4, 0]}>
+                      {diseaseComparisonChartData.durationComparison.map((entry, index) => (
+                        <Cell key={`duration-${index}`} fill={entry.color} />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+                <p className="text-xs text-[var(--text-muted)] mt-2">
+                  AD trials take <span className="text-[var(--danger)] font-semibold">2-3x longer</span> to complete
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Patients comparison */}
+            <Card variant="default" hover={false}>
+              <CardContent className="p-5">
+                <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-4">
+                  Patients Required by Disease
+                </h4>
+                <ResponsiveContainer width="100%" height={200}>
+                  <BarChart data={diseaseComparisonChartData.patientsComparison} layout="vertical">
+                    <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+                    <XAxis type="number" tickFormatter={(v) => v.toLocaleString()} fontSize={11} />
+                    <YAxis type="category" dataKey="disease" width={80} fontSize={11} />
+                    <Tooltip
+                      formatter={(value) => [value?.toLocaleString(), 'Patients']}
+                      contentStyle={{ fontSize: '12px', borderRadius: '8px' }}
+                    />
+                    <Bar dataKey="patients" radius={[0, 4, 4, 0]}>
+                      {diseaseComparisonChartData.patientsComparison.map((entry, index) => (
+                        <Cell key={`patients-${index}`} fill={entry.color} />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+                <p className="text-xs text-[var(--text-muted)] mt-2">
+                  AD trials need <span className="text-[var(--danger)] font-semibold">3-5x more patients</span> to detect cognitive changes
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Failure rate comparison */}
+            <Card variant="default" hover={false}>
+              <CardContent className="p-5">
+                <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-4">
+                  Clinical Trial Failure Rate
+                </h4>
+                <ResponsiveContainer width="100%" height={200}>
+                  <BarChart data={diseaseComparisonChartData.failureRateComparison} layout="vertical">
+                    <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+                    <XAxis type="number" domain={[0, 100]} tickFormatter={(v) => `${v}%`} fontSize={11} />
+                    <YAxis type="category" dataKey="disease" width={80} fontSize={11} />
+                    <Tooltip
+                      formatter={(value) => [`${value}%`, 'Failure Rate']}
+                      contentStyle={{ fontSize: '12px', borderRadius: '8px' }}
+                    />
+                    <Bar dataKey="rate" radius={[0, 4, 4, 0]}>
+                      {diseaseComparisonChartData.failureRateComparison.map((entry, index) => (
+                        <Cell key={`rate-${index}`} fill={entry.color} />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+                <p className="text-xs text-[var(--text-muted)] mt-2">
+                  AD has the <span className="text-[var(--danger)] font-semibold">highest failure rate</span> of any therapeutic area
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Summary insight */}
+          <motion.div
+            className="mt-6 p-4 rounded-lg bg-[var(--accent-orange-light)] border border-[var(--accent-orange)]"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-[var(--accent-orange)] text-sm">
+              <strong>The result:</strong> Companies test promising drugs in diabetes, Parkinson&apos;s, or cancer first—where trials are faster, cheaper, and more likely to succeed. By the time they might consider AD, the patent clock has often run out.
+            </p>
+          </motion.div>
         </motion.div>
 
         {/* Redirected drugs */}
