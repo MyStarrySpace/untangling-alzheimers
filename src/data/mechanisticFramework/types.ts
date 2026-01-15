@@ -182,6 +182,9 @@ export type RelationType =
   // Regulatory
   | 'regulates'           // Direction unknown or context-dependent
   | 'modulates'           // Bidirectional modification
+  // Biochemical relationships
+  | 'substrateof'         // A is a substrate of enzyme B
+  | 'productof'           // A is a product of reaction B
   // No effect (important for negative results)
   | 'causesNoChange'      // A perturbed, B unchanged
   | 'noCorrelation'       // No correlation found
@@ -215,12 +218,18 @@ export type MethodType =
   | 'transgenic'          // L3 - Transgenic overexpression
   | 'intervention_animal' // L4 - Drug/compound in animals
   | 'intervention_human'  // L4 - Open-label human study
+  | 'intervention_cells'  // L4 - Drug/compound in cell models
   | 'in_vitro'            // L5 - Cell culture, biochemical assays
   | 'ex_vivo'             // L5 - Tissue slices, organoids
+  | 'biochemistry'        // L5 - Biochemical/enzymatic assays
   | 'cohort'              // L6 - Prospective cohort
   | 'case_control'        // L6 - Retrospective comparison
   | 'cross_sectional'     // L7 - Single timepoint association
   | 'case_report'         // L7 - Clinical observation
+  | 'transcriptomics'     // L5 - RNA-seq, gene expression analysis
+  | 'imaging'             // L5 - Neuroimaging, microscopy
+  | 'cryo_em'             // L5 - Cryo-electron microscopy
+  | 'review'              // N/A - Narrative review (not causal)
   | 'toxicology'          // L-Tox - Poisoning/adverse event
   | 'computational'       // L-Comp - Modeling, prediction
   | 'meta_analysis';      // Varies - Pooled analysis

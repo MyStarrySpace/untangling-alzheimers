@@ -94,6 +94,31 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 
+/* React Flow MiniMap viewport indicator */
+.react-flow__minimap {
+  overflow: visible;
+}
+
+.react-flow__minimap-mask {
+  fill: rgba(250, 249, 247, 0.75);
+}
+
+/* Add a visible border around the viewport area */
+.react-flow__minimap svg {
+  overflow: visible;
+}
+
+.react-flow__minimap-node {
+  stroke-width: 0;
+}
+
+/* Style the viewport indicator rectangle */
+.react-flow__minimap rect:not(.react-flow__minimap-mask) {
+  stroke: var(--accent-orange);
+  stroke-width: 2px;
+  fill: transparent;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
