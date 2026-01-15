@@ -55,7 +55,7 @@ const actIIPauseContent = {
       evidence: 'GV-971 terminated due to "gloomy biotech capital market"; 40Hz gamma therapy still in Phase 3 after 10+ years; TNF inhibitors show 60-70% risk reduction but only one small trial.',
     },
   ],
-  lookAhead: 'Next: Despite these barriers, there are genuine reasons for hope.',
+  lookAhead: 'Next: What\'s actually working—and what could work with proper funding.',
 };
 
 // Act III pause card content

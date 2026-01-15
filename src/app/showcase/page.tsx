@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import {
   Download,
   ExternalLink,
@@ -9,7 +10,7 @@ import {
   Info,
 } from 'lucide-react';
 import { Container, Section, Card, CardContent, CardHeader, Button, Heading, DataCard } from '@/components/ui';
-import { MenopauseComparison, AncestryRiskChart, FatDistributionChart, InterventionsTable } from '@/components/sections';
+import { MenopauseComparison, AncestryRiskChart, FatDistributionChart, InterventionsTable, MechanisticNetworkGraph } from '@/components/sections';
 
 // Section definitions for navigation
 const sections = [
@@ -24,13 +25,69 @@ const sections = [
   { id: 'stats', label: 'Stats' },
   { id: 'tables', label: 'Tables' },
   { id: 'sex-ancestry-viz', label: 'Sex & Ancestry' },
+  { id: 'network-graph', label: 'Network Graph' },
 ];
+
+// Section navigation component
+function SectionNav() {
+  const [activeSection, setActiveSection] = useState('showcase-hero');
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-20% 0px -70% 0px' }
+    );
+
+    sections.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <nav className="sticky top-14 z-40 bg-[var(--bg-primary)] border-b border-[var(--border)] py-2 overflow-x-auto">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex gap-1">
+          {sections.map(({ id, label }) => (
+            <button
+              key={id}
+              onClick={() => scrollToSection(id)}
+              className={`px-3 py-1.5 text-sm whitespace-nowrap transition-colors ${
+                activeSection === id
+                  ? 'text-[var(--accent-orange)] font-medium'
+                  : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
+    </nav>
+  );
+}
 
 export default function ShowcasePage() {
   return (
     <main className="min-h-screen bg-[var(--bg-primary)]">
+      <SectionNav />
       {/* Add padding on mobile for the sticky nav */}
-      <Section id="showcase-hero" className="pt-24 lg:pt-24 mt-14 lg:mt-0">
+      <Section id="showcase-hero" className="pt-8 lg:pt-12 mt-14 lg:mt-0">
         <Container>
           <Heading as="h1" className="mb-4">Component Library</Heading>
           <p className="text-[var(--text-muted)] text-lg max-w-2xl">
@@ -86,19 +143,58 @@ export default function ShowcasePage() {
       <Section id="colors" className="bg-[var(--bg-secondary)]">
         <Container>
           <SectionTitle>Color Palette</SectionTitle>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <ColorSwatch name="Primary BG" color="var(--bg-primary)" hex="#faf9f7" />
-            <ColorSwatch name="Secondary BG" color="var(--bg-secondary)" hex="#f5f3f0" />
-            <ColorSwatch name="Card BG" color="var(--bg-card)" hex="#ffffff" />
-            <ColorSwatch name="Border" color="var(--border)" hex="#e5e2dd" />
-            <ColorSwatch name="Text Primary" color="var(--text-primary)" hex="#2d2d2d" dark />
-            <ColorSwatch name="Text Body" color="var(--text-body)" hex="#4a4a4a" dark />
-            <ColorSwatch name="Text Muted" color="var(--text-muted)" hex="#7a7a7a" dark />
-            <ColorSwatch name="Accent Orange" color="var(--accent-orange)" hex="#e36216" dark />
-            <ColorSwatch name="Success" color="var(--success)" hex="#5a8a6e" dark />
-            <ColorSwatch name="Danger" color="var(--danger)" hex="#c75146" dark />
-            <ColorSwatch name="Category Blue" color="var(--category-amyloid)" hex="#60a5fa" dark />
-            <ColorSwatch name="Category Purple" color="var(--category-vascular)" hex="#a78bfa" dark />
+          <div className="space-y-6">
+            <div>
+              <p className="text-sm text-[var(--text-muted)] mb-3 font-medium">Backgrounds & Borders</p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <ColorSwatch name="Primary BG" color="var(--bg-primary)" hex="#faf9f7" />
+                <ColorSwatch name="Secondary BG" color="var(--bg-secondary)" hex="#f5f3f0" />
+                <ColorSwatch name="Card BG" color="var(--bg-card)" hex="#ffffff" />
+                <ColorSwatch name="Border" color="var(--border)" hex="#e5e2dd" />
+              </div>
+            </div>
+            <div>
+              <p className="text-sm text-[var(--text-muted)] mb-3 font-medium">Text</p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <ColorSwatch name="Text Primary" color="var(--text-primary)" hex="#2d2d2d" dark />
+                <ColorSwatch name="Text Body" color="var(--text-body)" hex="#4a4a4a" dark />
+                <ColorSwatch name="Text Muted" color="var(--text-muted)" hex="#7a7a7a" dark />
+                <ColorSwatch name="Accent Orange" color="var(--accent-orange)" hex="#e36216" dark />
+              </div>
+            </div>
+            <div>
+              <p className="text-sm text-[var(--text-muted)] mb-3 font-medium">Semantic Colors</p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <ColorSwatch name="Success" color="var(--success)" hex="#5a8a6e" dark />
+                <ColorSwatch name="Danger" color="var(--danger)" hex="#c75146" dark />
+                <ColorSwatch name="Success Light" color="var(--success-light)" hex="#e8f3ec" />
+                <ColorSwatch name="Danger Light" color="var(--danger-light)" hex="#fae8e6" />
+              </div>
+            </div>
+            <div>
+              <p className="text-sm text-[var(--text-muted)] mb-3 font-medium">Chart Colors</p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <ColorSwatch name="Chart Primary" color="var(--chart-primary)" hex="#486393" dark />
+                <ColorSwatch name="Chart Secondary" color="var(--chart-secondary)" hex="#007385" dark />
+                <ColorSwatch name="Chart Accent" color="var(--chart-accent)" hex="#C9461D" dark />
+                <ColorSwatch name="Chart Warning" color="var(--chart-warning)" hex="#E5AF19" dark />
+                <ColorSwatch name="Chart Pink" color="var(--chart-pink)" hex="#C3577F" dark />
+                <ColorSwatch name="Chart Muted" color="var(--chart-muted)" hex="#787473" dark />
+                <ColorSwatch name="Chart Light Blue" color="var(--chart-light-blue)" hex="#7ED3FF" dark />
+                <ColorSwatch name="Chart Light Orange" color="var(--chart-light-orange)" hex="#FFA380" dark />
+              </div>
+            </div>
+            <div>
+              <p className="text-sm text-[var(--text-muted)] mb-3 font-medium">Category Colors</p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <ColorSwatch name="Amyloid" color="var(--category-amyloid)" hex="#60a5fa" dark />
+                <ColorSwatch name="Vascular" color="var(--category-vascular)" hex="#a78bfa" dark />
+                <ColorSwatch name="Metabolic" color="var(--category-metabolic)" hex="#fbbf24" />
+                <ColorSwatch name="Lysosomal" color="var(--category-lysosomal)" hex="#34d399" dark />
+                <ColorSwatch name="Mitochondrial" color="var(--category-mitochondrial)" hex="#8ecae6" />
+                <ColorSwatch name="Myelin" color="var(--category-myelin)" hex="#f472b6" dark />
+              </div>
+            </div>
           </div>
         </Container>
       </Section>
@@ -418,6 +514,18 @@ export default function ShowcasePage() {
           </div>
         </Container>
       </Section>
+
+      {/* Network Graph */}
+      <Section id="network-graph" className="bg-[var(--bg-secondary)]">
+        <Container>
+          <SectionTitle>Mechanistic Network Graph</SectionTitle>
+          <p className="text-[var(--text-muted)] mb-6">
+            Interactive visualization of the AD mechanistic framework. Select a module to explore its nodes and edges.
+            Click on nodes to see details. Drag to pan, scroll to zoom.
+          </p>
+          <MechanisticNetworkGraph height="700px" />
+        </Container>
+      </Section>
     </main>
   );
 }
@@ -432,17 +540,17 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 
 function ColorSwatch({ name, color, hex, dark }: { name: string; color: string; hex: string; dark?: boolean }) {
   return (
-    <div className="rounded-lg overflow-hidden border border-[var(--border)]">
+    <div className="overflow-hidden border border-[var(--border)]">
       <div
-        className="h-20 flex items-end p-3"
+        className="h-16 flex items-end p-2"
         style={{ backgroundColor: `var(${color.replace('var(', '').replace(')', '')})` }}
       >
         <span className={`text-xs font-mono ${dark ? 'text-white' : 'text-[var(--text-body)]'}`}>
           {hex}
         </span>
       </div>
-      <div className="p-3 bg-white">
-        <p className="text-sm font-medium text-[var(--text-primary)]">{name}</p>
+      <div className="p-2 bg-white">
+        <p className="text-xs font-medium text-[var(--text-primary)]">{name}</p>
       </div>
     </div>
   );
@@ -480,14 +588,14 @@ interface AlertProps {
 
 function Alert({ children, variant = 'info' }: AlertProps) {
   const variantClasses = {
-    info: 'bg-blue-50 text-[var(--category-amyloid)] border-[var(--category-amyloid)]',
+    info: 'bg-[#e8f4f6] text-[var(--chart-secondary)] border-[var(--chart-secondary)]',
     success: 'bg-[var(--success-light)] text-[var(--success)] border-[var(--success)]',
     warning: 'bg-[var(--accent-orange-light)] text-[var(--accent-orange)] border-[var(--accent-orange)]',
     danger: 'bg-[var(--danger-light)] text-[var(--danger)] border-[var(--danger)]',
   };
 
   return (
-    <div className={`flex items-center gap-3 p-4 rounded-lg border ${variantClasses[variant]}`}>
+    <div className={`flex items-center gap-3 p-4 border ${variantClasses[variant]}`}>
       {children}
     </div>
   );

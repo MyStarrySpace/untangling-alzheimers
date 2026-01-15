@@ -708,6 +708,47 @@ export const treatmentsSources: Source[] = [
   },
 
   // ============================================
+  // AS01 ADJUVANT / VACCINES
+  // ============================================
+  {
+    id: 'taquet-as01-2025',
+    type: 'journal',
+    authors: ['Maxime Taquet', 'John A. Todd', 'Paul J. Harrison'],
+    title: 'Lower risk of dementia with AS01-adjuvanted vaccination against shingles and respiratory syncytial virus infections',
+    publication: 'npj Vaccines',
+    year: 2025,
+    doi: '10.1038/s41541-025-01172-3',
+    // PMID: 40562756
+    url: 'https://www.nature.com/articles/s41541-025-01172-3',
+    citations: [
+      {
+        id: 'as01-risk-reduction',
+        quote: 'Both the AS01-adjuvanted shingles and respiratory syncytial virus (RSV) vaccines, individually or combined, were associated with reduced 18-month risk of dementia.',
+        usedIn: ['promisingFrontier'],
+        context: 'Propensity-matched study of 436,788 individuals showing dementia risk reduction.',
+      },
+      {
+        id: 'as01-adjuvant-role',
+        quote: 'No difference was observed between the two AS01-adjuvanted vaccines, suggesting that the AS01 adjuvant itself plays a direct role in lowering dementia risk.',
+        usedIn: ['promisingFrontier'],
+        context: 'Key finding: the effect appears to be from the adjuvant, not the target pathogen.',
+      },
+      {
+        id: 'as01-mechanism',
+        quote: 'Toll-like receptor 4 stimulation with monophosphoryl lipid A (MPL; one of the components of the AS01 system) has been shown to improve Alzheimer\'s disease pathology in mice. The two main ingredients of AS01, MPL and QS-21, act synergistically to activate macrophages and dendritic cells and trigger a cytokine cascade that produces interferon gamma (IFN-γ).',
+        usedIn: ['promisingFrontier'],
+        context: 'Proposed mechanism involving TLR4 and IFN-γ.',
+      },
+      {
+        id: 'as01-risk-numbers',
+        quote: 'Shingrix recipients showed an 18% lower risk of dementia. Those who received Arexvy (RSV vaccine) saw a 29% reduced risk. Together, the vaccines lowered dementia risk by 37%.',
+        usedIn: ['promisingFrontier'],
+        context: 'Specific risk reduction percentages.',
+      },
+    ],
+  },
+
+  // ============================================
   // FAILED APPROACHES (FOR CONTEXT)
   // ============================================
   {

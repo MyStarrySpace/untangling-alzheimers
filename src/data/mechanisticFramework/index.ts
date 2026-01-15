@@ -104,7 +104,7 @@ export const mechanisticFramework: MechanisticFramework = {
   // System boundaries
   inputBoundaries: [
     'aging',
-    'APOE4_genotype',
+    'APOE_genotype',
     'TREM2_variants',
     'familial_AD_mutations',
     'sex',
@@ -272,11 +272,17 @@ export const frameworkStats = {
   totalLoops: feedbackLoops.length,
 
   nodesByCategory: {
+    // SBSF v2.0: Only STOCK, STATE, BOUNDARY (PROCESS removed, REGULATOR is now a role)
     STOCK: allNodes.filter(n => n.category === 'STOCK').length,
-    REGULATOR: allNodes.filter(n => n.category === 'REGULATOR').length,
-    PROCESS: allNodes.filter(n => n.category === 'PROCESS').length,
     STATE: allNodes.filter(n => n.category === 'STATE').length,
     BOUNDARY: allNodes.filter(n => n.category === 'BOUNDARY').length,
+  },
+
+  nodesByRole: {
+    REGULATOR: allNodes.filter(n => n.roles?.includes('REGULATOR')).length,
+    THERAPEUTIC_TARGET: allNodes.filter(n => n.roles?.includes('THERAPEUTIC_TARGET')).length,
+    BIOMARKER: allNodes.filter(n => n.roles?.includes('BIOMARKER')).length,
+    DRUG: allNodes.filter(n => n.roles?.includes('DRUG')).length,
   },
 
   edgesByConfidence: {

@@ -15,14 +15,26 @@
 // ============================================================================
 
 /**
- * Primary node categories following Meadows' systems dynamics
+ * Primary node categories following Meadows' systems dynamics (SBSF v2.0)
+ *
+ * In v2.0, processes are EDGES (verbs), not nodes (nouns).
+ * REGULATOR is now an optional role annotation, not a node category.
  */
 export type NodeCategory =
-  | 'STOCK'      // Accumulations; snapshot values (protein levels, cell counts, plaque burden)
-  | 'REGULATOR'  // Controls rate of change; not consumed (enzymes, receptors, channels)
-  | 'PROCESS'    // Dynamic; flows over time (phagocytosis, inflammation)
-  | 'STATE'      // Qualitative condition (cell phenotype, compartment integrity)
+  | 'STOCK'      // Accumulations; continuous quantities with units (protein levels, cell counts, plaque burden)
+  | 'STATE'      // Categorical/discrete conditions (cell phenotype, compartment integrity, binary states)
   | 'BOUNDARY';  // System boundary condition (gene, drug, clinical outcome)
+
+/**
+ * Optional role annotations for nodes (SBSF v2.0)
+ * These describe the functional role a node plays in the system,
+ * independent of its structural category.
+ */
+export type NodeRoleAnnotation =
+  | 'REGULATOR'           // Controls rate of other processes (enzymes, receptors, channels)
+  | 'BIOMARKER'           // Measurable indicator of disease state
+  | 'THERAPEUTIC_TARGET'  // Potential intervention point
+  | 'DRUG';               // Pharmacological agent
 
 /**
  * Stock subtypes - things that accumulate
@@ -68,19 +80,11 @@ export type RegulatorSubtype =
   | 'Repressor'           // REST, HDACs
   | 'MasterRegulator';    // PGC-1α, SREBP
 
-/**
- * Process subtypes - activities over time
- */
-export type ProcessSubtype =
-  | 'BiologicalProcess'   // GO Biological Process terms
-  | 'Phagocytosis'        // GO:0006909
-  | 'Autophagy'           // GO:0006914
-  | 'Mitophagy'           // GO:0000422
-  | 'Apoptosis'           // GO:0006915
-  | 'Ferroptosis'         // Non-canonical cell death
-  | 'Neuroinflammation'   // MESH:D000071618
-  | 'Neurodegeneration'   // HP:0002180
-  | 'Reaction';           // Specific biochemical reactions
+// NOTE: ProcessSubtype removed in SBSF v2.0 - processes are now edge labels (mechanism_label)
+// Former PROCESS nodes should be reclassified as:
+// - Edge labels (mechanism_label field) for transformations
+// - STATE nodes for conditions like "NLRP3_primed"
+// - STOCK nodes with REGULATOR role for rate-controlling entities
 
 /**
  * State subtypes - qualitative conditions
@@ -101,7 +105,17 @@ export type StateSubtype =
   // System states
   | 'CompartmentIntegrity'// BBB_intact, lysosomal_pH_normal
   | 'MetabolicState'      // Glycolytic, oxidative
-  | 'DiseaseStage';       // Preclinical, MCI, dementia
+  | 'DiseaseStage'        // Preclinical, MCI, dementia
+  // SBSF v2.0: Former PROCESS subtypes migrated to STATE
+  | 'BiologicalProcess'   // GO Biological Process (activity state)
+  | 'Phagocytosis'        // GO:0006909
+  | 'Autophagy'           // GO:0006914
+  | 'Mitophagy'           // GO:0000422
+  | 'Apoptosis'           // GO:0006915
+  | 'Ferroptosis'         // Non-canonical cell death
+  | 'Neuroinflammation'   // MESH:D000071618
+  | 'Neurodegeneration'   // HP:0002180
+  | 'Reaction';           // Specific biochemical reactions
 
 /**
  * Boundary subtypes - system edges
@@ -126,11 +140,32 @@ export type BoundarySubtype =
   | 'CognitiveScore'      // MMSE, CDR, ADAS-Cog
   | 'Diagnosis';          // MCI, dementia
 
-export type NodeSubtype = StockSubtype | RegulatorSubtype | ProcessSubtype | StateSubtype | BoundarySubtype;
+export type NodeSubtype = StockSubtype | RegulatorSubtype | StateSubtype | BoundarySubtype;
 
 // ============================================================================
-// EDGE/RELATION TYPES
+// EDGE/RELATION TYPES (SBSF v2.0)
 // ============================================================================
+
+/**
+ * Edge types in SBSF v2.0 - structural classification of edges
+ *
+ * FLOW: Mass-conserving transformation (X → Y, X decreases as Y increases)
+ *       Example: tau → pTau (phosphorylation), APP → Aβ (cleavage)
+ *
+ * TRANSITION: State change of same entity (discrete categorical change)
+ *             Example: microglia_homeostatic → microglia_DAM
+ *
+ * MODULATION: Rate control (source affects rate of target process)
+ *             Example: TREM2 --modulates--> phagocytosis
+ *
+ * INFLUENCE: Indirect/downstream effect (causal but not mechanistically direct)
+ *            Example: Aβ_plaque --influences--> cognitive_score
+ */
+export type EdgeType =
+  | 'FLOW'        // Mass-conserving transformation between stocks
+  | 'TRANSITION'  // State change (same entity, different categorical state)
+  | 'MODULATION'  // Rate control (regulator affects process rate)
+  | 'INFLUENCE';  // Indirect downstream effect
 
 /**
  * Causal relation types
@@ -258,14 +293,18 @@ export interface Compartment {
 // ============================================================================
 
 /**
- * Node roles in the system
+ * Node roles in the system (legacy - keep for compatibility)
+ * For SBSF v2.0, use NodeRoleAnnotation instead
  */
 export type NodeRole =
   | 'THERAPEUTIC_TARGET'
   | 'BIOMARKER'
   | 'RATE_LIMITER'
   | 'LEVERAGE_POINT'
-  | 'FEEDBACK_HUB';
+  | 'FEEDBACK_HUB'
+  // SBSF v2.0 additions
+  | 'REGULATOR'
+  | 'DRUG';
 
 /**
  * Timescale of node dynamics
@@ -275,6 +314,32 @@ export type Timescale =
   | 'weeks' | 'months' | 'years' | 'decades';
 
 /**
+ * Boundary variant - for genetic/environmental inputs with multiple alleles/values
+ * Each variant has its own effect on downstream edges
+ */
+export interface BoundaryVariant {
+  id: string;                   // e.g., "APOE2", "APOE3", "APOE4"
+  label: string;                // Human-readable name
+  frequency?: number;           // Population frequency (0-1)
+
+  // Effect on downstream edges (relative to reference)
+  effectDirection: 'protective' | 'neutral' | 'risk';
+  effectMagnitude?: number;     // Fold-change or odds ratio
+  effectDescription?: string;   // Brief explanation of the effect
+
+  // Evidence for this variant's effect
+  evidence?: {
+    pmid?: string;
+    oddsRatio?: number;
+    confidenceInterval?: [number, number];
+    population?: string;        // e.g., "European", "Global"
+  }[];
+
+  // Visual styling hints
+  color?: string;               // Override color for this variant
+}
+
+/**
  * Full node definition
  */
 export interface MechanisticNode {
@@ -282,7 +347,8 @@ export interface MechanisticNode {
   label: string;              // Human-readable display name
   category: NodeCategory;
   subtype: NodeSubtype;
-  moduleId: string;           // Which module this belongs to
+  moduleId: string;           // Primary module this belongs to
+  sharedWith?: string[];      // Other modules that use this node (for cross-module nodes)
 
   // Optional metadata
   references?: OntologyReferences;
@@ -305,6 +371,10 @@ export interface MechanisticNode {
     sites?: string[];         // e.g., ["S396", "S404"]
     effect?: string;
   }[];
+
+  // Boundary-specific: variants with different effects
+  variants?: BoundaryVariant[];
+  defaultVariant?: string;    // ID of the default/reference variant
 }
 
 // ============================================================================
@@ -349,7 +419,7 @@ export interface QuantitativeData {
 }
 
 /**
- * Full edge definition
+ * Full edge definition (SBSF v2.0)
  */
 export interface MechanisticEdge {
   id: string;                 // Unique identifier (e.g., "E04.001")
@@ -358,8 +428,11 @@ export interface MechanisticEdge {
   relation: RelationType;
   moduleId: string;           // Which module this belongs to
 
-  // Mechanism details
-  mechanismLabel?: string;    // Short label for the mechanism
+  // SBSF v2.0: Edge type classification (required)
+  edgeType?: EdgeType;        // FLOW, TRANSITION, MODULATION, or INFLUENCE
+
+  // Mechanism details (in v2.0, mechanism_label replaces PROCESS nodes)
+  mechanismLabel?: string;    // The process name (what was formerly a PROCESS node)
   mechanismDescription?: string;
 
   // Evidence
@@ -498,25 +571,41 @@ export interface MechanisticFramework {
 // ============================================================================
 
 /**
- * Node shape for visualization (based on node category)
+ * Node shape for visualization (based on node category) - SBSF v2.0
  */
 export const NODE_SHAPES: Record<NodeCategory, string> = {
-  STOCK: 'rectangle',         // Container shape
-  REGULATOR: 'diamond',       // Diamond
-  PROCESS: 'roundedRect',     // Rounded/pill shape
-  STATE: 'hexagon',           // Hexagon
-  BOUNDARY: 'cloud',          // Cloud or half-circle
+  STOCK: 'rectangle',         // Container shape (with units displayed)
+  STATE: 'hexagon',           // Hexagon for categorical states
+  BOUNDARY: 'cloud',          // Cloud or half-circle for system edges
 };
 
 /**
- * Default colors for node categories
+ * Default colors for node categories - SBSF v2.0
  */
 export const NODE_CATEGORY_COLORS: Record<NodeCategory, string> = {
   STOCK: '#486393',           // Blue
-  REGULATOR: '#e36216',       // Orange
-  PROCESS: '#5a8a6e',         // Green
   STATE: '#a78bfa',           // Purple
   BOUNDARY: '#787473',        // Gray
+};
+
+/**
+ * Colors for node role annotations (overlay on category color)
+ */
+export const NODE_ROLE_COLORS: Record<NodeRoleAnnotation, string> = {
+  REGULATOR: '#e36216',       // Orange - rate controllers
+  BIOMARKER: '#34d399',       // Green - measurable indicators
+  THERAPEUTIC_TARGET: '#C9461D', // Red-orange - intervention points
+  DRUG: '#5a8a6e',            // Sage green - pharmacological agents
+};
+
+/**
+ * Colors for edge types - SBSF v2.0
+ */
+export const EDGE_TYPE_COLORS: Record<EdgeType, string> = {
+  FLOW: '#486393',            // Blue - mass transfer
+  TRANSITION: '#a78bfa',      // Purple - state changes
+  MODULATION: '#e36216',      // Orange - rate control
+  INFLUENCE: '#787473',       // Gray - indirect effects
 };
 
 /**

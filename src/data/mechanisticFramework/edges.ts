@@ -5,7 +5,7 @@
  * Each edge includes citations, mechanism description, and causal confidence.
  */
 
-import type { MechanisticEdge, RelationType } from './types';
+import type { MechanisticEdge, RelationType, EdgeType } from './types';
 
 // ============================================================================
 // MODULE 1: Insulin/mTOR/Autophagy Axis
@@ -18,6 +18,7 @@ export const module1Edges: MechanisticEdge[] = [
     target: 'mTORC1_hyperactive',
     relation: 'increases',
     moduleId: 'M01',
+    edgeType: 'INFLUENCE', // SBSF v2.0: Indirect downstream effect
     mechanismLabel: 'insulin_mTORC1_activation',
     mechanismDescription: 'Chronic hyperinsulinemia → sustained PI3K-AKT → TSC1/2 phosphorylation (inhibited) → Rheb-GTP accumulates → mTORC1 disinhibited on lysosomal membrane',
     causalConfidence: 'L5',
@@ -47,6 +48,7 @@ export const module1Edges: MechanisticEdge[] = [
     target: 'TFEB_phosphorylated',
     relation: 'directlyIncreases',
     moduleId: 'M01',
+    edgeType: 'MODULATION', // SBSF v2.0: Rate control (kinase → substrate)
     mechanismLabel: 'mTORC1_TFEB_phosphorylation',
     mechanismDescription: 'mTORC1 directly phosphorylates TFEB at Ser211 and Ser142. pSer211 creates 14-3-3 binding site → cytoplasmic retention',
     causalConfidence: 'L5',
@@ -76,6 +78,7 @@ export const module1Edges: MechanisticEdge[] = [
     target: 'lysosomal_genes_down',
     relation: 'increases',
     moduleId: 'M01',
+    edgeType: 'TRANSITION', // SBSF v2.0: State change (TFEB state → gene expression state)
     mechanismLabel: 'TFEB_cytoplasmic_sequestration',
     mechanismDescription: 'pSer211-TFEB binds 14-3-3 → cytoplasmic retention → cannot enter nucleus → CLEAR network genes not transcribed',
     causalConfidence: 'L3',
@@ -1426,13 +1429,248 @@ export const module5Edges: MechanisticEdge[] = [
 ];
 
 // ============================================================================
+// CROSS-MODULE CONNECTIONS: Key Missing Edges
+// ============================================================================
+
+export const crossModuleEdges: MechanisticEdge[] = [
+  // IL-1β → neuroinflammation (M04 → M05)
+  {
+    id: 'E_CM.001',
+    source: 'IL1B',
+    target: 'neuroinflammation',
+    relation: 'increases',
+    moduleId: 'M04',
+    mechanismLabel: 'IL1B_neuroinflammation',
+    mechanismDescription: 'IL-1β is a major driver of neuroinflammation; activates microglia and astrocytes',
+    causalConfidence: 'L4',
+    crossModule: 'M04 → M05',
+    evidence: [
+      {
+        pmid: '33318676',
+        doi: '10.1038/s41582-020-00435-y',
+        firstAuthor: 'Leng',
+        year: 2021,
+        title: 'Neuroinflammation and microglial activation in Alzheimer disease',
+        methodType: 'meta_analysis',
+        causalConfidence: 'L4',
+      },
+    ],
+  },
+  // Type I IFN → neuroinflammation (M04 → M05)
+  {
+    id: 'E_CM.002',
+    source: 'type_I_IFN',
+    target: 'neuroinflammation',
+    relation: 'increases',
+    moduleId: 'M04',
+    mechanismLabel: 'IFN_neuroinflammation',
+    mechanismDescription: 'Type I interferons drive ISG expression and neuroinflammatory state',
+    causalConfidence: 'L3',
+    crossModule: 'M04 → M05',
+    evidence: [
+      {
+        pmid: '37532932',
+        doi: '10.1038/s41586-023-06373-1',
+        firstAuthor: 'Gulen',
+        year: 2023,
+        title: 'cGAS-STING drives ageing-related inflammation and neurodegeneration',
+        methodType: 'knockout',
+        causalConfidence: 'L3',
+      },
+    ],
+  },
+  // A1 astrocytes → neuronal dysfunction (M05 → M07)
+  {
+    id: 'E_CM.003',
+    source: 'A1_astrocytes',
+    target: 'neuronal_dysfunction',
+    relation: 'increases',
+    moduleId: 'M05',
+    mechanismLabel: 'A1_neurotoxicity',
+    mechanismDescription: 'A1 astrocytes lose ability to promote neuronal survival and actively induce neuronal death',
+    causalConfidence: 'L3',
+    crossModule: 'M05 → M07',
+    evidence: [
+      {
+        pmid: '28099414',
+        doi: '10.1038/nature21029',
+        firstAuthor: 'Liddelow',
+        year: 2017,
+        title: 'Neurotoxic reactive astrocytes are induced by activated microglia',
+        quote: 'A1 astrocytes lose the ability to promote neuronal survival...and induce the death of neurons and oligodendrocytes',
+        methodType: 'knockout',
+        causalConfidence: 'L3',
+      },
+    ],
+  },
+  // NF-κB → BACE1 upregulation (M05 → M06)
+  {
+    id: 'E_CM.004',
+    source: 'NF_kB_active',
+    target: 'BACE1_upregulated',
+    relation: 'increases',
+    moduleId: 'M05',
+    mechanismLabel: 'NFkB_BACE1_transcription',
+    mechanismDescription: 'NF-κB binds BACE1 promoter → transcriptional upregulation → increased Aβ production',
+    causalConfidence: 'L4',
+    crossModule: 'M05 → M06',
+    evidence: [
+      {
+        pmid: '36875627',
+        doi: '10.3389/fimmu.2023.1117172',
+        firstAuthor: 'Wang',
+        year: 2023,
+        title: 'The effects of microglia-associated neuroinflammation on Alzheimer\'s disease',
+        quote: 'NF-κB activation stimulates BACE1 expression and Aβ processing',
+        methodType: 'meta_analysis',
+        causalConfidence: 'L4',
+      },
+    ],
+    keyInsight: 'Links neuroinflammation to amyloid production',
+  },
+  // Ferroptosis → neuronal count (M09 → BOUNDARY)
+  {
+    id: 'E_CM.005',
+    source: 'ferroptosis',
+    target: 'neuronal_count',
+    relation: 'decreases',
+    moduleId: 'M09',
+    mechanismLabel: 'ferroptosis_neuronal_death',
+    mechanismDescription: 'Ferroptotic cell death reduces neuronal population',
+    causalConfidence: 'L4',
+    crossModule: 'M09 → BOUNDARY',
+    evidence: [
+      {
+        pmid: '22632970',
+        doi: '10.1016/j.cell.2012.03.042',
+        firstAuthor: 'Dixon',
+        year: 2012,
+        title: 'Ferroptosis: an iron-dependent form of nonapoptotic cell death',
+        methodType: 'in_vitro',
+        causalConfidence: 'L4',
+      },
+    ],
+  },
+  // Neuronal dysfunction → cognitive score (M07 → BOUNDARY)
+  {
+    id: 'E_CM.006',
+    source: 'neuronal_dysfunction',
+    target: 'cognitive_score',
+    relation: 'decreases',
+    moduleId: 'M07',
+    mechanismLabel: 'dysfunction_cognition',
+    mechanismDescription: 'Neuronal dysfunction impairs synaptic transmission and cognitive function',
+    causalConfidence: 'L6',
+    crossModule: 'M07 → BOUNDARY',
+    evidence: [
+      {
+        firstAuthor: 'Various',
+        year: 2020,
+        methodType: 'cohort',
+        causalConfidence: 'L6',
+      },
+    ],
+  },
+  // Tau misfolded → tau aggregated (M07 internal - missing explicit edge)
+  {
+    id: 'E_CM.007',
+    source: 'tau_misfolded',
+    target: 'tau_aggregated',
+    relation: 'increases',
+    moduleId: 'M07',
+    mechanismLabel: 'tau_aggregation_cascade',
+    mechanismDescription: 'Misfolded tau forms PHF seeds that template further aggregation',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        pmid: '26631930',
+        doi: '10.1038/nrn.2015.1',
+        firstAuthor: 'Wang',
+        year: 2016,
+        title: 'Tau in physiology and pathology',
+        methodType: 'in_vitro',
+        causalConfidence: 'L5',
+      },
+    ],
+  },
+  // LTP inhibition → cognitive score (M06 → BOUNDARY)
+  {
+    id: 'E_CM.008',
+    source: 'LTP_inhibition',
+    target: 'cognitive_score',
+    relation: 'decreases',
+    moduleId: 'M06',
+    mechanismLabel: 'LTP_memory_impairment',
+    mechanismDescription: 'LTP is cellular substrate for learning/memory; inhibition directly impairs cognition',
+    causalConfidence: 'L4',
+    crossModule: 'M06 → BOUNDARY',
+    evidence: [
+      {
+        pmid: '19029886',
+        doi: '10.1038/nature07761',
+        firstAuthor: 'Lauren',
+        year: 2009,
+        title: 'Cellular prion protein mediates impairment of synaptic plasticity by amyloid-beta oligomers',
+        methodType: 'intervention_animal',
+        causalConfidence: 'L4',
+      },
+    ],
+  },
+  // BBB breakdown → neuroinflammation (M12 → M05)
+  {
+    id: 'E_CM.009',
+    source: 'BBB_breakdown',
+    target: 'neuroinflammation',
+    relation: 'increases',
+    moduleId: 'M12',
+    mechanismLabel: 'BBB_peripheral_infiltration',
+    mechanismDescription: 'BBB breakdown allows peripheral immune cell infiltration and plasma protein leakage → neuroinflammation',
+    causalConfidence: 'L4',
+    crossModule: 'M12 → M05',
+    evidence: [
+      {
+        pmid: '22696567',
+        doi: '10.1038/nature11087',
+        firstAuthor: 'Bell',
+        year: 2012,
+        title: 'Apolipoprotein E controls cerebrovascular integrity via cyclophilin A',
+        methodType: 'knockout',
+        causalConfidence: 'L4',
+      },
+    ],
+  },
+  // APOE4 → Aβ clearance reduced (M10 → M06)
+  {
+    id: 'E_CM.010',
+    source: 'APOE_lipidation_reduced',
+    target: 'Abeta_clearance',
+    relation: 'decreases',
+    moduleId: 'M10',
+    mechanismLabel: 'APOE4_clearance_impairment',
+    mechanismDescription: 'Hypolipidated APOE4 is less effective at promoting Aβ clearance via LRP1 and BBB transport',
+    causalConfidence: 'L4',
+    crossModule: 'M10 → M06',
+    evidence: [
+      {
+        pmid: '21725313',
+        firstAuthor: 'Castellano',
+        year: 2011,
+        title: 'Human apoE isoforms differentially regulate brain amyloid-β peptide clearance',
+        methodType: 'intervention_animal',
+        causalConfidence: 'L4',
+      },
+    ],
+  },
+];
+
+// ============================================================================
 // MODULE 6: Amyloid Processing
 // ============================================================================
 
 export const module6Edges: MechanisticEdge[] = [
   {
     id: 'E06.001',
-    source: 'BACE1',
+    source: 'BACE1_upregulated',
     target: 'APP_betaCTF',
     relation: 'directlyIncreases',
     moduleId: 'M06',
@@ -1675,8 +1913,8 @@ export const module7Edges: MechanisticEdge[] = [
   // 7B: Transsulfuration pathway (CSE/H2S)
   {
     id: 'E07.005',
-    source: 'CSE',
-    target: 'H2S',
+    source: 'CSE_enzyme',
+    target: 'H2S_production',
     relation: 'directlyIncreases',
     moduleId: 'M07',
     mechanismLabel: 'H2S_production',
@@ -1695,7 +1933,7 @@ export const module7Edges: MechanisticEdge[] = [
   },
   {
     id: 'E07.006',
-    source: 'H2S',
+    source: 'H2S_production',
     target: 'GSK3B_active',
     relation: 'decreases',
     moduleId: 'M07',
@@ -1717,8 +1955,8 @@ export const module7Edges: MechanisticEdge[] = [
   },
   {
     id: 'E07.007',
-    source: 'CSE',
-    target: 'GSH',
+    source: 'CSE_enzyme',
+    target: 'glutathione_GSH',
     relation: 'increases',
     moduleId: 'M07',
     mechanismLabel: 'cysteine_GSH_synthesis',
@@ -1740,7 +1978,7 @@ export const module7Edges: MechanisticEdge[] = [
   {
     id: 'E07.008',
     source: 'aging',
-    target: 'CSE',
+    target: 'CSE_enzyme',
     relation: 'decreases',
     moduleId: 'M07',
     mechanismLabel: 'age_CSE_decline',
@@ -1792,7 +2030,7 @@ export const module8Edges: MechanisticEdge[] = [
   {
     id: 'E08.002',
     source: 'C1q',
-    target: 'C3',
+    target: 'C3_opsonization',
     relation: 'directlyIncreases',
     moduleId: 'M08',
     mechanismLabel: 'complement_cascade_initiation',
@@ -1813,8 +2051,8 @@ export const module8Edges: MechanisticEdge[] = [
   },
   {
     id: 'E08.003',
-    source: 'C3',
-    target: 'CR3_microglia',
+    source: 'C3_opsonization',
+    target: 'CR3_mediated_pruning',
     relation: 'increases',
     moduleId: 'M08',
     mechanismLabel: 'C3_iC3b_opsonization',
@@ -1836,8 +2074,8 @@ export const module8Edges: MechanisticEdge[] = [
   },
   {
     id: 'E08.004',
-    source: 'CR3_microglia',
-    target: 'synapse_engulfment',
+    source: 'CR3_mediated_pruning',
+    target: 'synapse_elimination',
     relation: 'directlyIncreases',
     moduleId: 'M08',
     mechanismLabel: 'CR3_phagocytosis_trigger',
@@ -1855,7 +2093,7 @@ export const module8Edges: MechanisticEdge[] = [
   },
   {
     id: 'E08.005',
-    source: 'synapse_engulfment',
+    source: 'synapse_elimination',
     target: 'synapses',
     relation: 'decreases',
     moduleId: 'M08',
@@ -1929,7 +2167,7 @@ export const module9Edges: MechanisticEdge[] = [
   {
     id: 'E09.001',
     source: 'IL1B',
-    target: 'hepcidin',
+    target: 'hepcidin_elevated',
     relation: 'increases',
     moduleId: 'M09',
     mechanismLabel: 'IL6_STAT3_hepcidin',
@@ -1950,8 +2188,8 @@ export const module9Edges: MechanisticEdge[] = [
   },
   {
     id: 'E09.002',
-    source: 'hepcidin',
-    target: 'ferroportin',
+    source: 'hepcidin_elevated',
+    target: 'ferroportin_reduced',
     relation: 'decreases',
     moduleId: 'M09',
     mechanismLabel: 'hepcidin_ferroportin_degradation',
@@ -1973,7 +2211,7 @@ export const module9Edges: MechanisticEdge[] = [
   },
   {
     id: 'E09.003',
-    source: 'ferroportin',
+    source: 'ferroportin_reduced',
     target: 'labile_iron',
     relation: 'decreases',
     moduleId: 'M09',
@@ -1993,7 +2231,7 @@ export const module9Edges: MechanisticEdge[] = [
   {
     id: 'E09.004',
     source: 'labile_iron',
-    target: 'lipid_peroxides',
+    target: 'lipid_peroxidation',
     relation: 'directlyIncreases',
     moduleId: 'M09',
     mechanismLabel: 'Fenton_reaction',
@@ -2015,8 +2253,8 @@ export const module9Edges: MechanisticEdge[] = [
   },
   {
     id: 'E09.005',
-    source: 'GPX4',
-    target: 'lipid_peroxides',
+    source: 'GPX4_activity',
+    target: 'lipid_peroxidation',
     relation: 'decreases',
     moduleId: 'M09',
     mechanismLabel: 'GPX4_lipid_peroxide_reduction',
@@ -2038,7 +2276,7 @@ export const module9Edges: MechanisticEdge[] = [
   },
   {
     id: 'E09.006',
-    source: 'lipid_peroxides',
+    source: 'lipid_peroxidation',
     target: 'ferroptosis',
     relation: 'directlyIncreases',
     moduleId: 'M09',
@@ -2057,8 +2295,8 @@ export const module9Edges: MechanisticEdge[] = [
   },
   {
     id: 'E09.007',
-    source: 'GSH',
-    target: 'GPX4',
+    source: 'glutathione_GSH',
+    target: 'GPX4_activity',
     relation: 'increases',
     moduleId: 'M09',
     mechanismLabel: 'GSH_GPX4_cofactor',
@@ -2107,7 +2345,7 @@ export const module9Edges: MechanisticEdge[] = [
 export const module10Edges: MechanisticEdge[] = [
   {
     id: 'E10.001',
-    source: 'APOE4_genotype',
+    source: 'APOE_genotype',
     target: 'APOE4_domain_interaction',
     relation: 'directlyIncreases',
     moduleId: 'M10',
@@ -2127,7 +2365,7 @@ export const module10Edges: MechanisticEdge[] = [
   {
     id: 'E10.002',
     source: 'APOE4_domain_interaction',
-    target: 'APOE_lipidation_impaired',
+    target: 'APOE_lipidation_reduced',
     relation: 'increases',
     moduleId: 'M10',
     mechanismLabel: 'domain_interaction_lipidation',
@@ -2145,8 +2383,8 @@ export const module10Edges: MechanisticEdge[] = [
   },
   {
     id: 'E10.003',
-    source: 'APOE_lipidation_impaired',
-    target: 'Abeta_clearance_reduced',
+    source: 'APOE_lipidation_reduced',
+    target: 'Abeta_clearance',
     relation: 'increases',
     moduleId: 'M10',
     mechanismLabel: 'APOE4_Abeta_clearance',
@@ -2209,7 +2447,7 @@ export const module10Edges: MechanisticEdge[] = [
   {
     id: 'E10.006',
     source: 'Nrf2_activity',
-    target: 'GPX4',
+    target: 'GPX4_activity',
     relation: 'increases',
     moduleId: 'M10',
     mechanismLabel: 'Nrf2_GPX4_induction',
@@ -2279,7 +2517,7 @@ export const module11Edges: MechanisticEdge[] = [
   {
     id: 'E11.003',
     source: 'DAM_stage2',
-    target: 'plaque_barrier',
+    target: 'plaque_barrier_function',
     relation: 'increases',
     moduleId: 'M11',
     mechanismLabel: 'DAM_plaque_compaction',
@@ -2347,8 +2585,8 @@ export const module11Edges: MechanisticEdge[] = [
 export const module12Edges: MechanisticEdge[] = [
   {
     id: 'E12.001',
-    source: 'APOE4_genotype',
-    target: 'CypA_BBB',
+    source: 'APOE_genotype',
+    target: 'CypA_elevated',
     relation: 'increases',
     moduleId: 'M12',
     mechanismLabel: 'APOE4_CypA_upregulation',
@@ -2370,8 +2608,8 @@ export const module12Edges: MechanisticEdge[] = [
   },
   {
     id: 'E12.002',
-    source: 'CypA_BBB',
-    target: 'MMP9_BBB',
+    source: 'CypA_elevated',
+    target: 'MMP9_elevated',
     relation: 'directlyIncreases',
     moduleId: 'M12',
     mechanismLabel: 'CypA_MMP9_activation',
@@ -2389,7 +2627,7 @@ export const module12Edges: MechanisticEdge[] = [
   },
   {
     id: 'E12.003',
-    source: 'MMP9_BBB',
+    source: 'MMP9_elevated',
     target: 'BBB_breakdown',
     relation: 'directlyIncreases',
     moduleId: 'M12',
@@ -2776,6 +3014,124 @@ export const module16Edges: MechanisticEdge[] = [
 ];
 
 // ============================================================================
+// MODULE 17: Immunomodulatory Interventions (AS01)
+// ============================================================================
+
+export const module17Edges: MechanisticEdge[] = [
+  {
+    id: 'E17.001',
+    source: 'AS01_adjuvant',
+    target: 'TLR4_activation',
+    relation: 'directlyIncreases',
+    moduleId: 'M17',
+    mechanismLabel: 'MPL_TLR4_agonism',
+    mechanismDescription: 'Monophosphoryl lipid A (MPL) component of AS01 directly activates TLR4 on dendritic cells and macrophages',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        pmid: '40562756',
+        doi: '10.1038/s41541-025-01172-3',
+        firstAuthor: 'Taquet',
+        year: 2025,
+        title: 'Lower risk of dementia with AS01-adjuvanted vaccination against shingles and respiratory syncytial virus infections',
+        quote: 'Toll-like receptor 4 stimulation with monophosphoryl lipid A (MPL; one of the components of the AS01 system) has been shown to improve Alzheimer\'s disease pathology in mice',
+        methodType: 'cohort',
+        methodDetails: 'Propensity-score matched cohort of 436,788 individuals',
+        causalConfidence: 'L6',
+        species: {
+          ncbiTaxon: 'NCBITaxon:9606',
+          commonName: 'human',
+        },
+      },
+    ],
+    keyInsight: 'AS01 adjuvant appears to be the active component, not the vaccine target',
+  },
+  {
+    id: 'E17.002',
+    source: 'TLR4_activation',
+    target: 'IFN_gamma',
+    relation: 'increases',
+    moduleId: 'M17',
+    mechanismLabel: 'TLR4_IFNg_cascade',
+    mechanismDescription: 'TLR4 activation → MyD88/TRIF signaling → cytokine cascade → IFN-γ production via DC/T-cell interaction',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '40562756',
+        doi: '10.1038/s41541-025-01172-3',
+        firstAuthor: 'Taquet',
+        year: 2025,
+        title: 'Lower risk of dementia with AS01-adjuvanted vaccination against shingles and respiratory syncytial virus infections',
+        quote: 'The two main ingredients of AS01, MPL and QS-21, act synergistically to activate macrophages and dendritic cells and trigger a cytokine cascade that produces interferon gamma (IFN-γ)',
+        methodType: 'cohort',
+        methodDetails: 'Mechanistic rationale from immunology literature',
+        causalConfidence: 'L4',
+        species: {
+          ncbiTaxon: 'NCBITaxon:9606',
+          commonName: 'human',
+        },
+      },
+    ],
+  },
+  {
+    id: 'E17.003',
+    source: 'IFN_gamma',
+    target: 'amyloid_clearance_enhanced',
+    relation: 'increases',
+    moduleId: 'M17',
+    mechanismLabel: 'IFNg_amyloid_clearance',
+    mechanismDescription: 'IFN-γ may attenuate amyloid plaque deposition; negatively correlated with cognitive decline in cognitively unimpaired older adults',
+    causalConfidence: 'L7',
+    evidence: [
+      {
+        pmid: '40562756',
+        doi: '10.1038/s41541-025-01172-3',
+        firstAuthor: 'Taquet',
+        year: 2025,
+        title: 'Lower risk of dementia with AS01-adjuvanted vaccination against shingles and respiratory syncytial virus infections',
+        quote: 'IFN-γ might attenuate amyloid plaque deposition and is negatively correlated with cognitive decline in cognitively unimpaired older adults',
+        methodType: 'cohort',
+        methodDetails: 'Proposed mechanism based on prior literature',
+        causalConfidence: 'L7',
+        species: {
+          ncbiTaxon: 'NCBITaxon:9606',
+          commonName: 'human',
+        },
+      },
+    ],
+    keyInsight: 'Mechanism speculative; observational dementia risk reduction is robust',
+    translationalGap: 'No RCT for dementia outcomes; mechanism proposed but not tested interventionally',
+  },
+  {
+    id: 'E17.004',
+    source: 'amyloid_clearance_enhanced',
+    target: 'cognitive_function',
+    relation: 'increases',
+    moduleId: 'M17',
+    mechanismLabel: 'clearance_cognition',
+    mechanismDescription: 'Enhanced Aβ clearance may reduce oligomer toxicity and preserve synaptic function',
+    causalConfidence: 'L7',
+    evidence: [
+      {
+        pmid: '40562756',
+        doi: '10.1038/s41541-025-01172-3',
+        firstAuthor: 'Taquet',
+        year: 2025,
+        title: 'Lower risk of dementia with AS01-adjuvanted vaccination against shingles and respiratory syncytial virus infections',
+        quote: 'Both the AS01-adjuvanted shingles and respiratory syncytial virus (RSV) vaccines, individually or combined, were associated with reduced 18-month risk of dementia',
+        methodType: 'cohort',
+        methodDetails: '18% (Shingrix), 29% (Arexvy), 37% (combined) dementia risk reduction',
+        causalConfidence: 'L6',
+        species: {
+          ncbiTaxon: 'NCBITaxon:9606',
+          commonName: 'human',
+        },
+      },
+    ],
+  },
+];
+
+// ============================================================================
 // EXPORT ALL EDGES
 // ============================================================================
 
@@ -2785,6 +3141,7 @@ export const allEdges: MechanisticEdge[] = [
   ...module3Edges,
   ...module4Edges,
   ...module5Edges,
+  ...crossModuleEdges,
   ...module6Edges,
   ...module7Edges,
   ...module8Edges,
@@ -2796,6 +3153,7 @@ export const allEdges: MechanisticEdge[] = [
   ...module14Edges,
   ...module15Edges,
   ...module16Edges,
+  ...module17Edges,
 ];
 
 export default allEdges;

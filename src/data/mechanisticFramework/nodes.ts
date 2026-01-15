@@ -23,14 +23,84 @@ export const boundaryNodes: MechanisticNode[] = [
     mechanism: 'Drives C1q↑, iron accumulation, DIM infiltration, meningeal lymphatic decline',
   },
   {
-    id: 'APOE4_genotype',
-    label: 'APOE4 Genotype',
+    id: 'APOE_genotype',
+    label: 'APOE Genotype',
     category: 'BOUNDARY',
     subtype: 'GeneticVariant',
     moduleId: 'BOUNDARY',
     references: { gene: 'HGNC:613' },
-    description: 'APOE ε4 allele',
-    mechanism: 'Confers ~3-12x AD risk depending on copy number',
+    description: 'Apolipoprotein E genetic variants',
+    mechanism: 'Major genetic risk factor for late-onset AD',
+    defaultVariant: 'APOE3',
+    variants: [
+      {
+        id: 'APOE2',
+        label: 'APOE ε2',
+        frequency: 0.08,
+        effectDirection: 'protective',
+        effectMagnitude: 0.6,
+        effectDescription: 'Protective against AD; better Aβ clearance, reduced tau pathology',
+        color: '#34d399',
+        evidence: [
+          {
+            pmid: '23571587',
+            oddsRatio: 0.6,
+            confidenceInterval: [0.5, 0.7],
+            population: 'European',
+          },
+        ],
+      },
+      {
+        id: 'APOE3',
+        label: 'APOE ε3',
+        frequency: 0.78,
+        effectDirection: 'neutral',
+        effectMagnitude: 1.0,
+        effectDescription: 'Reference allele; most common in population',
+        color: '#787473',
+        evidence: [
+          {
+            pmid: '23571587',
+            oddsRatio: 1.0,
+            population: 'European',
+          },
+        ],
+      },
+      {
+        id: 'APOE4_het',
+        label: 'APOE ε4 (1 copy)',
+        frequency: 0.14,
+        effectDirection: 'risk',
+        effectMagnitude: 3.2,
+        effectDescription: 'Single ε4 allele: ~3x AD risk; impaired lipidation, Aβ clearance',
+        color: '#E5AF19',
+        evidence: [
+          {
+            pmid: '23571587',
+            oddsRatio: 3.2,
+            confidenceInterval: [2.8, 3.8],
+            population: 'European',
+          },
+        ],
+      },
+      {
+        id: 'APOE4_hom',
+        label: 'APOE ε4/ε4',
+        frequency: 0.02,
+        effectDirection: 'risk',
+        effectMagnitude: 12.0,
+        effectDescription: 'Homozygous ε4: ~12x AD risk; severe lipid dysfunction, early onset',
+        color: '#c75146',
+        evidence: [
+          {
+            pmid: '23571587',
+            oddsRatio: 12.0,
+            confidenceInterval: [8.0, 18.0],
+            population: 'European',
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'TREM2_variants',
@@ -90,14 +160,15 @@ export const boundaryNodes: MechanisticNode[] = [
     description: 'Death; ultimate endpoint',
   },
 
-  // Measured Stocks (Proximal to Output Boundaries)
+  // Measured Stocks (Proximal to Output Boundaries - SHARED by many modules)
   {
     id: 'cognitive_score',
     label: 'Cognitive Score',
     category: 'STOCK',
     subtype: 'MetaboliteSignal',
     moduleId: 'BOUNDARY',
-    description: 'Psychometric assessment of cognition',
+    sharedWith: ['M06', 'M07', 'M08', 'M13', 'M17'], // Amyloid, Tau, Complement, Cholinergic, AS01
+    description: 'Psychometric assessment of cognition - primary clinical endpoint',
     units: 'MMSE (0-30), ADAS-Cog (0-70), CDR-SB (0-18), MoCA (0-30)',
     roles: ['BIOMARKER'],
   },
@@ -107,8 +178,9 @@ export const boundaryNodes: MechanisticNode[] = [
     category: 'STOCK',
     subtype: 'OrganellePool',
     moduleId: 'BOUNDARY',
+    sharedWith: ['M06', 'M08'], // Amyloid (LTP), Complement (pruning)
     references: { process: 'GO:0045202' },
-    description: 'Synapse density in cortex/hippocampus',
+    description: 'Synapse density in cortex/hippocampus - strongest correlate of cognition',
     units: 'Stereology count, synaptophysin IHC',
     roles: ['BIOMARKER'],
   },
@@ -168,7 +240,7 @@ export const module1Nodes: MechanisticNode[] = [
   {
     id: 'mTORC1_hyperactive',
     label: 'mTORC1 Hyperactive',
-    category: 'REGULATOR',
+    category: 'STOCK', // SBSF v2.0: Was REGULATOR, now STOCK with REGULATOR role
     subtype: 'Kinase',
     moduleId: 'M01',
     references: {
@@ -178,7 +250,7 @@ export const module1Nodes: MechanisticNode[] = [
     compartment: { subcellular: 'Lysosomal membrane' },
     description: 'Constitutively active mTORC1 complex',
     mechanism: 'On lysosomal membrane due to chronic AKT signaling',
-    roles: ['THERAPEUTIC_TARGET', 'RATE_LIMITER'],
+    roles: ['REGULATOR', 'THERAPEUTIC_TARGET', 'RATE_LIMITER'],
   },
   {
     id: 'TFEB_phosphorylated',
@@ -197,7 +269,7 @@ export const module1Nodes: MechanisticNode[] = [
   {
     id: 'AMPK_phosphorylated',
     label: 'AMPK Phosphorylated (Inhibited)',
-    category: 'REGULATOR',
+    category: 'STOCK', // SBSF v2.0: Was REGULATOR, now STOCK with REGULATOR role
     subtype: 'Kinase',
     moduleId: 'M01',
     references: { protein: 'UniProt:P54646' },
@@ -206,11 +278,12 @@ export const module1Nodes: MechanisticNode[] = [
     modifications: [
       { type: 'phosphorylation', sites: ['Ser345'], effect: 'Prevents lysosomal recruitment' },
     ],
+    roles: ['REGULATOR'],
   },
   {
     id: 'ULK1_phosphorylated',
     label: 'ULK1 Phosphorylated (Inhibited)',
-    category: 'REGULATOR',
+    category: 'STOCK', // SBSF v2.0: Was REGULATOR, now STOCK with REGULATOR role
     subtype: 'Kinase',
     moduleId: 'M01',
     references: { protein: 'UniProt:O75385' },
@@ -219,11 +292,12 @@ export const module1Nodes: MechanisticNode[] = [
     modifications: [
       { type: 'phosphorylation', sites: ['Ser757'], effect: 'Blocks AMPK binding → autophagy inhibited' },
     ],
+    roles: ['REGULATOR'],
   },
   {
     id: 'lysosomal_genes_down',
     label: 'Lysosomal Genes Downregulated',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M01',
     references: {
@@ -249,7 +323,7 @@ export const module1Nodes: MechanisticNode[] = [
   {
     id: 'mitophagy_rate_reduced',
     label: 'Mitophagy Rate Reduced',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'Mitophagy',
     moduleId: 'M01',
     references: { process: 'GO:0000422' },
@@ -260,7 +334,7 @@ export const module1Nodes: MechanisticNode[] = [
   {
     id: 'S6K1_active',
     label: 'S6K1 Active',
-    category: 'REGULATOR',
+    category: 'STOCK', // SBSF v2.0: Was REGULATOR, now STOCK with REGULATOR role
     subtype: 'Kinase',
     moduleId: 'M01',
     references: { protein: 'UniProt:P23443' },
@@ -269,6 +343,7 @@ export const module1Nodes: MechanisticNode[] = [
     modifications: [
       { type: 'phosphorylation', sites: ['Thr389'], effect: 'Full activation' },
     ],
+    roles: ['REGULATOR'],
   },
   {
     id: 'IRS1_serine_phosphorylated',
@@ -324,7 +399,7 @@ export const module2Nodes: MechanisticNode[] = [
   {
     id: 'LMP',
     label: 'Lysosomal Membrane Permeabilization',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M02',
     references: { process: 'GO:0090559' },
@@ -470,7 +545,7 @@ export const module3Nodes: MechanisticNode[] = [
   {
     id: 'PINK1_Parkin',
     label: 'PINK1/Parkin Mitophagy',
-    category: 'REGULATOR',
+    category: 'STOCK', // SBSF v2.0: Was REGULATOR, now STOCK with REGULATOR role
     subtype: 'MasterRegulator',
     moduleId: 'M03',
     references: {
@@ -478,7 +553,7 @@ export const module3Nodes: MechanisticNode[] = [
     },
     description: 'Mitophagy gatekeepers',
     mechanism: 'Clear damaged mitochondria BEFORE mtDNA can escape',
-    roles: ['THERAPEUTIC_TARGET'],
+    roles: ['REGULATOR', 'THERAPEUTIC_TARGET'],
   },
 ];
 
@@ -618,23 +693,26 @@ export const module4Nodes: MechanisticNode[] = [
     units: 'phosphatase activity',
   },
 
-  // State nodes
+  // State nodes (SHARED across modules)
   {
     id: 'neuroinflammation',
     label: 'Neuroinflammation',
     category: 'STATE',
     subtype: 'DiseaseStage',
-    moduleId: 'M04',
+    moduleId: 'M04', // Primary: Inflammasome & Cytokines
+    sharedWith: ['M05', 'M12'], // Also Microglial Phenotypes, BBB
     references: { disease: 'MESH:D000071618' },
     description: 'Chronic CNS inflammatory state',
-    mechanism: 'Composite of multiple cytokine/glial markers',
+    mechanism: 'Driven by IL-1β, Type I IFN, BBB breakdown; activates microglia',
+    roles: ['FEEDBACK_HUB'],
   },
   {
     id: 'tau_hyperphosphorylated',
     label: 'Tau Hyperphosphorylated',
     category: 'STATE',
     subtype: 'Phosphorylated',
-    moduleId: 'M04',
+    moduleId: 'M04', // Primary: Inflammasome (GSK3β/PP2A output)
+    sharedWith: ['M07'], // Output to Tau Pathology
     description: 'Cross-module output to Module 7',
     mechanism: 'GSK3β↑ + PP2A↓ → pSer199, pSer202/Thr205 (AT8), pThr231, pSer396/Ser404 (PHF-1)',
     modifications: [
@@ -642,24 +720,28 @@ export const module4Nodes: MechanisticNode[] = [
     ],
   },
 
-  // Input nodes (from other modules)
+  // SHARED nodes (used by multiple modules)
   {
     id: 'Abeta_oligomers',
     label: 'Aβ Oligomers',
     category: 'STOCK',
     subtype: 'Aggregate',
-    moduleId: 'M04',
-    description: 'Input from Module 6; activates NLRP3 via phagocytosis/lysosomal rupture',
-    mechanism: 'Most synaptotoxic Aβ species',
+    moduleId: 'M06', // Primary: Amyloid Processing
+    sharedWith: ['M04', 'M08', 'M12', 'M17'], // Also used by Inflammasome, Complement, Glymphatic, Immunomodulation
+    description: 'Soluble Aβ oligomers - most synaptotoxic species',
+    mechanism: 'Activates NLRP3, inhibits LTP, induces C1q deposition, cleared by glymphatic system',
+    roles: ['BIOMARKER', 'THERAPEUTIC_TARGET'],
   },
   {
     id: 'tau_aggregated',
     label: 'Aggregated Tau',
     category: 'STOCK',
     subtype: 'Aggregate',
-    moduleId: 'M04',
-    description: 'Input from Module 7; activates NLRP3 (creates feedback loop)',
-    mechanism: 'PHF/NFT tau seeds activate NLRP3',
+    moduleId: 'M07', // Primary: Tau Pathology
+    sharedWith: ['M04', 'M13'], // Also used by Inflammasome, Cholinergic
+    description: 'Aggregated tau (PHF/NFT) - prion-like spreading',
+    mechanism: 'Activates NLRP3 inflammasome, impairs axonal transport, causes cholinergic degeneration',
+    roles: ['BIOMARKER'],
   },
 ];
 
@@ -681,23 +763,24 @@ export const module5Nodes: MechanisticNode[] = [
   {
     id: 'NF_kB_active',
     label: 'NF-κB Active',
-    category: 'REGULATOR',
+    category: 'STOCK', // SBSF v2.0: Was REGULATOR, now STOCK with REGULATOR role
     subtype: 'Activator',
     moduleId: 'M05',
     references: { protein: 'UniProt:Q04206' },
     description: 'Nuclear NF-κB transcription factor',
     mechanism: 'Drives inflammatory gene transcription, HIF-1α stabilization',
-    roles: ['THERAPEUTIC_TARGET'],
+    roles: ['REGULATOR', 'THERAPEUTIC_TARGET'],
   },
   {
     id: 'HIF1A_stabilized',
     label: 'HIF-1α Stabilized',
-    category: 'REGULATOR',
+    category: 'STOCK', // SBSF v2.0: Was REGULATOR, now STOCK with REGULATOR role
     subtype: 'Activator',
     moduleId: 'M05',
     references: { protein: 'UniProt:Q16665' },
     description: 'Hypoxia-inducible factor stabilized under normoxia',
     mechanism: 'Stabilized by NF-κB signaling; drives glycolytic switch',
+    roles: ['REGULATOR'],
   },
   {
     id: 'glycolytic_switch',
@@ -711,12 +794,13 @@ export const module5Nodes: MechanisticNode[] = [
   {
     id: 'SREBP1_active',
     label: 'SREBP1 Active',
-    category: 'REGULATOR',
+    category: 'STOCK', // SBSF v2.0: Was REGULATOR, now STOCK with REGULATOR role
     subtype: 'Activator',
     moduleId: 'M05',
     references: { protein: 'UniProt:P36956' },
     description: 'Lipogenic transcription factor',
     mechanism: 'Drives lipid droplet formation',
+    roles: ['REGULATOR'],
   },
   {
     id: 'lipid_droplets',
@@ -758,7 +842,7 @@ export const module5Nodes: MechanisticNode[] = [
   {
     id: 'phagocytosis_impaired',
     label: 'Phagocytosis Impaired',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'Phagocytosis',
     moduleId: 'M05',
     references: { process: 'GO:0006909' },
@@ -813,18 +897,18 @@ export const module6Nodes: MechanisticNode[] = [
   {
     id: 'BACE1_upregulated',
     label: 'BACE1 Upregulated',
-    category: 'REGULATOR',
+    category: 'STOCK', // SBSF v2.0: Was REGULATOR, now STOCK with REGULATOR role
     subtype: 'Protease',
     moduleId: 'M06',
     references: { protein: 'UniProt:P56817', process: 'GO:0004190' },
     description: 'β-secretase; rate-limiting for Aβ production',
     mechanism: 'NF-κB-driven transcription; cleaves APP at β-site',
-    roles: ['THERAPEUTIC_TARGET', 'RATE_LIMITER'],
+    roles: ['REGULATOR', 'THERAPEUTIC_TARGET', 'RATE_LIMITER'],
   },
   {
     id: 'APP_processing_amyloidogenic',
     label: 'Amyloidogenic APP Processing',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M06',
     references: { process: 'GO:0042987' },
@@ -834,7 +918,7 @@ export const module6Nodes: MechanisticNode[] = [
   {
     id: 'Abeta_production',
     label: 'Aβ Production Rate',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M06',
     references: { drug: 'CHEBI:64645' },
@@ -855,7 +939,7 @@ export const module6Nodes: MechanisticNode[] = [
   {
     id: 'Abeta_clearance',
     label: 'Aβ Clearance',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'Phagocytosis',
     moduleId: 'M06',
     references: { process: 'GO:0006909' },
@@ -865,7 +949,7 @@ export const module6Nodes: MechanisticNode[] = [
   {
     id: 'plaque_compaction',
     label: 'Plaque Compaction',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M06',
     description: 'TREM2/microglia-dependent protective compaction',
@@ -874,7 +958,7 @@ export const module6Nodes: MechanisticNode[] = [
   {
     id: 'synaptic_Abeta_binding',
     label: 'Synaptic Aβ Binding',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M06',
     description: 'Oligomer binding to PrPc, mGluR5, NMDAR',
@@ -897,14 +981,35 @@ export const module6Nodes: MechanisticNode[] = [
 
 export const module7Nodes: MechanisticNode[] = [
   {
+    id: 'tau_misfolded',
+    label: 'Tau Misfolded',
+    category: 'STATE',
+    subtype: 'Phosphorylated',
+    moduleId: 'M07',
+    references: { protein: 'UniProt:P10636' },
+    description: 'Conformationally altered tau exposing aggregation-prone regions',
+    mechanism: 'Hyperphosphorylation promotes detachment from microtubules → conformational change',
+  },
+  {
+    id: 'neuronal_dysfunction',
+    label: 'Neuronal Dysfunction',
+    category: 'STATE',
+    subtype: 'DiseaseStage',
+    moduleId: 'M07',
+    references: { cellType: 'CL:0000540' },
+    description: 'Impaired neuronal function due to tau/Aβ pathology',
+    mechanism: 'Axonal transport disruption, synaptic dysfunction, proteostasis failure',
+  },
+  {
     id: 'p38_MAPK_active',
     label: 'p38 MAPK Active',
-    category: 'REGULATOR',
+    category: 'STOCK', // SBSF v2.0: Was REGULATOR, now STOCK with REGULATOR role
     subtype: 'Kinase',
     moduleId: 'M07',
     references: { protein: 'UniProt:Q16539', process: 'GO:0004707' },
     description: 'IL-1β-activated tau kinase',
     mechanism: 'Phosphorylates tau at Ser199, Ser202, Thr205',
+    roles: ['REGULATOR'],
   },
   {
     id: 'PP2A_inhibited',
@@ -940,7 +1045,7 @@ export const module7Nodes: MechanisticNode[] = [
   {
     id: 'tau_exosomal_release',
     label: 'Tau Exosomal Release',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M07',
     references: { process: 'GO:0070481' },
@@ -950,7 +1055,7 @@ export const module7Nodes: MechanisticNode[] = [
   {
     id: 'tau_seeding',
     label: 'Tau Seeding',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M07',
     description: 'Prion-like templated misfolding',
@@ -971,13 +1076,14 @@ export const module7Nodes: MechanisticNode[] = [
   {
     id: 'CBS_enzyme',
     label: 'CBS (Cystathionine β-synthase)',
-    category: 'REGULATOR',
+    category: 'STOCK', // SBSF v2.0: Was REGULATOR, now STOCK with REGULATOR role
     subtype: 'Transferase',
     moduleId: 'M07',
     references: { protein: 'UniProt:P35520', process: 'GO:0004122' },
     compartment: { cellType: 'Astrocyte' },
     description: 'Astrocyte-predominant; produces cystathionine',
     mechanism: 'Also produces H₂S from homocysteine',
+    roles: ['REGULATOR'],
   },
   {
     id: 'cystathionine',
@@ -991,14 +1097,14 @@ export const module7Nodes: MechanisticNode[] = [
   {
     id: 'CSE_enzyme',
     label: 'CSE (Cystathionine γ-lyase)',
-    category: 'REGULATOR',
+    category: 'STOCK', // SBSF v2.0: Was REGULATOR, now STOCK with REGULATOR role
     subtype: 'Transferase',
     moduleId: 'M07',
     references: { protein: 'UniProt:P32929', process: 'GO:0004123' },
     compartment: { cellType: 'Neuron' },
     description: 'Neuron-predominant; KEY NEUROPROTECTIVE ENZYME',
     mechanism: 'Produces cysteine + H₂S; depleted in AD',
-    roles: ['THERAPEUTIC_TARGET', 'LEVERAGE_POINT'],
+    roles: ['REGULATOR', 'THERAPEUTIC_TARGET', 'LEVERAGE_POINT'],
   },
   {
     id: 'cysteine',
@@ -1013,7 +1119,7 @@ export const module7Nodes: MechanisticNode[] = [
   {
     id: 'H2S_production',
     label: 'H₂S Production',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M07',
     references: { drug: 'CHEBI:16136' },
@@ -1034,7 +1140,7 @@ export const module7Nodes: MechanisticNode[] = [
   {
     id: 'sulfhydration',
     label: 'Protein Sulfhydration',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M07',
     references: { process: 'GO:0018318' },
@@ -1072,7 +1178,7 @@ export const module8Nodes: MechanisticNode[] = [
   {
     id: 'C3_opsonization',
     label: 'C3 Opsonization',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M08',
     references: { protein: 'UniProt:P01024' },
@@ -1082,7 +1188,7 @@ export const module8Nodes: MechanisticNode[] = [
   {
     id: 'CR3_mediated_pruning',
     label: 'CR3-Mediated Synapse Pruning',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'Phagocytosis',
     moduleId: 'M08',
     references: { protein: 'UniProt:P11215' },
@@ -1092,7 +1198,7 @@ export const module8Nodes: MechanisticNode[] = [
   {
     id: 'synapse_elimination',
     label: 'Synapse Elimination',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M08',
     description: 'Complement-mediated synapse loss',
@@ -1155,6 +1261,16 @@ export const module9Nodes: MechanisticNode[] = [
     mechanism: 'Dysfunctional lysosomes cannot mobilize iron',
   },
   {
+    id: 'labile_iron',
+    label: 'Labile Iron Pool',
+    category: 'STOCK',
+    subtype: 'MetabolitePool',
+    moduleId: 'M09',
+    description: 'Cytosolic free Fe²⁺ available for Fenton chemistry',
+    mechanism: 'When ferroportin↓ → Fe²⁺ accumulates → lipid peroxidation',
+    units: 'Fe²⁺ concentration',
+  },
+  {
     id: 'functional_iron_deficiency',
     label: 'Functional Iron Deficiency',
     category: 'STATE',
@@ -1166,13 +1282,13 @@ export const module9Nodes: MechanisticNode[] = [
   {
     id: 'GPX4_activity',
     label: 'GPX4 Activity',
-    category: 'REGULATOR',
+    category: 'STOCK', // SBSF v2.0: Was REGULATOR, now STOCK with REGULATOR role
     subtype: 'Transferase',
     moduleId: 'M09',
     references: { protein: 'UniProt:P36969' },
     description: 'Glutathione peroxidase 4; prevents ferroptosis',
     mechanism: 'Reduces lipid peroxides; requires GSH as cofactor',
-    roles: ['THERAPEUTIC_TARGET'],
+    roles: ['REGULATOR', 'THERAPEUTIC_TARGET'],
   },
   {
     id: 'lipid_peroxidation',
@@ -1186,7 +1302,7 @@ export const module9Nodes: MechanisticNode[] = [
   {
     id: 'ferroptosis',
     label: 'Ferroptosis',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'Ferroptosis',
     moduleId: 'M09',
     description: 'Iron-dependent non-apoptotic cell death',
@@ -1201,6 +1317,15 @@ export const module9Nodes: MechanisticNode[] = [
     description: 'SASP-positive cells with high iron/β-gal',
     mechanism: 'Iron drives senescence; targets for ferroptotic senolysis',
     roles: ['THERAPEUTIC_TARGET'],
+  },
+  {
+    id: 'SASP',
+    label: 'SASP (Senescence-Associated Secretory Phenotype)',
+    category: 'STOCK',
+    subtype: 'CytokineLevel',
+    moduleId: 'M09',
+    description: 'Secretory phenotype of senescent cells producing IL-6, IL-8, MMPs',
+    mechanism: 'Iron accumulation drives SASP; perpetuates inflammation',
   },
 ];
 
@@ -1248,13 +1373,13 @@ export const module10Nodes: MechanisticNode[] = [
   {
     id: 'REST_nuclear',
     label: 'REST Nuclear (Protective)',
-    category: 'REGULATOR',
+    category: 'STOCK', // SBSF v2.0: Was REGULATOR, now STOCK with REGULATOR role
     subtype: 'Repressor',
     moduleId: 'M10',
     references: { protein: 'UniProt:Q13127' },
     description: 'REST increases in healthy aging but DECREASES in AD',
     mechanism: 'Upregulates Nrf2 → antioxidant/anti-ferroptotic genes',
-    roles: ['LEVERAGE_POINT'],
+    roles: ['REGULATOR', 'LEVERAGE_POINT'],
   },
   {
     id: 'REST_depleted',
@@ -1268,13 +1393,13 @@ export const module10Nodes: MechanisticNode[] = [
   {
     id: 'Nrf2_pathway',
     label: 'Nrf2 Antioxidant Pathway',
-    category: 'REGULATOR',
+    category: 'STOCK', // SBSF v2.0: Was REGULATOR, now STOCK with REGULATOR role
     subtype: 'Activator',
     moduleId: 'M10',
     references: { protein: 'UniProt:Q16236' },
     description: 'Master regulator of antioxidant genes',
     mechanism: 'REST → Nrf2 → HO-1, NQO1, xCT, GPX4',
-    roles: ['THERAPEUTIC_TARGET'],
+    roles: ['REGULATOR', 'THERAPEUTIC_TARGET'],
   },
 ];
 
@@ -1317,7 +1442,7 @@ export const module11Nodes: MechanisticNode[] = [
   {
     id: 'plaque_barrier_function',
     label: 'Microglial Plaque Barrier',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M11',
     description: 'TREM2-dependent plaque compaction',
@@ -1382,7 +1507,7 @@ export const module12Nodes: MechanisticNode[] = [
   {
     id: 'glymphatic_clearance',
     label: 'Glymphatic Clearance',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M12',
     description: 'Sleep-dependent Aβ clearance',
@@ -1401,7 +1526,7 @@ export const module12Nodes: MechanisticNode[] = [
   {
     id: 'ISF_Abeta_clearance',
     label: 'ISF Aβ Clearance',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M12',
     description: 'Interstitial fluid Aβ drainage',
@@ -1417,7 +1542,7 @@ export const module13Nodes: MechanisticNode[] = [
   {
     id: 'cholinergic_degeneration',
     label: 'Cholinergic Degeneration',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'Neurodegeneration',
     moduleId: 'M13',
     description: 'Basal forebrain cholinergic neuron loss',
@@ -1445,7 +1570,7 @@ export const module13Nodes: MechanisticNode[] = [
   {
     id: 'myelin_breakdown',
     label: 'Myelin Breakdown',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'Neurodegeneration',
     moduleId: 'M13',
     description: 'Demyelination in AD',
@@ -1470,7 +1595,7 @@ export const module14Nodes: MechanisticNode[] = [
   {
     id: 'ER_mito_Ca_flux',
     label: 'ER-Mito Ca²⁺ Flux Increased',
-    category: 'PROCESS',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M14',
     description: 'Enhanced Ca²⁺ transfer ER → mitochondria',
@@ -1479,11 +1604,12 @@ export const module14Nodes: MechanisticNode[] = [
   {
     id: 'gamma_secretase_MAM',
     label: 'γ-Secretase at MAM',
-    category: 'REGULATOR',
+    category: 'STOCK', // SBSF v2.0: Was REGULATOR, now STOCK with REGULATOR role
     subtype: 'Protease',
     moduleId: 'M14',
     description: 'γ-secretase activity enriched at MAM',
     mechanism: 'MAM cholesterol → enhanced γ-secretase → more Aβ',
+    roles: ['REGULATOR'],
   },
   {
     id: 'ER_Ca_stores',
@@ -1638,6 +1764,53 @@ export const module16Nodes: MechanisticNode[] = [
 ];
 
 // ============================================================================
+// MODULE 17: Immunomodulatory Interventions
+// ============================================================================
+
+export const module17Nodes: MechanisticNode[] = [
+  {
+    id: 'AS01_adjuvant',
+    label: 'AS01 Adjuvant (Shingrix/Arexvy)',
+    category: 'BOUNDARY',
+    subtype: 'SmallMolecule',
+    moduleId: 'M17',
+    description: 'MPL + QS-21 vaccine adjuvant',
+    mechanism: 'TLR4 agonist (MPL) + saponin (QS-21) → DC/macrophage activation → IFN-γ',
+    roles: ['THERAPEUTIC_TARGET'],
+  },
+  {
+    id: 'TLR4_activation',
+    label: 'TLR4 Activation',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
+    subtype: 'BiologicalProcess',
+    moduleId: 'M17',
+    references: { protein: 'UniProt:O00206' },
+    description: 'Toll-like receptor 4 activation by MPL',
+    mechanism: 'Monophosphoryl lipid A (MPL) activates TLR4 → MyD88/TRIF signaling',
+  },
+  {
+    id: 'IFN_gamma',
+    label: 'IFN-γ',
+    category: 'STOCK',
+    subtype: 'CytokineLevel',
+    moduleId: 'M17',
+    references: { protein: 'UniProt:P01579' },
+    description: 'Interferon gamma; downstream of AS01',
+    mechanism: 'May attenuate amyloid plaque deposition; negatively correlated with cognitive decline in unimpaired elderly',
+    roles: ['BIOMARKER'],
+  },
+  {
+    id: 'amyloid_clearance_enhanced',
+    label: 'Enhanced Aβ Clearance (IFN-γ)',
+    category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
+    subtype: 'Phagocytosis',
+    moduleId: 'M17',
+    description: 'IFN-γ-mediated enhancement of Aβ clearance',
+    mechanism: 'Proposed mechanism for AS01 dementia risk reduction',
+  },
+];
+
+// ============================================================================
 // EXPORT ALL NODES
 // ============================================================================
 
@@ -1659,6 +1832,7 @@ export const allNodes: MechanisticNode[] = [
   ...module14Nodes,
   ...module15Nodes,
   ...module16Nodes,
+  ...module17Nodes,
 ];
 
 export default allNodes;
