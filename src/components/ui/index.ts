@@ -8,3 +8,4 @@ export { HeroStat } from './HeroStat';
 export { PullQuote, InsightCallout } from './PullQuote';
 export { Section } from './Section';
 export { ShoutoutBox } from './ShoutoutBox';
+export { InteractivePieBarChart } from './InteractivePieBarChart';

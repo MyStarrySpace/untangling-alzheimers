@@ -37,13 +37,13 @@ export function Card({ children, className, variant = 'default', hover = true }:
   );
 }
 
-// Callout box colors for DataCard
-const calloutColors = {
-  teal: { bg: 'rgba(0, 115, 133, 0.1)', border: '#007385', text: '#007385' },
-  warning: { bg: 'rgba(229, 175, 25, 0.1)', border: '#E5AF19', text: '#b38600' },
-  pink: { bg: 'rgba(195, 87, 127, 0.1)', border: '#C3577F', text: '#C3577F' },
-  orange: { bg: 'rgba(227, 98, 22, 0.1)', border: '#e36216', text: '#e36216' },
-  danger: { bg: 'var(--danger-light)', border: 'var(--danger)', text: 'var(--danger)' },
+// Accent colors for DataCard takeaway text
+const takeawayColors = {
+  teal: '#007385',
+  warning: '#b38600',
+  pink: '#C3577F',
+  orange: '#e36216',
+  danger: 'var(--danger)',
 };
 
 interface DataCardProps {
@@ -52,7 +52,7 @@ interface DataCardProps {
   children: React.ReactNode;
   callout?: {
     text: React.ReactNode;
-    color?: keyof typeof calloutColors;
+    color?: keyof typeof takeawayColors;
   };
   className?: string;
 }
@@ -60,14 +60,14 @@ interface DataCardProps {
 /**
  * DataCard - Consistent card for data visualizations and statistics.
  * Used throughout TrialBarriers and similar sections for charts, comparisons, and metrics.
- * Features: No rounded corners, consistent padding, optional colored callout box.
+ * Features: No rounded corners, consistent padding, typographic takeaway pinned to bottom.
  */
 export function DataCard({ title, description, children, callout, className }: DataCardProps) {
-  const calloutStyle = callout ? calloutColors[callout.color || 'teal'] : null;
+  const takeawayColor = callout ? takeawayColors[callout.color || 'teal'] : null;
 
   return (
     <motion.div
-      className={cn('bg-white border border-[var(--border)] p-5', className)}
+      className={cn('bg-white border border-[var(--border)] p-5 flex flex-col', className)}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -77,18 +77,14 @@ export function DataCard({ title, description, children, callout, className }: D
       {description && (
         <p className="text-xs text-[var(--text-muted)] mb-3">{description}</p>
       )}
-      <div className="data-card-content">{children}</div>
-      {callout && calloutStyle && (
-        <div
-          className="mt-3 p-2 border text-xs"
-          style={{
-            backgroundColor: calloutStyle.bg,
-            borderColor: calloutStyle.border,
-            color: calloutStyle.text,
-          }}
+      <div className="data-card-content flex-1">{children}</div>
+      {callout && takeawayColor && (
+        <p
+          className="mt-4 pt-3 border-t border-[var(--border)] text-sm font-medium leading-snug"
+          style={{ color: takeawayColor }}
         >
           {callout.text}
-        </div>
+        </p>
       )}
     </motion.div>
   );

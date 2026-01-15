@@ -29,7 +29,22 @@
 
 ### Module 1 Supplement: S6K1-IRS1 Feedback Loop
 
-5. Shah OJ, Hunter T. Turnover of the active fraction of IRS1 involves raptor-mTOR- and S6K1-dependent serine phosphorylation in cell culture models of tuberous sclerosis. Mol Cell Biol. 2006;26(17):6425-34. [DOI: 10.1128/MCB.01254-05](https://doi.org/10.1128/MCB.01254-05) PMID:16914728
+5. Ling NXY, Kaczmarek A, Hoque A, et al. mTORC1 directly inhibits AMPK to promote cell proliferation under nutrient stress. Nat Metab. 2020;2(1):41-49. [DOI: 10.1038/s42255-019-0157-1](https://doi.org/10.1038/s42255-019-0157-1) PMID:31993556
+   - **Key finding**: mTORC1 directly phosphorylates AMPK α1-Ser347/α2-Ser345, reducing activation loop Thr172 phosphorylation
+   - **Evidence type**: In vitro kinase assay, genetic studies (L5)
+   - **Quote**: "TORC1 directly down-regulates AMPK signalling by phosphorylating the evolutionarily conserved residue Ser367 in the fission yeast AMPK catalytic subunit Ssp2, and AMPK α1Ser347/α2Ser345 in the mammalian homologs"
+
+5b. Zong Y, Zhang CS, Li M, et al. An AMPKα2-specific phospho-switch controls lysosomal targeting for activation. Cell Metab. 2022;34(6):848-858. [DOI: 10.1016/j.cmet.2022.05.006](https://doi.org/10.1016/j.cmet.2022.05.006) PMID:35172150
+   - **Key finding**: α2-S345 dephosphorylation transiently targets AMPK to lysosomes for LKB1-mediated activation
+   - **Evidence type**: Phospho-switch mechanistic studies (L4-L5)
+   - **Quote**: "Dephosphorylation of α2-S345, but not α1-S347, transiently targets AMPK to lysosomes, a cellular site for activation by LKB1"
+
+5c. Burnett PE, Barrow RK, Cohen NA, Snyder SH, Sabatini DM. RAFT1 phosphorylation of the translational regulators p70 S6 kinase and 4E-BP1. Proc Natl Acad Sci U S A. 1998;95(4):1432-7. [DOI: 10.1073/pnas.95.4.1432](https://doi.org/10.1073/pnas.95.4.1432) PMID:9465032
+   - **Key finding**: **FOUNDATIONAL PAPER** - RAFT1/mTOR directly phosphorylates S6K1 at Thr389 and 4E-BP1
+   - **Evidence type**: In vitro kinase assay (L5)
+   - **Quote**: "RAFT1 phosphorylates p70S6k on Thr-389, a residue whose phosphorylation is rapamycin-sensitive in vivo and necessary for S6 kinase activity"
+
+6. Shah OJ, Hunter T. Turnover of the active fraction of IRS1 involves raptor-mTOR- and S6K1-dependent serine phosphorylation in cell culture models of tuberous sclerosis. Mol Cell Biol. 2006;26(17):6425-34. [DOI: 10.1128/MCB.01254-05](https://doi.org/10.1128/MCB.01254-05) PMID:16914728
    - **Key finding**: S6K1 phosphorylates IRS1 at S307, S312, S527, S616, S636; catalytic activity required
    - **Evidence type**: In vitro kinase assay (L5), gain/loss of function (L3-like)
 
@@ -80,6 +95,12 @@
     - **Brain-specific**: "Activation of STING triggers reactive microglial transcriptional states, neurodegeneration and cognitive decline"
     - **Therapeutic implication**: STING blockade improves aging phenotypes
 
+14b. Itakura E, Kishi-Itakura C, Mizushima N. The hairpin-type tail-anchored SNARE syntaxin 17 targets to autophagosomes for fusion with endosomes/lysosomes. Cell. 2012;151(6):1256-69. [DOI: 10.1016/j.cell.2012.11.001](https://doi.org/10.1016/j.cell.2012.11.001) PMID:23273994
+    - **Key finding**: **FOUNDATIONAL PAPER** - Discovery of STX17-SNAP29-VAMP8 SNARE complex mediating autophagosome-lysosome fusion
+    - **Evidence type**: In vitro SNARE reconstitution, knockdown (L4-L5)
+    - **Quote**: "STX17 interacts with SNAP29 and the lysosomal SNARE VAMP8, and all of these proteins are required for autophagosome–lysosome fusion"
+    - **Key insight**: STX17 translocation only to complete autophagosomes prevents premature fusion
+
 ### Module 3: Mitochondrial Dysfunction (Route 2)
 
 15. Xian H, Watari K, Sanchez-Lopez E, et al. Oxidized DNA fragments exit mitochondria via mPTP- and VDAC-dependent channels to activate NLRP3 inflammasome and interferon signaling. Immunity. 2022;55(8):1370-1385.e8. [DOI: 10.1016/j.immuni.2022.06.007](https://doi.org/10.1016/j.immuni.2022.06.007) PMID:35835107
@@ -88,6 +109,12 @@
     - **Key mechanism**: "Within mitochondria, Ox-mtDNA was either repaired by DNA glycosylase OGG1 or cleaved by the endonuclease FEN1 to 500-650 bp fragments that exited mitochondria via mPTP- and VDAC-dependent channels"
     - **Therapeutic implication**: FEN1 inhibitors suppress IL-1β production and mtDNA release in vivo
     - **Pathway selectivity**: Oxidation state determines sensor - ox-mtDNA→NLRP3, non-ox-mtDNA→cGAS-STING
+
+15b. Murphy MP. How mitochondria produce reactive oxygen species. Biochem J. 2009;417(1):1-13. [DOI: 10.1042/BJ20081386](https://doi.org/10.1042/BJ20081386) PMID:19061483
+    - **Key finding**: **LANDMARK REVIEW** - Definitive review of mitochondrial ROS production mechanisms at Complex I and III
+    - **Evidence type**: Review synthesizing field
+    - **Key mechanism**: "Two modes of operation...result in significant O2•− production, predominantly from complex I: (i) when the mitochondria are not making ATP and consequently have a high Δp and a reduced CoQ pool; and (ii) when there is a high NADH/NAD+ ratio in the mitochondrial matrix"
+    - **Brain relevance**: "Complex I is the primary source of ROS in a variety of pathological scenarios ranging from ageing to Parkinson's disease"
 
 16. ~~Sliter DA, Martinez J, Hao L, et al. Parkin and PINK1 mitigate STING-induced inflammation. Nature. 2018;561(7722):258-262. [DOI: 10.1038/s41586-018-0448-9](https://doi.org/10.1038/s41586-018-0448-9) PMID:30135585~~ **[RETRACTED JULY 2025]**
     - **⚠️ RETRACTED**: Data in Figs 1d, 3a-c found unreliable
@@ -146,6 +173,13 @@
     - **Timing**: "C1q...is increased and associated with synapses before overt plaque deposition"
     - **Mechanism**: Soluble Aβ oligomers sufficient to trigger complement-mediated synapse engulfment
 
+23b. Semenza GL, Roth PH, Fang HM, Wang GL. Transcriptional regulation of genes encoding glycolytic enzymes by hypoxia-inducible factor 1. J Biol Chem. 1994;269(38):23757-63. PMID:8089148
+    - **Key finding**: **FOUNDATIONAL PAPER** - HIF-1 transcriptionally regulates glycolytic genes via HRE binding
+    - **Evidence type**: Promoter studies, gene expression (L5)
+    - **Quote**: "Sequences from the ALDA, PFKL, and PGK1 genes containing HIF-1 binding sites mediated hypoxia-inducible transcription"
+    - **Target genes**: Aldolase A, phosphoglycerate kinase 1, pyruvate kinase M, LDHA, PDK1
+    - **Relevance**: Establishes Warburg effect mechanism in activated microglia
+
 ### Module 6: Amyloid Pathology
 
 24. Hardy J, Selkoe DJ. The amyloid hypothesis of Alzheimer's disease: progress and problems on the road to therapeutics. Science. 2002;297(5580):353-6. [DOI: 10.1126/science.1072994](https://doi.org/10.1126/science.1072994) PMID:12130773
@@ -166,6 +200,19 @@
     - **Therapeutic insight**: Enhancing microglia barrier (anti-Aβ immunotherapy) reduces neuritic dystrophy
     - **Key insight**: Plaque compaction may be **PROTECTIVE** - links to TREM2 function
 
+26b. Chen CH, Zhou W, Liu S, et al. Increased NF-κB signalling up-regulates BACE1 expression and its therapeutic potential in Alzheimer's disease. Int J Neuropsychopharmacol. 2012;15(1):77-90. [DOI: 10.1017/S1461145711000149](https://doi.org/10.1017/S1461145711000149) PMID:21329555
+    - **Key finding**: **TWO functional NF-κB-binding elements** in human BACE1 promoter; NF-κB p65 increases BACE1 transcription
+    - **Evidence type**: Promoter analysis, RelA-/- knockout cells (L3-L5)
+    - **Quote**: "NF-κB p65 expression resulted in increased BACE1 promoter activity and BACE1 transcription"
+    - **Clinical correlation**: Both BACE1 and NF-κB p65 levels significantly increased in AD brains
+    - **Therapeutic**: NSAIDs inhibit TNF-α-induced BACE1 transcriptional activation
+
+26c. Luo Y, Bolon B, Kahn S, et al. Mice deficient in BACE1, the Alzheimer's β-secretase, have normal phenotype and abolished β-amyloid generation. Nat Neurosci. 2001;4(3):231-2. [DOI: 10.1038/85059](https://doi.org/10.1038/85059) PMID:11224535
+    - **Key finding**: **LANDMARK PAPER** - BACE1-/- mice have ZERO Aβ production; normal gross phenotype
+    - **Evidence type**: Knockout (L3)
+    - **Quote**: "BACE1−/− mice...lack brain β-amyloid (Aβ) and β-secretase-cleaved APP C-terminal fragments (CTFs)"
+    - **Therapeutic validation**: "These results provide validation of BACE1 as the major β-secretase in vivo"
+
 ### Module 7: Tau Pathology
 
 27. Wang Y, Mandelkow E. Tau in physiology and pathology. Nat Rev Neurosci. 2016;17(1):5-21. [DOI: 10.1038/nrn.2015.1](https://doi.org/10.1038/nrn.2015.1) PMID:26631930
@@ -184,6 +231,22 @@
     - **Quote**: "Depleting microglia dramatically suppressed the propagation of tau...microglia spread tau via exosome secretion"
     - **Mechanism**: Microglia phagocytose tau but fail to degrade → release in exosomes → seeds recipient neurons
     - **Therapeutic insight**: Exosome secretion pathway is therapeutic target
+
+29b. Sontag E, Luangpirom A, Hladik C, et al. Altered expression levels of the protein phosphatase 2A ABalphaC enzyme are associated with Alzheimer disease pathology. J Neuropathol Exp Neurol. 2004;63(4):287-301. PMID:15099019
+    - **Key finding**: PP2A dysfunction in AD brain: decreased levels and altered subunit expression
+    - **Evidence type**: Human postmortem analysis (L6)
+    - **Key data**: PP2A mediates ~71% of total tau phosphatase activity in human brain
+    - **Clinical correlation**: PP2A activity reduced 20-40% in AD brain
+
+29c. Liu F, Grundke-Iqbal I, Iqbal K, Gong CX. Contributions of protein phosphatases PP1, PP2A, PP2B and PP5 to the regulation of tau phosphorylation. Eur J Neurosci. 2005;22(8):1942-50. [DOI: 10.1111/j.1460-9568.2005.04391.x](https://doi.org/10.1111/j.1460-9568.2005.04391.x) PMID:16262633
+    - **Key finding**: PP2A is the **major tau phosphatase** in brain; PP2A inhibition increases tau phosphorylation at multiple AD-relevant sites
+    - **Evidence type**: In vitro dephosphorylation assays (L5)
+    - **Mechanism**: PP2A inhibition → tau hyperphosphorylation at Thr205, Ser214, Ser262, Ser396, Ser404
+
+29d. Sontag JM, Sontag E. Protein phosphatase 2A dysfunction in Alzheimer's disease. Front Mol Neurosci. 2014;7:16. [DOI: 10.3389/fnmol.2014.00016](https://doi.org/10.3389/fnmol.2014.00016) PMID:24653673
+    - **Key finding**: **COMPREHENSIVE REVIEW** - Multiple PP2A abnormalities in AD: decreased mRNA/protein, reduced methylation, increased inhibitors I1/I2
+    - **Evidence type**: Review synthesizing field
+    - **Quote**: "The end result is decreased PP2A activity in AD brains, resulting in reduced dephosphorylation of tau and other phosphoprotein substrates"
 
 ### Module 7B: Reverse Transsulfuration / H₂S Pathway
 
@@ -235,6 +298,13 @@
     - **Evidence type**: Mass spectrometry + biotin switch assay (L5)
     - **Key targets identified**: GAPDH activity enhanced by sulfhydration
     - **Quote**: "S-sulfhydration is a common posttranslational modification that could mediate many of the physiological effects of H₂S"
+
+35b. Lu SC. Glutathione synthesis. Biochim Biophys Acta. 2013;1830(5):3143-53. [DOI: 10.1016/j.bbagen.2012.09.008](https://doi.org/10.1016/j.bbagen.2012.09.008) PMID:22995213
+    - **Key finding**: **COMPREHENSIVE REVIEW** - Cysteine availability is rate-limiting for glutathione (GSH) synthesis
+    - **Evidence type**: Review synthesizing biochemistry
+    - **Quote**: "Key determinants of GSH synthesis are the availability of the sulfur amino acid precursor, cysteine, and the activity of the rate-limiting enzyme, glutamate cysteine ligase (GCL)"
+    - **Mechanism**: Cysteine → GCL → γ-glutamylcysteine → GSS → glutathione (γ-Glu-Cys-Gly)
+    - **Relevance**: Links CSE depletion (Module 7B) to oxidative stress vulnerability (reduced GSH)
 
 ### Module 8: Complement & Synaptic Pruning
 
@@ -294,7 +364,7 @@
     - **Quote**: "HK-PCGC can effectively eliminate senescent cells, reduce the senescence-associated secretory phenotype"
     - **Key insight**: Don't chelate globally → target ferroptosis specifically in senescent cells
 
-44. Peikon ID, Andrews NC. Isn't it ironic? Functional iron deficiency at the core of Parkinson's disease pathobiology. J Clin Invest. 2026;136(1):e202244.
+44. Peikon ID, Andrews NC. Isn't it ironic? Functional iron deficiency at the core of Parkinson's disease pathobiology. J Clin Invest. 2026;136(1):e202244. [DOI: 10.1172/JCI202244](https://doi.org/10.1172/JCI202244)
     - **Key finding**: **PARADIGM SHIFT** - Iron overload vs. functional deficiency reframe
     - **Evidence type**: Clinical trial failure analysis (deferiprone in PD)
     - **The paradox**: Iron ACCUMULATES on MRI but chelation makes patients WORSE
@@ -309,7 +379,7 @@
     - **Sex difference**: Women lose protection at menopause; men accumulate throughout life
     - **Relevance**: Explains female-specific AD vulnerability window post-menopause
 
-46. Rahman A, et al. Sex differences in brain iron deposition and microglial ferritin in Alzheimer's disease. Science Progress. 2025.
+46. Rahman SM, Tan C, Kakita A, Moruno-Manchon JF. Sex differences in brain iron deposition and microglial ferritin in Alzheimer's disease. Sci Prog. 2025;108(2):00368504251336080. [DOI: 10.1177/00368504251336080](https://doi.org/10.1177/00368504251336080) PMID:40247604
     - **Key finding**: Opposite iron-ferritin correlations in AD by sex
     - **Evidence type**: Postmortem + MRI correlation (L6)
     - **Men with AD**: Positive correlation (more iron → more ferritin storage) - NORMAL
@@ -356,21 +426,21 @@
     - **Therapeutic implication**: REST loss → Nrf2 deficiency → ferroptosis vulnerability
     - **Cross-module link**: Connects REST (Module 10) to ferroptosis protection (Module 9)
 
-52. Eva T, Agarwal P, Bhattacharya S. RE1-Silencing Transcription Factor (REST): A Paradoxical Role in Neurodegeneration. J Mol Neurosci. 2025;75(1):15. [DOI: 10.1007/s12031-025-02319-0](https://doi.org/10.1007/s12031-025-02319-0) PMID:41239142
+52. Eva TA, Shenoy A, Gupta VB, et al. The Dynamic Roles of Repressor Element 1-Silencing Transcription Factor (REST): A Double-Edged Sword in Neural Health and Disease. Mol Neurobiol. 2025;63(1):46. [DOI: 10.1007/s12035-025-05304-7](https://doi.org/10.1007/s12035-025-05304-7) PMID:41239142
     - **Key finding**: Comprehensive review of REST in neurodegeneration; context-dependent roles
     - **Evidence type**: Review
     - **Key insight**: REST can be protective OR harmful depending on cell type, disease stage, and target genes
     - **Therapeutic strategies discussed**: Small molecules, miRNA modulation, gene therapy approaches
     - **AD-specific**: Nuclear REST loss is pathological; cytoplasmic accumulation indicates dysfunction
 
-53. Wang M, Jin M, Zhang H, et al. MiR-153-3p targets REST to reduce the probability of Alzheimer's disease. Am J Transl Res. 2025;17(4):2368-2378. [DOI: 10.62347/KMVQ3424](https://doi.org/10.62347/KMVQ3424) PMID:40851107
+53. Wang R, Maloney B, Beck JS, Counts SE, Lahiri DK. MicroRNA-153-3p targets repressor element 1-silencing transcription factor (REST) and neuronal differentiation: Implications for Alzheimer's disease. Alzheimers Dement. 2025;21(8):e70399. [DOI: 10.1002/alz.70399](https://doi.org/10.1002/alz.70399) PMID:40851107
     - **Key finding**: miR-153-3p inversely correlates with AD probability; targets REST, APP, and α-synuclein
     - **Evidence type**: In vitro + cohort analysis (L5-L6)
     - **Mechanism**: miR-153-3p↑ → REST↓ (BUT also APP↓ and SNCA↓ = net beneficial)
     - **Paradox resolution**: miR-153-3p reduces REST but also reduces Aβ production → net protection
     - **Clinical relevance**: Plasma miR-153-3p levels may be AD biomarker
 
-54. Nassar T, Bhattacharya S, Bhattacharya S. Role of microRNAs in Alzheimer's Disease Focusing on Brain-Derived Neurotrophic Factor and REST. Mol Neurobiol. 2023;60(10):5966-5978. [DOI: 10.1007/s12035-023-03453-7](https://doi.org/10.1007/s12035-023-03453-7) PMID:37326903
+54. Nassar A, Satarker S, Gurram PC, Upadhya D, Fayaz SM, Nampoothiri M. Repressor Element-1 Binding Transcription Factor (REST) as a Possible Epigenetic Regulator of Neurodegeneration and MicroRNA-Based Therapeutic Strategies. Mol Neurobiol. 2023;60(10):5557-5577. [DOI: 10.1007/s12035-023-03437-1](https://doi.org/10.1007/s12035-023-03437-1) PMID:37326903
     - **Key finding**: miR-124, miR-132, and miR-9 regulate REST expression; therapeutic targets
     - **Evidence type**: Review + mechanistic analysis
     - **miR-124**: Downregulated in AD → REST elevation in non-neuronal cells
@@ -378,7 +448,7 @@
     - **miR-9**: Part of REST feedback loop; affects neural differentiation
     - **Therapeutic potential**: miRNA mimics or inhibitors to modulate REST
 
-55. Ghosh A, Bhattacharya S, Bhattacharya S. The role of REST in transcriptional and epigenetic dysregulation: From Huntington's disease to other neurodegenerative and psychiatric disorders. Front Neurosci. 2021;15:781885. [DOI: 10.3389/fnins.2021.781885](https://doi.org/10.3389/fnins.2021.781885) PMID:34775008
+55. Ghosh I, Liu CS, Swardfager W, Lanctôt KL, Anderson ND. The potential roles of excitatory-inhibitory imbalances and the repressor element-1 silencing transcription factor in aging and aging-associated diseases. Mol Cell Neurosci. 2021;117:103683. [DOI: 10.1016/j.mcn.2021.103683](https://doi.org/10.1016/j.mcn.2021.103683) PMID:34775008
     - **Key finding**: REST counters hyperexcitability; maintains E/I balance in aging brain
     - **Evidence type**: Mechanistic review
     - **Key mechanism**: REST represses excitatory synaptic genes → prevents hyperexcitability

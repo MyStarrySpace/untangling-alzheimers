@@ -1,0 +1,4577 @@
+{
+  "timestamp": "2026-01-15T02:58:34.493Z",
+  "filePath": "C:\\Users\\quest\\Programming\\alz-market-viz\\src\\data\\mechanistic_framework\\ad_dag_bibliography.md",
+  "totalReferences": 82,
+  "validCount": 75,
+  "invalidCount": 6,
+  "skippedCount": 1,
+  "needsReviewCount": 6,
+  "results": [
+    {
+      "reference": {
+        "lineNumber": 14,
+        "rawText": "Steen E, Terry BM, Rivera EJ, et al. Impaired insulin and insulin-like growth factor expression and signaling mechanisms in Alzheimer's disease--is this type 3 diabetes? J Alzheimers Dis. 2005;7(1):63-80. [DOI: 10.3233/jad-2005-7107](https://doi.org/10.3233/jad-2005-7107) PMID:15750215\n   - **Key finding**: Extensive abnormalities in insulin/IGF signaling in AD brain; coined \"Type 3 Diabetes\"\n   - **Evidence type**: Human postmortem (correlational)",
+        "refNumber": 1,
+        "pmid": "15750215",
+        "doi": "10.3233/jad-2005-7107",
+        "firstAuthor": "Steen E",
+        "year": 2005,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "15750215",
+        "title": "Impaired insulin and insulin-like growth factor expression and signaling mechanisms in Alzheimer's disease--is this type 3 diabetes?",
+        "authors": [
+          "Steen E",
+          "Terry BM",
+          "Rivera EJ",
+          "Cannon JL",
+          "Neely TR",
+          "Tavares R",
+          "Xu XJ",
+          "Wands JR",
+          "de la Monte SM"
+        ],
+        "journal": "J Alzheimers Dis",
+        "year": 2005
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.3233/jad-2005-7107",
+        "title": "Impaired insulin and insulin-like growth factor expression and signaling mechanisms in Alzheimer's disease – is this type 3 diabetes?",
+        "authors": [
+          "Steen, Eric",
+          "Terry, Benjamin M.",
+          "J. Rivera, Enrique",
+          "Cannon, Jennifer L.",
+          "Neely, Thomas R.",
+          "Tavares, Rose",
+          "Xu, X. Julia",
+          "Wands, Jack R.",
+          "de la Monte, Suzanne M."
+        ],
+        "containerTitle": "Journal of Alzheimer's Disease",
+        "year": 2005
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 18,
+        "rawText": "Settembre C, Zoncu R, Medina DL, et al. A lysosome-to-nucleus signalling mechanism senses and regulates the lysosome via mTOR and TFEB. EMBO J. 2012;31(5):1095-108. [DOI: 10.1038/emboj.2012.32](https://doi.org/10.1038/emboj.2012.32) PMID:22343943\n   - **Key finding**: mTORC1 phosphorylates TFEB at Ser211/Ser142; TFEB-/- cells lose lysosomal gene response\n   - **Evidence type**: Knockout (L3), in vitro kinase assay (L5)",
+        "refNumber": 2,
+        "pmid": "22343943",
+        "doi": "10.1038/emboj.2012.32",
+        "firstAuthor": "Settembre C",
+        "year": 2012,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "22343943",
+        "title": "A lysosome-to-nucleus signalling mechanism senses and regulates the lysosome via mTOR and TFEB.",
+        "authors": [
+          "Settembre C",
+          "Zoncu R",
+          "Medina DL",
+          "Vetrini F",
+          "Erdin S",
+          "Erdin S",
+          "Huynh T",
+          "Ferron M",
+          "Karsenty G",
+          "Vellard MC",
+          "Facchinetti V",
+          "Sabatini DM",
+          "Ballabio A"
+        ],
+        "journal": "EMBO J",
+        "year": 2012,
+        "doi": "10.1038/emboj.2012.32"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/emboj.2012.32",
+        "title": "A lysosome-to-nucleus signalling mechanism senses and regulates the lysosome via mTOR and TFEB",
+        "authors": [
+          "Settembre, Carmine",
+          "Zoncu, Roberto",
+          "Medina, Diego L",
+          "Vetrini, Francesco",
+          "Erdin, Serkan",
+          "Erdin, SerpilUckac",
+          "Huynh, Tuong",
+          "Ferron, Mathieu",
+          "Karsenty, Gerard",
+          "Vellard, Michel C",
+          "Facchinetti, Valeria",
+          "Sabatini, David M",
+          "Ballabio, Andrea"
+        ],
+        "containerTitle": "The EMBO Journal",
+        "year": 2012
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 22,
+        "rawText": "Kim J, Kundu M, Viollet B, Guan KL. AMPK and mTOR regulate autophagy through direct phosphorylation of Ulk1. Nat Cell Biol. 2011;13(2):132-41. [DOI: 10.1038/ncb2152](https://doi.org/10.1038/ncb2152) PMID:21258367\n   - **Key finding**: mTORC1 phosphorylates ULK1 at Ser757, blocking AMPK binding; AMPK activates ULK1 at Ser317/Ser777\n   - **Evidence type**: In vitro kinase assay (L5), intervention (L4)",
+        "refNumber": 3,
+        "pmid": "21258367",
+        "doi": "10.1038/ncb2152",
+        "firstAuthor": "Kim J",
+        "year": 2011,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "21258367",
+        "title": "AMPK and mTOR regulate autophagy through direct phosphorylation of Ulk1.",
+        "authors": [
+          "Kim J",
+          "Kundu M",
+          "Viollet B",
+          "Guan KL"
+        ],
+        "journal": "Nat Cell Biol",
+        "year": 2011,
+        "doi": "10.1038/ncb2152"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/ncb2152",
+        "title": "AMPK and mTOR regulate autophagy through direct phosphorylation of Ulk1",
+        "authors": [
+          "Kim, Joungmok",
+          "Kundu, Mondira",
+          "Viollet, Benoit",
+          "Guan, Kun-Liang"
+        ],
+        "containerTitle": "Nature Cell Biology",
+        "year": 2011
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 26,
+        "rawText": "Lee JH, Yang DS, Goulbourne CN, et al. Faulty autolysosome acidification in Alzheimer's disease mouse models induces autophagic build-up of Aβ in neurons, yielding senile plaques. Nat Neurosci. 2022;25(6):688-701. [DOI: 10.1038/s41593-022-01084-8](https://doi.org/10.1038/s41593-022-01084-8) PMID:35654956\n   - **Key finding**: Autolysosome acidification declines early; PANTHOS pattern; vATPase dysfunction\n   - **Evidence type**: Multiple AD mouse models (5xFAD, PS1/APP, 3xTg-AD, PS19, APPNL-G-F) with pH probes (L4)",
+        "refNumber": 4,
+        "pmid": "35654956",
+        "doi": "10.1038/s41593-022-01084-8",
+        "firstAuthor": "Lee J",
+        "year": 2022,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "35654956",
+        "title": "Faulty autolysosome acidification in Alzheimer's disease mouse models induces autophagic build-up of Aβ in neurons, yielding senile plaques.",
+        "authors": [
+          "Lee JH",
+          "Yang DS",
+          "Goulbourne CN",
+          "Im E",
+          "Stavrides P",
+          "Pensalfini A",
+          "Chan H",
+          "Bouchet-Marquis C",
+          "Bleiwas C",
+          "Berg MJ",
+          "Huo C",
+          "Peddy J",
+          "Pawlik M",
+          "Levy E",
+          "Rao M",
+          "Staufenbiel M",
+          "Nixon RA"
+        ],
+        "journal": "Nat Neurosci",
+        "year": 2022,
+        "doi": "10.1038/s41593-022-01084-8"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/s41593-022-01084-8",
+        "title": "Faulty autolysosome acidification in Alzheimer’s disease mouse models induces autophagic build-up of Aβ in neurons, yielding senile plaques",
+        "authors": [
+          "Lee, Ju-Hyun",
+          "Yang, Dun-Sheng",
+          "Goulbourne, Chris N.",
+          "Im, Eunju",
+          "Stavrides, Philip",
+          "Pensalfini, Anna",
+          "Chan, Han",
+          "Bouchet-Marquis, Cedric",
+          "Bleiwas, Cynthia",
+          "Berg, Martin J.",
+          "Huo, Chunfeng",
+          "Peddy, James",
+          "Pawlik, Monika",
+          "Levy, Efrat",
+          "Rao, Mala",
+          "Staufenbiel, Mathias",
+          "Nixon, Ralph A."
+        ],
+        "containerTitle": "Nature Neuroscience",
+        "year": 2022
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 32,
+        "rawText": "Shah OJ, Hunter T. Turnover of the active fraction of IRS1 involves raptor-mTOR- and S6K1-dependent serine phosphorylation in cell culture models of tuberous sclerosis. Mol Cell Biol. 2006;26(17):6425-34. [DOI: 10.1128/MCB.01254-05](https://doi.org/10.1128/MCB.01254-05) PMID:16914728\n   - **Key finding**: S6K1 phosphorylates IRS1 at S307, S312, S527, S616, S636; catalytic activity required\n   - **Evidence type**: In vitro kinase assay (L5), gain/loss of function (L3-like)",
+        "refNumber": 5,
+        "pmid": "16914728",
+        "doi": "10.1128/MCB.01254-05",
+        "firstAuthor": "Shah O",
+        "year": 2006,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "16914728",
+        "title": "Turnover of the active fraction of IRS1 involves raptor-mTOR- and S6K1-dependent serine phosphorylation in cell culture models of tuberous sclerosis.",
+        "authors": [
+          "Shah OJ",
+          "Hunter T"
+        ],
+        "journal": "Mol Cell Biol",
+        "year": 2006
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1128/mcb.01254-05",
+        "title": "Turnover of the Active Fraction of IRS1 Involves Raptor-mTOR- and S6K1-Dependent Serine Phosphorylation in Cell Culture Models of Tuberous Sclerosis",
+        "authors": [
+          "Shah, O. Jameel",
+          "Hunter, Tony"
+        ],
+        "containerTitle": "Molecular and Cellular Biology",
+        "year": 2006
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 36,
+        "rawText": "Nakamura N, Ohyagi Y, Imamura T, et al. Apomorphine Therapy for Neuronal Insulin Resistance in a Mouse Model of Alzheimer's Disease. J Alzheimers Dis. 2017;58(4):1151-1161. [DOI: 10.3233/JAD-160344](https://doi.org/10.3233/JAD-160344) PMID:28550243\n   - **Key finding**: 3xTg-AD brain shows elevated IRS-1 pS616/pS636; treatment reduces these markers\n   - **Evidence type**: Intervention in AD mouse model (L4)\n   - **Species**: NCBITaxon:10090, 3xTg-AD (MGI:3720694)",
+        "refNumber": 6,
+        "pmid": "28550243",
+        "doi": "10.3233/JAD-160344",
+        "firstAuthor": "Nakamura N",
+        "year": 2017,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "28550243",
+        "title": "Apomorphine Therapy for Neuronal Insulin Resistance in a Mouse Model of Alzheimer's Disease.",
+        "authors": [
+          "Nakamura N",
+          "Ohyagi Y",
+          "Imamura T",
+          "Yanagihara YT",
+          "Iinuma KM",
+          "Soejima N",
+          "Murai H",
+          "Yamasaki R",
+          "Kira JI"
+        ],
+        "journal": "J Alzheimers Dis",
+        "year": 2017,
+        "doi": "10.3233/JAD-160344"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.3233/jad-160344",
+        "title": "Apomorphine Therapy for Neuronal Insulin Resistance in a Mouse Model of Alzheimer’s Disease",
+        "authors": [
+          "Nakamura, Norimichi",
+          "Ohyagi, Yasumasa",
+          "Imamura, Tomohiro",
+          "Yanagihara, Yuki T.",
+          "Iinuma, Kyoko M.",
+          "Soejima, Naoko",
+          "Murai, Hiroyuki",
+          "Yamasaki, Ryo",
+          "Kira, Jun-ichi"
+        ],
+        "containerTitle": "Journal of Alzheimer’s Disease",
+        "year": 2017
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 41,
+        "rawText": "Rahman SO, Panda BP, Parvez S, et al. Neuroprotective role of astaxanthin in hippocampal insulin resistance induced by Aβ peptides in animal model of Alzheimer's disease. Biomed Pharmacother. 2019;110:47-58. [DOI: 10.1016/j.biopha.2018.11.043](https://doi.org/10.1016/j.biopha.2018.11.043) PMID:30463045\n   - **Key finding**: Aβ(1-42) ICV injection → elevated IRS-S307 in hippocampus; astaxanthin reverses\n   - **Evidence type**: Intervention in rat model (L4)\n   - **Species**: NCBITaxon:10116, Wistar rat",
+        "refNumber": 7,
+        "pmid": "30463045",
+        "doi": "10.1016/j.biopha.2018.11.043",
+        "firstAuthor": "Rahman S",
+        "year": 2019,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "30463045",
+        "title": "Neuroprotective role of astaxanthin in hippocampal insulin resistance induced by Aβ peptides in animal model of Alzheimer's disease.",
+        "authors": [
+          "Rahman SO",
+          "Panda BP",
+          "Parvez S",
+          "Kaundal M",
+          "Hussain S",
+          "Akhtar M",
+          "Najmi AK"
+        ],
+        "journal": "Biomed Pharmacother",
+        "year": 2019,
+        "doi": "10.1016/j.biopha.2018.11.043"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1016/j.biopha.2018.11.043",
+        "title": "Neuroprotective role of astaxanthin in hippocampal insulin resistance induced by Aβ peptides in animal model of Alzheimer’s disease",
+        "authors": [
+          "Rahman, Syed Obaidur",
+          "Panda, Bibhu Prasad",
+          "Parvez, Suhel",
+          "Kaundal, Madhu",
+          "Hussain, Salman",
+          "Akhtar, Mohd.",
+          "Najmi, Abul Kalam"
+        ],
+        "containerTitle": "Biomedicine &amp; Pharmacotherapy",
+        "year": 2019
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 46,
+        "rawText": "Talbot K. Brain insulin resistance in Alzheimer's disease and its potential treatment with GLP-1 analogs. Neurodegener Dis Manag. 2014;4(1):31-40. [DOI: 10.2217/nmt.13.73](https://doi.org/10.2217/nmt.13.73) PMID:24640977\n   - **Key finding**: IRS-1 serine phosphorylation is \"proximal cause of brain insulin resistance\"; dual metabolic + inflammatory pathways\n   - **Evidence type**: Review synthesizing human and animal data",
+        "refNumber": 8,
+        "pmid": "24640977",
+        "doi": "10.2217/nmt.13.73",
+        "firstAuthor": "Talbot K",
+        "year": 2014,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "24640977",
+        "title": "Brain insulin resistance in Alzheimer's disease and its potential treatment with GLP-1 analogs.",
+        "authors": [
+          "Talbot K"
+        ],
+        "journal": "Neurodegener Dis Manag",
+        "year": 2014,
+        "doi": "10.2217/nmt.13.73"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.2217/nmt.13.73",
+        "title": "Brain Insulin Resistance in Alzheimer's Disease and its Potential Treatment with GLP-1 Analogs",
+        "authors": [
+          "Talbot, Konrad"
+        ],
+        "containerTitle": "Neurodegenerative Disease Management",
+        "year": 2014
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 50,
+        "rawText": "Rajan MR, Fagerholm S, Jönsson C, et al. Phosphorylation of IRS1 at serine 307 in response to insulin in human adipocytes is not likely to be catalyzed by p70 ribosomal S6 kinase. PLoS One. 2013;8(4):e59725. [DOI: 10.1371/journal.pone.0059725](https://doi.org/10.1371/journal.pone.0059725) PMID:23565163\n   - **Key finding**: **CAVEAT** - In human adipocytes, S6K1 inhibitor doesn't block IRS1-pS307; unidentified mTOR-associated kinase involved\n   - **Evidence type**: In vitro with specific inhibitors (L5)\n   - **Implication**: S6K1 may phosphorylate other sites (S616, S636) but S307 may involve other kinases (JNK, IKK)",
+        "refNumber": 9,
+        "pmid": "23565163",
+        "doi": "10.1371/journal.pone.0059725",
+        "firstAuthor": "Rajan M",
+        "year": 2013,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "23565163",
+        "title": "Phosphorylation of IRS1 at serine 307 in response to insulin in human adipocytes is not likely to be catalyzed by p70 ribosomal S6 kinase.",
+        "authors": [
+          "Rajan MR",
+          "Fagerholm S",
+          "Jönsson C",
+          "Kjølhede P",
+          "Turkina MV",
+          "Strålfors P"
+        ],
+        "journal": "PLoS One",
+        "year": 2013,
+        "doi": "10.1371/journal.pone.0059725"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1371/journal.pone.0059725",
+        "title": "Phosphorylation of IRS1 at Serine 307 in Response to Insulin in Human Adipocytes Is Not Likely to be Catalyzed by p70 Ribosomal S6 Kinase",
+        "authors": [
+          "Rajan, Meenu Rohini",
+          "Fagerholm, Siri",
+          "Jönsson, Cecilia",
+          "Kjølhede, Preben",
+          "Turkina, Maria V.",
+          "Strålfors, Peter"
+        ],
+        "containerTitle": "PLoS ONE",
+        "year": 2013
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 57,
+        "rawText": "Pan C, Banerjee K, Lehmann GL, et al. Lipofuscin causes atypical necroptosis through lysosomal membrane permeabilization. Proc Natl Acad Sci U S A. 2021;118(47):e2100122118. [DOI: 10.1073/pnas.2100122118](https://doi.org/10.1073/pnas.2100122118) PMID:34782457\n    - **Key finding**: Lipofuscin triggers LMP → NLRP3 activation + atypical necroptosis (RIPK1/RIPK3/MLKL independent)\n    - **Evidence type**: In vitro (RPE cells) + animal model (Abca4-/- mice) (L4-L5)\n    - **Note**: Establishes lipofuscin as direct cause of LMP in aging",
+        "refNumber": 10,
+        "pmid": "34782457",
+        "doi": "10.1073/pnas.2100122118",
+        "firstAuthor": "Pan C",
+        "year": 2021,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "34782457",
+        "title": "Lipofuscin causes atypical necroptosis through lysosomal membrane permeabilization.",
+        "authors": [
+          "Pan C",
+          "Banerjee K",
+          "Lehmann GL",
+          "Almeida D",
+          "Hajjar KA",
+          "Benedicto I",
+          "Jiang Z",
+          "Radu RA",
+          "Thompson DH",
+          "Rodriguez-Boulan E",
+          "Nociari MM"
+        ],
+        "journal": "Proc Natl Acad Sci U S A",
+        "year": 2021,
+        "doi": "10.1073/pnas.2100122118"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1073/pnas.2100122118",
+        "title": "Lipofuscin causes atypical necroptosis through lysosomal membrane permeabilization",
+        "authors": [
+          "Pan, Chendong",
+          "Banerjee, Kalpita",
+          "Lehmann, Guillermo L.",
+          "Almeida, Dena",
+          "Hajjar, Katherine A.",
+          "Benedicto, Ignacio",
+          "Jiang, Zhichun",
+          "Radu, Roxana A.",
+          "Thompson, David H.",
+          "Rodriguez-Boulan, Enrique",
+          "Nociari, Marcelo M."
+        ],
+        "containerTitle": "Proceedings of the National Academy of Sciences",
+        "year": 2021
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 62,
+        "rawText": "Oka T, Hikoso S, Yamaguchi O, et al. Mitochondrial DNA that escapes from autophagy causes inflammation and heart failure. Nature. 2012;485(7397):251-5. [DOI: 10.1038/nature10992](https://doi.org/10.1038/nature10992) PMID:22535248\n    - **Key finding**: **LANDMARK PAPER** - DNase II-/- → mtDNA accumulates in autolysosomes → escapes → TLR9 → myocarditis\n    - **Evidence type**: Cardiac-specific knockout (L3)\n    - **Species**: NCBITaxon:10090 (Dnase2a cardiac-specific KO)\n    - **Translational note**: Mechanism established in heart; same pathway operates in brain via cGAS-STING",
+        "refNumber": 11,
+        "pmid": "22535248",
+        "doi": "10.1038/nature10992",
+        "firstAuthor": "Oka T",
+        "year": 2012,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "22535248",
+        "title": "Mitochondrial DNA that escapes from autophagy causes inflammation and heart failure.",
+        "authors": [
+          "Oka T",
+          "Hikoso S",
+          "Yamaguchi O",
+          "Taneike M",
+          "Takeda T",
+          "Tamai T",
+          "Oyabu J",
+          "Murakawa T",
+          "Nakayama H",
+          "Nishida K",
+          "Akira S",
+          "Yamamoto A",
+          "Komuro I",
+          "Otsu K"
+        ],
+        "journal": "Nature",
+        "year": 2012,
+        "doi": "10.1038/nature10992"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/nature10992",
+        "title": "Mitochondrial DNA that escapes from autophagy causes inflammation and heart failure",
+        "authors": [
+          "Oka, Takafumi",
+          "Hikoso, Shungo",
+          "Yamaguchi, Osamu",
+          "Taneike, Manabu",
+          "Takeda, Toshihiro",
+          "Tamai, Takahito",
+          "Oyabu, Jota",
+          "Murakawa, Tomokazu",
+          "Nakayama, Hiroyuki",
+          "Nishida, Kazuhiko",
+          "Akira, Shizuo",
+          "Yamamoto, Akitsugu",
+          "Komuro, Issei",
+          "Otsu, Kinya"
+        ],
+        "containerTitle": "Nature",
+        "year": 2012
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 68,
+        "rawText": "Aits S, Jäättelä M. Lysosomal cell death at a glance. J Cell Sci. 2013;126(Pt 9):1905-12. [DOI: 10.1242/jcs.091181](https://doi.org/10.1242/jcs.091181) PMID:23720375\n    - **Key finding**: Comprehensive review of LMP mechanisms and cathepsin-mediated cell death\n    - **Evidence type**: Review synthesizing field",
+        "refNumber": 12,
+        "pmid": "23720375",
+        "doi": "10.1242/jcs.091181",
+        "firstAuthor": "Aits S",
+        "year": 2013,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "23720375",
+        "title": "Lysosomal cell death at a glance.",
+        "authors": [
+          "Aits S",
+          "Jäättelä M"
+        ],
+        "journal": "J Cell Sci",
+        "year": 2013,
+        "doi": "10.1242/jcs.091181"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1242/jcs.091181",
+        "title": "Lysosomal cell death at a glance",
+        "authors": [
+          "Aits, Sonja",
+          "Jäättelä, Marja"
+        ],
+        "containerTitle": "Journal of Cell Science",
+        "year": 2013
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 72,
+        "rawText": "Hornung V, Bauernfeind F, Halle A, et al. Silica crystals and aluminum salts activate the NALP3 inflammasome through phagosomal destabilization. Nat Immunol. 2008;9(8):847-56. [DOI: 10.1038/ni.1631](https://doi.org/10.1038/ni.1631) PMID:18604214\n    - **Key finding**: **LANDMARK PAPER** - LMP → cathepsin B release → NLRP3 activation; cathepsin B inhibitors block inflammasome\n    - **Evidence type**: Knockout (Cathepsin B-/-) + inhibitors (L3-L5)\n    - **Quote**: \"Inhibition of...cathepsin B activity impaired NALP3 activation\"",
+        "refNumber": 13,
+        "pmid": "18604214",
+        "doi": "10.1038/ni.1631",
+        "firstAuthor": "Hornung V",
+        "year": 2008,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "18604214",
+        "title": "Silica crystals and aluminum salts activate the NALP3 inflammasome through phagosomal destabilization.",
+        "authors": [
+          "Hornung V",
+          "Bauernfeind F",
+          "Halle A",
+          "Samstad EO",
+          "Kono H",
+          "Rock KL",
+          "Fitzgerald KA",
+          "Latz E"
+        ],
+        "journal": "Nat Immunol",
+        "year": 2008,
+        "doi": "10.1038/ni.1631"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/ni.1631",
+        "title": "Silica crystals and aluminum salts activate the NALP3 inflammasome through phagosomal destabilization",
+        "authors": [
+          "Hornung, Veit",
+          "Bauernfeind, Franz",
+          "Halle, Annett",
+          "Samstad, Eivind O",
+          "Kono, Hajime",
+          "Rock, Kenneth L",
+          "Fitzgerald, Katherine A",
+          "Latz, Eicke"
+        ],
+        "containerTitle": "Nature Immunology",
+        "year": 2008
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 77,
+        "rawText": "Gulen MF, Samson N, Keller A, et al. cGAS-STING drives ageing-related inflammation and neurodegeneration. Nature. 2023;620(7973):374-380. [DOI: 10.1038/s41586-023-06373-1](https://doi.org/10.1038/s41586-023-06373-1) PMID:37532932\n    - **Key finding**: **LANDMARK PAPER** - cGAS-STING drives aging inflammation; cytosolic mtDNA from perturbed mitochondria activates cGAS in microglia\n    - **Evidence type**: STING knockout + cGAS gain-of-function knockin (L3)\n    - **Brain-specific**: \"Activation of STING triggers reactive microglial transcriptional states, neurodegeneration and cognitive decline\"\n    - **Therapeutic implication**: STING blockade improves aging phenotypes",
+        "refNumber": 14,
+        "pmid": "37532932",
+        "doi": "10.1038/s41586-023-06373-1",
+        "firstAuthor": "Gulen M",
+        "year": 2023,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "37532932",
+        "title": "cGAS-STING drives ageing-related inflammation and neurodegeneration.",
+        "authors": [
+          "Gulen MF",
+          "Samson N",
+          "Keller A",
+          "Schwabenland M",
+          "Liu C",
+          "Glück S",
+          "Thacker VV",
+          "Favre L",
+          "Mangeat B",
+          "Kroese LJ",
+          "Krimpenfort P",
+          "Prinz M",
+          "Ablasser A"
+        ],
+        "journal": "Nature",
+        "year": 2023,
+        "doi": "10.1038/s41586-023-06373-1"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/s41586-023-06373-1",
+        "title": "cGAS–STING drives ageing-related inflammation and neurodegeneration",
+        "authors": [
+          "Gulen, Muhammet F.",
+          "Samson, Natasha",
+          "Keller, Alexander",
+          "Schwabenland, Marius",
+          "Liu, Chong",
+          "Glück, Selene",
+          "Thacker, Vivek V.",
+          "Favre, Lucie",
+          "Mangeat, Bastien",
+          "Kroese, Lona J.",
+          "Krimpenfort, Paul",
+          "Prinz, Marco",
+          "Ablasser, Andrea"
+        ],
+        "containerTitle": "Nature",
+        "year": 2023
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 85,
+        "rawText": "Xian H, Watari K, Sanchez-Lopez E, et al. Oxidized DNA fragments exit mitochondria via mPTP- and VDAC-dependent channels to activate NLRP3 inflammasome and interferon signaling. Immunity. 2022;55(8):1370-1385.e8. [DOI: 10.1016/j.immuni.2022.06.007](https://doi.org/10.1016/j.immuni.2022.06.007) PMID:35835107\n    - **Key finding**: **LANDMARK PAPER** - Complete mechanism of mtDNA release: mPTP/VDAC pores, FEN1 cleavage to 500-650bp fragments, ox-mtDNA→NLRP3, non-ox-mtDNA→cGAS-STING\n    - **Evidence type**: Multiple genetic/pharmacological interventions (L3-L5)\n    - **Key mechanism**: \"Within mitochondria, Ox-mtDNA was either repaired by DNA glycosylase OGG1 or cleaved by the endonuclease FEN1 to 500-650 bp fragments that exited mitochondria via mPTP- and VDAC-dependent channels\"\n    - **Therapeutic implication**: FEN1 inhibitors suppress IL-1β production and mtDNA release in vivo\n    - **Pathway selectivity**: Oxidation state determines sensor - ox-mtDNA→NLRP3, non-ox-mtDNA→cGAS-STING",
+        "refNumber": 15,
+        "pmid": "35835107",
+        "doi": "10.1016/j.immuni.2022.06.007",
+        "firstAuthor": "Xian H",
+        "year": 2022,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "35835107",
+        "title": "Oxidized DNA fragments exit mitochondria via mPTP- and VDAC-dependent channels to activate NLRP3 inflammasome and interferon signaling.",
+        "authors": [
+          "Xian H",
+          "Watari K",
+          "Sanchez-Lopez E",
+          "Offenberger J",
+          "Onyuru J",
+          "Sampath H",
+          "Ying W",
+          "Hoffman HM",
+          "Shadel GS",
+          "Karin M"
+        ],
+        "journal": "Immunity",
+        "year": 2022,
+        "doi": "10.1016/j.immuni.2022.06.007"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1016/j.immuni.2022.06.007",
+        "title": "Oxidized DNA fragments exit mitochondria via mPTP- and VDAC-dependent channels to activate NLRP3 inflammasome and interferon signaling",
+        "authors": [
+          "Xian, Hongxu",
+          "Watari, Kosuke",
+          "Sanchez-Lopez, Elsa",
+          "Offenberger, Joseph",
+          "Onyuru, Janset",
+          "Sampath, Harini",
+          "Ying, Wei",
+          "Hoffman, Hal M.",
+          "Shadel, Gerald S.",
+          "Karin, Michael"
+        ],
+        "containerTitle": "Immunity",
+        "year": 2022
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 92,
+        "rawText": "~~Sliter DA, Martinez J, Hao L, et al. Parkin and PINK1 mitigate STING-induced inflammation. Nature. 2018;561(7722):258-262. [DOI: 10.1038/s41586-018-0448-9](https://doi.org/10.1038/s41586-018-0448-9) PMID:30135585~~ **[RETRACTED JULY 2025]**\n    - **⚠️ RETRACTED**: Data in Figs 1d, 3a-c found unreliable\n    - **REPLACEMENT SOURCES (independently validate mechanism):**\n    - **Borsche 2020 Brain PMID:33029617** [DOI](https://doi.org/10.1093/brain/awaa246): HUMAN DATA - elevated IL-6 + ccf-mtDNA in PRKN/PINK1 carriers\n    - **Jimenez-Loygorri 2024 Nat Commun PMID:38280852** [DOI](https://doi.org/10.1038/s41467-024-45044-1): urolithin A mitophagy induction → attenuates cGAS/STING\n    - The core mechanism (PINK1/Parkin mitophagy restrains mtDNA-STING inflammation) remains valid via independent sources",
+        "refNumber": 16,
+        "pmid": "30135585",
+        "doi": "10.1038/s41586-018-0448-9",
+        "firstAuthor": null,
+        "year": 2018,
+        "title": null,
+        "journal": null,
+        "isRetracted": true
+      },
+      "pmidValid": null,
+      "pmidError": null,
+      "pmidMetadata": null,
+      "doiValid": null,
+      "doiError": null,
+      "doiMetadata": null,
+      "status": "skipped",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 101,
+        "rawText": "Heneka MT, Kummer MP, Stutz A, et al. NLRP3 is activated in Alzheimer's disease and contributes to pathology in APP/PS1 mice. Nature. 2013;493(7434):674-8. [DOI: 10.1038/nature11729](https://doi.org/10.1038/nature11729) PMID:23254930\n    - **Key finding**: **LANDMARK PAPER** - First demonstration that NLRP3-/- or Caspase-1-/- protects APP/PS1 mice from AD pathology and cognitive decline\n    - **Evidence type**: Double knockout (Nlrp3-/- x APP/PS1) (L3)\n    - **Quote**: \"Nlrp3(-/-) or Casp1(-/-) mice...were largely protected from loss of spatial memory...demonstrated reduced brain caspase-1 and interleukin-1β activation as well as enhanced amyloid-β clearance\"\n    - **Key insight**: NLRP3 deficiency skews microglia to M2 phenotype → enhanced Aβ phagocytosis",
+        "refNumber": 17,
+        "pmid": "23254930",
+        "doi": "10.1038/nature11729",
+        "firstAuthor": "Heneka M",
+        "year": 2013,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "23254930",
+        "title": "NLRP3 is activated in Alzheimer's disease and contributes to pathology in APP/PS1 mice.",
+        "authors": [
+          "Heneka MT",
+          "Kummer MP",
+          "Stutz A",
+          "Delekate A",
+          "Schwartz S",
+          "Vieira-Saecker A",
+          "Griep A",
+          "Axt D",
+          "Remus A",
+          "Tzeng TC",
+          "Gelpi E",
+          "Halle A",
+          "Korte M",
+          "Latz E",
+          "Golenbock DT"
+        ],
+        "journal": "Nature",
+        "year": 2013,
+        "doi": "10.1038/nature11729"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/nature11729",
+        "title": "NLRP3 is activated in Alzheimer’s disease and contributes to pathology in APP/PS1 mice",
+        "authors": [
+          "Heneka, Michael T.",
+          "Kummer, Markus P.",
+          "Stutz, Andrea",
+          "Delekate, Andrea",
+          "Schwartz, Stephanie",
+          "Vieira-Saecker, Ana",
+          "Griep, Angelika",
+          "Axt, Daisy",
+          "Remus, Anita",
+          "Tzeng, Te-Chen",
+          "Gelpi, Ellen",
+          "Halle, Annett",
+          "Korte, Martin",
+          "Latz, Eicke",
+          "Golenbock, Douglas T."
+        ],
+        "containerTitle": "Nature",
+        "year": 2012
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 107,
+        "rawText": "Ising C, Venegas C, Zhang S, et al. NLRP3 inflammasome activation drives tau pathology. Nature. 2019;575(7784):669-673. [DOI: 10.1038/s41586-019-1769-z](https://doi.org/10.1038/s41586-019-1769-z) PMID:31748742\n    - **Key finding**: **LANDMARK PAPER** - NLRP3 → tau hyperphosphorylation via GSK-3β↑ and PP2A↓; tau aggregates also activate NLRP3 (feedforward loop)\n    - **Evidence type**: Knockout (Nlrp3-/-) in Tau22 and injection models (L3)\n    - **Quote**: \"Loss of NLRP3 inflammasome function reduced tau hyperphosphorylation and aggregation by regulating tau kinases and phosphatases\"\n    - **Critical insight**: \"Tau activated the NLRP3 inflammasome\" - creates amplifying loop\n    - **Supports amyloid cascade**: \"Intracerebral injection of fibrillar amyloid-β-containing brain homogenates induced tau pathology in an NLRP3-dependent manner\"",
+        "refNumber": 18,
+        "pmid": "31748742",
+        "doi": "10.1038/s41586-019-1769-z",
+        "firstAuthor": "Ising C",
+        "year": 2019,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "31748742",
+        "title": "NLRP3 inflammasome activation drives tau pathology.",
+        "authors": [
+          "Ising C",
+          "Venegas C",
+          "Zhang S",
+          "Scheiblich H",
+          "Schmidt SV",
+          "Vieira-Saecker A",
+          "Schwartz S",
+          "Albasset S",
+          "McManus RM",
+          "Tejera D",
+          "Griep A",
+          "Santarelli F",
+          "Brosseron F",
+          "Opitz S",
+          "Stunden J",
+          "Merten M",
+          "Kayed R",
+          "Golenbock DT",
+          "Blum D",
+          "Latz E",
+          "Buée L",
+          "Heneka MT"
+        ],
+        "journal": "Nature",
+        "year": 2019,
+        "doi": "10.1038/s41586-019-1769-z"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/s41586-019-1769-z",
+        "title": "NLRP3 inflammasome activation drives tau pathology",
+        "authors": [
+          "Ising, Christina",
+          "Venegas, Carmen",
+          "Zhang, Shuangshuang",
+          "Scheiblich, Hannah",
+          "Schmidt, Susanne V.",
+          "Vieira-Saecker, Ana",
+          "Schwartz, Stephanie",
+          "Albasset, Shadi",
+          "McManus, Róisín M.",
+          "Tejera, Dario",
+          "Griep, Angelika",
+          "Santarelli, Francesco",
+          "Brosseron, Frederic",
+          "Opitz, Sabine",
+          "Stunden, James",
+          "Merten, Maximilian",
+          "Kayed, Rakez",
+          "Golenbock, Douglas T.",
+          "Blum, David",
+          "Latz, Eicke",
+          "Buée, Luc",
+          "Heneka, Michael T."
+        ],
+        "containerTitle": "Nature",
+        "year": 2019
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 114,
+        "rawText": "Bhaskar K, Konerth M, Bhaskaran M, et al. Regulation of tau pathology by the microglial fractalkine receptor. Neuron. 2010;68(1):19-31. [DOI: 10.1016/j.neuron.2010.08.023](https://doi.org/10.1016/j.neuron.2010.08.023) PMID:20064974\n    - **Key finding**: IL-1β from microglia activates neuronal p38 MAPK and GSK-3β → tau hyperphosphorylation\n    - **Evidence type**: In vitro co-culture + intervention (L5)\n    - **Mechanism**: Microglial IL-1β → neuronal IL-1R1 → p38 + GSK-3β activation → tau-pS199/S202/T205",
+        "refNumber": 19,
+        "pmid": "20064974",
+        "doi": "10.1016/j.neuron.2010.08.023",
+        "firstAuthor": "Bhaskar K",
+        "year": 2010,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "20064974",
+        "title": "Computer-aided discovery, validation, and mechanistic characterization of novel neolignan activators of peroxisome proliferator-activated receptor gamma.",
+        "authors": [
+          "Fakhrudin N",
+          "Ladurner A",
+          "Atanasov AG",
+          "Heiss EH",
+          "Baumgartner L",
+          "Markt P",
+          "Schuster D",
+          "Ellmerer EP",
+          "Wolber G",
+          "Rollinger JM",
+          "Stuppner H",
+          "Dirsch VM"
+        ],
+        "journal": "Mol Pharmacol",
+        "year": 2010,
+        "doi": "10.1124/mol.109.062141"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1016/j.neuron.2010.08.023",
+        "title": "Regulation of Tau Pathology by the Microglial Fractalkine Receptor",
+        "authors": [
+          "Bhaskar, Kiran",
+          "Konerth, Megan",
+          "Kokiko-Cochran, Olga N.",
+          "Cardona, Astrid",
+          "Ransohoff, Richard M.",
+          "Lamb, Bruce T."
+        ],
+        "containerTitle": "Neuron",
+        "year": 2010
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 121,
+        "rawText": "Marschallinger J, Iram T, Zardeneta M, et al. Lipid-droplet-accumulating microglia represent a dysfunctional and proinflammatory state in the aging brain. Nat Neurosci. 2020;23(2):194-208. [DOI: 10.1038/s41593-019-0566-1](https://doi.org/10.1038/s41593-019-0566-1) PMID:31959936\n    - **Key finding**: **LANDMARK PAPER** - Discovery of LDAM phenotype; defective phagocytosis, high ROS, proinflammatory cytokines\n    - **Evidence type**: scRNA-seq + functional assays + CRISPR screen (L4-L5)\n    - **Quote**: \"LDAM...are defective in phagocytosis, produce high levels of reactive oxygen species and secrete proinflammatory cytokines\"\n    - **CRISPR screen**: Identified GRN and other neurodegeneration genes as lipid droplet modifiers\n    - **Therapeutic implication**: DGAT2 inhibitors may restore microglial function",
+        "refNumber": 20,
+        "pmid": "31959936",
+        "doi": "10.1038/s41593-019-0566-1",
+        "firstAuthor": "Marschallinger J",
+        "year": 2020,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "31959936",
+        "title": "Lipid-droplet-accumulating microglia represent a dysfunctional and proinflammatory state in the aging brain.",
+        "authors": [
+          "Marschallinger J",
+          "Iram T",
+          "Zardeneta M",
+          "Lee SE",
+          "Lehallier B",
+          "Haney MS",
+          "Pluvinage JV",
+          "Mathur V",
+          "Hahn O",
+          "Morgens DW",
+          "Kim J",
+          "Tevini J",
+          "Felder TK",
+          "Wolinski H",
+          "Bertozzi CR",
+          "Bassik MC",
+          "Aigner L",
+          "Wyss-Coray T"
+        ],
+        "journal": "Nat Neurosci",
+        "year": 2020,
+        "doi": "10.1038/s41593-019-0566-1"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/s41593-019-0566-1",
+        "title": "Lipid-droplet-accumulating microglia represent a dysfunctional and proinflammatory state in the aging brain",
+        "authors": [
+          "Marschallinger, Julia",
+          "Iram, Tal",
+          "Zardeneta, Macy",
+          "Lee, Song E.",
+          "Lehallier, Benoit",
+          "Haney, Michael S.",
+          "Pluvinage, John V.",
+          "Mathur, Vidhu",
+          "Hahn, Oliver",
+          "Morgens, David W.",
+          "Kim, Justin",
+          "Tevini, Julia",
+          "Felder, Thomas K.",
+          "Wolinski, Heimo",
+          "Bertozzi, Carolyn R.",
+          "Bassik, Michael C.",
+          "Aigner, Ludwig",
+          "Wyss-Coray, Tony"
+        ],
+        "containerTitle": "Nature Neuroscience",
+        "year": 2020
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 128,
+        "rawText": "Liddelow SA, Guttenplan KA, Clarke LE, et al. Neurotoxic reactive astrocytes are induced by activated microglia. Nature. 2017;541(7638):481-487. [DOI: 10.1038/nature21029](https://doi.org/10.1038/nature21029) PMID:28099414\n    - **Key finding**: **LANDMARK PAPER** - IL-1α + TNF + C1q from microglia are necessary and sufficient to induce A1 neurotoxic astrocytes\n    - **Evidence type**: Triple knockout (Il1a-/-;Tnf-/-;C1qa-/-) (L3)\n    - **Quote**: \"Activated microglia induce A1 astrocytes by secreting Il-1α, TNF and C1q\"\n    - **A1 astrocyte effects**: \"A1 astrocytes lose the ability to promote neuronal survival...and induce the death of neurons and oligodendrocytes\"\n    - **Clinical relevance**: A1 astrocytes abundant in AD, PD, HD, ALS, MS",
+        "refNumber": 21,
+        "pmid": "28099414",
+        "doi": "10.1038/nature21029",
+        "firstAuthor": "Liddelow S",
+        "year": 2017,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "28099414",
+        "title": "Neurotoxic reactive astrocytes are induced by activated microglia.",
+        "authors": [
+          "Liddelow SA",
+          "Guttenplan KA",
+          "Clarke LE",
+          "Bennett FC",
+          "Bohlen CJ",
+          "Schirmer L",
+          "Bennett ML",
+          "Münch AE",
+          "Chung WS",
+          "Peterson TC",
+          "Wilton DK",
+          "Frouin A",
+          "Napier BA",
+          "Panicker N",
+          "Kumar M",
+          "Buckwalter MS",
+          "Rowitch DH",
+          "Dawson VL",
+          "Dawson TM",
+          "Stevens B",
+          "Barres BA"
+        ],
+        "journal": "Nature",
+        "year": 2017,
+        "doi": "10.1038/nature21029"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/nature21029",
+        "title": "Neurotoxic reactive astrocytes are induced by activated microglia",
+        "authors": [
+          "Liddelow, Shane A.",
+          "Guttenplan, Kevin A.",
+          "Clarke, Laura E.",
+          "Bennett, Frederick C.",
+          "Bohlen, Christopher J.",
+          "Schirmer, Lucas",
+          "Bennett, Mariko L.",
+          "Münch, Alexandra E.",
+          "Chung, Won-Suk",
+          "Peterson, Todd C.",
+          "Wilton, Daniel K.",
+          "Frouin, Arnaud",
+          "Napier, Brooke A.",
+          "Panicker, Nikhil",
+          "Kumar, Manoj",
+          "Buckwalter, Marion S.",
+          "Rowitch, David H.",
+          "Dawson, Valina L.",
+          "Dawson, Ted M.",
+          "Stevens, Beth",
+          "Barres, Ben A."
+        ],
+        "containerTitle": "Nature",
+        "year": 2017
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 135,
+        "rawText": "Keren-Shaul H, Spinrad A, Weiner A, et al. A Unique Microglia Type Associated with Restricting Development of Alzheimer's Disease. Cell. 2017;169(7):1276-1290.e17. [DOI: 10.1016/j.cell.2017.05.018](https://doi.org/10.1016/j.cell.2017.05.018) PMID:28602351\n    - **Key finding**: **LANDMARK PAPER** - Discovery of DAM (disease-associated microglia); 2-step activation, TREM2-dependent Stage 2\n    - **Evidence type**: scRNA-seq + TREM2-/- (L3)\n    - **Quote**: \"Activation is initiated in a Trem2-independent manner...followed by activation of a Trem2-dependent program\"\n    - **Function**: DAM localize to plaques, contain phagocytosed Aβ - potentially **protective**\n    - **Key insight**: \"This unique microglia-type has the potential to restrict neurodegeneration\"",
+        "refNumber": 22,
+        "pmid": "28602351",
+        "doi": "10.1016/j.cell.2017.05.018",
+        "firstAuthor": "Keren",
+        "year": 2017,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "28602351",
+        "title": "A Unique Microglia Type Associated with Restricting Development of Alzheimer's Disease.",
+        "authors": [
+          "Keren-Shaul H",
+          "Spinrad A",
+          "Weiner A",
+          "Matcovitch-Natan O",
+          "Dvir-Szternfeld R",
+          "Ulland TK",
+          "David E",
+          "Baruch K",
+          "Lara-Astaiso D",
+          "Toth B",
+          "Itzkovitz S",
+          "Colonna M",
+          "Schwartz M",
+          "Amit I"
+        ],
+        "journal": "Cell",
+        "year": 2017,
+        "doi": "10.1016/j.cell.2017.05.018"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1016/j.cell.2017.05.018",
+        "title": "A Unique Microglia Type Associated with Restricting Development of Alzheimer’s Disease",
+        "authors": [
+          "Keren-Shaul, Hadas",
+          "Spinrad, Amit",
+          "Weiner, Assaf",
+          "Matcovitch-Natan, Orit",
+          "Dvir-Szternfeld, Raz",
+          "Ulland, Tyler K.",
+          "David, Eyal",
+          "Baruch, Kuti",
+          "Lara-Astaiso, David",
+          "Toth, Beata",
+          "Itzkovitz, Shalev",
+          "Colonna, Marco",
+          "Schwartz, Michal",
+          "Amit, Ido"
+        ],
+        "containerTitle": "Cell",
+        "year": 2017
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 142,
+        "rawText": "Hong S, Beja-Glasser VF, Nfonoyim BM, et al. Complement and microglia mediate early synapse loss in Alzheimer mouse models. Science. 2016;352(6286):712-716. [DOI: 10.1126/science.aad8373](https://doi.org/10.1126/science.aad8373) PMID:27033548\n    - **Key finding**: **LANDMARK PAPER** - C1q-C3-CR3 pathway mediates synapse elimination in AD; developmental pruning program reactivated\n    - **Evidence type**: Triple knockout (C1qa-/-, C3-/-, Cr3-/-) in AD models (L3)\n    - **Quote**: \"Inhibition of C1q, C3, or the microglial complement receptor CR3 reduces...early synapse loss\"\n    - **Timing**: \"C1q...is increased and associated with synapses before overt plaque deposition\"\n    - **Mechanism**: Soluble Aβ oligomers sufficient to trigger complement-mediated synapse engulfment",
+        "refNumber": 23,
+        "pmid": "27033548",
+        "doi": "10.1126/science.aad8373",
+        "firstAuthor": "Hong S",
+        "year": 2016,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "27033548",
+        "title": "Complement and microglia mediate early synapse loss in Alzheimer mouse models.",
+        "authors": [
+          "Hong S",
+          "Beja-Glasser VF",
+          "Nfonoyim BM",
+          "Frouin A",
+          "Li S",
+          "Ramakrishnan S",
+          "Merry KM",
+          "Shi Q",
+          "Rosenthal A",
+          "Barres BA",
+          "Lemere CA",
+          "Selkoe DJ",
+          "Stevens B"
+        ],
+        "journal": "Science",
+        "year": 2016,
+        "doi": "10.1126/science.aad8373"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1126/science.aad8373",
+        "title": "Complement and microglia mediate early synapse loss in Alzheimer mouse models",
+        "authors": [
+          "Hong, Soyon",
+          "Beja-Glasser, Victoria F.",
+          "Nfonoyim, Bianca M.",
+          "Frouin, Arnaud",
+          "Li, Shaomin",
+          "Ramakrishnan, Saranya",
+          "Merry, Katherine M.",
+          "Shi, Qiaoqiao",
+          "Rosenthal, Arnon",
+          "Barres, Ben A.",
+          "Lemere, Cynthia A.",
+          "Selkoe, Dennis J.",
+          "Stevens, Beth"
+        ],
+        "containerTitle": "Science",
+        "year": 2016
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 151,
+        "rawText": "Hardy J, Selkoe DJ. The amyloid hypothesis of Alzheimer's disease: progress and problems on the road to therapeutics. Science. 2002;297(5580):353-6. [DOI: 10.1126/science.1072994](https://doi.org/10.1126/science.1072994) PMID:12130773\n    - **Key finding**: **FOUNDATIONAL REVIEW** - Amyloid cascade hypothesis: Aβ accumulation drives AD pathogenesis\n    - **Core concept**: \"Accumulation of Aβ in the brain is the primary influence driving AD pathogenesis. The rest of the disease process, including formation of neurofibrillary tangles containing tau protein, is proposed to result from an imbalance between Aβ production and Aβ clearance\"\n    - **Therapeutic framework**: Target production (BACE1, γ-secretase) or clearance (immunotherapy)",
+        "refNumber": 24,
+        "pmid": "12130773",
+        "doi": "10.1126/science.1072994",
+        "firstAuthor": "Hardy J",
+        "year": 2002,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "12130773",
+        "title": "The amyloid hypothesis of Alzheimer's disease: progress and problems on the road to therapeutics.",
+        "authors": [
+          "Hardy J",
+          "Selkoe DJ"
+        ],
+        "journal": "Science",
+        "year": 2002
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1126/science.1072994",
+        "title": "The Amyloid Hypothesis of Alzheimer's Disease: Progress and Problems on the Road to Therapeutics",
+        "authors": [
+          "Hardy, John",
+          "Selkoe, Dennis J."
+        ],
+        "containerTitle": "Science",
+        "year": 2002
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 156,
+        "rawText": "Walsh DM, Klyubin I, Fadeeva JV, et al. Naturally secreted oligomers of amyloid beta protein potently inhibit hippocampal long-term potentiation in vivo. Nature. 2002;416(6880):535-9. [DOI: 10.1038/416535a](https://doi.org/10.1038/416535a) PMID:11932745\n    - **Key finding**: **LANDMARK PAPER** - Aβ oligomers (NOT monomers, NOT fibrils) are the synaptotoxic species\n    - **Evidence type**: In vivo electrophysiology + immunodepletion (L4)\n    - **Quote**: \"Aβ oligomers, in the absence of monomers and amyloid fibrils, disrupted synaptic plasticity in vivo at concentrations found in human brain\"\n    - **Therapeutic insight**: γ-secretase inhibitors prevented oligomer formation",
+        "refNumber": 25,
+        "pmid": "11932745",
+        "doi": "10.1038/416535a",
+        "firstAuthor": "Walsh D",
+        "year": 2002,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "11932745",
+        "title": "Naturally secreted oligomers of amyloid beta protein potently inhibit hippocampal long-term potentiation in vivo.",
+        "authors": [
+          "Walsh DM",
+          "Klyubin I",
+          "Fadeeva JV",
+          "Cullen WK",
+          "Anwyl R",
+          "Wolfe MS",
+          "Rowan MJ",
+          "Selkoe DJ"
+        ],
+        "journal": "Nature",
+        "year": 2002
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/416535a",
+        "title": "Naturally secreted oligomers of amyloid β protein potently inhibit hippocampal long-term potentiation in vivo",
+        "authors": [
+          "Walsh, Dominic M.",
+          "Klyubin, Igor",
+          "Fadeeva, Julia V.",
+          "Cullen, William K.",
+          "Anwyl, Roger",
+          "Wolfe, Michael S.",
+          "Rowan, Michael J.",
+          "Selkoe, Dennis J."
+        ],
+        "containerTitle": "Nature",
+        "year": 2002
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 162,
+        "rawText": "Condello C, Yuan P, Schain A, Grutzendler J. Microglia constitute a barrier that prevents neurotoxic protofibrillar Aβ42 hotspots around plaques. Nat Commun. 2015;6:6176. [DOI: 10.1038/ncomms7176](https://doi.org/10.1038/ncomms7176) PMID:25630253\n    - **Key finding**: Microglia form **protective barrier** around plaques - compact plaques have low Aβ42 affinity, uncovered areas have toxic oligomer hotspots\n    - **Evidence type**: In vivo 2-photon imaging + CX3CR1-/- (L4)\n    - **Quote**: \"Microglia constitute a barrier with profound impact on plaque composition and toxicity...prevents outward plaque expansion\"\n    - **Therapeutic insight**: Enhancing microglia barrier (anti-Aβ immunotherapy) reduces neuritic dystrophy\n    - **Key insight**: Plaque compaction may be **PROTECTIVE** - links to TREM2 function",
+        "refNumber": 26,
+        "pmid": "25630253",
+        "doi": "10.1038/ncomms7176",
+        "firstAuthor": "Condello C",
+        "year": 2015,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "25630253",
+        "title": "Microglia constitute a barrier that prevents neurotoxic protofibrillar Aβ42 hotspots around plaques.",
+        "authors": [
+          "Condello C",
+          "Yuan P",
+          "Schain A",
+          "Grutzendler J"
+        ],
+        "journal": "Nat Commun",
+        "year": 2015,
+        "doi": "10.1038/ncomms7176"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/ncomms7176",
+        "title": "Microglia constitute a barrier that prevents neurotoxic protofibrillar Aβ42 hotspots around plaques",
+        "authors": [
+          "Condello, Carlo",
+          "Yuan, Peng",
+          "Schain, Aaron",
+          "Grutzendler, Jaime"
+        ],
+        "containerTitle": "Nature Communications",
+        "year": 2015
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 171,
+        "rawText": "Wang Y, Mandelkow E. Tau in physiology and pathology. Nat Rev Neurosci. 2016;17(1):5-21. [DOI: 10.1038/nrn.2015.1](https://doi.org/10.1038/nrn.2015.1) PMID:26631930\n    - **Key finding**: **COMPREHENSIVE REVIEW** - Tau phosphorylation sites, kinases (GSK-3β, CDK5), aggregation mechanisms\n    - **Key sites**: Ser199, Ser202/Thr205 (AT8), Thr231, Ser396/Ser404 (PHF-1)\n    - **Mechanism**: Hyperphosphorylated tau detaches from microtubules → self-aggregation → PHF → NFT",
+        "refNumber": 27,
+        "pmid": "26631930",
+        "doi": "10.1038/nrn.2015.1",
+        "firstAuthor": "Wang Y",
+        "year": 2016,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "26631930",
+        "title": "Tau in physiology and pathology.",
+        "authors": [
+          "Wang Y",
+          "Mandelkow E"
+        ],
+        "journal": "Nat Rev Neurosci",
+        "year": 2016,
+        "doi": "10.1038/nrn.2015.1"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/nrn.2015.1",
+        "title": "Tau in physiology and pathology",
+        "authors": [
+          "Wang, Yipeng",
+          "Mandelkow, Eckhard"
+        ],
+        "containerTitle": "Nature Reviews Neuroscience",
+        "year": 2015
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 176,
+        "rawText": "Braak H, Braak E. Neuropathological stageing of Alzheimer-related changes. Acta Neuropathol. 1991;82(4):239-59. [DOI: 10.1007/BF00308809](https://doi.org/10.1007/BF00308809) PMID:1759558\n    - **Key finding**: **FOUNDATIONAL PAPER** - Defined 6 stages of NFT spread: transentorhinal (I-II) → limbic (III-IV) → isocortical (V-VI)\n    - **Quote**: \"Neurofibrillary tangles and neuropil threads...exhibited a characteristic distribution pattern permitting the differentiation of six stages\"\n    - **Clinical correlation**: NFT staging correlates with cognitive decline better than Aβ plaques",
+        "refNumber": 28,
+        "pmid": "1759558",
+        "doi": "10.1007/BF00308809",
+        "firstAuthor": "Braak H",
+        "year": 1991,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "1759558",
+        "title": "Neuropathological stageing of Alzheimer-related changes.",
+        "authors": [
+          "Braak H",
+          "Braak E"
+        ],
+        "journal": "Acta Neuropathol",
+        "year": 1991
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1007/bf00308809",
+        "title": "Neuropathological stageing of Alzheimer-related changes",
+        "authors": [
+          "Braak, H.",
+          "Braak, E."
+        ],
+        "containerTitle": "Acta Neuropathologica",
+        "year": 1991
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 181,
+        "rawText": "Asai H, Ikezu S, Tsunoda S, et al. Depletion of microglia and inhibition of exosome synthesis halt tau propagation. Nat Neurosci. 2015;18(11):1584-93. [DOI: 10.1038/nn.4132](https://doi.org/10.1038/nn.4132) PMID:26436904\n    - **Key finding**: **LANDMARK PAPER** - Microglia spread tau via exosomes; microglia depletion HALTS tau propagation\n    - **Evidence type**: Microglia depletion (PLX3397) + exosome inhibition (L4)\n    - **Quote**: \"Depleting microglia dramatically suppressed the propagation of tau...microglia spread tau via exosome secretion\"\n    - **Mechanism**: Microglia phagocytose tau but fail to degrade → release in exosomes → seeds recipient neurons\n    - **Therapeutic insight**: Exosome secretion pathway is therapeutic target",
+        "refNumber": 29,
+        "pmid": "26436904",
+        "doi": "10.1038/nn.4132",
+        "firstAuthor": "Asai H",
+        "year": 2015,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "26436904",
+        "title": "Depletion of microglia and inhibition of exosome synthesis halt tau propagation.",
+        "authors": [
+          "Asai H",
+          "Ikezu S",
+          "Tsunoda S",
+          "Medalla M",
+          "Luebke J",
+          "Haydar T",
+          "Wolozin B",
+          "Butovsky O",
+          "Kügler S",
+          "Ikezu T"
+        ],
+        "journal": "Nat Neurosci",
+        "year": 2015,
+        "doi": "10.1038/nn.4132"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/nn.4132",
+        "title": "Depletion of microglia and inhibition of exosome synthesis halt tau propagation",
+        "authors": [
+          "Asai, Hirohide",
+          "Ikezu, Seiko",
+          "Tsunoda, Satoshi",
+          "Medalla, Maria",
+          "Luebke, Jennifer",
+          "Haydar, Tarik",
+          "Wolozin, Benjamin",
+          "Butovsky, Oleg",
+          "Kügler, Sebastian",
+          "Ikezu, Tsuneya"
+        ],
+        "containerTitle": "Nature Neuroscience",
+        "year": 2015
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 190,
+        "rawText": "Giovinazzo D, Bursac B, Sbodio JI, et al. Hydrogen sulfide is neuroprotective in Alzheimer's disease by sulfhydrating GSK3β and inhibiting Tau hyperphosphorylation. Proc Natl Acad Sci USA. 2021;118(4):e2017225118. [DOI: 10.1073/pnas.2017225118](https://doi.org/10.1073/pnas.2017225118) PMID:33431651\n    - **Key finding**: **LANDMARK PAPER** - H₂S protects against tau pathology by sulfhydrating GSK3β → inhibits tau phosphorylation\n    - **Evidence type**: In vitro + intervention_animal (NaGYY4137 in 3xTg-AD) (L4-L5)\n    - **Key discoveries**:\n      - Wild-type tau BINDS CSE and enhances its activity (feedforward protection)\n      - Tau P301L mutant FAILS to bind CSE → loss of protection\n      - CSE is DEPLETED in AD brains (human + 3xTg-AD mice)\n      - H₂S donors (NaGYY4137) ameliorate motor and cognitive deficits in 3xTg-AD\n    - **Quote**: \"H₂S prevents hyperphosphorylation of Tau by sulfhydrating its kinase, glycogen synthase kinase 3β (GSK3β)\"\n    - **Therapeutic insight**: H₂S donors as GSK3β inhibitors with potentially better safety profile than direct kinase inhibitors",
+        "refNumber": 30,
+        "pmid": "33431651",
+        "doi": "10.1073/pnas.2017225118",
+        "firstAuthor": "Giovinazzo D",
+        "year": 2021,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "33431651",
+        "title": "Hydrogen sulfide is neuroprotective in Alzheimer's disease by sulfhydrating GSK3β and inhibiting Tau hyperphosphorylation.",
+        "authors": [
+          "Giovinazzo D",
+          "Bursac B",
+          "Sbodio JI",
+          "Nalluru S",
+          "Vignane T",
+          "Snowman AM",
+          "Albacarys LM",
+          "Sedlak TW",
+          "Torregrossa R",
+          "Whiteman M",
+          "Filipovic MR",
+          "Snyder SH",
+          "Paul BD"
+        ],
+        "journal": "Proc Natl Acad Sci U S A",
+        "year": 2021,
+        "doi": "10.1073/pnas.2017225118"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1073/pnas.2017225118",
+        "title": "Hydrogen sulfide is neuroprotective in Alzheimer’s disease by sulfhydrating GSK3β and inhibiting Tau hyperphosphorylation",
+        "authors": [
+          "Giovinazzo, Daniel",
+          "Bursac, Biljana",
+          "Sbodio, Juan I.",
+          "Nalluru, Sumedha",
+          "Vignane, Thibaut",
+          "Snowman, Adele M.",
+          "Albacarys, Lauren M.",
+          "Sedlak, Thomas W.",
+          "Torregrossa, Roberta",
+          "Whiteman, Matthew",
+          "Filipovic, Milos R.",
+          "Snyder, Solomon H.",
+          "Paul, Bindu D."
+        ],
+        "containerTitle": "Proceedings of the National Academy of Sciences",
+        "year": 2021
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 201,
+        "rawText": "Chakraborty S, Tripathi SJ, Vázquez-Rosa E, et al. Cystathionine γ-lyase is a major regulator of cognitive function through neurotrophin signaling and neurogenesis. Proc Natl Acad Sci USA. 2025;122(52):e2528478122. [DOI: 10.1073/pnas.2528478122](https://doi.org/10.1073/pnas.2528478122)\n    - **Key finding**: **LANDMARK PAPER** - CSE knockout ALONE sufficient to cause AD-like phenotype\n    - **Evidence type**: Knockout (Cse-/-) + behavioral, proteomic, histological (L3)\n    - **CSE-/- phenotype**:\n      - Oxidative stress (lipid peroxidation, protein oxidation, DNA damage ↑)\n      - Blood-brain barrier breakdown (capillary rupture, immune protein leak)\n      - Impaired neurogenesis (↓neurotrophin signaling, ↓hippocampal migration)\n      - Abnormal iron accumulation\n      - Progressive cognitive decline\n    - **Quote**: \"Loss of CSE is sufficient to trigger cognitive deficits...oxidative damage, compromise blood–brain barrier integrity, impair neurogenesis\"\n    - **Key insight**: CSE is a SINGLE-POINT VULNERABILITY for brain health - major therapeutic target\n    - **Cellular localization**: CSE primarily in neurons; CBS primarily in astrocytes",
+        "refNumber": 31,
+        "pmid": null,
+        "doi": "10.1073/pnas.2528478122",
+        "firstAuthor": "Chakraborty S",
+        "year": 2025,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": null,
+      "pmidError": null,
+      "pmidMetadata": null,
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1073/pnas.2528478122",
+        "title": "Cystathionine γ-lyase is a major regulator of cognitive function through neurotrophin signaling and neurogenesis",
+        "authors": [
+          "Chakraborty, Suwarna",
+          "Jamuna Tripathi, Sunil",
+          "Vázquez-Rosa, Edwin",
+          "Chaubey, Kalyani",
+          "Fujioka, Hisashi",
+          "Miller, Emiko",
+          "Tyagi, Richa",
+          "Vignane, Thibaut",
+          "Sharma, Sudarshana M.",
+          "Thomas, Bobby",
+          "Weil, Zachary M.",
+          "Nelson, Randy J.",
+          "Filipovic, Milos R.",
+          "Orsburn, Benjamin C.",
+          "Snyder, Solomon H.",
+          "Pieper, Andrew A.",
+          "Paul, Bindu D."
+        ],
+        "containerTitle": "Proceedings of the National Academy of Sciences",
+        "year": 2025
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 214,
+        "rawText": "Paul BD, Snyder SH. H₂S signalling through protein sulfhydration and beyond. Nat Rev Mol Cell Biol. 2012;13(8):499-507. [DOI: 10.1038/nrm3391](https://doi.org/10.1038/nrm3391) PMID:22781905\n    - **Key finding**: **FOUNDATIONAL REVIEW** - Establishes sulfhydration (S-sulfhydration/persulfidation) as major H₂S signaling mechanism\n    - **Mechanism**: H₂S modifies cysteine thiols (-SH) to persulfides (-SSH)\n    - **Target proteins**: Parkin (activated), NF-κB (anti-apoptotic), Keap1 (Nrf2 release)\n    - **Quote**: \"Sulfhydration is a protein modification that may mediate a wide range of H₂S effects\"",
+        "refNumber": 32,
+        "pmid": "22781905",
+        "doi": "10.1038/nrm3391",
+        "firstAuthor": "Paul B",
+        "year": 2012,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "22781905",
+        "title": "H₂S signalling through protein sulfhydration and beyond.",
+        "authors": [
+          "Paul BD",
+          "Snyder SH"
+        ],
+        "journal": "Nat Rev Mol Cell Biol",
+        "year": 2012,
+        "doi": "10.1038/nrm3391"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/nrm3391",
+        "title": "H2S signalling through protein sulfhydration and beyond",
+        "authors": [
+          "Paul, Bindu D.",
+          "Snyder, Solomon H."
+        ],
+        "containerTitle": "Nature Reviews Molecular Cell Biology",
+        "year": 2012
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 220,
+        "rawText": "Paul BD, Sbodio JI, Xu R, et al. Cystathionine γ-lyase deficiency mediates neurodegeneration in Huntington's disease. Nature. 2014;509(7498):96-100. [DOI: 10.1038/nature13136](https://doi.org/10.1038/nature13136) PMID:24670645\n    - **Key finding**: **LANDMARK PAPER** - CSE deficiency in HD; H₂S pathway dysfunction in neurodegeneration\n    - **Evidence type**: Knockout + HD mouse models (L3-L4)\n    - **Mechanism**: Mutant huntingtin sequesters SP1 → reduced CSE transcription → H₂S depletion → neurodegeneration\n    - **Therapeutic insight**: Cysteine/H₂S supplementation protective in HD models\n    - **Broader implication**: CSE/H₂S pathway relevant across multiple neurodegenerative diseases",
+        "refNumber": 33,
+        "pmid": "24670645",
+        "doi": "10.1038/nature13136",
+        "firstAuthor": "Paul B",
+        "year": 2014,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "24670645",
+        "title": "Cystathionine γ-lyase deficiency mediates neurodegeneration in Huntington's disease.",
+        "authors": [
+          "Paul BD",
+          "Sbodio JI",
+          "Xu R",
+          "Vandiver MS",
+          "Cha JY",
+          "Snowman AM",
+          "Snyder SH"
+        ],
+        "journal": "Nature",
+        "year": 2014,
+        "doi": "10.1038/nature13136"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/nature13136",
+        "title": "Cystathionine γ-lyase deficiency mediates neurodegeneration in Huntington’s disease",
+        "authors": [
+          "Paul, Bindu D.",
+          "Sbodio, Juan I.",
+          "Xu, Risheng",
+          "Vandiver, M. Scott",
+          "Cha, Jiyoung Y.",
+          "Snowman, Adele M.",
+          "Snyder, Solomon H."
+        ],
+        "containerTitle": "Nature",
+        "year": 2014
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 227,
+        "rawText": "Yang G, Wu L, Jiang B, et al. H₂S as a physiologic vasorelaxant: hypertension in mice with deletion of cystathionine gamma-lyase. Science. 2008;322(5901):587-90. [DOI: 10.1126/science.1162667](https://doi.org/10.1126/science.1162667) PMID:18927394\n    - **Key finding**: **LANDMARK PAPER** - Establishes CSE as physiological source of H₂S; CSE-/- mice are hypertensive\n    - **Evidence type**: Knockout (Cse-/-) (L3)\n    - **Quote**: \"Mice lacking CSE display pronounced hypertension and diminished endothelium-dependent vasorelaxation\"\n    - **Foundation for brain studies**: Established Cse-/- mouse line used in subsequent neurodegeneration research",
+        "refNumber": 34,
+        "pmid": "18927394",
+        "doi": "10.1126/science.1162667",
+        "firstAuthor": "Yang G",
+        "year": 2008,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "18927394",
+        "title": "Remeasuring the double helix.",
+        "authors": [
+          "Mathew-Fenn RS",
+          "Das R",
+          "Harbury PA"
+        ],
+        "journal": "Science",
+        "year": 2008,
+        "doi": "10.1126/science.1158881"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1126/science.1162667",
+        "title": "H\n                    <sub>2</sub>\n                    S as a Physiologic Vasorelaxant: Hypertension in Mice with Deletion of Cystathionine γ-Lyase",
+        "authors": [
+          "Yang, Guangdong",
+          "Wu, Lingyun",
+          "Jiang, Bo",
+          "Yang, Wei",
+          "Qi, Jiansong",
+          "Cao, Kun",
+          "Meng, Qinghe",
+          "Mustafa, Asif K.",
+          "Mu, Weitong",
+          "Zhang, Shengming",
+          "Snyder, Solomon H.",
+          "Wang, Rui"
+        ],
+        "containerTitle": "Science",
+        "year": 2008
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 233,
+        "rawText": "Mustafa AK, Gadalla MM, Sen N, et al. H₂S signals through protein S-sulfhydration. Sci Signal. 2009;2(96):ra72. [DOI: 10.1126/scisignal.2000464](https://doi.org/10.1126/scisignal.2000464) PMID:19875694\n    - **Key finding**: First identification of S-sulfhydration as widespread protein modification by H₂S\n    - **Evidence type**: Mass spectrometry + biotin switch assay (L5)\n    - **Key targets identified**: GAPDH activity enhanced by sulfhydration\n    - **Quote**: \"S-sulfhydration is a common posttranslational modification that could mediate many of the physiological effects of H₂S\"",
+        "refNumber": 35,
+        "pmid": "19875694",
+        "doi": "10.1126/scisignal.2000464",
+        "firstAuthor": "Mustafa A",
+        "year": 2009,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "19875694",
+        "title": "Evolution amplified processing with temporally dispersed slow neuronal connectivity in primates.",
+        "authors": [
+          "Caminiti R",
+          "Ghaziri H",
+          "Galuske R",
+          "Hof PR",
+          "Innocenti GM"
+        ],
+        "journal": "Proc Natl Acad Sci U S A",
+        "year": 2009,
+        "doi": "10.1073/pnas.0907655106"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1126/scisignal.2000464",
+        "title": "H\n                    <sub>2</sub>\n                    S Signals Through Protein S-Sulfhydration",
+        "authors": [
+          "Mustafa, Asif K.",
+          "Gadalla, Moataz M.",
+          "Sen, Nilkantha",
+          "Kim, Seyun",
+          "Mu, Weitong",
+          "Gazi, Sadia K.",
+          "Barrow, Roxanne K.",
+          "Yang, Guangdong",
+          "Wang, Rui",
+          "Snyder, Solomon H."
+        ],
+        "containerTitle": "Science Signaling",
+        "year": 2009
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 241,
+        "rawText": "Stevens B, Allen NJ, Vazquez LE, et al. The classical complement cascade mediates CNS synapse elimination. Cell. 2007;131(6):1164-78. [DOI: 10.1016/j.cell.2007.10.036](https://doi.org/10.1016/j.cell.2007.10.036) PMID:18083105\n    - **Key finding**: **FOUNDATIONAL DISCOVERY** - C1q-C3 cascade mediates developmental synapse elimination\n    - **Evidence type**: C1q-/-, C3-/- knockout mice (L3)\n    - **Quote**: \"C1q...is localized to synapses throughout the postnatal CNS...Mice deficient in complement protein C1q or the downstream complement protein C3 exhibit large sustained defects in CNS synapse elimination\"\n    - **Disease relevance**: C1q upregulated in glaucoma model - \"complement-mediated synapse elimination may become aberrantly reactivated in neurodegenerative disease\"",
+        "refNumber": 36,
+        "pmid": "18083105",
+        "doi": "10.1016/j.cell.2007.10.036",
+        "firstAuthor": "Stevens B",
+        "year": 2007,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "18083105",
+        "title": "The classical complement cascade mediates CNS synapse elimination.",
+        "authors": [
+          "Stevens B",
+          "Allen NJ",
+          "Vazquez LE",
+          "Howell GR",
+          "Christopherson KS",
+          "Nouri N",
+          "Micheva KD",
+          "Mehalow AK",
+          "Huberman AD",
+          "Stafford B",
+          "Sher A",
+          "Litke AM",
+          "Lambris JD",
+          "Smith SJ",
+          "John SW",
+          "Barres BA"
+        ],
+        "journal": "Cell",
+        "year": 2007
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1016/j.cell.2007.10.036",
+        "title": "The Classical Complement Cascade Mediates CNS Synapse Elimination",
+        "authors": [
+          "Stevens, Beth",
+          "Allen, Nicola J.",
+          "Vazquez, Luis E.",
+          "Howell, Gareth R.",
+          "Christopherson, Karen S.",
+          "Nouri, Navid",
+          "Micheva, Kristina D.",
+          "Mehalow, Adrienne K.",
+          "Huberman, Andrew D.",
+          "Stafford, Benjamin",
+          "Sher, Alexander",
+          "Litke, Alan M.",
+          "Lambris, John D.",
+          "Smith, Stephen J.",
+          "John, Simon W.M.",
+          "Barres, Ben A."
+        ],
+        "containerTitle": "Cell",
+        "year": 2007
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 247,
+        "rawText": "Schafer DP, Lehrman EK, Kautzman AG, et al. Microglia sculpt postnatal neural circuits in an activity and complement-dependent manner. Neuron. 2012;74(4):691-705. [DOI: 10.1016/j.neuron.2012.03.026](https://doi.org/10.1016/j.neuron.2012.03.026) PMID:22632727\n    - **Key finding**: CR3 (CD11b/CD18) on microglia is required for complement-mediated synapse engulfment\n    - **Evidence type**: CR3-/- knockout + live imaging (L3-L4)\n    - **Quote**: \"engulfment is dependent upon neural activity and the microglia-specific phagocytic signaling pathway, complement receptor 3(CR3)/C3\"\n    - **Mechanism**: C3 → iC3b opsonization → CR3 recognition → phagocytic engulfment",
+        "refNumber": 37,
+        "pmid": "22632727",
+        "doi": "10.1016/j.neuron.2012.03.026",
+        "firstAuthor": "Schafer D",
+        "year": 2012,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "22632727",
+        "title": "Microglia sculpt postnatal neural circuits in an activity and complement-dependent manner.",
+        "authors": [
+          "Schafer DP",
+          "Lehrman EK",
+          "Kautzman AG",
+          "Koyama R",
+          "Mardinly AR",
+          "Yamasaki R",
+          "Ransohoff RM",
+          "Greenberg ME",
+          "Barres BA",
+          "Stevens B"
+        ],
+        "journal": "Neuron",
+        "year": 2012,
+        "doi": "10.1016/j.neuron.2012.03.026"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1016/j.neuron.2012.03.026",
+        "title": "Microglia Sculpt Postnatal Neural Circuits in an Activity and Complement-Dependent Manner",
+        "authors": [
+          "Schafer, Dorothy P.",
+          "Lehrman, Emily K.",
+          "Kautzman, Amanda G.",
+          "Koyama, Ryuta",
+          "Mardinly, Alan R.",
+          "Yamasaki, Ryo",
+          "Ransohoff, Richard M.",
+          "Greenberg, Michael E.",
+          "Barres, Ben A.",
+          "Stevens, Beth"
+        ],
+        "containerTitle": "Neuron",
+        "year": 2012
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 253,
+        "rawText": "Stephan AH, Madison DV, Mateos JM, et al. A dramatic increase of C1q protein in the CNS during normal aging. J Neurosci. 2013;33(33):13460-74. [DOI: 10.1523/JNEUROSCI.1333-13.2013](https://doi.org/10.1523/JNEUROSCI.1333-13.2013) PMID:23946404\n    - **Key finding**: **LANDMARK PAPER** - C1q increases 300-fold with aging; C1q-/- mice have better cognition\n    - **Evidence type**: C1q-/- knockout + behavioral testing (L3)\n    - **Quote**: \"C1q protein levels dramatically increase in the normal aging mouse and human brain, by as much as 300-fold\"\n    - **C1q-/- phenotype**: Enhanced synaptic plasticity, less cognitive decline, preserved hippocampal connectivity\n    - **Localization**: \"predominantly localized in close proximity to synapses\"",
+        "refNumber": 38,
+        "pmid": "23946404",
+        "doi": "10.1523/JNEUROSCI.1333-13.2013",
+        "firstAuthor": "Stephan A",
+        "year": 2013,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "23946404",
+        "title": "A dramatic increase of C1q protein in the CNS during normal aging.",
+        "authors": [
+          "Stephan AH",
+          "Madison DV",
+          "Mateos JM",
+          "Fraser DA",
+          "Lovelett EA",
+          "Coutellier L",
+          "Kim L",
+          "Tsai HH",
+          "Huang EJ",
+          "Rowitch DH",
+          "Berns DS",
+          "Tenner AJ",
+          "Shamloo M",
+          "Barres BA"
+        ],
+        "journal": "J Neurosci",
+        "year": 2013,
+        "doi": "10.1523/JNEUROSCI.1333-13.2013"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1523/jneurosci.1333-13.2013",
+        "title": "A Dramatic Increase of C1q Protein in the CNS during Normal Aging",
+        "authors": [
+          "Stephan, Alexander H.",
+          "Madison, Daniel V.",
+          "Mateos, José María",
+          "Fraser, Deborah A.",
+          "Lovelett, Emilie A.",
+          "Coutellier, Laurence",
+          "Kim, Leo",
+          "Tsai, Hui-Hsin",
+          "Huang, Eric J.",
+          "Rowitch, David H.",
+          "Berns, Dominic S.",
+          "Tenner, Andrea J.",
+          "Shamloo, Mehrdad",
+          "Barres, Ben A."
+        ],
+        "containerTitle": "The Journal of Neuroscience",
+        "year": 2013
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 262,
+        "rawText": "Dixon SJ, Lemberg KM, Lamprecht MR, et al. Ferroptosis: an iron-dependent form of nonapoptotic cell death. Cell. 2012;149(5):1060-72. [DOI: 10.1016/j.cell.2012.03.042](https://doi.org/10.1016/j.cell.2012.03.042) PMID:22632970\n    - **Key finding**: **FOUNDATIONAL PAPER** - Discovery and definition of ferroptosis\n    - **Evidence type**: In vitro + pharmacological characterization (L5)\n    - **Definition**: Iron-dependent, lipid peroxidation-driven cell death distinct from apoptosis, necrosis, autophagy\n    - **Key features**: Iron chelators (DFO) rescue; lipophilic antioxidants (ferrostatin-1) rescue; morphology = shrunken mitochondria\n    - **Therapeutic relevance**: Opens ferroptosis as targetable cell death pathway",
+        "refNumber": 39,
+        "pmid": "22632970",
+        "doi": "10.1016/j.cell.2012.03.042",
+        "firstAuthor": "Dixon S",
+        "year": 2012,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "22632970",
+        "title": "Ferroptosis: an iron-dependent form of nonapoptotic cell death.",
+        "authors": [
+          "Dixon SJ",
+          "Lemberg KM",
+          "Lamprecht MR",
+          "Skouta R",
+          "Zaitsev EM",
+          "Gleason CE",
+          "Patel DN",
+          "Bauer AJ",
+          "Cantley AM",
+          "Yang WS",
+          "Morrison B 3rd",
+          "Stockwell BR"
+        ],
+        "journal": "Cell",
+        "year": 2012,
+        "doi": "10.1016/j.cell.2012.03.042"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1016/j.cell.2012.03.042",
+        "title": "Ferroptosis: An Iron-Dependent Form of Nonapoptotic Cell Death",
+        "authors": [
+          "Dixon, Scott J.",
+          "Lemberg, Kathryn M.",
+          "Lamprecht, Michael R.",
+          "Skouta, Rachid",
+          "Zaitsev, Eleina M.",
+          "Gleason, Caroline E.",
+          "Patel, Darpan N.",
+          "Bauer, Andras J.",
+          "Cantley, Alexandra M.",
+          "Yang, Wan Seok",
+          "Morrison, Barclay",
+          "Stockwell, Brent R."
+        ],
+        "containerTitle": "Cell",
+        "year": 2012
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 269,
+        "rawText": "Yang WS, SriRamaratnam R, Welsch ME, et al. Regulation of ferroptotic cancer cell death by GPX4. Cell. 2014;156(1-2):317-31. [DOI: 10.1016/j.cell.2013.12.010](https://doi.org/10.1016/j.cell.2013.12.010) PMID:24439385\n    - **Key finding**: **LANDMARK PAPER** - GPX4 is the MASTER ferroptosis suppressor\n    - **Evidence type**: Knockout + pharmacological (L3-L5)\n    - **Mechanism**: GPX4 reduces lipid peroxides (LOOH → LOH) using GSH; GPX4 loss = ferroptosis\n    - **Quote**: \"GPX4 is a central regulator of ferroptotic cell death\"\n    - **Therapeutic**: GPX4 inhibitors (RSL3) as ferroptosis inducers for cancer",
+        "refNumber": 40,
+        "pmid": "24439385",
+        "doi": "10.1016/j.cell.2013.12.010",
+        "firstAuthor": "Yang W",
+        "year": 2014,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "24439385",
+        "title": "Regulation of ferroptotic cancer cell death by GPX4.",
+        "authors": [
+          "Yang WS",
+          "SriRamaratnam R",
+          "Welsch ME",
+          "Shimada K",
+          "Skouta R",
+          "Viswanathan VS",
+          "Cheah JH",
+          "Clemons PA",
+          "Shamji AF",
+          "Clish CB",
+          "Brown LM",
+          "Girotti AW",
+          "Cornish VW",
+          "Schreiber SL",
+          "Stockwell BR"
+        ],
+        "journal": "Cell",
+        "year": 2014,
+        "doi": "10.1016/j.cell.2013.12.010"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1016/j.cell.2013.12.010",
+        "title": "Regulation of Ferroptotic Cancer Cell Death by GPX4",
+        "authors": [
+          "Yang, Wan Seok",
+          "SriRamaratnam, Rohitha",
+          "Welsch, Matthew E.",
+          "Shimada, Kenichi",
+          "Skouta, Rachid",
+          "Viswanathan, Vasanthi S.",
+          "Cheah, Jaime H.",
+          "Clemons, Paul A.",
+          "Shamji, Alykhan F.",
+          "Clish, Clary B.",
+          "Brown, Lewis M.",
+          "Girotti, Albert W.",
+          "Cornish, Virginia W.",
+          "Schreiber, Stuart L.",
+          "Stockwell, Brent R."
+        ],
+        "containerTitle": "Cell",
+        "year": 2014
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 276,
+        "rawText": "Nemeth E, Tuttle MS, Powelson J, et al. Hepcidin regulates cellular iron efflux by binding to ferroportin and inducing its internalization. Science. 2004;306(5704):2090-3. [DOI: 10.1126/science.1104742](https://doi.org/10.1126/science.1104742) PMID:15514116\n    - **Key finding**: **FOUNDATIONAL DISCOVERY** - Hepcidin-ferroportin axis as master iron regulator\n    - **Evidence type**: In vitro + knockout (L3-L5)\n    - **Quote**: \"Hepcidin binds to ferroportin, induces its internalization and degradation\"\n    - **Relevance**: Explains how inflammation (IL-6→hepcidin) causes iron trapping",
+        "refNumber": 41,
+        "pmid": "15514116",
+        "doi": "10.1126/science.1104742",
+        "firstAuthor": "Nemeth E",
+        "year": 2004,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "15514116",
+        "title": "Hepcidin regulates cellular iron efflux by binding to ferroportin and inducing its internalization.",
+        "authors": [
+          "Nemeth E",
+          "Tuttle MS",
+          "Powelson J",
+          "Vaughn MB",
+          "Donovan A",
+          "Ward DM",
+          "Ganz T",
+          "Kaplan J"
+        ],
+        "journal": "Science",
+        "year": 2004
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1126/science.1104742",
+        "title": "Hepcidin Regulates Cellular Iron Efflux by Binding to Ferroportin and Inducing Its Internalization",
+        "authors": [
+          "Nemeth, Elizabeta",
+          "Tuttle, Marie S.",
+          "Powelson, Julie",
+          "Vaughn, Michael B.",
+          "Donovan, Adriana",
+          "Ward, Diane McVey",
+          "Ganz, Tomas",
+          "Kaplan, Jerry"
+        ],
+        "containerTitle": "Science",
+        "year": 2004
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 282,
+        "rawText": "Maus M, López-Polo V, Mateo L, et al. Iron accumulation drives fibrosis, senescence and the senescence-associated secretory phenotype. Nat Metab. 2023;5(12):2111-30. [DOI: 10.1038/s42255-023-00928-2](https://doi.org/10.1038/s42255-023-00928-2) PMID:38036770\n    - **Key finding**: **LANDMARK PAPER** - Iron accumulation DRIVES senescence and SASP (not just correlates)\n    - **Evidence type**: Intervention (chelation ↓senescence; iron loading ↑senescence) (L4)\n    - **Mechanism**: Iron → ROS → p53/p16 → senescence; iron → SASP factor transcription\n    - **Quote**: \"Iron accumulation drives fibrosis, senescence and the senescence-associated secretory phenotype\"\n    - **Therapeutic**: Iron modulation as senolytic strategy",
+        "refNumber": 42,
+        "pmid": "38036770",
+        "doi": "10.1038/s42255-023-00928-2",
+        "firstAuthor": "Maus M",
+        "year": 2023,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "38036770",
+        "title": "Mitophagy in human health, ageing and disease.",
+        "authors": [
+          "Picca A",
+          "Faitg J",
+          "Auwerx J",
+          "Ferrucci L",
+          "D'Amico D"
+        ],
+        "journal": "Nat Metab",
+        "year": 2023,
+        "doi": "10.1038/s42255-023-00930-8"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/s42255-023-00928-2",
+        "title": "Iron accumulation drives fibrosis, senescence and the senescence-associated secretory phenotype",
+        "authors": [
+          "Maus, Mate",
+          "López-Polo, Vanessa",
+          "Mateo, Lidia",
+          "Lafarga, Miguel",
+          "Aguilera, Mònica",
+          "De Lama, Eugenia",
+          "Meyer, Kathleen",
+          "Sola, Anna",
+          "Lopez-Martinez, Cecilia",
+          "López-Alonso, Ines",
+          "Guasch-Piqueras, Marc",
+          "Hernandez-Gonzalez, Fernanda",
+          "Chaib, Selim",
+          "Rovira, Miguel",
+          "Sanchez, Mayka",
+          "Faner, Rosa",
+          "Agusti, Alvar",
+          "Diéguez-Hurtado, Rodrigo",
+          "Ortega, Sagrario",
+          "Manonelles, Anna",
+          "Engelhardt, Stefan",
+          "Monteiro, Freddy",
+          "Stephan-Otto Attolini, Camille",
+          "Prats, Neus",
+          "Albaiceta, Guillermo",
+          "Cruzado, Josep M.",
+          "Serrano, Manuel"
+        ],
+        "containerTitle": "Nature Metabolism",
+        "year": 2023
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 289,
+        "rawText": "Jin C, Xu X, Yao N, et al. Prodrug nanoplatform for triggering ferroptosis to eliminate senescent cells in age-associated pathologies. Nat Commun. 2025. [DOI: 10.1038/s41467-025-67364-6](https://doi.org/10.1038/s41467-025-67364-6)\n    - **Key finding**: **RESOLVES CHELATION PARADOX** - Targeted ferroptosis in senescent cells improves aged mice\n    - **Evidence type**: Intervention_animal (L4)\n    - **Technology**: HK-PCGC nanoplatform - β-gal activated (senescent specificity) + HK peptide (ferritin targeting)\n    - **Key results**: ↓SASP, ↓inflammation, ↑physical function in aged mice\n    - **Quote**: \"HK-PCGC can effectively eliminate senescent cells, reduce the senescence-associated secretory phenotype\"\n    - **Key insight**: Don't chelate globally → target ferroptosis specifically in senescent cells",
+        "refNumber": 43,
+        "pmid": null,
+        "doi": "10.1038/s41467-025-67364-6",
+        "firstAuthor": "Jin C",
+        "year": 2025,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": null,
+      "pmidError": null,
+      "pmidMetadata": null,
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/s41467-025-67364-6",
+        "title": "Prodrug nanoplatform for triggering ferroptosis to eliminate senescent cells in age-associated pathologies",
+        "authors": [
+          "Jin, Chengkang",
+          "Xu, Xiaoling",
+          "Yao, Ning",
+          "Zhang, Hairui",
+          "Chen, Changjiang",
+          "Zeng, Lingyao",
+          "Liu, Zhiyun",
+          "Lei, Lanjie",
+          "Cui, Shumao",
+          "Wen, Chengping",
+          "Shi, Liyun"
+        ],
+        "containerTitle": "Nature Communications",
+        "year": 2025
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 297,
+        "rawText": "Peikon ID, Andrews NC. Isn't it ironic? Functional iron deficiency at the core of Parkinson's disease pathobiology. J Clin Invest. 2026;136(1):e202244.\n    - **Key finding**: **PARADIGM SHIFT** - Iron overload vs. functional deficiency reframe\n    - **Evidence type**: Clinical trial failure analysis (deferiprone in PD)\n    - **The paradox**: Iron ACCUMULATES on MRI but chelation makes patients WORSE\n    - **Resolution**: Iron is PRESENT but SEQUESTERED - trapped in ferritin/lysosomes; cytosolic Fe²⁺ is DEFICIENT\n    - **Quote**: \"Early separation of curves in favor of placebo group\" (NEJM 2022 deferiprone trial)\n    - **Therapeutic**: Goal is REDISTRIBUTION, not REMOVAL",
+        "refNumber": 44,
+        "pmid": null,
+        "doi": null,
+        "firstAuthor": "Peikon I",
+        "year": 2026,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": null,
+      "pmidError": null,
+      "pmidMetadata": null,
+      "doiValid": null,
+      "doiError": null,
+      "doiMetadata": null,
+      "status": "no_identifiers",
+      "needsReview": true
+    },
+    {
+      "reference": {
+        "lineNumber": 305,
+        "rawText": "Bartzokis G, Lu PH, Tingus K, et al. Gender and iron genes may modify associations between brain iron and memory in healthy aging. Neuropsychopharmacology. 2011;36(7):1375-84. [DOI: 10.1038/npp.2011.22](https://doi.org/10.1038/npp.2011.22) PMID:21389979\n    - **Key finding**: Premenopausal hysterectomy → brain ferritin iron levels indistinguishable from men\n    - **Evidence type**: Cohort + MRI (L6)\n    - **Mechanism**: Menstruation is protective \"bloodletting\" - iron export delays brain iron accumulation\n    - **Sex difference**: Women lose protection at menopause; men accumulate throughout life\n    - **Relevance**: Explains female-specific AD vulnerability window post-menopause",
+        "refNumber": 45,
+        "pmid": "21389979",
+        "doi": "10.1038/npp.2011.22",
+        "firstAuthor": "Bartzokis G",
+        "year": 2011,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "21389979",
+        "title": "Perturbation of the glutamate-glutamine system in alcohol dependence and remission.",
+        "authors": [
+          "Thoma R",
+          "Mullins P",
+          "Ruhl D",
+          "Monnig M",
+          "Yeo RA",
+          "Caprihan A",
+          "Bogenschutz M",
+          "Lysne P",
+          "Tonigan S",
+          "Kalyanam R",
+          "Gasparovic C"
+        ],
+        "journal": "Neuropsychopharmacology",
+        "year": 2011,
+        "doi": "10.1038/npp.2011.20"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/npp.2011.22",
+        "title": "Gender and Iron Genes May Modify Associations Between Brain Iron and Memory in Healthy Aging",
+        "authors": [
+          "Bartzokis, George",
+          "Lu, Po H",
+          "Tingus, Kathleen",
+          "Peters, Douglas G",
+          "Amar, Chetan P",
+          "Tishler, Todd A",
+          "Finn, J Paul",
+          "Villablanca, Pablo",
+          "Altshuler, Lori L",
+          "Mintz, Jim",
+          "Neely, Elizabeth",
+          "Connor, James R"
+        ],
+        "containerTitle": "Neuropsychopharmacology",
+        "year": 2011
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 312,
+        "rawText": "Rahman A, et al. Sex differences in brain iron deposition and microglial ferritin in Alzheimer's disease. Science Progress. 2025.\n    - **Key finding**: Opposite iron-ferritin correlations in AD by sex\n    - **Evidence type**: Postmortem + MRI correlation (L6)\n    - **Men with AD**: Positive correlation (more iron → more ferritin storage) - NORMAL\n    - **Women with AD**: **NEGATIVE** correlation (more iron → LESS ferritin storage) - ABNORMAL\n    - **Interpretation**: Women's microglia FAIL to properly store iron in ferritin\n    - **Therapeutic**: Women may need ferritin RESTORATION, not chelation",
+        "refNumber": 46,
+        "pmid": null,
+        "doi": null,
+        "firstAuthor": "Rahman A",
+        "year": 2025,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": null,
+      "pmidError": null,
+      "pmidMetadata": null,
+      "doiValid": null,
+      "doiError": null,
+      "doiMetadata": null,
+      "status": "no_identifiers",
+      "needsReview": true
+    },
+    {
+      "reference": {
+        "lineNumber": 320,
+        "rawText": "Admasu TD, Rae M, Bhattacharya S, et al. Selective ablation of primary and paracrine senescent cells by targeting iron dyshomeostasis. Cell Rep. 2023;42(2):112058. [DOI: 10.1016/j.celrep.2023.112058](https://doi.org/10.1016/j.celrep.2023.112058)\n    - **Key finding**: Iron dyshomeostasis enables selective senescent cell killing\n    - **Evidence type**: Intervention (L4)\n    - **Mechanism**: Senescent cells have altered iron handling → vulnerability to ferroptosis induction\n    - **Therapeutic**: Iron-targeting senolytics",
+        "refNumber": 47,
+        "pmid": null,
+        "doi": "10.1016/j.celrep.2023.112058",
+        "firstAuthor": "Admasu T",
+        "year": 2023,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": null,
+      "pmidError": null,
+      "pmidMetadata": null,
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1016/j.celrep.2023.112058",
+        "title": "Selective ablation of primary and paracrine senescent cells by targeting iron dyshomeostasis",
+        "authors": [
+          "Admasu, Tesfahun Dessale",
+          "Kim, Kristie",
+          "Rae, Michael",
+          "Avelar, Roberto",
+          "Gonciarz, Ryan L.",
+          "Rebbaa, Abdelhadi",
+          "Pedro de Magalhães, João",
+          "Renslo, Adam R.",
+          "Stolzing, Alexandra",
+          "Sharma, Amit"
+        ],
+        "containerTitle": "Cell Reports",
+        "year": 2023
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 326,
+        "rawText": "Noh B, McCullough LD, Bhattacharya S, et al. Iron overload induces cerebral endothelial senescence in aged mice and in primary culture in a sex-dependent manner. Aging Cell. 2023;22(11):e13977. [DOI: 10.1111/acel.13977](https://doi.org/10.1111/acel.13977)\n    - **Key finding**: Iron → cerebral endothelial senescence (SEX-DEPENDENT)\n    - **Evidence type**: Intervention_animal + in vitro (L4-L5)\n    - **Sex difference**: Female endothelial cells more vulnerable to iron-induced senescence\n    - **Relevance**: Links iron, BBB dysfunction, and sex differences in AD",
+        "refNumber": 48,
+        "pmid": null,
+        "doi": "10.1111/acel.13977",
+        "firstAuthor": "Noh B",
+        "year": 2023,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": null,
+      "pmidError": null,
+      "pmidMetadata": null,
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1111/acel.13977",
+        "title": "Iron overload induces cerebral endothelial senescence in aged mice and in primary culture in a sex‐dependent manner",
+        "authors": [
+          "Noh, Brian",
+          "Blasco‐Conesa, Maria Pilar",
+          "Rahman, Syed Mushfiqur",
+          "Monga, Sheelu",
+          "Ritzel, Rodney",
+          "Guzman, Gary",
+          "Lai, Yun‐Ju",
+          "Ganesh, Bhanu Priya",
+          "Urayama, Akihiko",
+          "McCullough, Louise D.",
+          "Moruno‐Manchon, Jose Felix"
+        ],
+        "containerTitle": "Aging Cell",
+        "year": 2023
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 334,
+        "rawText": "Meyer K, Feldman HM, Lu T, et al. REST and Neural Gene Network Dysregulation in iPSC Models of Alzheimer's Disease. Cell Rep. 2019;26(4):904-916.e5. [DOI: 10.1016/j.celrep.2019.01.023](https://doi.org/10.1016/j.celrep.2019.01.023) PMID:30699343\n    - **Key finding**: **LANDMARK PAPER** - REST dysfunction in sporadic AD and APOE4 iPSC-derived neural progenitors\n    - **Evidence type**: iPSC modeling, CRISPR gene editing (L4)\n    - **Mechanism**: SAD and APOE4 → reduced REST nuclear translocation and chromatin binding → accelerated neural differentiation, reduced progenitor renewal\n    - **Nuclear lamina**: Disruption of nuclear lamina associated with REST mislocalization\n    - **Quote**: \"Loss of function of REST in SAD and upon APOE4 expression is due to reduced nuclear translocation and chromatin binding, and is associated with disruption of the nuclear lamina\"\n    - **Key insight**: Epigenetic dysregulation PRECEDES canonical tau/Aβ pathology\n    - **Reversal**: APOE4→APOE3 gene editing REVERSED the phenotype",
+        "refNumber": 49,
+        "pmid": "30699343",
+        "doi": "10.1016/j.celrep.2019.01.023",
+        "firstAuthor": "Meyer K",
+        "year": 2019,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "30699343",
+        "title": "REST and Neural Gene Network Dysregulation in iPSC Models of Alzheimer's Disease.",
+        "authors": [
+          "Meyer K",
+          "Feldman HM",
+          "Lu T",
+          "Drake D",
+          "Lim ET",
+          "Ling KH",
+          "Bishop NA",
+          "Pan Y",
+          "Seo J",
+          "Lin YT",
+          "Su SC",
+          "Church GM",
+          "Tsai LH",
+          "Yankner BA"
+        ],
+        "journal": "Cell Rep",
+        "year": 2019,
+        "doi": "10.1016/j.celrep.2019.01.023"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1016/j.celrep.2019.01.023",
+        "title": "REST and Neural Gene Network Dysregulation in iPSC Models of Alzheimer’s Disease",
+        "authors": [
+          "Meyer, Katharina",
+          "Feldman, Heather M.",
+          "Lu, Tao",
+          "Drake, Derek",
+          "Lim, Elaine T.",
+          "Ling, King-Hwa",
+          "Bishop, Nicholas A.",
+          "Pan, Ying",
+          "Seo, Jinsoo",
+          "Lin, Yuan-Ta",
+          "Su, Susan C.",
+          "Church, George M.",
+          "Tsai, Li-Huei",
+          "Yankner, Bruce A."
+        ],
+        "containerTitle": "Cell Reports",
+        "year": 2019
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 343,
+        "rawText": "Lu T, Aron L, Bhayani B, et al. REST and stress resistance in ageing and Alzheimer's disease. Nature. 2014;507(7493):448-454. [DOI: 10.1038/nature13163](https://doi.org/10.1038/nature13163) PMID:24670762\n    - **Key finding**: **FOUNDATIONAL PAPER** - REST increases in normal aging (protective) but DECREASES in AD\n    - **Evidence type**: Human postmortem + animal models (L3-L6)\n    - **Quote**: \"REST is induced in the ageing human brain...REST is lost from the nucleus in mild cognitive impairment and AD\"\n    - **Mechanism**: REST represses genes promoting cell death, oxidative stress, and Aβ toxicity\n    - **Longevity link**: REST levels correlate with human lifespan; C. elegans homolog spr-4 extends lifespan\n    - **Autophagy connection**: REST appears in autophagosomes with misfolded proteins → nuclear depletion",
+        "refNumber": 50,
+        "pmid": "24670762",
+        "doi": "10.1038/nature13163",
+        "firstAuthor": "Lu T",
+        "year": 2014,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "24670762",
+        "title": "REST and stress resistance in ageing and Alzheimer's disease.",
+        "authors": [
+          "Lu T",
+          "Aron L",
+          "Zullo J",
+          "Pan Y",
+          "Kim H",
+          "Chen Y",
+          "Yang TH",
+          "Kim HM",
+          "Drake D",
+          "Liu XS",
+          "Bennett DA",
+          "Colaiácovo MP",
+          "Yankner BA"
+        ],
+        "journal": "Nature",
+        "year": 2014,
+        "doi": "10.1038/nature13163"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/nature13163",
+        "title": "REST and stress resistance in ageing and Alzheimer’s disease",
+        "authors": [
+          "Lu, Tao",
+          "Aron, Liviu",
+          "Zullo, Joseph",
+          "Pan, Ying",
+          "Kim, Haeyoung",
+          "Chen, Yiwen",
+          "Yang, Tun-Hsiang",
+          "Kim, Hyun-Min",
+          "Drake, Derek",
+          "Liu, X. Shirley",
+          "Bennett, David A.",
+          "Colaiácovo, Monica P.",
+          "Yankner, Bruce A."
+        ],
+        "containerTitle": "Nature",
+        "year": 2014
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 351,
+        "rawText": "Pajarillo E, Rizor A, Son DS, Bhattacharya S, Lee J, Bhattacharya S. The transcription factor REST up-regulates tyrosine hydroxylase and anti-oxidant genes and protects dopaminergic neurons against manganese toxicity. J Biol Chem. 2020;295(10):3040-3054. [DOI: 10.1074/jbc.RA119.011446](https://doi.org/10.1074/jbc.RA119.011446) PMID:32001620\n    - **Key finding**: REST upregulates Nrf2 and HO-1 → antioxidant protection and anti-ferroptotic defense\n    - **Evidence type**: Overexpression/knockdown (L3-L4)\n    - **Mechanism**: REST → Nrf2 (NFE2L2) → antioxidant response element genes (HO-1, NQO1, etc.)\n    - **Ferroptosis relevance**: Nrf2 master regulator of anti-ferroptotic genes (GPX4, SLC7A11, FTH1)\n    - **Therapeutic implication**: REST loss → Nrf2 deficiency → ferroptosis vulnerability\n    - **Cross-module link**: Connects REST (Module 10) to ferroptosis protection (Module 9)",
+        "refNumber": 51,
+        "pmid": "32001620",
+        "doi": "10.1074/jbc.RA119.011446",
+        "firstAuthor": "Pajarillo E",
+        "year": 2020,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "32001620",
+        "title": "The transcription factor REST up-regulates tyrosine hydroxylase and antiapoptotic genes and protects dopaminergic neurons against manganese toxicity.",
+        "authors": [
+          "Pajarillo E",
+          "Rizor A",
+          "Son DS",
+          "Aschner M",
+          "Lee E"
+        ],
+        "journal": "J Biol Chem",
+        "year": 2020,
+        "doi": "10.1074/jbc.RA119.011446"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1074/jbc.ra119.011446",
+        "title": "The transcription factor REST up-regulates tyrosine hydroxylase and antiapoptotic genes and protects dopaminergic neurons against manganese toxicity",
+        "authors": [
+          "Pajarillo, Edward",
+          "Rizor, Asha",
+          "Son, Deok-Soo",
+          "Aschner, Michael",
+          "Lee, Eunsook"
+        ],
+        "containerTitle": "Journal of Biological Chemistry",
+        "year": 2020
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 359,
+        "rawText": "Eva T, Agarwal P, Bhattacharya S. RE1-Silencing Transcription Factor (REST): A Paradoxical Role in Neurodegeneration. J Mol Neurosci. 2025;75(1):15. [DOI: 10.1007/s12031-025-02319-0](https://doi.org/10.1007/s12031-025-02319-0) PMID:41239142\n    - **Key finding**: Comprehensive review of REST in neurodegeneration; context-dependent roles\n    - **Evidence type**: Review\n    - **Key insight**: REST can be protective OR harmful depending on cell type, disease stage, and target genes\n    - **Therapeutic strategies discussed**: Small molecules, miRNA modulation, gene therapy approaches\n    - **AD-specific**: Nuclear REST loss is pathological; cytoplasmic accumulation indicates dysfunction",
+        "refNumber": 52,
+        "pmid": "41239142",
+        "doi": "10.1007/s12031-025-02319-0",
+        "firstAuthor": "Eva T",
+        "year": 2025,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "41239142",
+        "title": "The Dynamic Roles of Repressor Element 1-Silencing Transcription Factor (REST): A Double-Edged Sword in Neural Health and Disease.",
+        "authors": [
+          "Eva TA",
+          "Shenoy A",
+          "Gupta VB",
+          "Palanivel V",
+          "Salkar A",
+          "Nasab SN",
+          "Chitranshi N",
+          "Mirzaei M",
+          "You Y",
+          "Graham SL",
+          "Basavarajappa D",
+          "Gupta V"
+        ],
+        "journal": "Mol Neurobiol",
+        "year": 2025,
+        "doi": "10.1007/s12035-025-05304-7"
+      },
+      "doiValid": false,
+      "doiError": "DOI not found",
+      "doiMetadata": null,
+      "status": "doi_not_found",
+      "needsReview": true
+    },
+    {
+      "reference": {
+        "lineNumber": 366,
+        "rawText": "Wang M, Jin M, Zhang H, et al. MiR-153-3p targets REST to reduce the probability of Alzheimer's disease. Am J Transl Res. 2025;17(4):2368-2378. [DOI: 10.62347/KMVQ3424](https://doi.org/10.62347/KMVQ3424) PMID:40851107\n    - **Key finding**: miR-153-3p inversely correlates with AD probability; targets REST, APP, and α-synuclein\n    - **Evidence type**: In vitro + cohort analysis (L5-L6)\n    - **Mechanism**: miR-153-3p↑ → REST↓ (BUT also APP↓ and SNCA↓ = net beneficial)\n    - **Paradox resolution**: miR-153-3p reduces REST but also reduces Aβ production → net protection\n    - **Clinical relevance**: Plasma miR-153-3p levels may be AD biomarker",
+        "refNumber": 53,
+        "pmid": "40851107",
+        "doi": "10.62347/KMVQ3424",
+        "firstAuthor": "Wang M",
+        "year": 2025,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "40851107",
+        "title": "MicroRNA-153-3p targets repressor element 1-silencing transcription factor (REST) and neuronal differentiation: Implications for Alzheimer's disease.",
+        "authors": [
+          "Wang R",
+          "Maloney B",
+          "Beck JS",
+          "Counts SE",
+          "Lahiri DK"
+        ],
+        "journal": "Alzheimers Dement",
+        "year": 2025,
+        "doi": "10.1002/alz.70399"
+      },
+      "doiValid": false,
+      "doiError": "DOI not found",
+      "doiMetadata": null,
+      "status": "doi_not_found",
+      "needsReview": true
+    },
+    {
+      "reference": {
+        "lineNumber": 373,
+        "rawText": "Nassar T, Bhattacharya S, Bhattacharya S. Role of microRNAs in Alzheimer's Disease Focusing on Brain-Derived Neurotrophic Factor and REST. Mol Neurobiol. 2023;60(10):5966-5978. [DOI: 10.1007/s12035-023-03453-7](https://doi.org/10.1007/s12035-023-03453-7) PMID:37326903\n    - **Key finding**: miR-124, miR-132, and miR-9 regulate REST expression; therapeutic targets\n    - **Evidence type**: Review + mechanistic analysis\n    - **miR-124**: Downregulated in AD → REST elevation in non-neuronal cells\n    - **miR-132**: Protects against AD; regulates REST and tau\n    - **miR-9**: Part of REST feedback loop; affects neural differentiation\n    - **Therapeutic potential**: miRNA mimics or inhibitors to modulate REST",
+        "refNumber": 54,
+        "pmid": "37326903",
+        "doi": "10.1007/s12035-023-03453-7",
+        "firstAuthor": "Nassar T",
+        "year": 2023,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "37326903",
+        "title": "Repressor Element-1 Binding Transcription Factor (REST) as a Possible Epigenetic Regulator of Neurodegeneration and MicroRNA-Based Therapeutic Strategies.",
+        "authors": [
+          "Nassar A",
+          "Satarker S",
+          "Gurram PC",
+          "Upadhya D",
+          "Fayaz SM",
+          "Nampoothiri M"
+        ],
+        "journal": "Mol Neurobiol",
+        "year": 2023,
+        "doi": "10.1007/s12035-023-03437-1"
+      },
+      "doiValid": false,
+      "doiError": "DOI not found",
+      "doiMetadata": null,
+      "status": "doi_not_found",
+      "needsReview": true
+    },
+    {
+      "reference": {
+        "lineNumber": 381,
+        "rawText": "Ghosh A, Bhattacharya S, Bhattacharya S. The role of REST in transcriptional and epigenetic dysregulation: From Huntington's disease to other neurodegenerative and psychiatric disorders. Front Neurosci. 2021;15:781885. [DOI: 10.3389/fnins.2021.781885](https://doi.org/10.3389/fnins.2021.781885) PMID:34775008\n    - **Key finding**: REST counters hyperexcitability; maintains E/I balance in aging brain\n    - **Evidence type**: Mechanistic review\n    - **Key mechanism**: REST represses excitatory synaptic genes → prevents hyperexcitability\n    - **AD relevance**: Hyperexcitability precedes clinical AD; REST loss may contribute\n    - **Cross-disease**: Shared REST dysfunction across HD, AD, PD",
+        "refNumber": 55,
+        "pmid": "34775008",
+        "doi": "10.3389/fnins.2021.781885",
+        "firstAuthor": "Ghosh A",
+        "year": 2021,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "34775008",
+        "title": "The potential roles of excitatory-inhibitory imbalances and the repressor element-1 silencing transcription factor in aging and aging-associated diseases.",
+        "authors": [
+          "Ghosh I",
+          "Liu CS",
+          "Swardfager W",
+          "Lanctôt KL",
+          "Anderson ND"
+        ],
+        "journal": "Mol Cell Neurosci",
+        "year": 2021,
+        "doi": "10.1016/j.mcn.2021.103683"
+      },
+      "doiValid": false,
+      "doiError": "DOI not found",
+      "doiMetadata": null,
+      "status": "doi_not_found",
+      "needsReview": true
+    },
+    {
+      "reference": {
+        "lineNumber": 388,
+        "rawText": "Mampay M, Mancini J, Bhattacharya S, et al. Aging is associated with nuclear REST accumulation in Sprague–Dawley rat brain with the exception of the TgF344-AD Alzheimer's-like disease model. Exp Brain Res. 2020;238(12):2725-2738. [DOI: 10.1007/s00221-020-05972-y](https://doi.org/10.1007/s00221-020-05972-y) PMID:33185010\n    - **Key finding**: Nuclear REST increases with normal aging BUT NOT in TgF344-AD model\n    - **Evidence type**: Animal model comparison (L4)\n    - **Key insight**: Validates REST nuclear localization as marker of healthy vs. pathological aging\n    - **Model**: TgF344-AD rats (APP Swedish + PS1ΔE9) show REST dysfunction\n    - **Quote**: \"Aged wild-type animals showed increased REST protein in the nucleus...AD animals failed to show this increase\"",
+        "refNumber": 56,
+        "pmid": "33185010",
+        "doi": "10.1007/s00221-020-05972-y",
+        "firstAuthor": "Mampay M",
+        "year": 2020,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "33185010",
+        "title": "Spatiotemporal immunolocalisation of REST in the brain of healthy ageing and Alzheimer's disease rats.",
+        "authors": [
+          "Mampay M",
+          "Velasco-Estevez M",
+          "Rolle SO",
+          "Chaney AM",
+          "Boutin H",
+          "Dev KK",
+          "Moeendarbary E",
+          "Sheridan GK"
+        ],
+        "journal": "FEBS Open Bio",
+        "year": 2021,
+        "doi": "10.1002/2211-5463.13036"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1007/s00221-020-05972-y",
+        "title": "Temporal binding and agency under startle",
+        "authors": [
+          "Scott, Mark",
+          "Chiu, Chenhao"
+        ],
+        "containerTitle": "Experimental Brain Research",
+        "year": 2020
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 397,
+        "rawText": "Wahrle SE, Jiang H, Parsadanian M, et al. ABCA1 is required for normal central nervous system ApoE levels and for lipidation of astrocyte-secreted apoE. J Biol Chem. 2004;279(39):40987-93. [DOI: 10.1074/jbc.M407963200](https://doi.org/10.1074/jbc.M407963200) PMID:15269217\n    - **Key finding**: **FOUNDATIONAL PAPER** - ABCA1 required for CNS APOE levels and lipidation\n    - **Evidence type**: ABCA1-/- knockout (L3)\n    - **Quote**: \"ABCA1 is required for normal CNS ApoE levels and for lipidation of astrocyte-secreted apoE\"\n    - **Magnitude**: ABCA1 deletion reduces brain/CSF APOE >80%",
+        "refNumber": 57,
+        "pmid": "15269217",
+        "doi": "10.1074/jbc.M407963200",
+        "firstAuthor": "Wahrle S",
+        "year": 2004,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "15269217",
+        "title": "ABCA1 is required for normal central nervous system ApoE levels and for lipidation of astrocyte-secreted apoE.",
+        "authors": [
+          "Wahrle SE",
+          "Jiang H",
+          "Parsadanian M",
+          "Legleiter J",
+          "Han X",
+          "Fryer JD",
+          "Kowalewski T",
+          "Holtzman DM"
+        ],
+        "journal": "J Biol Chem",
+        "year": 2004
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1074/jbc.m407963200",
+        "title": "ABCA1 Is Required for Normal Central Nervous System ApoE Levels and for Lipidation of Astrocyte-secreted apoE",
+        "authors": [
+          "Wahrle, Suzanne E.",
+          "Jiang, Hong",
+          "Parsadanian, Maia",
+          "Legleiter, Justin",
+          "Han, Xianlin",
+          "Fryer, John D.",
+          "Kowalewski, Tomasz",
+          "Holtzman, David M."
+        ],
+        "containerTitle": "Journal of Biological Chemistry",
+        "year": 2004
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 403,
+        "rawText": "Ma Q, Zhao Z, Sagare AP, et al. Blood-brain barrier-associated pericytes internalize and clear aggregated amyloid-β42 by LRP1-dependent apolipoprotein E isoform-specific mechanism. Mol Neurodegener. 2018;13(1):57. [DOI: 10.1186/s13024-018-0286-0](https://doi.org/10.1186/s13024-018-0286-0) PMID:30340601\n    - **Key finding**: Pericytes clear Aβ via LRP1/APOE isoform-specific mechanism\n    - **Evidence type**: Human AD tissue + pericyte assays (L4-L5)\n    - **Key result**: \"Human astrocyte-derived lipidated apoE3, but not apoE4, normalized Aβ42 clearance\"\n    - **BBB connection**: 35% of AD pericytes, 60% of APPNL-G-F pericytes accumulate Aβ\n    - **Therapeutic**: LRP1/APOE interactions on pericytes as therapeutic target",
+        "refNumber": 58,
+        "pmid": "30340601",
+        "doi": "10.1186/s13024-018-0286-0",
+        "firstAuthor": "Ma Q",
+        "year": 2018,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "30340601",
+        "title": "Blood-brain barrier-associated pericytes internalize and clear aggregated amyloid-β42 by LRP1-dependent apolipoprotein E isoform-specific mechanism.",
+        "authors": [
+          "Ma Q",
+          "Zhao Z",
+          "Sagare AP",
+          "Wu Y",
+          "Wang M",
+          "Owens NC",
+          "Verghese PB",
+          "Herz J",
+          "Holtzman DM",
+          "Zlokovic BV"
+        ],
+        "journal": "Mol Neurodegener",
+        "year": 2018,
+        "doi": "10.1186/s13024-018-0286-0"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1186/s13024-018-0286-0",
+        "title": "Blood-brain barrier-associated pericytes internalize and clear aggregated amyloid-β42 by LRP1-dependent apolipoprotein E isoform-specific mechanism",
+        "authors": [
+          "Ma, Qingyi",
+          "Zhao, Zhen",
+          "Sagare, Abhay P",
+          "Wu, Yingxi",
+          "Wang, Min",
+          "Owens, Nelly Chuqui",
+          "Verghese, Philip B",
+          "Herz, Joachim",
+          "Holtzman, David M",
+          "Zlokovic, Berislav V"
+        ],
+        "containerTitle": "Molecular Neurodegeneration",
+        "year": 2018
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 410,
+        "rawText": "Rawat V, Wang S, Sima J, et al. ApoE4 Alters ABCA1 Membrane Trafficking in Astrocytes. J Neurosci. 2019;39(48):9611-9622. [DOI: 10.1523/JNEUROSCI.1400-19.2019](https://doi.org/10.1523/JNEUROSCI.1400-19.2019)\n    - **Key finding**: APOE4 aggregation impairs ABCA1 membrane recycling\n    - **Evidence type**: CSF functional assay + astrocyte imaging (L4-L5)\n    - **Mechanism**: \"Aggregated and lipid-poor ApoE4 increases ABCA1 aggregation and decreases ABCA1 cell membrane recycling\"\n    - **Human data**: APOE4/4 CSF shows lower ABCA1-mediated cholesterol efflux vs APOE3/3\n    - **Therapeutic**: Enhancing ABCA1 activity rescues impaired Aβ degradation",
+        "refNumber": 59,
+        "pmid": null,
+        "doi": "10.1523/JNEUROSCI.1400-19.2019",
+        "firstAuthor": "Rawat V",
+        "year": 2019,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": null,
+      "pmidError": null,
+      "pmidMetadata": null,
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1523/jneurosci.1400-19.2019",
+        "title": "ApoE4 Alters ABCA1 Membrane Trafficking in Astrocytes",
+        "authors": [
+          "Rawat, Varun",
+          "Wang, Shaowei",
+          "Sima, Jian",
+          "Bar, Roni",
+          "Liraz, Ori",
+          "Gundimeda, Usha",
+          "Parekh, Trusha",
+          "Chan, Jamie",
+          "Johansson, Jan O.",
+          "Tang, Chongren",
+          "Chui, Helena C.",
+          "Harrington, Michael G.",
+          "Michaelson, Daniel M.",
+          "Yassine, Hussein N."
+        ],
+        "containerTitle": "The Journal of Neuroscience",
+        "year": 2019
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 417,
+        "rawText": "Huang Y-WA, Zhou B, Nabet AM, Wernig M, Bhanu Bhanu Südhof TC. Differential Signaling Mediated by ApoE2, ApoE3, and ApoE4 in Human Neurons Parallels Alzheimer's Disease Risk. J Neurosci. 2019;39(37):7408-7427. [DOI: 10.1523/JNEUROSCI.2994-18.2019](https://doi.org/10.1523/JNEUROSCI.2994-18.2019) PMID:31331998\n    - **Key finding**: APOE variants differentially activate neuronal signaling (potency: E4>E3>E2)\n    - **Evidence type**: Human neurons in glia-free culture (L4)\n    - **Key mechanism**: APOE stimulates signal cascades → enhances APP synthesis and synaptogenesis\n    - **Quote**: \"parallel potency rank order of ApoE4>ApoE3>ApoE2 in AD risk and neuronal signaling\"\n    - **Paradox**: APOE4 may promote AD by chronic signaling increase, not just lipid defects",
+        "refNumber": 60,
+        "pmid": "31331998",
+        "doi": "10.1523/JNEUROSCI.2994-18.2019",
+        "firstAuthor": "Huang Y",
+        "year": 2019,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "31331998",
+        "title": "Differential Signaling Mediated by ApoE2, ApoE3, and ApoE4 in Human Neurons Parallels Alzheimer's Disease Risk.",
+        "authors": [
+          "Huang YA",
+          "Zhou B",
+          "Nabet AM",
+          "Wernig M",
+          "Südhof TC"
+        ],
+        "journal": "J Neurosci",
+        "year": 2019,
+        "doi": "10.1523/JNEUROSCI.2994-18.2019"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1523/jneurosci.2994-18.2019",
+        "title": "Differential Signaling Mediated by ApoE2, ApoE3, and ApoE4 in Human Neurons Parallels Alzheimer's Disease Risk",
+        "authors": [
+          "Huang, Yu-Wen Alvin",
+          "Zhou, Bo",
+          "Nabet, Amber M.",
+          "Wernig, Marius",
+          "Südhof, Thomas C."
+        ],
+        "containerTitle": "The Journal of Neuroscience",
+        "year": 2019
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 424,
+        "rawText": "Sienski G, Narayan P, Bhattacharya S, et al. Isoform- and cell-state-specific lipidation of ApoE in astrocytes. Cell Rep. 2022;39(3):110362. [DOI: 10.1016/j.celrep.2022.110362](https://doi.org/10.1016/j.celrep.2022.110362) PMID:35182477\n    - **Key finding**: APOE4 behaves as strong TAG binder → redirected to LD assembly\n    - **Evidence type**: iPSC astrocytes + lipidomics (L4)\n    - **Two lipidation pathways**: (1) ABCA1-mediated HDL-like particles (preserved in E4); (2) TAG-rich lipoproteins (boosted in E4 under stress)\n    - **Quote**: \"APOE4 has remarkable properties behaving as a strong triacylglycerol binder\"\n    - **Implication**: Under lipogenic stress, APOE4 preferentially assembles harmful TAG-rich particles",
+        "refNumber": 61,
+        "pmid": "35182477",
+        "doi": "10.1016/j.celrep.2022.110362",
+        "firstAuthor": "Sienski G",
+        "year": 2022,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "35182477",
+        "title": "Systematic mapping of nuclear domain-associated transcripts reveals speckles and lamina as hubs of functionally distinct retained introns.",
+        "authors": [
+          "Barutcu AR",
+          "Wu M",
+          "Braunschweig U",
+          "Dyakov BJA",
+          "Luo Z",
+          "Turner KM",
+          "Durbic T",
+          "Lin ZY",
+          "Weatheritt RJ",
+          "Maass PG",
+          "Gingras AC",
+          "Blencowe BJ"
+        ],
+        "journal": "Mol Cell",
+        "year": 2022,
+        "doi": "10.1016/j.molcel.2021.12.010"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1016/j.celrep.2022.110362",
+        "title": "Purkinje cells translate subjective salience into readiness to act and choice performance",
+        "authors": [
+          "Bina, Lorenzo",
+          "Romano, Vincenzo",
+          "Hoogland, Tycho M.",
+          "Bosman, Laurens W.J.",
+          "De Zeeuw, Chris I."
+        ],
+        "containerTitle": "Cell Reports",
+        "year": 2022
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 431,
+        "rawText": "Tcw J, Qian L, Pipalia NH, et al. Cholesterol and matrisome pathways dysregulated in astrocytes and microglia. Cell. 2022;185(13):2213-2233.e25. [DOI: 10.1016/j.cell.2022.05.017](https://doi.org/10.1016/j.cell.2022.05.017) PMID:35802023\n    - **Key finding**: **LANDMARK PAPER** - APOE4 drives lysosomal cholesterol sequestration → false \"low cholesterol\" signal\n    - **Evidence type**: Population + isogenic iPSC comparisons (L4-L5)\n    - **Mechanism**: Cholesterol trapped in lysosomes → ER \"blind\" → paradoxical SREBP2/HMGCR upregulation\n    - **Quote**: \"APOE4 drives lysosomal cholesterol sequestration...increasing cholesterol biosynthesis and decreasing efflux\"\n    - **Rescue**: \"LXR agonists rescued decoupled lipid/cholesterol metabolism in APOE4 astrocytes\"",
+        "refNumber": 62,
+        "pmid": "35802023",
+        "doi": "10.1016/j.cell.2022.05.017",
+        "firstAuthor": "Tcw J",
+        "year": 2022,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "35802023",
+        "title": "A Rare Etiology for Ascending Paralysis in an Infant.",
+        "authors": [
+          "Abe K",
+          "Casamina C",
+          "Ching N",
+          "Abe KK",
+          "Melish M",
+          "Thompson KS",
+          "Ahmed AA",
+          "Purohit PJ"
+        ],
+        "journal": "J Pediatric Infect Dis Soc",
+        "year": 2022,
+        "doi": "10.1093/jpids/piac048"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1016/j.cell.2022.05.017",
+        "title": "Cholesterol and matrisome pathways dysregulated in astrocytes and microglia",
+        "authors": [
+          "TCW, Julia",
+          "Qian, Lu",
+          "Pipalia, Nina H.",
+          "Chao, Michael J.",
+          "Liang, Shuang A.",
+          "Shi, Yang",
+          "Jain, Bharat R.",
+          "Bertelsen, Sarah E.",
+          "Kapoor, Manav",
+          "Marcora, Edoardo",
+          "Sikora, Elizabeth",
+          "Andrews, Elizabeth J.",
+          "Martini, Alessandra C.",
+          "Karch, Celeste M.",
+          "Head, Elizabeth",
+          "Holtzman, David M.",
+          "Zhang, Bin",
+          "Wang, Minghui",
+          "Maxfield, Frederick R.",
+          "Poon, Wayne W.",
+          "Goate, Alison M."
+        ],
+        "containerTitle": "Cell",
+        "year": 2022
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 438,
+        "rawText": "Windham IA, Ragusa JV, Wallace EW, et al. APOE traffics to astrocyte lipid droplets and modulates triglyceride saturation and droplet size. J Cell Biol. 2024;223(4):e202305003. [DOI: 10.1083/jcb.202305003](https://doi.org/10.1083/jcb.202305003)\n    - **Key finding**: APOE4 astrocytes form fewer but larger LDs enriched in unsaturated TAG\n    - **Evidence type**: iPSC astrocytes + LD imaging (L4)\n    - **Key mechanism**: \"APOE4-expressing astrocytes form a small number of large LDs enriched in unsaturated triglyceride\"\n    - **Ferroptosis link**: \"LDs exhibit impaired turnover and increased sensitivity to lipid peroxidation\"\n    - **Novel role**: APOE acts as LD surface protein regulating LD size/composition",
+        "refNumber": 63,
+        "pmid": null,
+        "doi": "10.1083/jcb.202305003",
+        "firstAuthor": "Windham I",
+        "year": 2024,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": null,
+      "pmidError": null,
+      "pmidMetadata": null,
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1083/jcb.202305003",
+        "title": "APOE traffics to astrocyte lipid droplets and modulates triglyceride saturation and droplet size",
+        "authors": [
+          "Windham, Ian A.",
+          "Powers, Alex E.",
+          "Ragusa, Joey V.",
+          "Wallace, E. Diane",
+          "Zanellati, Maria Clara",
+          "Williams, Victoria H.",
+          "Wagner, Colby H.",
+          "White, Kristen K.",
+          "Cohen, Sarah"
+        ],
+        "containerTitle": "Journal of Cell Biology",
+        "year": 2024
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 445,
+        "rawText": "Valencia-Olvera AC, Balu D, Faulk N, et al. A novel apoE-mimetic increases brain apoE levels, reduces Aβ pathology and improves memory when treated before onset of pathology in male mice that express APOE3. Alzheimers Res Ther. 2023;15(1):215. [DOI: 10.1186/s13195-023-01353-z](https://doi.org/10.1186/s13195-023-01353-z)\n    - **Key finding**: CS-6253 apoE mimetic peptide improves cognition in young male E3FAD mice\n    - **Evidence type**: Pharmacological intervention (L4)\n    - **Results**: \"CS treatment increased soluble apoE and lipid-associated apoE, reduced soluble oAβ and insoluble Aβ levels\"\n    - **CAVEAT**: Not effective in females, APOE4 mice, or older mice\n    - **Therapeutic implication**: Timing and sex-specific efficacy for APOE-targeting therapies",
+        "refNumber": 64,
+        "pmid": null,
+        "doi": "10.1186/s13195-023-01353-z",
+        "firstAuthor": "Valencia",
+        "year": 2023,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": null,
+      "pmidError": null,
+      "pmidMetadata": null,
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1186/s13195-023-01353-z",
+        "title": "A novel apoE-mimetic increases brain apoE levels, reduces Aβ pathology and improves memory when treated before onset of pathology in male mice that express APOE3",
+        "authors": [
+          "Valencia-Olvera, Ana C.",
+          "Balu, Deebika",
+          "Bellur, Shreya",
+          "McNally, Thomas",
+          "Saleh, Yaseen",
+          "Pham, Don",
+          "Ghura, Shivesh",
+          "York, Jason",
+          "Johansson, Jan O.",
+          "LaDu, Mary Jo",
+          "Tai, Leon"
+        ],
+        "containerTitle": "Alzheimer's Research &amp; Therapy",
+        "year": 2023
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 452,
+        "rawText": "Mahley RW, Huang Y. Apolipoprotein E Sets the Stage: Response to Injury Triggers Neuropathology. Neuron. 2012;76(5):871-885. [DOI: 10.1016/j.neuron.2012.11.020](https://doi.org/10.1016/j.neuron.2012.11.020) PMID:23217738\n    - **Key finding**: APOE4 \"domain interaction\" (Arg61-Glu255) destabilizes protein\n    - **Evidence type**: Structural biology review\n    - **Mechanism**: Arg112 in APOE4 enables salt bridge → protein instability → aggregation + reduced lipid binding\n    - **Quote**: \"Blocking apoE4 domain interaction prevents neuronal and astrocytic degradation\"\n    - **Therapeutic**: Structure correctors to restore APOE3-like conformation",
+        "refNumber": 65,
+        "pmid": "23217738",
+        "doi": "10.1016/j.neuron.2012.11.020",
+        "firstAuthor": "Mahley R",
+        "year": 2012,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "23217738",
+        "title": "The neuropathology and neurobiology of traumatic brain injury.",
+        "authors": [
+          "Blennow K",
+          "Hardy J",
+          "Zetterberg H"
+        ],
+        "journal": "Neuron",
+        "year": 2012,
+        "doi": "10.1016/j.neuron.2012.11.021"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1016/j.neuron.2012.11.020",
+        "title": "Apolipoprotein E Sets the Stage: Response to Injury Triggers Neuropathology",
+        "authors": [
+          "Mahley, Robert W.",
+          "Huang, Yadong"
+        ],
+        "containerTitle": "Neuron",
+        "year": 2012
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 461,
+        "rawText": "Jonsson T, Stefansson H, Steinberg S, et al. Variant of TREM2 associated with the risk of Alzheimer's disease. N Engl J Med. 2013;368(2):107-16. [DOI: 10.1056/NEJMoa1211103](https://doi.org/10.1056/NEJMoa1211103) PMID:23150908\n    - **Key finding**: **FOUNDATIONAL DISCOVERY** - TREM2 R47H variant confers ~3-fold increased AD risk\n    - **Evidence type**: GWAS + replication cohorts (L6)\n    - **Frequency**: 0.46% in controls ≥85 years\n    - **Quote**: \"Rare missense mutation...predicted to result in an R47H substitution, was found to confer a significant risk of Alzheimer's disease (odds ratio, 2.92)\"\n    - **Cognitive effect**: R47H carriers without AD still have worse cognition\n    - **Mechanism proposed**: \"Impaired containment of inflammatory processes\"",
+        "refNumber": 57,
+        "pmid": "23150908",
+        "doi": "10.1056/NEJMoa1211103",
+        "firstAuthor": "Jonsson T",
+        "year": 2013,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "23150908",
+        "title": "Variant of TREM2 associated with the risk of Alzheimer's disease.",
+        "authors": [
+          "Jonsson T",
+          "Stefansson H",
+          "Steinberg S",
+          "Jonsdottir I",
+          "Jonsson PV",
+          "Snaedal J",
+          "Bjornsson S",
+          "Huttenlocher J",
+          "Levey AI",
+          "Lah JJ",
+          "Rujescu D",
+          "Hampel H",
+          "Giegling I",
+          "Andreassen OA",
+          "Engedal K",
+          "Ulstein I",
+          "Djurovic S",
+          "Ibrahim-Verbaas C",
+          "Hofman A",
+          "Ikram MA",
+          "van Duijn CM",
+          "Thorsteinsdottir U",
+          "Kong A",
+          "Stefansson K"
+        ],
+        "journal": "N Engl J Med",
+        "year": 2013,
+        "doi": "10.1056/NEJMoa1211103"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1056/nejmoa1211103",
+        "title": "Variant of\n                    <i>TREM2</i>\n                    Associated with the Risk of Alzheimer's Disease",
+        "authors": [
+          "Jonsson, Thorlakur",
+          "Stefansson, Hreinn",
+          "Steinberg, Stacy",
+          "Jonsdottir, Ingileif",
+          "Jonsson, Palmi V.",
+          "Snaedal, Jon",
+          "Bjornsson, Sigurbjorn",
+          "Huttenlocher, Johanna",
+          "Levey, Allan I.",
+          "Lah, James J.",
+          "Rujescu, Dan",
+          "Hampel, Harald",
+          "Giegling, Ina",
+          "Andreassen, Ole A.",
+          "Engedal, Knut",
+          "Ulstein, Ingun",
+          "Djurovic, Srdjan",
+          "Ibrahim-Verbaas, Carla",
+          "Hofman, Albert",
+          "Ikram, M. Arfan",
+          "van Duijn, Cornelia M",
+          "Thorsteinsdottir, Unnur",
+          "Kong, Augustine",
+          "Stefansson, Kari"
+        ],
+        "containerTitle": "New England Journal of Medicine",
+        "year": 2013
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 469,
+        "rawText": "Guerreiro R, Wojtas A, Bras J, et al. TREM2 variants in Alzheimer's disease. N Engl J Med. 2013;368(2):117-27. [DOI: 10.1056/NEJMoa1211851](https://doi.org/10.1056/NEJMoa1211851) PMID:23150934\n    - **Key finding**: Independent confirmation of TREM2 variants in AD\n    - **Evidence type**: Exome sequencing + meta-analysis (L6)\n    - **Statistics**: 22 variant alleles in 1092 AD patients vs 5 in 1107 controls\n    - **Quote**: \"Heterozygous rare variants in TREM2 are associated with a significant increase in the risk of Alzheimer's disease\"",
+        "refNumber": 58,
+        "pmid": "23150934",
+        "doi": "10.1056/NEJMoa1211851",
+        "firstAuthor": "Guerreiro R",
+        "year": 2013,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "23150934",
+        "title": "TREM2 variants in Alzheimer's disease.",
+        "authors": [
+          "Guerreiro R",
+          "Wojtas A",
+          "Bras J",
+          "Carrasquillo M",
+          "Rogaeva E",
+          "Majounie E",
+          "Cruchaga C",
+          "Sassi C",
+          "Kauwe JS",
+          "Younkin S",
+          "Hazrati L",
+          "Collinge J",
+          "Pocock J",
+          "Lashley T",
+          "Williams J",
+          "Lambert JC",
+          "Amouyel P",
+          "Goate A",
+          "Rademakers R",
+          "Morgan K",
+          "Powell J",
+          "St George-Hyslop P",
+          "Singleton A",
+          "Hardy J",
+          "Alzheimer Genetic Analysis Group"
+        ],
+        "journal": "N Engl J Med",
+        "year": 2013,
+        "doi": "10.1056/NEJMoa1211851"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1056/nejmoa1211851",
+        "title": "<i>TREM2</i>\n                    Variants in Alzheimer's Disease",
+        "authors": [
+          "Guerreiro, Rita",
+          "Wojtas, Aleksandra",
+          "Bras, Jose",
+          "Carrasquillo, Minerva",
+          "Rogaeva, Ekaterina",
+          "Majounie, Elisa",
+          "Cruchaga, Carlos",
+          "Sassi, Celeste",
+          "Kauwe, John S.K.",
+          "Younkin, Steven",
+          "Hazrati, Lilinaz",
+          "Collinge, John",
+          "Pocock, Jennifer",
+          "Lashley, Tammaryn",
+          "Williams, Julie",
+          "Lambert, Jean-Charles",
+          "Amouyel, Philippe",
+          "Goate, Alison",
+          "Rademakers, Rosa",
+          "Morgan, Kevin",
+          "Powell, John",
+          "St. George-Hyslop, Peter",
+          "Singleton, Andrew",
+          "Hardy, John"
+        ],
+        "containerTitle": "New England Journal of Medicine",
+        "year": 2013
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 475,
+        "rawText": "Keren-Shaul H, Spinrad A, Weiner A, et al. A Unique Microglia Type Associated with Restricting Development of Alzheimer's Disease. Cell. 2017;169(7):1276-1290.e17. [DOI: 10.1016/j.cell.2017.05.018](https://doi.org/10.1016/j.cell.2017.05.018) PMID:28602351\n    - **Key finding**: **FOUNDATIONAL PAPER** - Discovery of DAM (disease-associated microglia)\n    - **Evidence type**: Single-cell RNA-seq (L4-L5)\n    - **Two-step model**: Stage 1 (TREM2-independent) → Stage 2 (TREM2-dependent)\n    - **Stage 1 genes**: P2ry12↓, Cx3cr1↓, Tyrobp↑ (checkpoint release)\n    - **Stage 2 genes**: Lpl↑, Cst7↑, Cd9↑, Itgax↑ (full activation)\n    - **Quote**: \"DAM program is activated in a two-step process...initiated in a Trem2-independent manner...followed by activation of a Trem2-dependent program\"\n    - **Implication**: \"This unique microglia-type has the potential to restrict neurodegeneration\"",
+        "refNumber": 59,
+        "pmid": "28602351",
+        "doi": "10.1016/j.cell.2017.05.018",
+        "firstAuthor": "Keren",
+        "year": 2017,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "28602351",
+        "title": "A Unique Microglia Type Associated with Restricting Development of Alzheimer's Disease.",
+        "authors": [
+          "Keren-Shaul H",
+          "Spinrad A",
+          "Weiner A",
+          "Matcovitch-Natan O",
+          "Dvir-Szternfeld R",
+          "Ulland TK",
+          "David E",
+          "Baruch K",
+          "Lara-Astaiso D",
+          "Toth B",
+          "Itzkovitz S",
+          "Colonna M",
+          "Schwartz M",
+          "Amit I"
+        ],
+        "journal": "Cell",
+        "year": 2017,
+        "doi": "10.1016/j.cell.2017.05.018"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1016/j.cell.2017.05.018",
+        "title": "A Unique Microglia Type Associated with Restricting Development of Alzheimer’s Disease",
+        "authors": [
+          "Keren-Shaul, Hadas",
+          "Spinrad, Amit",
+          "Weiner, Assaf",
+          "Matcovitch-Natan, Orit",
+          "Dvir-Szternfeld, Raz",
+          "Ulland, Tyler K.",
+          "David, Eyal",
+          "Baruch, Kuti",
+          "Lara-Astaiso, David",
+          "Toth, Beata",
+          "Itzkovitz, Shalev",
+          "Colonna, Marco",
+          "Schwartz, Michal",
+          "Amit, Ido"
+        ],
+        "containerTitle": "Cell",
+        "year": 2017
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 484,
+        "rawText": "Ulland TK, Colonna M. TREM2 - a key player in microglial biology and Alzheimer disease. Nat Rev Neurol. 2018;14(11):667-675. [DOI: 10.1038/s41582-018-0072-1](https://doi.org/10.1038/s41582-018-0072-1) PMID:30266932\n    - **Key finding**: Comprehensive review of TREM2 in AD\n    - **Evidence type**: Review\n    - **Key concepts**: TREM2 essential for microglial metabolic fitness under stress\n    - **DAM context**: \"TREM2 is essential for...enabling microglial progression to a fully mature DAM profile\"\n    - **Progranulin**: Identified as TREM2 ligand",
+        "refNumber": 60,
+        "pmid": "30266932",
+        "doi": "10.1038/s41582-018-0072-1",
+        "firstAuthor": "Ulland T",
+        "year": 2018,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "30266932",
+        "title": "TREM2 - a key player in microglial biology and Alzheimer disease.",
+        "authors": [
+          "Ulland TK",
+          "Colonna M"
+        ],
+        "journal": "Nat Rev Neurol",
+        "year": 2018,
+        "doi": "10.1038/s41582-018-0072-1"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/s41582-018-0072-1",
+        "title": "TREM2 — a key player in microglial biology and Alzheimer disease",
+        "authors": [
+          "Ulland, Tyler K.",
+          "Colonna, Marco"
+        ],
+        "containerTitle": "Nature Reviews Neurology",
+        "year": 2018
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 491,
+        "rawText": "Zhou Y, Song WM, Andhey PS, et al. Human and mouse single-nucleus transcriptomics reveal TREM2-dependent and TREM2-independent cellular responses in Alzheimer's disease. Nat Med. 2020;26(1):131-142. [DOI: 10.1038/s41591-019-0695-9](https://doi.org/10.1038/s41591-019-0695-9) PMID:31932797\n    - **Key finding**: **SPECIES DIFFERENCES** - Human AD microglia differ markedly from mouse DAM\n    - **Evidence type**: snRNA-seq human + mouse (L4-L6)\n    - **Mouse**: Classic DAM signature (Keren-Shaul)\n    - **Human**: IRF8-driven reactive microglia signature\n    - **TREM2 variants**: R47H/R62H carriers have LESS reactive microglia than non-carriers\n    - **Quote**: \"Remarkably different glial phenotypes were evident in human AD\"\n    - **Oligodendrocytes**: Serpina3n+/C4b+ reactive population in mice; impaired myelination in humans",
+        "refNumber": 61,
+        "pmid": "31932797",
+        "doi": "10.1038/s41591-019-0695-9",
+        "firstAuthor": "Zhou Y",
+        "year": 2020,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "31932797",
+        "title": "Human and mouse single-nucleus transcriptomics reveal TREM2-dependent and TREM2-independent cellular responses in Alzheimer's disease.",
+        "authors": [
+          "Zhou Y",
+          "Song WM",
+          "Andhey PS",
+          "Swain A",
+          "Levy T",
+          "Miller KR",
+          "Poliani PL",
+          "Cominelli M",
+          "Grover S",
+          "Gilfillan S",
+          "Cella M",
+          "Ulland TK",
+          "Zaitsev K",
+          "Miyashita A",
+          "Ikeuchi T",
+          "Sainouchi M",
+          "Kakita A",
+          "Bennett DA",
+          "Schneider JA",
+          "Nichols MR",
+          "Beausoleil SA",
+          "Ulrich JD",
+          "Holtzman DM",
+          "Artyomov MN",
+          "Colonna M"
+        ],
+        "journal": "Nat Med",
+        "year": 2020,
+        "doi": "10.1038/s41591-019-0695-9"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/s41591-019-0695-9",
+        "title": "Human and mouse single-nucleus transcriptomics reveal TREM2-dependent and TREM2-independent cellular responses in Alzheimer’s disease",
+        "authors": [
+          "Zhou, Yingyue",
+          "Song, Wilbur M.",
+          "Andhey, Prabhakar S.",
+          "Swain, Amanda",
+          "Levy, Tyler",
+          "Miller, Kelly R.",
+          "Poliani, Pietro L.",
+          "Cominelli, Manuela",
+          "Grover, Shikha",
+          "Gilfillan, Susan",
+          "Cella, Marina",
+          "Ulland, Tyler K.",
+          "Zaitsev, Konstantin",
+          "Miyashita, Akinori",
+          "Ikeuchi, Takeshi",
+          "Sainouchi, Makoto",
+          "Kakita, Akiyoshi",
+          "Bennett, David A.",
+          "Schneider, Julie A.",
+          "Nichols, Michael R.",
+          "Beausoleil, Sean A.",
+          "Ulrich, Jason D.",
+          "Holtzman, David M.",
+          "Artyomov, Maxim N.",
+          "Colonna, Marco"
+        ],
+        "containerTitle": "Nature Medicine",
+        "year": 2020
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 500,
+        "rawText": "McQuade A, Kang YJ, Hasselmann J, et al. Gene expression and functional deficits underlie TREM2-knockout microglia responses in human models of Alzheimer's disease. Nat Commun. 2020;11(1):5370. [DOI: 10.1038/s41467-020-19227-5](https://doi.org/10.1038/s41467-020-19227-5) PMID:33097708\n    - **Key finding**: Human iPSC TREM2-KO microglia model\n    - **Evidence type**: iPSC + xenotransplant (L3-L4)\n    - **TREM2-KO deficits**: ↓ Survival, ↓ APOE phagocytosis, ↓ SDF-1α/CXCR4 chemotaxis\n    - **In vivo**: Impaired response to Aβ plaques in chimeric mice\n    - **DAM loss**: TREM2-KO human microglia fail to acquire DAM signature",
+        "refNumber": 62,
+        "pmid": "33097708",
+        "doi": "10.1038/s41467-020-19227-5",
+        "firstAuthor": "Mc",
+        "year": 2020,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "33097708",
+        "title": "Gene expression and functional deficits underlie TREM2-knockout microglia responses in human models of Alzheimer's disease.",
+        "authors": [
+          "McQuade A",
+          "Kang YJ",
+          "Hasselmann J",
+          "Jairaman A",
+          "Sotelo A",
+          "Coburn M",
+          "Shabestari SK",
+          "Chadarevian JP",
+          "Fote G",
+          "Tu CH",
+          "Danhash E",
+          "Silva J",
+          "Martinez E",
+          "Cotman C",
+          "Prieto GA",
+          "Thompson LM",
+          "Steffan JS",
+          "Smith I",
+          "Davtyan H",
+          "Cahalan M",
+          "Cho H",
+          "Blurton-Jones M"
+        ],
+        "journal": "Nat Commun",
+        "year": 2020,
+        "doi": "10.1038/s41467-020-19227-5"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/s41467-020-19227-5",
+        "title": "Gene expression and functional deficits underlie TREM2-knockout microglia responses in human models of Alzheimer’s disease",
+        "authors": [
+          "McQuade, Amanda",
+          "Kang, You Jung",
+          "Hasselmann, Jonathan",
+          "Jairaman, Amit",
+          "Sotelo, Alexandra",
+          "Coburn, Morgan",
+          "Shabestari, Sepideh Kiani",
+          "Chadarevian, Jean Paul",
+          "Fote, Gianna",
+          "Tu, Christina H.",
+          "Danhash, Emma",
+          "Silva, Jorge",
+          "Martinez, Eric",
+          "Cotman, Carl",
+          "Prieto, G. Aleph",
+          "Thompson, Leslie M.",
+          "Steffan, Joan S.",
+          "Smith, Ian",
+          "Davtyan, Hayk",
+          "Cahalan, Michael",
+          "Cho, Hansang",
+          "Blurton-Jones, Mathew"
+        ],
+        "containerTitle": "Nature Communications",
+        "year": 2020
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 507,
+        "rawText": "Silvin A, Uderhardt S, Piot C, et al. Dual ontogeny of disease-associated microglia and disease inflammatory macrophages in aging and neurodegeneration. Immunity. 2022;55(8):1448-1465.e6. [DOI: 10.1016/j.immuni.2022.07.004](https://doi.org/10.1016/j.immuni.2022.07.004) PMID:35931085\n    - **Key finding**: **PARADIGM SHIFT** - DAM and DIM are DISTINCT populations\n    - **Evidence type**: scRNA-seq integration + lineage tracing (L4-L5)\n    - **DAM**: Embryonic origin, TREM2-dependent, neuroprotective\n    - **DIM**: Monocyte-derived, accumulate with aging, inflammatory\n    - **Quote**: \"DAM population...actually comprises two ontogenetically and functionally distinct cell lineages\"\n    - **Therapeutic implication**: Target DIM (harmful) while preserving DAM (protective)",
+        "refNumber": 63,
+        "pmid": "35931085",
+        "doi": "10.1016/j.immuni.2022.07.004",
+        "firstAuthor": "Silvin A",
+        "year": 2022,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "35931085",
+        "title": "Dual ontogeny of disease-associated microglia and disease inflammatory macrophages in aging and neurodegeneration.",
+        "authors": [
+          "Silvin A",
+          "Uderhardt S",
+          "Piot C",
+          "Da Mesquita S",
+          "Yang K",
+          "Geirsdottir L",
+          "Mulder K",
+          "Eyal D",
+          "Liu Z",
+          "Bridlance C",
+          "Thion MS",
+          "Zhang XM",
+          "Kong WT",
+          "Deloger M",
+          "Fontes V",
+          "Weiner A",
+          "Ee R",
+          "Dress R",
+          "Hang JW",
+          "Balachander A",
+          "Chakarov S",
+          "Malleret B",
+          "Dunsmore G",
+          "Cexus O",
+          "Chen J",
+          "Garel S",
+          "Dutertre CA",
+          "Amit I",
+          "Kipnis J",
+          "Ginhoux F"
+        ],
+        "journal": "Immunity",
+        "year": 2022,
+        "doi": "10.1016/j.immuni.2022.07.004"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1016/j.immuni.2022.07.004",
+        "title": "Dual ontogeny of disease-associated microglia and disease inflammatory macrophages in aging and neurodegeneration",
+        "authors": [
+          "Silvin, Aymeric",
+          "Uderhardt, Stefan",
+          "Piot, Cecile",
+          "Da Mesquita, Sandro",
+          "Yang, Katharine",
+          "Geirsdottir, Laufey",
+          "Mulder, Kevin",
+          "Eyal, David",
+          "Liu, Zhaoyuan",
+          "Bridlance, Cecile",
+          "Thion, Morgane Sonia",
+          "Zhang, Xiao Meng",
+          "Kong, Wan Ting",
+          "Deloger, Marc",
+          "Fontes, Vasco",
+          "Weiner, Assaf",
+          "Ee, Rachel",
+          "Dress, Regine",
+          "Hang, Jing Wen",
+          "Balachander, Akhila",
+          "Chakarov, Svetoslav",
+          "Malleret, Benoit",
+          "Dunsmore, Garett",
+          "Cexus, Olivier",
+          "Chen, Jinmiao",
+          "Garel, Sonia",
+          "Dutertre, Charles Antoine",
+          "Amit, Ido",
+          "Kipnis, Jonathan",
+          "Ginhoux, Florent"
+        ],
+        "containerTitle": "Immunity",
+        "year": 2022
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 515,
+        "rawText": "Zhao N, Qiao W, Li F, et al. Elevating microglia TREM2 reduces amyloid seeding and suppresses disease-associated microglia. J Exp Med. 2022;219(12):e20212479. [DOI: 10.1084/jem.20212479](https://doi.org/10.1084/jem.20212479) PMID:36107206\n    - **Key finding**: **TIMING WINDOW** - TREM2 elevation beneficial EARLY, R47H harmful MID-stage\n    - **Evidence type**: Inducible overexpression (L3-L4)\n    - **Early stage**: TREM2-WT ↓ amyloid deposition, ↓ neuritic dystrophy\n    - **Middle stage**: TREM2-R47H ↑ amyloid burden\n    - **scRNA-seq**: TREM2-WT suppresses DAM signature early; R47H upregulates antigen presentation mid\n    - **Quote**: \"Beneficial effect of enhancing TREM2 function in the early stage of AD development\"\n    - **Therapeutic implication**: TREM2 agonists may only work in prodromal/early AD",
+        "refNumber": 64,
+        "pmid": "36107206",
+        "doi": "10.1084/jem.20212479",
+        "firstAuthor": "Zhao N",
+        "year": 2022,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "36107206",
+        "title": "Elevating microglia TREM2 reduces amyloid seeding and suppresses disease-associated microglia.",
+        "authors": [
+          "Zhao N",
+          "Qiao W",
+          "Li F",
+          "Ren Y",
+          "Zheng J",
+          "Martens YA",
+          "Wang X",
+          "Li L",
+          "Liu CC",
+          "Chen K",
+          "Zhu Y",
+          "Ikezu TC",
+          "Li Z",
+          "Meneses AD",
+          "Jin Y",
+          "Knight JA",
+          "Chen Y",
+          "Bastea L",
+          "Linares C",
+          "Sonustun B",
+          "Job L",
+          "Smith ML",
+          "Xie M",
+          "Liu YU",
+          "Umpierre AD",
+          "Haruwaka K",
+          "Quicksall ZS",
+          "Storz P",
+          "Asmann YW",
+          "Wu LJ",
+          "Bu G"
+        ],
+        "journal": "J Exp Med",
+        "year": 2022,
+        "doi": "10.1084/jem.20212479"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1084/jem.20212479",
+        "title": "Elevating microglia TREM2 reduces amyloid seeding and suppresses disease-associated microglia",
+        "authors": [
+          "Zhao, Na",
+          "Qiao, Wenhui",
+          "Li, Fuyao",
+          "Ren, Yingxue",
+          "Zheng, Jiaying",
+          "Martens, Yuka A.",
+          "Wang, Xusheng",
+          "Li, Ling",
+          "Liu, Chia-Chen",
+          "Chen, Kai",
+          "Zhu, Yiyang",
+          "Ikezu, Tadafumi C.",
+          "Li, Zonghua",
+          "Meneses, Axel D.",
+          "Jin, Yunjung",
+          "Knight, Joshua A.",
+          "Chen, Yixing",
+          "Bastea, Ligia",
+          "Linares, Cynthia",
+          "Sonustun, Berkiye",
+          "Job, Lucy",
+          "Smith, Madeleine L.",
+          "Xie, Manling",
+          "Liu, Yong U.",
+          "Umpierre, Anthony D.",
+          "Haruwaka, Koichiro",
+          "Quicksall, Zachary S.",
+          "Storz, Peter",
+          "Asmann, Yan W.",
+          "Wu, Long-Jun",
+          "Bu, Guojun"
+        ],
+        "containerTitle": "Journal of Experimental Medicine",
+        "year": 2022
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 524,
+        "rawText": "Rachmian N, Medina S, Cherqui U, et al. Identification of senescent, TREM2-expressing microglia in aging and Alzheimer's disease model mouse brain. Nat Neurosci. 2024;27(6):1116-1124. [DOI: 10.1038/s41593-024-01620-8](https://doi.org/10.1038/s41593-024-01620-8) PMID:38637622\n    - **Key finding**: **PARADIGM SHIFT** - Senescent TREM2+ microglia are DISTINCT from DAM\n    - **Evidence type**: Mass cytometry + intervention (L4)\n    - **Senescent signature**: SA-β-gal+, p16+, high TREM2, DIFFERENT from DAM genes\n    - **TREM2 paradox**: TREM2-null mice have FEWER senescent microglia\n    - **Senolytic**: ABT-737 (BCL2 inhibitor) removes senescent microglia → improved cognition\n    - **Quote**: \"Our results suggest a dual and opposite involvement of TREM2 in microglial states\"\n    - **Therapeutic implication**: TREM2 agonism may inadvertently increase senescent population",
+        "refNumber": 65,
+        "pmid": "38637622",
+        "doi": "10.1038/s41593-024-01620-8",
+        "firstAuthor": "Rachmian N",
+        "year": 2024,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "38637622",
+        "title": "Identification of senescent, TREM2-expressing microglia in aging and Alzheimer's disease model mouse brain.",
+        "authors": [
+          "Rachmian N",
+          "Medina S",
+          "Cherqui U",
+          "Akiva H",
+          "Deitch D",
+          "Edilbi D",
+          "Croese T",
+          "Salame TM",
+          "Ramos JMP",
+          "Cahalon L",
+          "Krizhanovsky V",
+          "Schwartz M"
+        ],
+        "journal": "Nat Neurosci",
+        "year": 2024,
+        "doi": "10.1038/s41593-024-01620-8"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/s41593-024-01620-8",
+        "title": "Identification of senescent, TREM2-expressing microglia in aging and Alzheimer’s disease model mouse brain",
+        "authors": [
+          "Rachmian, Noa",
+          "Medina, Sedi",
+          "Cherqui, Ulysse",
+          "Akiva, Hagay",
+          "Deitch, Daniel",
+          "Edilbi, Dunya",
+          "Croese, Tommaso",
+          "Salame, Tomer Meir",
+          "Ramos, Javier Maria Peralta",
+          "Cahalon, Liora",
+          "Krizhanovsky, Valery",
+          "Schwartz, Michal"
+        ],
+        "containerTitle": "Nature Neuroscience",
+        "year": 2024
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 535,
+        "rawText": "Zlokovic BV. Neurovascular pathways to neurodegeneration in Alzheimer's disease and other disorders. Nat Rev Neurosci. 2011;12(12):723-38. [DOI: 10.1038/nrn3114](https://doi.org/10.1038/nrn3114) PMID:22048062\n    - **Key finding**: **FOUNDATIONAL REVIEW** - Neurovascular unit dysfunction in AD\n    - **Evidence type**: Review synthesizing vascular contributions to neurodegeneration\n    - **Key concepts**: BBB breakdown, pericyte degeneration, LRP1-mediated Aβ clearance, CypA-MMP9 pathway",
+        "refNumber": 66,
+        "pmid": "22048062",
+        "doi": "10.1038/nrn3114",
+        "firstAuthor": "Zlokovic B",
+        "year": 2011,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "22048062",
+        "title": "Neurovascular pathways to neurodegeneration in Alzheimer's disease and other disorders.",
+        "authors": [
+          "Zlokovic BV"
+        ],
+        "journal": "Nat Rev Neurosci",
+        "year": 2011,
+        "doi": "10.1038/nrn3114"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/nrn3114",
+        "title": "Neurovascular pathways to neurodegeneration in Alzheimer's disease and other disorders",
+        "authors": [
+          "Zlokovic, Berislav V."
+        ],
+        "containerTitle": "Nature Reviews Neuroscience",
+        "year": 2011
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 540,
+        "rawText": "Iliff JJ, Wang M, Liao Y, et al. A paravascular pathway facilitates CSF flow through the brain parenchyma and the clearance of interstitial solutes, including amyloid β. Sci Transl Med. 2012;4(147):147ra111. [DOI: 10.1126/scitranslmed.3003748](https://doi.org/10.1126/scitranslmed.3003748) PMID:22896675\n    - **Key finding**: **DISCOVERY PAPER** - Glymphatic system description; AQP4-dependent CSF-ISF exchange\n    - **Evidence type**: Two-photon imaging + knockout (L3-L4)\n    - **Species**: NCBITaxon:10090 (Aqp4-/-)\n    - **Quote**: \"Animals lacking...aquaporin-4 (AQP4)...exhibit...a ~70% reduction in interstitial solute clearance\"\n    - **Quote**: \"Deletion of the Aqp4 gene suppressed the clearance of soluble amyloid β\"",
+        "refNumber": 67,
+        "pmid": "22896675",
+        "doi": "10.1126/scitranslmed.3003748",
+        "firstAuthor": "Iliff J",
+        "year": 2012,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "22896675",
+        "title": "A paravascular pathway facilitates CSF flow through the brain parenchyma and the clearance of interstitial solutes, including amyloid β.",
+        "authors": [
+          "Iliff JJ",
+          "Wang M",
+          "Liao Y",
+          "Plogg BA",
+          "Peng W",
+          "Gundersen GA",
+          "Benveniste H",
+          "Vates GE",
+          "Deane R",
+          "Goldman SA",
+          "Nagelhus EA",
+          "Nedergaard M"
+        ],
+        "journal": "Sci Transl Med",
+        "year": 2012,
+        "doi": "10.1126/scitranslmed.3003748"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1126/scitranslmed.3003748",
+        "title": "A Paravascular Pathway Facilitates CSF Flow Through the Brain Parenchyma and the Clearance of Interstitial Solutes, Including Amyloid β",
+        "authors": [
+          "Iliff, Jeffrey J.",
+          "Wang, Minghuan",
+          "Liao, Yonghong",
+          "Plogg, Benjamin A.",
+          "Peng, Weiguo",
+          "Gundersen, Georg A.",
+          "Benveniste, Helene",
+          "Vates, G. Edward",
+          "Deane, Rashid",
+          "Goldman, Steven A.",
+          "Nagelhus, Erlend A.",
+          "Nedergaard, Maiken"
+        ],
+        "containerTitle": "Science Translational Medicine",
+        "year": 2012
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 547,
+        "rawText": "Xie L, Kang H, Xu Q, et al. Sleep drives metabolite clearance from the adult brain. Science. 2013;342(6156):373-7. [DOI: 10.1126/science.1241224](https://doi.org/10.1126/science.1241224) PMID:24136970\n    - **Key finding**: **LANDMARK PAPER** - Sleep → 60% ISF expansion → 2x Aβ clearance rate\n    - **Evidence type**: Two-photon imaging, sleep/wake comparison (L3-L4)\n    - **Species**: NCBITaxon:10090\n    - **Quote**: \"Natural sleep or anesthesia are associated with a 60% increase in the interstitial space, resulting in a striking increase in convective exchange of cerebrospinal fluid with interstitial fluid\"\n    - **Clinical implication**: Sleep disruption as modifiable AD risk factor",
+        "refNumber": 68,
+        "pmid": "24136970",
+        "doi": "10.1126/science.1241224",
+        "firstAuthor": "Xie L",
+        "year": 2013,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "24136970",
+        "title": "Sleep drives metabolite clearance from the adult brain.",
+        "authors": [
+          "Xie L",
+          "Kang H",
+          "Xu Q",
+          "Chen MJ",
+          "Liao Y",
+          "Thiyagarajan M",
+          "O'Donnell J",
+          "Christensen DJ",
+          "Nicholson C",
+          "Iliff JJ",
+          "Takano T",
+          "Deane R",
+          "Nedergaard M"
+        ],
+        "journal": "Science",
+        "year": 2013,
+        "doi": "10.1126/science.1241224"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1126/science.1241224",
+        "title": "Sleep Drives Metabolite Clearance from the Adult Brain",
+        "authors": [
+          "Xie, Lulu",
+          "Kang, Hongyi",
+          "Xu, Qiwu",
+          "Chen, Michael J.",
+          "Liao, Yonghong",
+          "Thiyagarajan, Meenakshisundaram",
+          "O’Donnell, John",
+          "Christensen, Daniel J.",
+          "Nicholson, Charles",
+          "Iliff, Jeffrey J.",
+          "Takano, Takahiro",
+          "Deane, Rashid",
+          "Nedergaard, Maiken"
+        ],
+        "containerTitle": "Science",
+        "year": 2013
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 554,
+        "rawText": "Jessen NA, Munk AS, Lundgaard I, Nedergaard M. The Glymphatic System: A Beginner's Guide. Neurochem Res. 2015;40(12):2583-99. [DOI: 10.1007/s11064-015-1581-6](https://doi.org/10.1007/s11064-015-1581-6) PMID:25947369\n    - **Key finding**: Comprehensive review of glymphatic system structure, regulation, and dysfunction\n    - **Evidence type**: Review\n    - **Key concepts**: AQP4 polarization loss with aging, glymphatic failure in neurodegeneration",
+        "refNumber": 69,
+        "pmid": "25947369",
+        "doi": "10.1007/s11064-015-1581-6",
+        "firstAuthor": "Jessen N",
+        "year": 2015,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "25947369",
+        "title": "The Glymphatic System: A Beginner's Guide.",
+        "authors": [
+          "Jessen NA",
+          "Munk AS",
+          "Lundgaard I",
+          "Nedergaard M"
+        ],
+        "journal": "Neurochem Res",
+        "year": 2015,
+        "doi": "10.1007/s11064-015-1581-6"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1007/s11064-015-1581-6",
+        "title": "The Glymphatic System: A Beginner’s Guide",
+        "authors": [
+          "Jessen, Nadia Aalling",
+          "Munk, Anne Sofie Finmann",
+          "Lundgaard, Iben",
+          "Nedergaard, Maiken"
+        ],
+        "containerTitle": "Neurochemical Research",
+        "year": 2015
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 559,
+        "rawText": "Halliday MR, Rege SV, Ma Q, et al. Accelerated pericyte degeneration and blood-brain barrier breakdown in apolipoprotein E4 carriers with Alzheimer's disease. J Cereb Blood Flow Metab. 2016;36(1):216-27. [DOI: 10.1038/jcbfm.2015.44](https://doi.org/10.1038/jcbfm.2015.44) PMID:25757756\n    - **Key finding**: APOE4 AD > APOE3 AD > controls for pericyte degeneration\n    - **Evidence type**: Human autopsy (L5-L6)\n    - **Species**: NCBITaxon:9606\n    - **Mechanism**: CypA-MMP9 pathway activation in APOE4\n    - **Quote**: \"Accelerated pericyte degeneration in AD APOE4 carriers > AD APOE3 carriers > non-AD controls\"",
+        "refNumber": 70,
+        "pmid": "25757756",
+        "doi": "10.1038/jcbfm.2015.44",
+        "firstAuthor": "Halliday M",
+        "year": 2016,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "25757756",
+        "title": "Accelerated pericyte degeneration and blood-brain barrier breakdown in apolipoprotein E4 carriers with Alzheimer's disease.",
+        "authors": [
+          "Halliday MR",
+          "Rege SV",
+          "Ma Q",
+          "Zhao Z",
+          "Miller CA",
+          "Winkler EA",
+          "Zlokovic BV"
+        ],
+        "journal": "J Cereb Blood Flow Metab",
+        "year": 2016
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/jcbfm.2015.44",
+        "title": "Accelerated pericyte degeneration and blood–brain barrier breakdown in apolipoprotein E4 carriers with Alzheimer’s disease",
+        "authors": [
+          "Halliday, Matthew R",
+          "Rege, Sanket V",
+          "Ma, Qingyi",
+          "Zhao, Zhen",
+          "Miller, Carol A",
+          "Winkler, Ethan A",
+          "Zlokovic, Berislav V"
+        ],
+        "containerTitle": "Journal of Cerebral Blood Flow &amp; Metabolism",
+        "year": 2015
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 566,
+        "rawText": "Da Mesquita S, Louveau A, Vaccari A, et al. Functional aspects of meningeal lymphatics in ageing and Alzheimer's disease. Nature. 2018;560(7717):185-191. [DOI: 10.1038/s41586-018-0368-8](https://doi.org/10.1038/s41586-018-0368-8) PMID:30046111\n    - **Key finding**: Meningeal lymphatics decline with age; VEGF-C restores drainage → cognitive improvement\n    - **Evidence type**: Intervention (L3-L4)\n    - **Species**: NCBITaxon:10090 + human post-mortem\n    - **Quote**: \"Treatment of aged mice with vascular endothelial growth factor C enhances meningeal lymphatic drainage\"\n    - **Therapeutic target**: VEGF-C for restoring CNS drainage",
+        "refNumber": 71,
+        "pmid": "30046111",
+        "doi": "10.1038/s41586-018-0368-8",
+        "firstAuthor": "Da M",
+        "year": 2018,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "30046111",
+        "title": "Functional aspects of meningeal lymphatics in ageing and Alzheimer's disease.",
+        "authors": [
+          "Da Mesquita S",
+          "Louveau A",
+          "Vaccari A",
+          "Smirnov I",
+          "Cornelison RC",
+          "Kingsmore KM",
+          "Contarino C",
+          "Onengut-Gumuscu S",
+          "Farber E",
+          "Raper D",
+          "Viar KE",
+          "Powell RD",
+          "Baker W",
+          "Dabhi N",
+          "Bai R",
+          "Cao R",
+          "Hu S",
+          "Rich SS",
+          "Munson JM",
+          "Lopes MB",
+          "Overall CC",
+          "Acton ST",
+          "Kipnis J"
+        ],
+        "journal": "Nature",
+        "year": 2018,
+        "doi": "10.1038/s41586-018-0368-8"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/s41586-018-0368-8",
+        "title": "Functional aspects of meningeal lymphatics in ageing and Alzheimer’s disease",
+        "authors": [
+          "Da Mesquita, Sandro",
+          "Louveau, Antoine",
+          "Vaccari, Andrea",
+          "Smirnov, Igor",
+          "Cornelison, R. Chase",
+          "Kingsmore, Kathryn M.",
+          "Contarino, Christian",
+          "Onengut-Gumuscu, Suna",
+          "Farber, Emily",
+          "Raper, Daniel",
+          "Viar, Kenneth E.",
+          "Powell, Romie D.",
+          "Baker, Wendy",
+          "Dabhi, Nisha",
+          "Bai, Robin",
+          "Cao, Rui",
+          "Hu, Song",
+          "Rich, Stephen S.",
+          "Munson, Jennifer M.",
+          "Lopes, M. Beatriz",
+          "Overall, Christopher C.",
+          "Acton, Scott T.",
+          "Kipnis, Jonathan"
+        ],
+        "containerTitle": "Nature",
+        "year": 2018
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 573,
+        "rawText": "Shokri-Kojori E, Wang GJ, Wiers CE, et al. β-Amyloid accumulation in the human brain after one night of sleep deprivation. Proc Natl Acad Sci U S A. 2018;115(17):4483-4488. [DOI: 10.1073/pnas.1721694115](https://doi.org/10.1073/pnas.1721694115) PMID:29632177\n    - **Key finding**: **HUMAN EVIDENCE** - 1 night sleep deprivation → ↑Aβ PET in hippocampus/thalamus\n    - **Evidence type**: Human intervention (L4)\n    - **Species**: NCBITaxon:9606\n    - **Implication**: Sleep deprivation directly impairs Aβ clearance in humans",
+        "refNumber": 72,
+        "pmid": "29632177",
+        "doi": "10.1073/pnas.1721694115",
+        "firstAuthor": "Shokri",
+        "year": 2018,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "29632177",
+        "title": "β-Amyloid accumulation in the human brain after one night of sleep deprivation.",
+        "authors": [
+          "Shokri-Kojori E",
+          "Wang GJ",
+          "Wiers CE",
+          "Demiral SB",
+          "Guo M",
+          "Kim SW",
+          "Lindgren E",
+          "Ramirez V",
+          "Zehra A",
+          "Freeman C",
+          "Miller G",
+          "Manza P",
+          "Srivastava T",
+          "De Santi S",
+          "Tomasi D",
+          "Benveniste H",
+          "Volkow ND"
+        ],
+        "journal": "Proc Natl Acad Sci U S A",
+        "year": 2018,
+        "doi": "10.1073/pnas.1721694115"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1073/pnas.1721694115",
+        "title": "β-Amyloid accumulation in the human brain after one night of sleep deprivation",
+        "authors": [
+          "Shokri-Kojori, Ehsan",
+          "Wang, Gene-Jack",
+          "Wiers, Corinde E.",
+          "Demiral, Sukru B.",
+          "Guo, Min",
+          "Kim, Sung Won",
+          "Lindgren, Elsa",
+          "Ramirez, Veronica",
+          "Zehra, Amna",
+          "Freeman, Clara",
+          "Miller, Gregg",
+          "Manza, Peter",
+          "Srivastava, Tansha",
+          "De Santi, Susan",
+          "Tomasi, Dardo",
+          "Benveniste, Helene",
+          "Volkow, Nora D."
+        ],
+        "containerTitle": "Proceedings of the National Academy of Sciences",
+        "year": 2018
+      },
+      "status": "valid",
+      "needsReview": false
+    },
+    {
+      "reference": {
+        "lineNumber": 579,
+        "rawText": "Montagne A, Nation DA, Sagare AP, et al. APOE4 leads to blood-brain barrier dysfunction predicting cognitive decline. Nature. 2020;581(7806):71-76. [DOI: 10.1038/s41586-020-2247-3](https://doi.org/10.1038/s41586-020-2247-3) PMID:32376954\n    - **Key finding**: **PARADIGM SHIFT** - APOE4 BBB dysfunction predicts cognitive decline INDEPENDENT of Aβ/tau\n    - **Evidence type**: Human longitudinal cohort with biomarkers (L5-L6)\n    - **Species**: NCBITaxon:9606\n    - **Key insight**: CSF sPDGFRβ (pericyte injury) predicts decline in APOE4 carriers after controlling for Aβ/tau\n    - **Quote**: \"Breakdown of the BBB contributes to APOE4-associated cognitive decline independently of Alzheimer's disease pathology\"\n    - **Therapeutic implication**: BBB-targeted therapies for APOE4 carriers",
+        "refNumber": 73,
+        "pmid": "32376954",
+        "doi": "10.1038/s41586-020-2247-3",
+        "firstAuthor": "Montagne A",
+        "year": 2020,
+        "title": null,
+        "journal": null,
+        "isRetracted": false
+      },
+      "pmidValid": true,
+      "pmidError": null,
+      "pmidMetadata": {
+        "pmid": "32376954",
+        "title": "APOE4 leads to blood-brain barrier dysfunction predicting cognitive decline.",
+        "authors": [
+          "Montagne A",
+          "Nation DA",
+          "Sagare AP",
+          "Barisano G",
+          "Sweeney MD",
+          "Chakhoyan A",
+          "Pachicano M",
+          "Joe E",
+          "Nelson AR",
+          "D'Orazio LM",
+          "Buennagel DP",
+          "Harrington MG",
+          "Benzinger TLS",
+          "Fagan AM",
+          "Ringman JM",
+          "Schneider LS",
+          "Morris JC",
+          "Reiman EM",
+          "Caselli RJ",
+          "Chui HC",
+          "Tcw J",
+          "Chen Y",
+          "Pa J",
+          "Conti PS",
+          "Law M",
+          "Toga AW",
+          "Zlokovic BV"
+        ],
+        "journal": "Nature",
+        "year": 2020,
+        "doi": "10.1038/s41586-020-2247-3"
+      },
+      "doiValid": true,
+      "doiError": null,
+      "doiMetadata": {
+        "doi": "10.1038/s41586-020-2247-3",
+        "title": "APOE4 leads to blood–brain barrier dysfunction predicting cognitive decline",
+        "authors": [
+          "Montagne, Axel",
+          "Nation, Daniel A.",
+          "Sagare, Abhay P.",
+          "Barisano, Giuseppe",
+          "Sweeney, Melanie D.",
+          "Chakhoyan, Ararat",
+          "Pachicano, Maricarmen",
+          "Joe, Elizabeth",
+          "Nelson, Amy R.",
+          "D’Orazio, Lina M.",
+          "Buennagel, David P.",
+          "Harrington, Michael G.",
+          "Benzinger, Tammie L. S.",
+          "Fagan, Anne M.",
+          "Ringman, John M.",
+          "Schneider, Lon S.",
+          "Morris, John C.",
+          "Reiman, Eric M.",
+          "Caselli, Richard J.",
+          "Chui, Helena C.",
+          "TCW, Julia",
+          "Chen, Yining",
+          "Pa, Judy",
+          "Conti, Peter S.",
+          "Law, Meng",
+          "Toga, Arthur W.",
+          "Zlokovic, Berislav V."
+        ],
+        "containerTitle": "Nature",
+        "year": 2020
+      },
+      "status": "valid",
+      "needsReview": false
+    }
+  ]
+}
