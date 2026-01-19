@@ -756,6 +756,8 @@ export const MODULE_COLORS: Record<string, string> = {
   M14: '#E5AF19',   // MAM/Calcium - Gold
   M15: '#c75146',   // Interventions - Brick red
   M16: '#5a8a6e',   // Sex/Ancestry - Sage green
+  M17: '#9B59B6',   // Immunomodulatory - Purple (complementary)
+  M18: '#DDA0DD',   // Endfoot Integrity - Plum (suggests astrocytes)
 };
 
 // ============================================================================

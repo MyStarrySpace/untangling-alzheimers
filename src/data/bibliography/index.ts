@@ -17,6 +17,7 @@ import { sexAncestrySources } from './sexAncestry';
 import { policySources } from './policy';
 import { failureCascadeSources } from './failureCascade';
 import { pipelineDrugsSources } from './pipelineDrugs';
+import { historicalSources } from './historical';
 
 import type { Source, Citation } from './types';
 
@@ -35,6 +36,7 @@ export {
   policySources,
   failureCascadeSources,
   pipelineDrugsSources,
+  historicalSources,
 };
 
 // Combined bibliography array (all sources)
@@ -52,6 +54,7 @@ export const bibliography: Source[] = [
   ...policySources,
   ...failureCascadeSources,
   ...pipelineDrugsSources,
+  ...historicalSources,
 ];
 
 // Helper function to get citation by ID

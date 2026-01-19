@@ -480,6 +480,75 @@ export const modules: MechanisticModule[] = [
     color: '#5a8a6e',
     icon: 'Users',
   },
+
+  // ============================================================================
+  // IMMUNOMODULATORY MODULE (17)
+  // ============================================================================
+  {
+    id: 'M17',
+    name: 'Immunomodulatory Interventions',
+    shortName: 'Immunomodulatory',
+    description: 'Vaccine adjuvant-based immunomodulation and IFN-γ pathways',
+    overview: `
+      Module 17 describes immunomodulatory interventions, particularly the unexpected
+      cognitive protection observed with AS01-adjuvanted vaccines (Shingrix, Arexvy).
+      TLR4 activation by MPL leads to IFN-γ production, which may enhance amyloid clearance.
+    `.trim(),
+    upstreamModules: [],
+    downstreamModules: ['M06'],
+    color: '#9B59B6',
+    icon: 'Shield',
+  },
+
+  // ============================================================================
+  // ASTROCYTE ENDFOOT INTEGRITY MODULE (18)
+  // ============================================================================
+  {
+    id: 'M18',
+    name: 'Astrocyte Endfoot Integrity / Clasmatodendrosis',
+    shortName: 'Endfoot Integrity',
+    description: 'Astrocytic endfoot dysfunction from AEP-mediated vimentin cleavage through clasmatodendrosis to biomarker release',
+    overview: `
+Module 18 captures the earliest detectable pathological cascade in Alzheimer's disease—astrocyte endfoot damage. Alois Alzheimer described this pathology in 1910, but it was largely ignored for over a century.
+
+The molecular mechanism was recently elucidated: δ-secretase (AEP) cleaves vimentin at N283, disrupting the vimentin-GFAP network that maintains endfoot structural integrity. This triggers clasmatodendrosis—fragmentation and retraction of astrocyte endfeet from blood vessels.
+
+Endfoot retraction has critical downstream consequences:
+• Loss of AQP4 polarization (water channels redistributed from endfeet)
+• Glymphatic failure (impaired Aβ and tau clearance)
+• BBB dysfunction (loss of glia limitans)
+• GFAP release (measurable biomarker)
+• Perivascular space enlargement (MRI-visible)
+
+Crucially, these changes occur 10-20 YEARS before cognitive symptoms, making this the earliest intervention window in AD.
+    `.trim(),
+    keyFindings: [
+      'Alzheimer described clasmatodendrosis in 1910; ignored until ~2016',
+      'AEP cleaves vimentin at N283, disrupting GFAP network (Zhang 2025)',
+      'Clasmatodendrosis increases 11-fold with aging (Chen 2016)',
+      'PVS enlargement detectable 18 years before dementia (Leone 2025)',
+      'GFAP elevation precedes symptoms by 10 years (Varma 2024)',
+      'Environmental enrichment can reverse clasmatodendrosis (Hase 2017)',
+    ],
+    paradigmShifts: [
+      { year: 1910, discovery: 'Alzheimer describes astrocyte process loss after ischemia', pmid: 'historical' },
+      { year: 2016, discovery: 'Chen links clasmatodendrosis to AQP4 depolarization in dementia', pmid: '26667280' },
+      { year: 2020, discovery: 'Marschallinger rediscovers LDAM (Alzheimer 1907 observation)', pmid: '31959936' },
+      { year: 2025, discovery: 'Zhang identifies AEP-vimentin cleavage as molecular mechanism', pmid: '40243407' },
+    ],
+    upstreamModules: ['M03', 'M04', 'M05'],
+    downstreamModules: ['M06', 'M07', 'M08', 'M12'],
+    landmarkPapers: [
+      { pmid: '26667280', discovery: 'Chen 2016 - Clasmatodendrosis in aging/dementia' },
+      { pmid: '40243407', discovery: 'Zhang 2025 - AEP cleaves vimentin, disrupts GFAP' },
+      { pmid: '11180514', discovery: 'Hulse 2001 - Rediscovery of Alzheimer 1910' },
+      { pmid: '28399892', discovery: 'Hase 2017 - Environmental enrichment reverses' },
+    ],
+    therapeuticTargets: ['aep_active', 'vimentin_intact', 'clasmatodendrosis'],
+    interventionWindow: 'prevention',
+    color: '#DDA0DD',
+    icon: 'GitBranch',
+  },
 ];
 
 export default modules;

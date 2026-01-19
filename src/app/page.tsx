@@ -10,6 +10,7 @@ import {
   PromisingFrontier,
   FailureCascade,
   TranslationalFailures,
+  ForgottenObservations,
   CaseStudies,
   HopefulDevelopments,
 } from '@/components/sections';
@@ -111,6 +112,8 @@ export default function Home() {
         <FailureCascade />
         <SectionDivider variant="tick" />
         <TranslationalFailures />
+        <SectionDivider variant="tick" />
+        <ForgottenObservations />
         <SectionDivider variant="tick" />
         <CaseStudies />
 

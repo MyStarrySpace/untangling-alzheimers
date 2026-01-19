@@ -1917,4 +1917,118 @@ export const mechanismsSources: Source[] = [
       },
     ],
   },
+
+  // ============================================
+  // CLASMATODENDROSIS / ASTROCYTE ENDFOOT INTEGRITY (M18)
+  // ============================================
+  {
+    id: 'zhang-vimentin-2025',
+    type: 'journal',
+    authors: ['Lun Zhang', 'et al.'],
+    title: 'Vimentin Fragmentation and Its Role in Amyloid-Beta Plaque Deposition in Alzheimer\'s Disease',
+    publication: 'Int J Mol Sci',
+    year: 2025,
+    volume: '26',
+    pages: '2857',
+    doi: '10.3390/ijms26072857',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/40243407/',
+    citations: [
+      {
+        id: 'zhang-2025-vimentin-aep',
+        quote: 'AEP cleaves vimentin at N283 in both in vitro and human brain tissue... fragmented vimentin disrupts the network structure that is essential for interaction with GFAP.',
+        usedIn: ['mechanisticCascade', 'M18'],
+        context: 'First molecular mechanism for clasmatodendrosis—AEP-mediated vimentin cleavage disrupts the cytoskeletal network maintaining astrocyte endfoot structure.',
+      },
+      {
+        id: 'zhang-2025-aep-activation',
+        quote: 'AEP is an asparagine endopeptidase that can cleave substrates at the N-terminus of asparagine residues under acidic conditions.',
+        usedIn: ['M18'],
+        context: 'AEP/legumain is a lysosomal protease activated by low pH. It cleaves multiple AD-relevant substrates including tau, APP, and vimentin.',
+      },
+    ],
+  },
+  {
+    id: 'chen-clasmatodendrosis-2016',
+    type: 'journal',
+    authors: ['Aiqun Chen', 'et al.'],
+    title: 'Clasmatodendrosis is associated with Alzheimer-type pathological change in human brain',
+    publication: 'Ann Neurol',
+    year: 2016,
+    volume: '79',
+    pages: '1012-1024',
+    doi: '10.1002/ana.24558',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/26667280/',
+    citations: [
+      {
+        id: 'chen-2016-11fold',
+        quote: 'Clasmatodendrosis of astrocytes...increased by 11-fold in aged brains compared to young brains.',
+        usedIn: ['mechanisticCascade', 'M18'],
+        context: 'Clasmatodendrosis (endfoot fragmentation) dramatically increases with aging and associates with AD pathology.',
+      },
+      {
+        id: 'chen-2016-aqp4',
+        quote: 'Clasmatodendrosis was associated with AQP4 depolarization in the same regions.',
+        usedIn: ['M18'],
+        context: 'Links endfoot structural damage to loss of AQP4 polarization, a critical component of glymphatic function.',
+      },
+    ],
+  },
+  {
+    id: 'leone-pvs-2025',
+    type: 'journal',
+    authors: ['Maria A. Leone', 'et al.'],
+    title: 'Longitudinal assessment of perivascular space alterations in autosomal dominant Alzheimer\'s disease',
+    publication: 'Alzheimers Dement',
+    year: 2025,
+    doi: '10.1002/alz.70588',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/40826401/',
+    citations: [
+      {
+        id: 'leone-2025-pvs-18y',
+        quote: 'PVS changes detectable 18 years before dementia onset.',
+        usedIn: ['M18', 'biomarkers'],
+        context: 'Perivascular space enlargement (from endfoot retraction) is the earliest MRI biomarker of AD, appearing nearly two decades before symptoms.',
+      },
+    ],
+  },
+  {
+    id: 'hulse-alzheimer-1910-2001',
+    type: 'journal',
+    authors: ['R.E. Hulse', 'et al.'],
+    title: 'Astrocytic clasmatodendrosis in hippocampal organ culture',
+    publication: 'Glia',
+    year: 2001,
+    volume: '33',
+    pages: '169-179',
+    doi: '10.1002/1098-1136(200102)33:2<169::AID-GLIA1016>3.0.CO;2-B',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/11180514/',
+    citations: [
+      {
+        id: 'hulse-2001-alzheimer-1910',
+        quote: 'Alois Alzheimer first described astrocyte process degeneration (clasmatodendrosis) in 1910.',
+        usedIn: ['timeline', 'M18'],
+        context: 'Rediscovery of Alzheimer\'s 1910 observation about astrocyte pathology—largely ignored for over a century until recent revival.',
+      },
+    ],
+  },
+  {
+    id: 'hase-enrichment-2017',
+    type: 'journal',
+    authors: ['Yoshiki Hase', 'et al.'],
+    title: 'White matter capillaries in vascular and neurodegenerative dementias',
+    publication: 'Acta Neuropathol Commun',
+    year: 2017,
+    volume: '5',
+    pages: '67',
+    doi: '10.1186/s40478-017-0469-6',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/28399892/',
+    citations: [
+      {
+        id: 'hase-2017-reversibility',
+        quote: 'Environmental enrichment can reverse clasmatodendrosis in animal models.',
+        usedIn: ['M18', 'treatments'],
+        context: 'Evidence that endfoot damage may be reversible with intervention, supporting early therapeutic window.',
+      },
+    ],
+  },
 ];

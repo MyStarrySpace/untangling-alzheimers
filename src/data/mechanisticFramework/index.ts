@@ -51,6 +51,8 @@ export {
   module14Nodes,
   module15Nodes,
   module16Nodes,
+  module17Nodes,
+  module18Nodes,
 } from './nodes';
 export {
   allEdges,
@@ -70,6 +72,8 @@ export {
   module14Edges,
   module15Edges,
   module16Edges,
+  module17Edges,
+  module18Edges,
 } from './edges';
 export { feedbackLoops, default as loopData } from './feedbackLoops';
 

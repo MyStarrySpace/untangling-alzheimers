@@ -52,6 +52,13 @@ export const sections: SectionConfig[] = [
     act: 'II',
   },
   {
+    id: 'forgotten-observations',
+    title: 'The Forgotten Observations',
+    subtitle: 'Half of what Alzheimer saw in 1907 was ignored for over a century—and it was the upstream half.',
+    navLabel: 'Forgotten',
+    act: 'II',
+  },
+  {
     id: 'cases',
     title: 'Case Studies in Market Failure',
     subtitle: 'Real stories of promising treatments that were abandoned not for scientific reasons, but economic ones.',

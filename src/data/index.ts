@@ -14,3 +14,4 @@ export * from './mechanisticFramework';
 export * from './failureCascadeCharts';
 export * from './translationalFailures';
 export * from './sections';
+export * from './forgottenObservations';

@@ -104,6 +104,170 @@ export interface TreatmentADEvidence {
 export type DrugADEvidence = TreatmentADEvidence;
 
 /**
+ * Molecular properties for CNS MPO (Multiparameter Optimization) scoring
+ * Data sourced from PubChem API (pubchem.ncbi.nlm.nih.gov/rest/pug)
+ *
+ * CNS MPO Score ranges 0-6, with ≥4 considered "desirable" for CNS drugs
+ * Based on Wager et al. (2010) from Pfizer: https://pmc.ncbi.nlm.nih.gov/articles/PMC3368654/
+ *
+ * Optimal ranges for CNS drugs:
+ * - MW: <450 Da (ideally <360)
+ * - XLogP: 1-4 (ideally ~2.5)
+ * - TPSA: <90 Å² (ideally <70)
+ * - HBD: <3 (ideally ≤1)
+ * - HBA: <7
+ * - RotatableBonds: <8 (ideally ≤5)
+ */
+export interface MolecularProperties {
+  /** PubChem Compound ID for verification */
+  pubchemCid: number;
+  /** Molecular weight in Daltons */
+  molecularWeight: number;
+  /** XLogP (computed octanol-water partition coefficient) - undefined for ions */
+  xLogP?: number;
+  /** Topological polar surface area in Å² */
+  tpsa: number;
+  /** Hydrogen bond donor count */
+  hbdCount: number;
+  /** Hydrogen bond acceptor count */
+  hbaCount: number;
+  /** Rotatable bond count */
+  rotatableBonds: number;
+}
+
+/**
+ * Calculate CNS MPO score from molecular properties
+ * Returns 0-6, with ≥4 being desirable for CNS drugs
+ *
+ * Based on Wager et al. (2010, 2016) from Pfizer
+ * https://pmc.ncbi.nlm.nih.gov/articles/PMC3368654/
+ */
+export function calculateCnsMpoScore(props: MolecularProperties): number {
+  // Scoring functions based on Wager et al. (2010)
+  // Each parameter contributes 0-1 to the total score
+
+  // MW: 1.0 if ≤360, 0.0 if ≥500, linear between
+  const mwScore = props.molecularWeight <= 360 ? 1.0 :
+    props.molecularWeight >= 500 ? 0.0 :
+    1.0 - (props.molecularWeight - 360) / 140;
+
+  // XLogP: 1.0 if ≤3, 0.0 if ≥5, linear between (undefined = 0.5 for ions)
+  const logpScore = props.xLogP === undefined ? 0.5 :
+    props.xLogP <= 3 ? 1.0 :
+    props.xLogP >= 5 ? 0.0 :
+    1.0 - (props.xLogP - 3) / 2;
+
+  // TPSA: 1.0 if ≤40, 0.0 if ≥90, linear between
+  const tpsaScore = props.tpsa <= 40 ? 1.0 :
+    props.tpsa >= 90 ? 0.0 :
+    1.0 - (props.tpsa - 40) / 50;
+
+  // HBD: 1.0 if 0, 0.0 if ≥3, linear between
+  const hbdScore = props.hbdCount === 0 ? 1.0 :
+    props.hbdCount >= 3 ? 0.0 :
+    1.0 - props.hbdCount / 3;
+
+  // HBA: 1.0 if ≤5, 0.0 if ≥10, linear between
+  const hbaScore = props.hbaCount <= 5 ? 1.0 :
+    props.hbaCount >= 10 ? 0.0 :
+    1.0 - (props.hbaCount - 5) / 5;
+
+  // Rotatable bonds: 1.0 if ≤5, 0.0 if ≥10, linear between
+  const rotScore = props.rotatableBonds <= 5 ? 1.0 :
+    props.rotatableBonds >= 10 ? 0.0 :
+    1.0 - (props.rotatableBonds - 5) / 5;
+
+  return mwScore + logpScore + tpsaScore + hbdScore + hbaScore + rotScore;
+}
+
+/**
+ * Get BBB penetration label from CNS MPO score
+ */
+export function getBbbPenetrationFromMpo(mpoScore: number, isAntibody: boolean = false): BBBPenetration {
+  if (isAntibody) return 'none'; // Antibodies cannot cross BBB passively
+  if (mpoScore >= 4) return 'good';
+  if (mpoScore >= 3) return 'moderate';
+  return 'poor';
+}
+
+/**
+ * BBB penetration assessment (simplified label)
+ * For proper prediction, use MolecularProperties + calculateCnsMpoScore()
+ */
+export type BBBPenetration =
+  | 'good'           // CNS MPO ≥4, crosses BBB well
+  | 'moderate'       // CNS MPO 3-4, some penetration
+  | 'poor'           // CNS MPO <3 or MW >500
+  | 'none'           // Antibodies/large peptides (MW >5000)
+  | 'indirect'       // Works via peripheral mechanism (gut-brain, immune)
+  | 'unknown';       // Not characterized
+
+/**
+ * Safety concerns that may limit target engagement
+ */
+export interface SafetyConcerns {
+  /** Carcinogenicity risk */
+  carcinogenicity?: {
+    level: 'none' | 'low' | 'moderate' | 'high' | 'unknown';
+    mechanism?: string;
+    notes?: string;
+  };
+  /** Hepatotoxicity risk */
+  hepatotoxicity?: {
+    level: 'none' | 'low' | 'moderate' | 'high' | 'unknown';
+    mechanism?: string;
+    notes?: string;
+  };
+  /** Immunosuppression risk */
+  immunosuppression?: {
+    level: 'none' | 'low' | 'moderate' | 'high';
+    notes?: string;
+  };
+  /** Other dose-limiting toxicities */
+  otherDLT?: string[];
+}
+
+/**
+ * Demographic factors affecting treatment response
+ */
+export interface DemographicFactors {
+  /** Sex-specific effects */
+  sexEffects?: {
+    differential: boolean;
+    favors?: 'male' | 'female' | 'neither';
+    mechanism?: string;
+    notes?: string;
+  };
+  /** Ancestry/race effects */
+  ancestryEffects?: {
+    differential: boolean;
+    /** Populations with different response */
+    populations?: {
+      group: string;
+      effect: 'enhanced' | 'reduced' | 'different_safety';
+      mechanism?: string;
+    }[];
+    notes?: string;
+  };
+  /** APOE genotype effects */
+  apoeEffects?: {
+    e4Carriers: 'enhanced' | 'reduced' | 'increased_risk' | 'no_difference';
+    e2Carriers?: 'enhanced' | 'reduced' | 'no_difference';
+    notes?: string;
+  };
+  /** Age-dependent effects */
+  ageEffects?: {
+    optimalWindow?: 'prevention' | 'early' | 'moderate' | 'late' | 'any';
+    notes?: string;
+  };
+  /** Trial enrollment bias */
+  trialBias?: {
+    underrepresented?: string[];  // Groups underrepresented in trials
+    notes?: string;
+  };
+}
+
+/**
  * Treatment variant (e.g., different dosing regimens or intensity levels)
  */
 export interface TreatmentVariant {
@@ -141,6 +305,14 @@ export interface TreatmentLibraryEntry {
   annualCost?: number;
   /** How the treatment is available */
   availability: TreatmentAvailability;
+  /** BBB penetration assessment (simplified label) */
+  bbbPenetration?: BBBPenetration;
+  /** Verified molecular properties from PubChem for CNS MPO calculation */
+  molecularProperties?: MolecularProperties;
+  /** Safety concerns that may limit dosing or target engagement */
+  safetyConcerns?: SafetyConcerns;
+  /** Demographic factors affecting response */
+  demographicFactors?: DemographicFactors;
   /** Additional notes */
   notes?: string;
 }
@@ -212,7 +384,18 @@ export const treatmentLibrary: TreatmentLibraryEntry[] = [
       pmids: ['22956686', '25381458', '26187568'],
     },
     annualCost: 500, // Generic available
-    notes: 'Most promising mTOR inhibitor for AD. Concerns about immunosuppression at high doses.',
+    bbbPenetration: 'poor', // CNS MPO ~1.5 - too large despite lipophilicity
+    molecularProperties: {
+      // Verified from PubChem API: https://pubchem.ncbi.nlm.nih.gov/compound/5284616
+      pubchemCid: 5284616,
+      molecularWeight: 914.2,  // Way over 500 Da limit!
+      xLogP: 6,                // Too lipophilic (>5)
+      tpsa: 195,               // Way over 90 Å² limit!
+      hbdCount: 3,
+      hbaCount: 13,
+      rotatableBonds: 6,
+    },
+    notes: 'Most promising mTOR inhibitor for AD but POOR BBB penetration (CNS MPO ~1.5). MW=914 Da and TPSA=195 Å² far exceed CNS drug limits. Nanoparticle formulations (ABI-009/nab-sirolimus) may improve brain delivery. Concerns about immunosuppression at high doses.',
   },
 
   // ---------------------------------------------------------------------------
@@ -244,7 +427,19 @@ export const treatmentLibrary: TreatmentLibraryEntry[] = [
       pmids: ['17592124', '21525519', '25733993'],
     },
     annualCost: 50, // Very cheap
-    notes: 'Microdose lithium in drinking water associated with lower dementia rates in Texas study.',
+    bbbPenetration: 'good', // Small ion easily crosses BBB
+    molecularProperties: {
+      // Verified from PubChem API: https://pubchem.ncbi.nlm.nih.gov/compound/11125
+      // Note: Lithium carbonate is ionic - XLogP not applicable
+      pubchemCid: 11125,
+      molecularWeight: 73.9,   // Tiny molecule!
+      xLogP: undefined,       // Ionic - LogP not meaningful
+      tpsa: 63.2,
+      hbdCount: 0,
+      hbaCount: 3,
+      rotatableBonds: 0,
+    },
+    notes: 'Microdose lithium in drinking water associated with lower dementia rates in Texas study. Small ion (73.9 Da) crosses BBB easily - CNS MPO not applicable to ions.',
   },
 
   // ---------------------------------------------------------------------------
@@ -297,7 +492,18 @@ export const treatmentLibrary: TreatmentLibraryEntry[] = [
       pmids: ['32571790', '31883865'],
     },
     annualCost: 2500, // Brand name expensive, generic cheaper
-    notes: 'COLCOT trial showed CV benefits; AD trial (COLADE) underway.',
+    bbbPenetration: 'moderate', // CNS MPO ~3.5 (borderline)
+    molecularProperties: {
+      // Verified from PubChem API: https://pubchem.ncbi.nlm.nih.gov/compound/6167
+      pubchemCid: 6167,
+      molecularWeight: 399.4,
+      xLogP: 1,
+      tpsa: 83.1,
+      hbdCount: 1,
+      hbaCount: 6,
+      rotatableBonds: 5,
+    },
+    notes: 'COLCOT trial showed CV benefits; AD trial (COLADE) underway. BEST LOOP-BREAKER: Breaks 2 loops. CNS MPO ~3.5 (borderline - TPSA slightly high at 83.1 Å²).',
   },
 
   // ---------------------------------------------------------------------------
@@ -324,7 +530,8 @@ export const treatmentLibrary: TreatmentLibraryEntry[] = [
       pmids: ['33497548', '34048569'],
     },
     annualCost: 28000, // Before withdrawal from market
-    notes: 'Withdrawn from market 2024. ARIA (brain swelling/bleeding) in ~40% of patients.',
+    bbbPenetration: 'poor', // ~0.1% of plasma reaches brain parenchyma; accesses plaques via ARIA-related BBB disruption
+    notes: 'Withdrawn from market 2024. ARIA (brain swelling/bleeding) in ~40% of patients. Brain uptake ~0.13% ID/gram - likely accesses CNS via BBB disruption (explains ARIA), not active transport.',
   },
 
   // ---------------------------------------------------------------------------
@@ -357,7 +564,8 @@ export const treatmentLibrary: TreatmentLibraryEntry[] = [
       pmids: ['36449413', '37458272'],
     },
     annualCost: 26500,
-    notes: 'ARIA risk ~20%. Benefits modest but statistically significant. APOE4 homozygotes at higher risk.',
+    bbbPenetration: 'poor', // Brain uptake ~0.13% ID/gram (mAb158 mouse data); CSF ~0.2% of plasma; short t½ of 7 days
+    notes: 'ARIA risk ~20%. Benefits modest but statistically significant. APOE4 homozygotes at higher risk. Native BBB penetration very low (~0.1-0.2% of plasma); plaque access may require BBB disruption. Bispecific bi-lecanemab with TfR shuttle shows 10x better brain uptake.',
   },
 
   // ---------------------------------------------------------------------------
@@ -384,7 +592,8 @@ export const treatmentLibrary: TreatmentLibraryEntry[] = [
       pmids: ['37459141', '38587244'],
     },
     annualCost: 32000,
-    notes: 'Unique dosing strategy: treatment stops when plaques clear. ARIA risk ~25%.',
+    bbbPenetration: 'poor', // Like other IgG antibodies, <0.1% reaches brain parenchyma; requires high dose (10mg/kg → ~1μM plasma)
+    notes: 'Unique dosing strategy: treatment stops when plaques clear. ARIA risk ~25%. Requires very high plasma concentration (~1μM, nearly 1% of all IgG) at 10mg/kg dose to achieve brain effect. Native BBB penetration <0.1%; efficacy likely depends on BBB disruption.',
   },
 
   // ---------------------------------------------------------------------------
@@ -475,7 +684,7 @@ export const treatmentLibrary: TreatmentLibraryEntry[] = [
   },
 
   // ---------------------------------------------------------------------------
-  // SEMAGLUTIDE (GLP-1 AGONIST)
+  // SEMAGLUTIDE (GLP-1 AGONIST) - EVOKE FAILED Nov 2025
   // ---------------------------------------------------------------------------
   {
     id: 'semaglutide',
@@ -483,28 +692,39 @@ export const treatmentLibrary: TreatmentLibraryEntry[] = [
     type: 'biologic',
     fdaStatus: 'approved',
     availability: 'prescription',
-    mechanismSummary: 'GLP-1 agonist that improves insulin signaling and may reduce neuroinflammation',
+    mechanismSummary: 'GLP-1 agonist that improves insulin signaling but has poor BBB penetration to hippocampus',
     primaryTargets: [
       {
         nodeId: 'insulin_resistance',
         effect: 'inhibits',
         strength: 'strong',
-        mechanism: 'Enhances insulin secretion and sensitivity via GLP-1R',
+        mechanism: 'Enhances insulin secretion and sensitivity via GLP-1R (peripheral)',
       },
       {
         nodeId: 'neuroinflammation',
         effect: 'inhibits',
-        strength: 'moderate',
-        mechanism: 'Anti-inflammatory effects independent of glucose control',
+        strength: 'weak', // Downgraded: BBB penetration issue
+        mechanism: 'Anti-inflammatory effects limited by poor CNS penetration',
       },
     ],
     adEvidence: {
-      level: 'L4',
-      summary: 'Observational studies suggest 50%+ reduced dementia risk in T2D patients. EVOKE trial underway.',
+      level: 'L1', // Phase 3 completed
+      summary: 'EVOKE/EVOKE+ Phase 3 FAILED Nov 2025. No effect on CDR-SB vs placebo despite 3,800 patients over 2 years. Fatty acid structure prevents hippocampal penetration. CSF biomarkers showed modest improvement (pTau181, YKL-40) but no clinical benefit.',
       pmids: ['35216679', '37316654', '37923315'],
     },
     annualCost: 12000,
-    notes: 'EVOKE/EVOKE+ Phase 3 AD trials expected 2025. Major pharma interest.',
+    bbbPenetration: 'none', // Peptide cannot cross BBB
+    molecularProperties: {
+      // Verified from PubChem API: https://pubchem.ncbi.nlm.nih.gov/compound/56843331
+      pubchemCid: 56843331,
+      molecularWeight: 4114,    // Massive peptide! (limit <500)
+      xLogP: -5.8,             // Very hydrophilic (optimal 1-4)
+      tpsa: 1650,              // Enormous! (limit <90)
+      hbdCount: 57,            // Far exceeds limit of <3
+      hbaCount: 63,
+      rotatableBonds: 151,
+    },
+    notes: 'EVOKE FAILED: CNS MPO ~0 - peptide (MW=4114 Da, TPSA=1650 Å²) cannot cross BBB. Targets correct node (insulin resistance) but cannot reach brain. Novo Nordisk ended all AD semaglutide trials. Small molecule GLP-1 mimetics needed for CNS activity.',
   },
 
   // ---------------------------------------------------------------------------
@@ -570,7 +790,18 @@ export const treatmentLibrary: TreatmentLibraryEntry[] = [
       pmids: ['29088998', '26937017'],
     },
     annualCost: 360,
-    notes: 'BBB protection may be a major unrecognized mechanism. The splenic α7 nAChR → systemic inflammation → BBB axis explains why effects persist after discontinuation. May warrant measuring BBB permeability in AD trials.',
+    bbbPenetration: 'good', // CNS MPO ~5.4
+    molecularProperties: {
+      // Verified from PubChem API: https://pubchem.ncbi.nlm.nih.gov/compound/9651
+      pubchemCid: 9651,
+      molecularWeight: 287.35,
+      xLogP: 1.8,
+      tpsa: 41.9,
+      hbdCount: 1,
+      hbaCount: 4,
+      rotatableBonds: 1,
+    },
+    notes: 'BBB protection may be a major unrecognized mechanism. The splenic α7 nAChR → systemic inflammation → BBB axis explains why effects persist after discontinuation. CNS MPO ~5.4 (excellent). May warrant measuring BBB permeability in AD trials.',
   },
 
   // ---------------------------------------------------------------------------

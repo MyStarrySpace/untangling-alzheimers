@@ -8,6 +8,12 @@
     "start": "next start",
     "lint": "eslint",
     "calculate-pathways": "npx tsx scripts/calculate-drug-pathways.ts",
+    "analyze-network": "npx tsx scripts/analyze-network.ts",
+    "simulate-treatments": "npx tsx scripts/simulate-treatments.ts",
+    "optimize-age": "npx tsx scripts/optimize-by-age.ts",
+    "analyze-failures": "npx tsx scripts/analyze-failed-trials.ts",
+    "predict-failures": "npx tsx scripts/predict-trial-failures.ts",
+    "analyze-sex-ancestry": "npx tsx scripts/analyze-sex-ancestry-effects.ts",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
@@ -35,6 +41,7 @@
     "eslint-config-next": "16.1.1",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "vitest": "^4.0.17"
+    "vitest": "^4.0.17",
+    "xlsx": "^0.18.5"
   }
 }
