@@ -16,6 +16,7 @@ export const Section = forwardRef<HTMLElement, SectionProps>(
       <section
         ref={ref}
         id={id}
+        data-section-id={id}
         className={cn(
           'relative py-24 sm:py-32 lg:py-40',
           fullHeight && 'min-h-screen flex items-center',

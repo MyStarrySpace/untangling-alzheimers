@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Quote, Calendar, DollarSign, AlertCircle, ChevronRight } from 'lucide-react';
-import { Container, Section, SectionHeader, Card, CardContent, TextWithAbbreviations } from '@/components/ui';
+import { Container, Section, SectionHeader, Card, CardContent, TextWithAbbreviations, GraphLink } from '@/components/ui';
 import { caseStudies, getSection } from '@/data';
+import { getPresetForCaseStudy } from '@/data/sectionPresetMapping';
 
 const sectionConfig = getSection('cases')!;
 
@@ -49,6 +50,14 @@ export function CaseStudies() {
                       <span className="px-2 py-1 bg-[var(--bg-secondary)] text-xs capitalize">
                         {currentCase.patentStatus}
                       </span>
+                      {/* Graph link - show if this case has a preset mapping */}
+                      {getPresetForCaseStudy(currentCase.id) && (
+                        <GraphLink
+                          presetId={getPresetForCaseStudy(currentCase.id)!}
+                          variant="compact"
+                          label="View pathway"
+                        />
+                      )}
                     </div>
 
                     <div className="space-y-6">

@@ -13,7 +13,7 @@ import {
   FlaskConical,
   AlertTriangle,
 } from 'lucide-react';
-import { Container, Section, SectionHeader, TextWithAbbreviations } from '@/components/ui';
+import { Container, Section, SectionHeader, TextWithAbbreviations, GraphLink } from '@/components/ui';
 import {
   getApprovedTreatments,
   getPipelineDrugs,
@@ -319,10 +319,13 @@ export function HopefulDevelopments() {
           >
             {activeTab === 'approved' && (
               <div>
-                <p className="text-center text-[var(--text-body)] mb-6 max-w-2xl mx-auto">
-                  These are the first treatments ever shown to slow Alzheimer&apos;s progression in clinical trials.
-                  While benefits are modest, they represent a historic milestone.
-                </p>
+                <div className="text-center mb-6 max-w-2xl mx-auto">
+                  <p className="text-[var(--text-body)] mb-2">
+                    These are the first treatments ever shown to slow Alzheimer&apos;s progression in clinical trials.
+                    While benefits are modest, they represent a historic milestone.
+                  </p>
+                  <GraphLink presetId="all_approved" variant="inline" label="View approved drugs in graph" />
+                </div>
                 <DevelopmentsList
                   developments={approvedTreatments}
                   emptyMessage="No approved treatments to display."
@@ -332,10 +335,13 @@ export function HopefulDevelopments() {
 
             {activeTab === 'pipeline' && (
               <div>
-                <p className="text-center text-[var(--text-body)] mb-6 max-w-2xl mx-auto">
-                  Beyond amyloid-targeting drugs, researchers are pursuing approaches based on
-                  alternative hypotheses, many addressing upstream causes.
-                </p>
+                <div className="text-center mb-6 max-w-2xl mx-auto">
+                  <p className="text-[var(--text-body)] mb-2">
+                    Beyond amyloid-targeting drugs, researchers are pursuing approaches based on
+                    alternative hypotheses, many addressing upstream causes.
+                  </p>
+                  <GraphLink presetId="neuroinflammation_hypothesis" variant="inline" label="View alternative hypotheses" />
+                </div>
                 <DevelopmentsList
                   developments={[...pipelineDrugs, ...supplements]}
                   emptyMessage="No pipeline developments to display."
@@ -345,10 +351,13 @@ export function HopefulDevelopments() {
 
             {activeTab === 'lifestyle' && (
               <div>
-                <p className="text-center text-[var(--text-body)] mb-6 max-w-2xl mx-auto">
-                  You don&apos;t need to wait for a drug. Evidence-based lifestyle interventions can reduce
-                  dementia risk by 30-50%, and they&apos;re available today.
-                </p>
+                <div className="text-center mb-6 max-w-2xl mx-auto">
+                  <p className="text-[var(--text-body)] mb-2">
+                    You don&apos;t need to wait for a drug. Evidence-based lifestyle interventions can reduce
+                    dementia risk by 30-50%, and they&apos;re available today.
+                  </p>
+                  <GraphLink presetId="all_lifestyle" variant="inline" label="View lifestyle interventions" />
+                </div>
                 <DevelopmentsList
                   developments={lifestyleInterventions}
                   emptyMessage="No lifestyle interventions to display."

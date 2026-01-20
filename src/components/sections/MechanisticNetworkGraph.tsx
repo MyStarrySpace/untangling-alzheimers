@@ -36,6 +36,7 @@ import {
   type PresetOption,
   getTreatmentsForPreset,
   isHypothesisPreset,
+  getPresetById,
 } from '@/data/mechanisticFramework/presets';
 
 // Import modular types and constants
@@ -2019,6 +2020,12 @@ interface MechanisticNetworkGraphProps {
   highlightNodes?: string[];
   /** Initial modules to show (overrides default M01) */
   initialModules?: string[];
+  /** External control: active preset ID (for controlled mode) */
+  activePresetId?: string | null;
+  /** Callback when preset changes internally (for controlled mode) */
+  onPresetChange?: (presetId: string | null) => void;
+  /** Compact mode for sidebar display (smaller toolbar) */
+  compactMode?: boolean;
 }
 
 // Initialize module filter state - start with M01 on, BOUNDARY off, others off
@@ -2255,6 +2262,9 @@ function MechanisticNetworkGraphInner({
   showMiniMap = true,
   highlightNodes = [],
   initialModules,
+  activePresetId,
+  onPresetChange,
+  compactMode = false,
 }: MechanisticNetworkGraphProps) {
   const modules = useMemo(() => getModules(allNodes), []);
   const [moduleFilters, setModuleFilters] = useState<Record<string, ModuleFilterState>>(() => {
@@ -2425,6 +2435,54 @@ function MechanisticNetworkGraphInner({
   const [showPresetPicker, setShowPresetPicker] = useState(false);
   const [highlightedNodes, setHighlightedNodes] = useState<Set<string>>(new Set());
 
+  // Track if we're in controlled mode
+  const isControlled = activePresetId !== undefined;
+
+  // Sync external activePresetId with internal state (controlled mode)
+  useEffect(() => {
+    if (!isControlled) return;
+
+    if (activePresetId === null) {
+      // Clear preset
+      if (selectedPreset !== null) {
+        setSelectedPreset(null);
+        setHighlightedNodes(new Set());
+        setSelectedDrug(null);
+        setDrugPathway(null);
+        setDrugPathwayFocusMode(false);
+      }
+    } else {
+      // Apply preset from external ID
+      const preset = getPresetById(activePresetId);
+      if (preset && preset.id !== selectedPreset?.id) {
+        setSelectedPreset(preset);
+        setShowPresetPicker(false);
+
+        if (isHypothesisPreset(preset)) {
+          setHighlightedNodes(new Set(preset.nodeIds || []));
+          setSelectedDrug(null);
+          setDrugPathway(null);
+
+          // Enable modules containing highlighted nodes
+          const modulesToEnable = new Set<string>();
+          preset.nodeIds?.forEach(nodeId => {
+            const node = allNodes.find(n => n.id === nodeId);
+            if (node) modulesToEnable.add(node.moduleId);
+          });
+          setModuleFilters(prev => {
+            const updated = { ...prev };
+            modulesToEnable.forEach(moduleId => {
+              if (updated[moduleId] === 'off') {
+                updated[moduleId] = 'on';
+              }
+            });
+            return updated;
+          });
+        }
+      }
+    }
+  }, [activePresetId, isControlled, selectedPreset?.id]);
+
   // Calculate pathway when drug is selected
   useEffect(() => {
     if (selectedDrug) {
@@ -2465,6 +2523,9 @@ function MechanisticNetworkGraphInner({
     setSelectedPreset(preset);
     setShowPresetPicker(false);
 
+    // Notify external controller of preset change
+    onPresetChange?.(preset.id);
+
     if (isHypothesisPreset(preset)) {
       // Hypothesis preset: highlight specified nodes
       setHighlightedNodes(new Set(preset.nodeIds || []));
@@ -2495,7 +2556,7 @@ function MechanisticNetworkGraphInner({
       }
       setHighlightedNodes(new Set());
     }
-  }, [handleSelectDrug]);
+  }, [handleSelectDrug, onPresetChange]);
 
   // Clear preset selection
   const handleClearPreset = useCallback(() => {
@@ -2504,7 +2565,10 @@ function MechanisticNetworkGraphInner({
     setSelectedDrug(null);
     setDrugPathway(null);
     setDrugPathwayFocusMode(false);
-  }, []);
+
+    // Notify external controller of preset change
+    onPresetChange?.(null);
+  }, [onPresetChange]);
 
   // Close drug pathway view
   const handleCloseDrugPathway = useCallback(() => {
@@ -3434,8 +3498,8 @@ function MechanisticNetworkGraphInner({
             </>
           )}
 
-          {/* Toggle checkboxes - before Add Node button */}
-          {(() => {
+          {/* Toggle checkboxes - before Add Node button (hidden in compact mode) */}
+          {!compactMode && (() => {
             // Compute whether Cross should be shown: more than one module on but not all
             const moduleStates = Object.values(moduleFilters);
             const onCount = moduleStates.filter(s => s === 'on' || s === 'partial').length;
@@ -3620,28 +3684,32 @@ function MechanisticNetworkGraphInner({
 
           {/* Right: Export/Import and Add node buttons */}
           <div className="relative ml-auto flex items-center gap-1">
-            {/* Export Button */}
-            <button
-              onClick={exportGraphState}
-              className="px-1.5 py-0.5 text-xs border border-[var(--border)] rounded bg-white hover:border-[var(--accent-orange)] transition-colors"
-              title="Export graph state to JSON file"
-            >
-              ↓ Export
-            </button>
+            {/* Export Button - hidden in compact mode */}
+            {!compactMode && (
+              <button
+                onClick={exportGraphState}
+                className="px-1.5 py-0.5 text-xs border border-[var(--border)] rounded bg-white hover:border-[var(--accent-orange)] transition-colors"
+                title="Export graph state to JSON file"
+              >
+                ↓ Export
+              </button>
+            )}
 
-            {/* Import Button */}
-            <label
-              className="px-1.5 py-0.5 text-xs border border-[var(--border)] rounded bg-white hover:border-[var(--accent-orange)] transition-colors cursor-pointer"
-              title="Import graph state from JSON file"
-            >
-              ↑ Import
-              <input
-                type="file"
-                accept=".json"
-                onChange={importGraphState}
-                className="hidden"
-              />
-            </label>
+            {/* Import Button - hidden in compact mode */}
+            {!compactMode && (
+              <label
+                className="px-1.5 py-0.5 text-xs border border-[var(--border)] rounded bg-white hover:border-[var(--accent-orange)] transition-colors cursor-pointer"
+                title="Import graph state from JSON file"
+              >
+                ↑ Import
+                <input
+                  type="file"
+                  accept=".json"
+                  onChange={importGraphState}
+                  className="hidden"
+                />
+              </label>
+            )}
 
             {/* Load Preset Button */}
             <div className="relative">
@@ -3686,28 +3754,30 @@ function MechanisticNetworkGraphInner({
               </button>
             )}
 
-            {/* Add Node Button */}
-            <button
-              onClick={() => {
-                if (addNodeMode === 'idle') {
-                  setAddNodeMode('selectTarget');
-                  setShowNodeSearch(true);
-                  setNodeSearchQuery('');
-                } else {
-                  setAddNodeMode('idle');
-                  setShowNodeSearch(false);
-                  setEditingCustomNodeId(null);
-                }
-              }}
-              className={`px-1.5 py-0.5 border rounded transition-colors ${
-                addNodeMode !== 'idle'
-                  ? 'bg-[var(--accent-orange)] text-white border-[var(--accent-orange)]'
-                  : 'bg-white border-[var(--border)] hover:border-[var(--accent-orange)]'
-              }`}
-            >
-              {addNodeMode === 'customize' ? '✓ Done' : addNodeMode === 'selectTarget' ? '✕ Cancel' : '+ Add Node'}
-            </button>
-            {showNodeSearch && addNodeMode === 'selectTarget' && (
+            {/* Add Node Button - hidden in compact mode */}
+            {!compactMode && (
+              <button
+                onClick={() => {
+                  if (addNodeMode === 'idle') {
+                    setAddNodeMode('selectTarget');
+                    setShowNodeSearch(true);
+                    setNodeSearchQuery('');
+                  } else {
+                    setAddNodeMode('idle');
+                    setShowNodeSearch(false);
+                    setEditingCustomNodeId(null);
+                  }
+                }}
+                className={`px-1.5 py-0.5 border rounded transition-colors ${
+                  addNodeMode !== 'idle'
+                    ? 'bg-[var(--accent-orange)] text-white border-[var(--accent-orange)]'
+                    : 'bg-white border-[var(--border)] hover:border-[var(--accent-orange)]'
+                }`}
+              >
+                {addNodeMode === 'customize' ? '✓ Done' : addNodeMode === 'selectTarget' ? '✕ Cancel' : '+ Add Node'}
+              </button>
+            )}
+            {!compactMode && showNodeSearch && addNodeMode === 'selectTarget' && (
               <div className="absolute top-full right-0 mt-1 z-50 bg-white border border-[var(--border)] rounded shadow-lg w-64">
                 {/* Instruction header */}
                 <div className="px-3 py-2 bg-[var(--accent-orange-light)] border-b border-[var(--border)]">
@@ -3781,7 +3851,8 @@ function MechanisticNetworkGraphInner({
         </div>
       </div>
 
-      {/* Legend */}
+      {/* Legend - hidden in compact mode */}
+      {!compactMode && (
       <div className="px-4 py-2 border-b border-[var(--border)] bg-[var(--bg-secondary)] flex flex-wrap items-center gap-4 text-[10px]">
         <span className="text-[var(--text-muted)] font-medium">Legend:</span>
 
@@ -3849,13 +3920,14 @@ function MechanisticNetworkGraphInner({
           </div>
         </div>
       </div>
+      )}
 
       {/* Graph */}
       <div
         style={{
           height: isFullscreen
-            ? `calc(100vh - ${selectedNode || selectedEdge ? '260px' : '140px'})`
-            : `calc(${height} - ${selectedNode || selectedEdge ? '260px' : '140px'})`
+            ? `calc(100vh - ${selectedNode || selectedEdge ? '260px' : compactMode ? '70px' : '140px'})`
+            : `calc(${height} - ${selectedNode || selectedEdge ? '260px' : compactMode ? '70px' : '140px'})`
         }}
       >
         <ReactFlow

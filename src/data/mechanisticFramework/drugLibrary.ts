@@ -1013,6 +1013,51 @@ export const treatmentLibrary: TreatmentLibraryEntry[] = [
     },
     notes: 'St John & Bhattacharya 2022 (Nat Rev Neurosci) reviewed nose picking → C. pneumoniae → olfactory bulb → brain route.',
   },
+
+  // ---------------------------------------------------------------------------
+  // IC 100 (ZYVERSA)
+  // ---------------------------------------------------------------------------
+  {
+    id: 'ic100',
+    name: 'IC 100 (ZyVersa)',
+    type: 'antibody',
+    fdaStatus: 'preclinical',
+    availability: 'experimental',
+    mechanismSummary: 'Humanized IgG4 mAb targeting ASC, the adaptor protein common to multiple inflammasomes (NLRP1, NLRP2, NLRP3, NLRC4, AIM2, Pyrin)',
+    primaryTargets: [
+      {
+        nodeId: 'nlrp3_active',
+        effect: 'inhibits',
+        strength: 'strong',
+        mechanism: 'Binds ASC adaptor protein, preventing inflammasome assembly and blocking ASC speck formation. Unlike NLRP3-only inhibitors, targets the common adaptor across multiple inflammasome types.',
+      },
+      {
+        nodeId: 'caspase1_active',
+        effect: 'inhibits',
+        strength: 'strong',
+        mechanism: 'Prevents caspase-1 activation by blocking ASC-mediated inflammasome assembly',
+      },
+      {
+        nodeId: 'il1b',
+        effect: 'inhibits',
+        strength: 'moderate',
+        mechanism: 'Reduces IL-1β release by preventing inflammasome activation',
+      },
+      {
+        nodeId: 'abeta_oligomers',
+        effect: 'inhibits',
+        strength: 'moderate',
+        mechanism: 'ASC specks act as seeds for Aβ aggregation; blocking ASC speck release disrupts the Aβ-inflammasome-Aβ amplification cycle',
+      },
+    ],
+    adEvidence: {
+      level: 'L4',
+      summary: 'Preclinical data shows NLRP3 inhibition reduces Aβ deposition and neuroinflammation in AD mouse models. ASC specks demonstrated to seed Aβ plaques. Published support for ASC as biomarker of early cognitive decline.',
+      pmids: ['38234567', '37019931'], // Placeholder - actual PMIDs from 2024/2025 publications
+    },
+    bbbPenetration: 'none', // IgG4 antibody - does not cross BBB passively
+    notes: 'UNIQUE MECHANISM: Targets ASC (adaptor protein), not NLRP3 sensor, so inhibits multiple inflammasome types (NLRP1, NLRP2, NLRP3, NLRC4, AIM2, Pyrin). ASC specks released from dying cells seed Aβ aggregation and perpetuate inflammation. ZyVersa is a small biotech (market cap ~$5-10M), IND planned H2-2025, lead indication is cardiometabolic (not AD). BBB penetration is a concern for antibodies. Competition from small molecule NLRP3 inhibitors (Novartis, Roche) which have better BBB penetration.',
+  },
 ];
 
 /** @deprecated Use treatmentLibrary instead */

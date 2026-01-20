@@ -1,6 +1,6 @@
 'use client';
 
-import { Header, Footer } from '@/components/layout';
+import { Header, Footer, SidebarLayoutWrapper } from '@/components/layout';
 import { ChapterBreak, SectionDivider, PauseCard } from '@/components/ui';
 import {
   Hero,
@@ -88,55 +88,57 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="relative mt-14 lg:mt-0">
-        <Hero />
+      <SidebarLayoutWrapper>
+        <main className="relative mt-14 lg:mt-0">
+          <Hero />
 
-        {/* Intro: Alzheimer's Legacy */}
-        <AlzheimerLegacy />
+          {/* Intro: Alzheimer's Legacy */}
+          <AlzheimerLegacy />
 
-        {/* Act I: The Paradox */}
-        <ChapterBreak label="Act I" variant="default">
-          The paradox of Alzheimer&apos;s research.
-        </ChapterBreak>
-        <SectionDivider variant="tick" />
-        <InvestmentWaterfall />
-        <SectionDivider variant="tick" />
-        <HistoricalTimeline />
-        <SectionDivider variant="tick" />
-        <TrialBarriers />
+          {/* Act I: The Paradox */}
+          <ChapterBreak label="Act I" variant="default">
+            The paradox of Alzheimer&apos;s research.
+          </ChapterBreak>
+          <SectionDivider variant="tick" />
+          <InvestmentWaterfall />
+          <SectionDivider variant="tick" />
+          <HistoricalTimeline />
+          <SectionDivider variant="tick" />
+          <TrialBarriers />
 
-        {/* Act I Summary */}
-        <PauseCard {...actIPauseContent} variant="warm" />
+          {/* Act I Summary */}
+          <PauseCard {...actIPauseContent} variant="warm" />
 
-        {/* Transition to Act II */}
-        <ChapterBreak label="Act II" variant="warm">
-          Here&apos;s the system that prevents cures.
-        </ChapterBreak>
+          {/* Transition to Act II */}
+          <ChapterBreak label="Act II" variant="warm">
+            Here&apos;s the system that prevents cures.
+          </ChapterBreak>
 
-        {/* Act II: The System */}
-        <FailureCascade />
-        <SectionDivider variant="tick" />
-        <TranslationalFailures />
-        <SectionDivider variant="tick" />
-        <CaseStudies />
+          {/* Act II: The System */}
+          <FailureCascade />
+          <SectionDivider variant="tick" />
+          <TranslationalFailures />
+          <SectionDivider variant="tick" />
+          <CaseStudies />
 
-        {/* Act II Summary */}
-        <PauseCard {...actIIPauseContent} variant="default" />
+          {/* Act II Summary */}
+          <PauseCard {...actIIPauseContent} variant="default" />
 
-        {/* Transition to Act III */}
-        <ChapterBreak label="Act III" variant="teal">
-          But there are reasons for hope.
-        </ChapterBreak>
+          {/* Transition to Act III */}
+          <ChapterBreak label="Act III" variant="teal">
+            But there are reasons for hope.
+          </ChapterBreak>
 
-        {/* Act III: Reasons for Hope */}
-        <HopefulDevelopments />
-        <SectionDivider variant="tick" />
-        <PromisingFrontier />
+          {/* Act III: Reasons for Hope */}
+          <HopefulDevelopments />
+          <SectionDivider variant="tick" />
+          <PromisingFrontier />
 
-        {/* Act III Summary / Conclusion */}
-        <PauseCard {...actIIIPauseContent} variant="teal" />
-      </main>
-      <Footer />
+          {/* Act III Summary / Conclusion */}
+          <PauseCard {...actIIIPauseContent} variant="teal" />
+        </main>
+        <Footer />
+      </SidebarLayoutWrapper>
     </>
   );
 }

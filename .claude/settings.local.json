@@ -51,7 +51,9 @@
       "Bash(npm run dev:*)",
       "WebFetch(domain:papers.ssrn.com)",
       "WebFetch(domain:www.accessdata.fda.gov)",
-      "WebFetch(domain:www.mdpi.com)"
+      "WebFetch(domain:www.mdpi.com)",
+      "WebFetch(domain:firstwordpharma.com)",
+      "WebFetch(domain:www.globenewswire.com)"
     ]
   }
 }

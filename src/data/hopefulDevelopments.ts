@@ -548,6 +548,54 @@ export const hopefulDevelopments: HopefulDevelopment[] = [
   },
 
   {
+    id: 'ic100-zyversa',
+    name: 'IC 100 (ZyVersa Therapeutics)',
+    category: 'pipeline_drug',
+    status: 'preclinical',
+    description:
+      'Humanized IgG4 monoclonal antibody targeting ASC, the adaptor protein common to multiple inflammasomes (NLRP1, NLRP2, NLRP3, NLRC4, AIM2, Pyrin). Unlike NLRP3-specific inhibitors, blocks the shared component across all inflammasome types.',
+    mechanism:
+      'ASC is a critical adaptor protein required for inflammasome assembly. IC 100 binds ASC, preventing inflammasome formation and the release of ASC specks. Importantly, extracellular ASC specks act as seeds for Aβ aggregation, creating a self-perpetuating cycle: Aβ → inflammasome activation → ASC speck release → more Aβ aggregation.',
+    whyHopeful:
+      'Addresses a key amplification loop in AD. Published data shows ASC specks seed amyloid plaques, and NLRP3 inhibition reduces both Aβ deposition and neuroinflammation in AD mouse models. Blocking the shared ASC adaptor may be more effective than NLRP3-specific inhibitors since multiple inflammasome types (NLRP1, NLRP2, Pyrin) contribute to neurodegeneration.',
+    evidence: [
+      {
+        trialName: 'University of Miami AD mouse study (2025)',
+        trialPhase: 'Preclinical',
+        primaryOutcome: 'Aβ deposition and neuroinflammation',
+        result:
+          'NLRP3 inhibition significantly reduced Aβ pathology and neuroinflammation, enhanced microglial phagocytosis of Aβ, and boosted microglial metabolic activity via glutamine utilization',
+        limitation: 'Mouse model; antibody BBB penetration not addressed',
+      },
+      {
+        trialName: 'Michael J. Fox Foundation PD study (2025)',
+        trialPhase: 'Preclinical',
+        primaryOutcome: 'α-synuclein and microglial activation',
+        result:
+          'IC 100 blocked microglial inflammasome activation and reduced neurotoxic α-synuclein accumulation in Parkinson\'s model. Authors noted applicability to Lewy body dementia and AD.',
+        limitation: 'Parkinson\'s model; AD-specific studies ongoing',
+      },
+      {
+        trialName: 'Plasma ASC biomarker study (2024)',
+        trialPhase: 'Clinical biomarker',
+        primaryOutcome: 'ASC as early cognitive decline biomarker',
+        result:
+          'Plasma ASC levels elevated in early cognitive decline, supporting ASC/inflammasome role in neurodegeneration onset',
+      },
+    ],
+    cost: 'Unknown (early stage)',
+    availability: 'IND planned H2-2025; no AD trials yet (lead indication is cardiometabolic)',
+    caveats: [
+      'ZyVersa is a small biotech (market cap ~$5-10M) with execution risk',
+      'Lead indication is cardiometabolic, not AD; neurodegeneration is secondary',
+      'No AD-specific clinical trials planned yet',
+      'Antibody BBB penetration is a concern; may need clearance enhancer',
+      'Competition from small molecule NLRP3 inhibitors (Novartis, Roche) with better BBB penetration',
+    ],
+    sourceIds: ['zyversa-ic100-2025', 'zyversa-mjff-2025'],
+  },
+
+  {
     id: 'caffeic-acid-12d',
     name: 'Caffeic Acid Derivative (Compound 12d)',
     category: 'pipeline_drug',

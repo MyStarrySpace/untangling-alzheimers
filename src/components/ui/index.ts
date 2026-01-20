@@ -12,3 +12,4 @@ export { ShoutoutBox } from './ShoutoutBox';
 export { InteractivePieBarChart } from './InteractivePieBarChart';
 export { PauseCard } from './PauseCard';
 export { Tooltip, InfoTooltip, SourceTooltip } from './Tooltip';
+export { GraphLink } from './GraphLink';
