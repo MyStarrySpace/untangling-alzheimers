@@ -1058,6 +1058,139 @@ export const treatmentLibrary: TreatmentLibraryEntry[] = [
     bbbPenetration: 'none', // IgG4 antibody - does not cross BBB passively
     notes: 'UNIQUE MECHANISM: Targets ASC (adaptor protein), not NLRP3 sensor, so inhibits multiple inflammasome types (NLRP1, NLRP2, NLRP3, NLRC4, AIM2, Pyrin). ASC specks released from dying cells seed Aβ aggregation and perpetuate inflammation. ZyVersa is a small biotech (market cap ~$5-10M), IND planned H2-2025, lead indication is cardiometabolic (not AD). BBB penetration is a concern for antibodies. Competition from small molecule NLRP3 inhibitors (Novartis, Roche) which have better BBB penetration.',
   },
+
+  // ---------------------------------------------------------------------------
+  // METFORMIN
+  // ---------------------------------------------------------------------------
+  {
+    id: 'metformin',
+    name: 'Metformin',
+    type: 'small_molecule',
+    fdaStatus: 'approved',
+    availability: 'prescription',
+    mechanismSummary: 'AMPK activator that inhibits mTORC1, suppresses NF-κB, promotes M2 microglial polarization, and enhances autophagy via AMPK/mTOR/S6K/BACE1 and AMPK/P65 NF-κB pathways',
+    primaryTargets: [
+      {
+        nodeId: 'mtorc1_hyperactive',
+        effect: 'inhibits',
+        strength: 'moderate',
+        mechanism: 'Activates AMPK via mitochondrial complex I inhibition → AMPK activates TSC2 → mTORC1 inhibition',
+      },
+      {
+        nodeId: 'sirt1_activity',
+        effect: 'activates',
+        strength: 'moderate',
+        mechanism: 'AMPK activation increases NAD+/NADH ratio, activating SIRT1',
+      },
+      {
+        nodeId: 'nlrp3_active',
+        effect: 'inhibits',
+        strength: 'moderate',
+        mechanism: 'AMPK activation suppresses NF-κB → reduced NLRP3 transcription and activation',
+      },
+    ],
+    variants: [
+      { id: 'standard', label: 'Standard (500-1000mg BID)', effectModifier: 1.0 },
+      { id: 'low_dose', label: 'Low-dose prevention (500mg/day)', effectModifier: 0.5, notes: 'Daly 2025 proposal for long-term prevention' },
+      { id: 'extended_release', label: 'Extended release (1500mg/day)', effectModifier: 0.9, notes: 'Better GI tolerance' },
+    ],
+    adEvidence: {
+      level: 'L3',
+      summary: 'Ou 2017: APP/PS1 mice showed attenuated memory deficits, decreased Aβ, reduced microglia. MAP Trial (NCT04098666) Phase 2 ongoing, results 2027. CRITICAL: Wu 2020 showed APOE4 interaction (benefit in cognitively normal, possible harm in AD+APOE4).',
+      pmids: ['29262791', '33278629', '32928555'],
+    },
+    annualCost: 48, // ~$4/month generic
+    bbbPenetration: 'moderate', // Small hydrophilic molecule, uses OCT transporters
+    molecularProperties: {
+      // Verified from PubChem API: https://pubchem.ncbi.nlm.nih.gov/compound/4091
+      pubchemCid: 4091,
+      molecularWeight: 129.16,  // Very small molecule
+      xLogP: -0.5,             // Very hydrophilic (ionic at physiological pH)
+      tpsa: 91.5,              // Slightly high but crosses via transporters
+      hbdCount: 4,
+      hbaCount: 4,
+      rotatableBonds: 2,
+    },
+    demographicFactors: {
+      apoeEffects: {
+        e4Carriers: 'increased_risk',
+        notes: 'Wu 2020: APOE4 carriers showed possible accelerated decline with metformin in established AD. Benefit seen in cognitively normal. Stratification by APOE status essential.',
+      },
+      ageEffects: {
+        optimalWindow: 'prevention',
+        notes: 'Strongest rationale for prevention in cognitively normal at-risk individuals, not treatment of established AD',
+      },
+    },
+    notes: 'MARKET FAILURE EXEMPLAR: $4/month generic with decades of safety data, strong preclinical evidence, but no pharma funding for Phase 3 AD trial. MAP trial relies entirely on academic/philanthropic funding. APOE4 interaction (Wu 2020) suggests stratification is essential: benefit in cognitively normal, possible harm in AD+APOE4.',
+  },
+
+  // ---------------------------------------------------------------------------
+  // DIMETHYL FUMARATE (DMF / TECFIDERA)
+  // ---------------------------------------------------------------------------
+  {
+    id: 'dimethyl_fumarate',
+    name: 'Dimethyl Fumarate (Tecfidera)',
+    type: 'small_molecule',
+    fdaStatus: 'approved',
+    availability: 'prescription',
+    mechanismSummary: 'Nrf2 activator that suppresses NF-κB, inhibits NLRP3 inflammasome, and prevents glycolytic switch in microglia via Keap1 modification and HCAR2 activation',
+    primaryTargets: [
+      {
+        nodeId: 'nrf2_pathway',
+        effect: 'activates',
+        strength: 'strong',
+        mechanism: 'Direct covalent modification of Keap1 cysteine residues releases Nrf2; also activates via HCAR2 receptor',
+      },
+      {
+        nodeId: 'nlrp3_active',
+        effect: 'inhibits',
+        strength: 'moderate',
+        mechanism: 'Nrf2 activation → NF-κB suppression → reduced NLRP3 transcription; also prevents HIF-1α stabilization',
+      },
+      {
+        nodeId: 'gpx4_activity',
+        effect: 'activates',
+        strength: 'moderate',
+        mechanism: 'Nrf2 induces GPX4 and other ferroptosis-protective genes (HO-1, NQO1, xCT)',
+      },
+    ],
+    variants: [
+      { id: 'standard', label: 'Standard MS dose (240mg BID)', effectModifier: 1.0 },
+      { id: 'low_dose', label: 'Low-dose (120mg BID)', effectModifier: 0.5, notes: 'Starting dose, fewer GI side effects' },
+      { id: 'diroximel', label: 'Diroximel fumarate (Vumerity)', effectModifier: 1.0, notes: 'Better GI tolerability' },
+    ],
+    adEvidence: {
+      level: 'L4',
+      summary: 'Wang 2024: App-KI mice showed improved cognition via astrocytic Nrf2 → reduced STAT3/C3 → decreased neuroinflammation. Sharkus 2023 published Phase I/II AD trial design (n=60, 12 weeks), but NO active AD trial registered as of 2025.',
+      pmids: ['38374046', '37239336', '32766776'],
+    },
+    annualCost: 50, // Generic available since 2020
+    bbbPenetration: 'good', // Small lipophilic molecule, CNS MPO ~5
+    molecularProperties: {
+      // Verified from PubChem API: https://pubchem.ncbi.nlm.nih.gov/compound/637568
+      pubchemCid: 637568,
+      molecularWeight: 144.13,  // Very small molecule
+      xLogP: 0.6,              // Moderate lipophilicity
+      tpsa: 52.6,              // Good CNS profile
+      hbdCount: 0,
+      hbaCount: 4,
+      rotatableBonds: 2,
+    },
+    safetyConcerns: {
+      immunosuppression: {
+        level: 'moderate',
+        notes: 'Lymphopenia monitoring required (every 3 months); discontinue if ALC <0.8. Rare PML risk in severely lymphopenic patients.',
+      },
+      otherDLT: ['GI intolerance (40%): flushing, nausea, diarrhea', 'Diroximel fumarate (Vumerity) has better GI tolerability'],
+    },
+    demographicFactors: {
+      apoeEffects: {
+        e4Carriers: 'enhanced',
+        notes: 'APOE4 carriers have impaired Nrf2 signaling; DMF may be particularly relevant for this population',
+      },
+    },
+    notes: 'CLEAR MARKET FAILURE: FDA-approved, CNS-penetrant Nrf2 activator with strong mechanistic rationale and preclinical AD data, yet NO active AD trial despite published trial design (Sharkus 2023). Generic since 2020 (~$50/year) eliminates commercial incentive. Wang 2024 showed improved cognition in App-KI mice. Targets multiple pathways: Nrf2 (antioxidant), NF-κB (inflammation), NLRP3 (inflammasome), HIF-1α (glycolytic switch).',
+  },
 ];
 
 /** @deprecated Use treatmentLibrary instead */

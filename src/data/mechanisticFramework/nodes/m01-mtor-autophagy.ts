@@ -63,6 +63,17 @@ export const module1Nodes: MechanisticNode[] = [
     roles: ['REGULATOR'],
   },
   {
+    id: 'sirt1_activity',
+    label: 'SIRT1 (Sirtuin 1)',
+    category: 'STOCK', // SBSF v2.0: STOCK with REGULATOR role
+    subtype: 'Transferase', // Deacetylase - transfers acetyl groups
+    moduleId: 'M01',
+    references: { protein: 'UniProt:Q96EB6' },
+    description: 'NAD+-dependent deacetylase; longevity-associated enzyme',
+    mechanism: 'Deacetylates tau, PGC-1α, FOXO, NF-κB p65; anti-inflammatory and pro-autophagy',
+    roles: ['REGULATOR', 'THERAPEUTIC_TARGET'],
+  },
+  {
     id: 'ulk1_phosphorylated',
     label: 'ULK1 Phosphorylated (Inhibited)',
     category: 'STOCK', // SBSF v2.0: Was REGULATOR, now STOCK with REGULATOR role

@@ -318,6 +318,10 @@ export const nodePositions: Record<string, { x: number; y: number }> = {
     "x": 1800,
     "y": 1170
   },
+  "sirt1_activity": {
+    "x": 1870,
+    "y": 1135
+  },
   "s6k1_active": {
     "x": 1800,
     "y": 1240

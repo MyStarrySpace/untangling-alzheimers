@@ -393,6 +393,51 @@ export const module1Edges: MechanisticEdge[] = [
     ],
     keyInsight: 'AMPK-ULK1 axis is critical for autophagy initiation',
   },
+  // SIRT1 edges
+  {
+    id: 'E01.022',
+    source: 'sirt1_activity',
+    target: 'mtorc1_hyperactive',
+    relation: 'decreases',
+    moduleId: 'M01',
+    mechanismLabel: 'SIRT1_mTORC1_inhibition',
+    mechanismDescription: 'SIRT1 activates LKB1 via deacetylation, which activates AMPK at Thr172, leading to TSC2 activation and mTORC1 inhibition',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        firstAuthor: 'Lan',
+        year: 2008,
+        pmid: '18687888',
+        title: 'SIRT1 Modulation of the Acetylation Status, Cytosolic Localization, and Activity of LKB1',
+        quote: 'SIRT1 deacetylates LKB1, promoting its cytoplasmic localization and kinase activity',
+        methodType: 'in_vitro',
+        causalConfidence: 'L4',
+      },
+    ],
+    keyInsight: 'SIRT1 → LKB1 → AMPK → TSC2 → mTORC1 inhibition pathway',
+  },
+  {
+    id: 'E01.023',
+    source: 'sirt1_activity',
+    target: 'ulk1_phosphorylated',
+    relation: 'decreases',
+    moduleId: 'M01',
+    mechanismLabel: 'SIRT1_autophagy_promotion',
+    mechanismDescription: 'SIRT1 promotes autophagy by deacetylating autophagy proteins and activating AMPK-ULK1 axis',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        firstAuthor: 'Lee',
+        year: 2008,
+        pmid: '18187620',
+        title: 'A role for the NAD-dependent deacetylase Sirt1 in the regulation of autophagy',
+        quote: 'Sirt1 can directly deacetylate essential autophagy proteins, Atg5, Atg7, and LC3',
+        methodType: 'in_vitro',
+        causalConfidence: 'L4',
+      },
+    ],
+    keyInsight: 'SIRT1 promotes autophagy via multiple mechanisms',
+  },
 ];
 
 // ============================================================================

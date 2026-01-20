@@ -53,7 +53,10 @@
       "WebFetch(domain:www.accessdata.fda.gov)",
       "WebFetch(domain:www.mdpi.com)",
       "WebFetch(domain:firstwordpharma.com)",
-      "WebFetch(domain:www.globenewswire.com)"
+      "WebFetch(domain:www.globenewswire.com)",
+      "Bash(cd:*)",
+      "Bash(start /B npm run dev)",
+      "Bash(timeout /t 8 /nobreak)"
     ]
   }
 }

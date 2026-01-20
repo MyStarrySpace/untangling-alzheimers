@@ -635,6 +635,99 @@ export const hopefulDevelopments: HopefulDevelopment[] = [
     sourceIds: ['kumar-modi-caffeic-2025'],
   },
 
+  {
+    id: 'metformin',
+    name: 'Metformin',
+    category: 'pipeline_drug',
+    status: 'phase_2',
+    description:
+      'AMPK activator that inhibits mTORC1, suppresses NF-κB, and enhances autophagy. World\'s most prescribed diabetes drug (~$4/month generic) with decades of safety data.',
+    mechanism:
+      'Activates AMPK via mitochondrial complex I inhibition, leading to mTORC1 inhibition, autophagy enhancement, NF-κB suppression, and M2 microglial polarization. Works through AMPK/mTOR/S6K/BACE1 and AMPK/P65 NF-κB pathways.',
+    whyHopeful:
+      'Strong preclinical evidence (Ou 2017: reduced Aβ, improved cognition in APP/PS1 mice). Epidemiological data shows reduced dementia in diabetic users. Multiple mechanisms addressing upstream pathology. Extremely cheap and safe.',
+    evidence: [
+      {
+        trialName: 'MAP Trial',
+        trialPhase: 'Phase 2',
+        participants: 326,
+        duration: '2 years',
+        primaryOutcome: 'Cognitive function in aMCI',
+        result: 'Ongoing (NCT04098666). Results expected 2027. APOE4-stratified.',
+        limitation: 'Will not assess long-term use, which may be critical',
+      },
+      {
+        trialName: 'Ou 2017 (Preclinical)',
+        trialPhase: 'Preclinical',
+        primaryOutcome: 'Aβ and cognition in APP/PS1 mice',
+        result: 'Attenuated memory deficits, decreased Aβ plaques, reduced activated microglia, enhanced AMPK, suppressed NF-κB and mTOR',
+      },
+      {
+        trialName: 'Wu 2020 (Epidemiological)',
+        trialPhase: 'Cohort study',
+        primaryOutcome: 'Memory decline by APOE status',
+        result: 'Reduced memory decline in cognitively normal T2DM patients',
+        limitation: 'CRITICAL: Possible ACCELERATED decline in AD patients who are APOE4 carriers',
+      },
+    ],
+    cost: '~$4/month (generic)',
+    availability: 'FDA approved for diabetes; off-label possible',
+    caveats: [
+      'APOE4 interaction: may benefit cognitively normal but harm AD+APOE4 carriers (Wu 2020)',
+      'MAP trial relies on academic/philanthropic funding only (no pharma sponsor)',
+      'Strongest rationale is for prevention, not treatment of established AD',
+      'Long-term exposure question unaddressed by current trials (Daly 2025)',
+      'Exemplifies market failure: $4/month generic with strong evidence but no Phase 3 funding',
+    ],
+    sourceIds: ['metformin-ou-2017', 'metformin-wu-2020', 'metformin-map-trial'],
+  },
+
+  {
+    id: 'dimethyl-fumarate',
+    name: 'Dimethyl Fumarate (Tecfidera)',
+    category: 'pipeline_drug',
+    status: 'preclinical',
+    description:
+      'Nrf2 activator that suppresses NF-κB, inhibits NLRP3 inflammasome, and prevents glycolytic switch in microglia. FDA-approved for MS with established CNS penetration.',
+    mechanism:
+      'Covalently modifies Keap1 cysteine residues, releasing Nrf2 which induces antioxidant genes (HO-1, NQO1, GPX4). Also activates HCAR2 receptor. Suppresses NF-κB → reduces NLRP3 transcription and HIF-1α stabilization → prevents microglial glycolytic switch.',
+    whyHopeful:
+      'FDA-approved with known safety profile. CNS-penetrant (good BBB permeability). Wang 2024 showed improved cognition in App-KI mice. Addresses multiple pathways simultaneously. Complete AD trial design published (Sharkus 2023).',
+    evidence: [
+      {
+        trialName: 'Wang 2024 (Preclinical)',
+        trialPhase: 'Preclinical',
+        primaryOutcome: 'Cognition and neuroinflammation in App-KI mice',
+        result: 'Improved cognitive dysfunction via astrocytic Nrf2 activation → reduced STAT3/C3 signaling → decreased neuroinflammation',
+      },
+      {
+        trialName: 'Sharkus 2023 (Trial Design)',
+        trialPhase: 'Proposed Phase I/II',
+        participants: 60,
+        duration: '12 weeks',
+        primaryOutcome: 'Safety and biomarker changes',
+        result: 'Trial design published but NO active AD trial registered as of 2025',
+        limitation: 'No sponsor has funded this proposed trial',
+      },
+      {
+        trialName: 'MS Approval Data',
+        trialPhase: 'Phase 3 (MS)',
+        primaryOutcome: 'Relapse rate in MS',
+        result: 'FDA approved 2013 for relapsing-remitting MS; establishes safety and CNS penetration',
+      },
+    ],
+    cost: '~$50/year (generic since 2020)',
+    availability: 'FDA approved for MS; off-label possible',
+    caveats: [
+      'NO active AD trial despite published trial design (Sharkus 2023)',
+      'Lymphopenia monitoring required (every 3 months); discontinue if ALC <0.8',
+      'GI intolerance in ~40% (flushing, nausea, diarrhea); diroximel fumarate (Vumerity) better tolerated',
+      'Rare but serious PML risk in severely lymphopenic patients',
+      'Clear market failure: approved CNS-penetrant drug with strong rationale but no AD trial sponsor',
+    ],
+    sourceIds: ['dmf-wang-2024', 'dmf-sharkus-2023', 'dmf-rosito-2020'],
+  },
+
   // ============================================
   // RESEARCH TOOLS
   // ============================================

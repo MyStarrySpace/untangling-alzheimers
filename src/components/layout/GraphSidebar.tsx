@@ -76,28 +76,46 @@ export function GraphSidebar() {
               </div>
 
               <div className="flex items-center gap-1">
-                {/* Sync toggle */}
-                <button
-                  onClick={toggleSync}
-                  className={`flex items-center gap-1 px-2 py-1 text-[10px] rounded transition-colors ${
-                    isSyncEnabled
-                      ? 'bg-[var(--accent-orange)] text-white'
-                      : 'bg-[var(--bg-primary)] text-[var(--text-muted)] hover:text-[var(--text-primary)]'
-                  }`}
-                  title={isSyncEnabled ? 'Disable scroll sync' : 'Enable scroll sync'}
-                >
-                  {isSyncEnabled ? (
-                    <>
-                      <Link2 className="w-3 h-3" />
-                      Sync
-                    </>
-                  ) : (
-                    <>
-                      <Link2Off className="w-3 h-3" />
-                      Manual
-                    </>
+                {/* Sync toggle with inline status */}
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={toggleSync}
+                    className={`flex items-center gap-1 px-2 py-1 text-[10px] rounded transition-colors ${
+                      isSyncEnabled
+                        ? 'bg-[var(--accent-orange)] text-white'
+                        : 'bg-[var(--bg-primary)] text-[var(--text-muted)] hover:text-[var(--text-primary)]'
+                    }`}
+                    title={isSyncEnabled ? 'Disable scroll sync' : 'Enable scroll sync'}
+                  >
+                    {isSyncEnabled ? (
+                      <>
+                        <Link2 className="w-3 h-3" />
+                        Sync
+                      </>
+                    ) : (
+                      <>
+                        <Link2Off className="w-3 h-3" />
+                        Manual
+                      </>
+                    )}
+                  </button>
+
+                  {/* Sync status indicator - inline with button */}
+                  {isSyncEnabled && !isManuallySet && (
+                    <span className="flex items-center gap-1 text-[10px] text-[var(--accent-orange)]">
+                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--accent-orange)] animate-pulse" />
+                      <span className="hidden sm:inline">Graph updates as you scroll</span>
+                    </span>
                   )}
-                </button>
+
+                  {/* Manual mode indicator - inline */}
+                  {isManuallySet && (
+                    <span className="flex items-center gap-1 text-[10px] text-[var(--text-muted)]">
+                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--text-muted)]" />
+                      <span className="hidden sm:inline">Manual mode</span>
+                    </span>
+                  )}
+                </div>
 
                 {/* Clear manual selection (only shown when manually set) */}
                 {isManuallySet && (
@@ -121,24 +139,8 @@ export function GraphSidebar() {
               </div>
             </div>
 
-            {/* Sync status indicator */}
-            {isSyncEnabled && !isManuallySet && (
-              <div className="px-3 py-1.5 bg-[var(--accent-orange-light)] text-[10px] text-[var(--accent-orange)] flex items-center gap-1">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--accent-orange)] animate-pulse" />
-                Graph updates as you scroll
-              </div>
-            )}
-
-            {/* Manual mode indicator */}
-            {isManuallySet && (
-              <div className="px-3 py-1.5 bg-[var(--bg-secondary)] text-[10px] text-[var(--text-muted)] flex items-center gap-1">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--text-muted)]" />
-                Manual mode (click Clear to resume sync)
-              </div>
-            )}
-
             {/* Graph container */}
-            <div className="h-[calc(100%-80px)]">
+            <div className="h-[calc(100%-45px)]">
               <MechanisticNetworkGraph
                 height="100%"
                 showControls={true}
