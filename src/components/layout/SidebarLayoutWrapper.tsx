@@ -59,7 +59,7 @@ function SidebarLayoutInner({ children }: SidebarLayoutWrapperProps) {
  */
 export function SidebarLayoutWrapper({ children }: SidebarLayoutWrapperProps) {
   return (
-    <GraphSidebarProvider>
+    <GraphSidebarProvider defaultOpen={false}>
       <SidebarLayoutInner>{children}</SidebarLayoutInner>
     </GraphSidebarProvider>
   );

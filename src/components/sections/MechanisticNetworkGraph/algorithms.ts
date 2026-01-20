@@ -542,24 +542,48 @@ export function computeGreedyLayout(
     });
 
     // Calculate positions for this component
+    // VERTICAL FLOW: layers become rows (y-based), nodes spread horizontally (x-based)
+    const verticalLayerHeight = 90;  // Base vertical spacing between layer rows
+    const rowHeightSpacing = 70;     // Vertical gap between rows within same layer
+    const nodeWidthSpacing = 190;    // Node width + gap for horizontal spacing
+    const maxNodesPerRow = 2;        // Max nodes per row to fit in sidebar width
+    const containerWidth = 380;      // Approximate container width
+
     let maxYInComponent = 0;
-    layerGroups.forEach((ids, layer) => {
-      ids.forEach((id, idx) => {
-        const y = globalYOffset + idx * nodeHeight;
-        if (!id.startsWith('__dummy_')) {
-          positions.set(id, {
-            x: layer * layerWidth + 50,
-            y,
-          });
-        }
-        maxYInComponent = Math.max(maxYInComponent, y + nodeHeight);
+    const sortedLayerKeys = Array.from(layerGroups.keys()).sort((a, b) => a - b);
+    let currentY = globalYOffset;
+
+    sortedLayerKeys.forEach((layer) => {
+      const ids = layerGroups.get(layer) || [];
+      const realIds = ids.filter(id => !id.startsWith('__dummy_'));
+      const numRows = Math.ceil(realIds.length / maxNodesPerRow);
+
+      realIds.forEach((id, idx) => {
+        // Calculate row and column within this layer
+        const row = Math.floor(idx / maxNodesPerRow);
+        const col = idx % maxNodesPerRow;
+        const nodesInThisRow = Math.min(maxNodesPerRow, realIds.length - row * maxNodesPerRow);
+
+        // Center nodes horizontally within the container
+        const totalRowWidth = nodesInThisRow * nodeWidthSpacing - 10;
+        const startX = Math.max(50, (containerWidth - totalRowWidth) / 2);
+
+        const x = startX + col * nodeWidthSpacing;
+        const y = currentY + row * rowHeightSpacing;
+
+        positions.set(id, { x, y });
+        maxYInComponent = Math.max(maxYInComponent, y + rowHeightSpacing);
       });
+
+      // Move to next layer, accounting for multi-row layers
+      currentY += numRows * rowHeightSpacing + (verticalLayerHeight - rowHeightSpacing);
     });
 
     globalYOffset = maxYInComponent + componentGap;
   });
 
   // Post-processing: Identify back edges based on final positions
+  // VERTICAL FLOW: A back edge goes from a node with higher Y to a node with lower Y
   backEdges.clear();
 
   filteredEdges.forEach(e => {
@@ -567,7 +591,8 @@ export function computeGreedyLayout(
     const targetPos = positions.get(e.target);
 
     if (sourcePos && targetPos) {
-      if (targetPos.x <= sourcePos.x) {
+      // If the edge goes backward (target is at same or earlier Y position than source)
+      if (targetPos.y <= sourcePos.y) {
         const edgeId = edgeIdMap.get(`${e.source}->${e.target}`);
         if (edgeId) {
           backEdges.add(edgeId);

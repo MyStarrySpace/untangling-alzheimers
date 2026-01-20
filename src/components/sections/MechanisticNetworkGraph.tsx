@@ -138,8 +138,8 @@ const BoundaryVariantNode = memo(({ data }: NodeProps<Node<BoundaryVariantNodeDa
         borderRadius: viewMode === 'simple' ? '4px' : '8px', // BOUNDARY = box shape
       }}
     >
-      <Handle type="target" position={Position.Left} className="!bg-[var(--border)]" />
-      <Handle type="source" position={Position.Right} className="!bg-[var(--border)]" />
+      <Handle type="target" position={Position.Top} className="!bg-[var(--border)]" />
+      <Handle type="source" position={Position.Bottom} className="!bg-[var(--border)]" />
 
       {/* Header with label and view toggle */}
       <div className="flex items-center justify-between gap-1 mb-1">
@@ -295,11 +295,11 @@ const BoundaryExpandButton = memo(({ data }: NodeProps<Node<BoundaryExpandButton
         data.onToggle();
       }}
     >
-      {/* Only show handle on the appropriate side */}
+      {/* Only show handle on the appropriate side (vertical flow: inputs at top, outputs at bottom) */}
       {isInput ? (
-        <Handle type="source" position={Position.Right} className="!bg-[var(--border)]" />
+        <Handle type="source" position={Position.Bottom} className="!bg-[var(--border)]" />
       ) : (
-        <Handle type="target" position={Position.Left} className="!bg-[var(--border)]" />
+        <Handle type="target" position={Position.Top} className="!bg-[var(--border)]" />
       )}
 
       <div className="text-[10px] font-medium text-[var(--text-primary)]">
@@ -1313,26 +1313,48 @@ function computeGreedyLayout(
     }
 
     // Calculate positions for this component (excluding dummy nodes from final output)
+    // VERTICAL FLOW: layers become rows (y-based), nodes spread horizontally (x-based)
+    const verticalLayerHeight = 90;  // Base vertical spacing between layer rows
+    const rowHeight = 70;            // Vertical gap between rows within same layer
+    const nodeWidthSpacing = 190;    // Node width + gap for horizontal spacing
+    const maxNodesPerRow = 2;        // Max nodes per row to fit in sidebar width
+    const containerWidth = 380;      // Approximate container width
+
     let maxYInComponent = 0;
-    layerGroups.forEach((ids, layer) => {
-      ids.forEach((id, idx) => {
-        const y = globalYOffset + idx * nodeHeight;
-        // Only add real nodes to positions (not dummy nodes)
-        if (!id.startsWith('__dummy_')) {
-          positions.set(id, {
-            x: layer * layerWidth + 50,
-            y,
-          });
-        }
-        maxYInComponent = Math.max(maxYInComponent, y + nodeHeight);
+    const layerKeysForPositioning = Array.from(layerGroups.keys()).sort((a, b) => a - b);
+    let currentY = globalYOffset;
+
+    layerKeysForPositioning.forEach((layer) => {
+      const ids = layerGroups.get(layer) || [];
+      const realIds = ids.filter(id => !id.startsWith('__dummy_'));
+      const numRows = Math.ceil(realIds.length / maxNodesPerRow);
+
+      realIds.forEach((id, idx) => {
+        // Calculate row and column within this layer
+        const row = Math.floor(idx / maxNodesPerRow);
+        const col = idx % maxNodesPerRow;
+        const nodesInThisRow = Math.min(maxNodesPerRow, realIds.length - row * maxNodesPerRow);
+
+        // Center nodes horizontally within the container
+        const totalRowWidth = nodesInThisRow * nodeWidthSpacing - 10; // Subtract last gap
+        const startX = Math.max(50, (containerWidth - totalRowWidth) / 2);
+
+        const x = startX + col * nodeWidthSpacing;
+        const y = currentY + row * rowHeight;
+
+        positions.set(id, { x, y });
+        maxYInComponent = Math.max(maxYInComponent, y + rowHeight);
       });
+
+      // Move to next layer, accounting for multi-row layers
+      currentY += numRows * rowHeight + (verticalLayerHeight - rowHeight);
     });
 
     globalYOffset = maxYInComponent + componentGap;
   });
 
   // Post-processing: Identify back edges based on final positions
-  // A back edge goes from a node with higher X (later layer) to a node with lower X (earlier layer)
+  // VERTICAL FLOW: A back edge goes from a node with higher Y (later layer) to a node with lower Y (earlier layer)
   // This is more reliable than BFS-based detection
   backEdges.clear(); // Reset and recompute
 
@@ -1341,9 +1363,9 @@ function computeGreedyLayout(
     const targetPos = positions.get(e.target);
 
     if (sourcePos && targetPos) {
-      // If the edge goes backward (target is at same or earlier X position than source)
+      // If the edge goes backward (target is at same or earlier Y position than source)
       // it's a feedback loop / back edge
-      if (targetPos.x <= sourcePos.x) {
+      if (targetPos.y <= sourcePos.y) {
         const edgeId = edgeIdMap.get(`${e.source}->${e.target}`);
         if (edgeId) {
           backEdges.add(edgeId);
@@ -1528,8 +1550,8 @@ function convertNodes(
         textAlign: 'center' as const,
         opacity: 0.8,
       },
-      sourcePosition: Position.Right,
-      targetPosition: Position.Left,
+      sourcePosition: Position.Bottom,
+      targetPosition: Position.Top,
     });
   });
 
@@ -1578,8 +1600,8 @@ function convertNodes(
           selectedVariant: variantCallbacks?.selectedVariant,
           hoveredVariant: variantCallbacks?.hoveredVariant,
         },
-        sourcePosition: Position.Right,
-        targetPosition: Position.Left,
+        sourcePosition: Position.Bottom,
+        targetPosition: Position.Top,
       });
     } else {
       // Standard node
@@ -1612,8 +1634,8 @@ function convertNodes(
           textAlign: 'center' as const,
           opacity: isPartial ? 0.5 : 1,
         },
-        sourcePosition: Position.Right,
-        targetPosition: Position.Left,
+        sourcePosition: Position.Bottom,
+        targetPosition: Position.Top,
       });
     }
   });
@@ -1657,8 +1679,8 @@ function convertNodes(
           boundaryCount: visibleInputCount,
           onToggle: boundaryExpansion.onToggleInput,
         },
-        sourcePosition: Position.Right,
-        targetPosition: Position.Left,
+        sourcePosition: Position.Bottom,
+        targetPosition: Position.Top,
       });
     }
 
@@ -1677,8 +1699,8 @@ function convertNodes(
           boundaryCount: visibleOutputCount,
           onToggle: boundaryExpansion.onToggleOutput,
         },
-        sourcePosition: Position.Right,
-        targetPosition: Position.Left,
+        sourcePosition: Position.Bottom,
+        targetPosition: Position.Top,
       });
     }
   }
@@ -1725,10 +1747,10 @@ function convertEdges(
   const flowEdges: Edge[] = [];
   const waypointNodes: Node[] = [];
 
-  // Calculate the bottom of the graph for back edge routing
-  const allYPositions = Array.from(nodePositions.values()).map(p => p.y);
-  const maxY = allYPositions.length > 0 ? Math.max(...allYPositions) : 0;
-  const backEdgeBaseY = maxY + 150; // Start back edges 150px below the lowest node
+  // Calculate the left side of the graph for back edge routing (vertical flow)
+  const allXPositions = Array.from(nodePositions.values()).map(p => p.x);
+  const minX = allXPositions.length > 0 ? Math.min(...allXPositions) : 50;
+  const backEdgeBaseX = minX - 80; // Start back edges 80px to the left of the leftmost node
 
   // Track back edge index for staggering
   let backEdgeIndex = 0;
@@ -1812,24 +1834,26 @@ function convertEdges(
       strokeWidth = Math.max(2, Math.min(6, (activeVariant.effectMagnitude || 1) * 1.5));
     }
 
-    // For back edges, create waypoint nodes to route around the bottom of the graph
+    // For back edges, create waypoint nodes to route on the LEFT side of the graph (vertical flow)
     if (isBackEdge && nodePositions.size > 0) {
       const sourcePos = nodePositions.get(edge.source);
       const targetPos = nodePositions.get(edge.target);
 
       if (sourcePos && targetPos) {
-        // Stagger each back edge lower to prevent overlap
-        const staggerY = backEdgeBaseY + (backEdgeIndex * 60);
+        // Calculate loop distance (vertical span) for proportional staggering
+        const loopDistance = Math.abs(sourcePos.y - targetPos.y);
+        // Longer loops route further left to avoid overlap
+        const staggerX = backEdgeBaseX - (backEdgeIndex * 30) - (loopDistance / 100) * 20;
         backEdgeIndex++;
 
-        // Create two waypoint nodes: one below source, one below target
+        // Create two waypoint nodes: one to the left of source, one to the left of target
         const waypoint1Id = `__waypoint_${edge.id}_1`;
         const waypoint2Id = `__waypoint_${edge.id}_2`;
 
-        // Position waypoints: source side goes down first, then across, then up to target
+        // Position waypoints: source side goes left first, then vertically up, then right to target
         waypointNodes.push({
           id: waypoint1Id,
-          position: { x: sourcePos.x + 90, y: staggerY }, // Below source
+          position: { x: staggerX, y: sourcePos.y + 40 }, // Left of source (centered on node height)
           data: { isWaypoint: true },
           style: {
             width: 1,
@@ -1838,13 +1862,13 @@ function convertEdges(
             border: 'none',
             padding: 0,
           },
-          sourcePosition: Position.Left,
-          targetPosition: Position.Right,
+          sourcePosition: Position.Top,    // Goes up to waypoint2
+          targetPosition: Position.Right,  // Receives from source on right
         });
 
         waypointNodes.push({
           id: waypoint2Id,
-          position: { x: targetPos.x + 90, y: staggerY }, // Below target
+          position: { x: staggerX, y: targetPos.y + 40 }, // Left of target at same X (centered on node height)
           data: { isWaypoint: true },
           style: {
             width: 1,
@@ -1853,11 +1877,11 @@ function convertEdges(
             border: 'none',
             padding: 0,
           },
-          sourcePosition: Position.Left,
-          targetPosition: Position.Right,
+          sourcePosition: Position.Right,  // Goes right to target
+          targetPosition: Position.Bottom, // Receives from waypoint1 below
         });
 
-        // Edge from source to waypoint1 (going down)
+        // Edge from source to waypoint1 (going left)
         flowEdges.push({
           id: `${edge.id}_seg1`,
           source: edge.source,
@@ -1870,7 +1894,7 @@ function convertEdges(
           },
         });
 
-        // Edge from waypoint1 to waypoint2 (horizontal, below the graph)
+        // Edge from waypoint1 to waypoint2 (vertical, on the left side of the graph)
         // This is where we put the label
         flowEdges.push({
           id: `${edge.id}_seg2`,
@@ -1905,7 +1929,7 @@ function convertEdges(
           },
         });
 
-        // Edge from waypoint2 to target (going up)
+        // Edge from waypoint2 to target (going right)
         flowEdges.push({
           id: `${edge.id}_seg3`,
           source: waypoint2Id,
@@ -3029,8 +3053,8 @@ function MechanisticNetworkGraphInner({
             selectedVariant,
             hoveredVariant,
           },
-          sourcePosition: Position.Right,
-          targetPosition: Position.Left,
+          sourcePosition: Position.Bottom,
+          targetPosition: Position.Top,
         };
       }
 
@@ -3059,8 +3083,8 @@ function MechanisticNetworkGraphInner({
           minWidth: '120px',
           textAlign: 'center' as const,
         },
-        sourcePosition: Position.Right,
-        targetPosition: Position.Left,
+        sourcePosition: Position.Bottom,
+        targetPosition: Position.Top,
       };
     });
 

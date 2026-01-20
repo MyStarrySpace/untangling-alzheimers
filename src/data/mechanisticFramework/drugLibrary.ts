@@ -1015,6 +1015,50 @@ export const treatmentLibrary: TreatmentLibraryEntry[] = [
   },
 
   // ---------------------------------------------------------------------------
+  // SLEEP APNEA TREATMENT
+  // ---------------------------------------------------------------------------
+  {
+    id: 'sleep_apnea_treatment',
+    name: 'Sleep Apnea Treatment (CPAP/Oral Appliance)',
+    type: 'lifestyle',
+    fdaStatus: 'lifestyle',
+    availability: 'free',
+    mechanismSummary: 'Restores nocturnal glymphatic clearance by maintaining slow-wave sleep and preventing hypoxia',
+    primaryTargets: [
+      {
+        nodeId: 'glymphatic_clearance',
+        effect: 'activates',
+        strength: 'strong',
+        mechanism: 'Sleep apnea disrupts slow-wave sleep when glymphatic clearance is most active; treatment restores this clearance window',
+      },
+      {
+        nodeId: 'neuroinflammation',
+        effect: 'inhibits',
+        strength: 'moderate',
+        mechanism: 'Intermittent hypoxia triggers inflammatory cascades; CPAP reduces hypoxic episodes',
+      },
+      {
+        nodeId: 'oxidative_stress',
+        effect: 'inhibits',
+        strength: 'moderate',
+        mechanism: 'Hypoxia-reoxygenation cycles generate ROS; treatment reduces oxidative burden',
+      },
+    ],
+    variants: [
+      { id: 'untreated', label: 'Untreated OSA', effectModifier: 0, notes: 'Risk factor: 1.5-2x AD risk' },
+      { id: 'cpap_low', label: 'CPAP (<4h/night)', effectModifier: 0.3, notes: 'Suboptimal compliance' },
+      { id: 'cpap_good', label: 'CPAP (>4h/night)', effectModifier: 1.0, notes: 'Adequate compliance' },
+      { id: 'oral_appliance', label: 'Oral Appliance', effectModifier: 0.7, notes: 'For mild-moderate OSA' },
+    ],
+    adEvidence: {
+      level: 'L4',
+      summary: 'Meta-analyses show OSA increases AD risk 1.5-2x. CPAP treatment associated with delayed cognitive decline in observational studies. Glymphatic clearance active during slow-wave sleep.',
+      pmids: ['36378032', '32466994', '31695836', '28899594'],
+    },
+    notes: 'OSA affects 50-70% of AD patients. Glymphatic system clears Aβ primarily during deep sleep (Xie et al. 2013). Treatment may be most effective in preclinical/early stages.',
+  },
+
+  // ---------------------------------------------------------------------------
   // IC 100 (ZYVERSA)
   // ---------------------------------------------------------------------------
   {

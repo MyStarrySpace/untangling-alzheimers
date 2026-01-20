@@ -92,12 +92,21 @@ export const categoryLabels: Record<ModuleCategory, string> = {
   'therapeutic': 'Therapeutic',
 };
 
-// Layout constants
-export const LAYER_WIDTH = 280;     // Horizontal spacing between layers
-export const NODE_HEIGHT = 100;     // Vertical spacing between nodes
+// Layout constants (vertical flow: causality flows top-to-bottom)
+export const LAYER_WIDTH = 280;     // Horizontal spacing between layers (legacy, kept for compatibility)
+export const NODE_HEIGHT = 100;     // Vertical spacing between nodes (legacy, kept for compatibility)
 export const COMPONENT_GAP = 120;   // Gap between disconnected components
-export const BACK_EDGE_OFFSET = 150; // Y offset for back edge routing
-export const BACK_EDGE_STAGGER = 60; // Y stagger between multiple back edges
+export const BACK_EDGE_OFFSET = 150; // Offset for back edge routing (legacy)
+export const BACK_EDGE_STAGGER = 60; // Stagger between multiple back edges (legacy)
+
+// Vertical flow layout constants (new: top-to-bottom causality)
+export const LAYER_HEIGHT = 90;     // Vertical spacing between layer rows
+export const ROW_HEIGHT = 70;       // Vertical gap between rows within same layer (for multi-row layers)
+export const NODE_WIDTH = 180;      // Node width for horizontal spacing
+export const MAX_NODES_PER_ROW = 2; // Maximum nodes per row (2 * 180 + gap = ~370px fits 380px sidebar)
+export const NODE_GAP = 10;         // Horizontal gap between nodes in same row
+export const SIDE_EDGE_OFFSET = 80; // X offset for back edge routing on left side
+export const SIDE_EDGE_STAGGER = 30; // X stagger between multiple back edges
 
 // ============================================================================
 // BRAIN REGION ORDERING
