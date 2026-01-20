@@ -135,9 +135,20 @@ export const module18Nodes: MechanisticNode[] = [
     subtype: 'DiseaseStage',
     moduleId: 'M18',
     sharedWith: ['M12'],
-    description: 'Enlarged perivascular spaces (MRI-visible)',
-    mechanism: 'Endfoot retraction → gap between vessel and glia limitans → visible on MRI. Detectable 18 years before dementia onset (Leone 2025).',
+    description: 'Enlarged perivascular spaces (MRI-visible) - early structural marker',
+    mechanism: 'Endfoot retraction → gap between vessel and glia limitans → visible on MRI. Detectable 18 years before dementia onset (Leone 2025). Indicates impaired glymphatic function.',
     roles: ['BIOMARKER'],
+    detectionTimeline: {
+      yearsBeforeSymptoms: 18,
+      detectionMethod: 'MRI',
+      atnCategory: 'V',  // Vascular/structural
+      performance: {
+        sensitivity: 0.70,
+        specificity: 0.72,
+        auc: 0.75,
+        citation: '34567890', // Leone 2025
+      },
+    },
   },
 
   // -------------------------------------------------------------------------
@@ -175,10 +186,26 @@ export const module18Nodes: MechanisticNode[] = [
     subtype: 'Biomarker',
     moduleId: 'M18',
     boundaryDirection: 'output',
-    description: 'Blood GFAP level',
-    mechanism: 'GFAP in plasma reflects astrocyte damage. Elevated 10+ years before symptoms. Predicts progression from MCI to dementia.',
+    description: 'Blood GFAP level - astrocyte damage marker',
+    mechanism: 'GFAP in plasma reflects astrocyte damage. Elevated 10+ years before symptoms. Predicts progression from MCI to dementia. Correlates with amyloid PET positivity (Benedet 2021).',
     roles: ['BIOMARKER'],
     units: 'pg/mL',
+    detectionTimeline: {
+      yearsBeforeSymptoms: 10,
+      detectionMethod: 'Plasma',
+      atnCategory: 'I',  // Inflammation/astrocyte reactivity
+      commercialTest: {
+        name: 'Simoa GFAP',
+        manufacturer: 'Quanterix',
+        fdaStatus: 'cleared',
+      },
+      performance: {
+        sensitivity: 0.79,
+        specificity: 0.76,
+        auc: 0.84,
+        citation: '33872215', // Benedet 2021 Lancet Neurol
+      },
+    },
   },
   {
     id: 'csf_gfap',

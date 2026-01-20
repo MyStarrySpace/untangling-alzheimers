@@ -29,6 +29,7 @@ export { module15Nodes } from './m15-interventions';
 export { module16Nodes } from './m16-sex-ancestry';
 export { module17Nodes } from './m17-immunomodulatory';
 export { module18Nodes } from './m18-astrocyte-endfoot';
+export { module20Nodes } from './m20-hormones';
 
 // Import for combining into allNodes
 import { boundaryNodes } from './boundary';
@@ -50,6 +51,7 @@ import { module15Nodes } from './m15-interventions';
 import { module16Nodes } from './m16-sex-ancestry';
 import { module17Nodes } from './m17-immunomodulatory';
 import { module18Nodes } from './m18-astrocyte-endfoot';
+import { module20Nodes } from './m20-hormones';
 
 // Combined array of all nodes for network operations
 export const allNodes: MechanisticNode[] = [
@@ -72,6 +74,7 @@ export const allNodes: MechanisticNode[] = [
   ...module16Nodes,
   ...module17Nodes,
   ...module18Nodes,
+  ...module20Nodes,
 ];
 
 // Re-export the type for convenience

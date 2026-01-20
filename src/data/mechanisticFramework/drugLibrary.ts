@@ -543,19 +543,21 @@ export const treatmentLibrary: TreatmentLibraryEntry[] = [
     type: 'antibody',
     fdaStatus: 'approved',
     availability: 'prescription',
-    mechanismSummary: 'Anti-amyloid antibody targeting protofibrils for Aβ clearance',
+    mechanismSummary: 'Anti-amyloid antibody with 10× higher affinity for protofibrils vs fibrils, 1,000-14,000× vs monomers',
     primaryTargets: [
       {
         nodeId: 'abeta_oligomers',
         effect: 'inhibits',
         strength: 'strong',
-        mechanism: 'Binds Aβ protofibrils (more toxic species), promoting clearance',
+        // Binding affinity: 10× stronger for protofibrils vs fibrils; 1,000-14,000× vs monomers
+        // 100× better protofibril binding than aducanumab; 25× better for large protofibrils
+        mechanism: 'Binds Aβ protofibrils (toxic species) with highest selectivity among approved mAbs. Promotes microglial clearance via Fc receptors.',
       },
       {
         nodeId: 'abeta_plaques',
         effect: 'inhibits',
         strength: 'moderate',
-        mechanism: 'Secondary effect on plaque burden',
+        mechanism: 'Secondary effect on plaque burden; 10× weaker binding to fibrils vs protofibrils',
       },
     ],
     adEvidence: {
@@ -564,8 +566,8 @@ export const treatmentLibrary: TreatmentLibraryEntry[] = [
       pmids: ['36449413', '37458272'],
     },
     annualCost: 26500,
-    bbbPenetration: 'poor', // Brain uptake ~0.13% ID/gram (mAb158 mouse data); CSF ~0.2% of plasma; short t½ of 7 days
-    notes: 'ARIA risk ~20%. Benefits modest but statistically significant. APOE4 homozygotes at higher risk. Native BBB penetration very low (~0.1-0.2% of plasma); plaque access may require BBB disruption. Bispecific bi-lecanemab with TfR shuttle shows 10x better brain uptake.',
+    bbbPenetration: 'poor', // Brain uptake ~0.13% ID/gram (mAb158 mouse data); CSF ~0.2% of plasma; t½ ~7 days
+    notes: 'BINDING KINETICS: 10× protofibril vs fibril; 1,000× vs monomer; 100× better protofibril binding than aducanumab. ARIA risk ~20%. APOE4 homozygotes at higher risk. Native BBB penetration very low (~0.1-0.2% of plasma). Bispecific bi-lecanemab with TfR shuttle shows 10× better brain uptake.',
   },
 
   // ---------------------------------------------------------------------------

@@ -33,6 +33,17 @@ export {
   type DrugAvailability,
 } from './drugLibrary';
 export {
+  presetGroups,
+  hypothesisPresets,
+  getPresetById,
+  getPresetsByCategory,
+  getTreatmentsForPreset,
+  isHypothesisPreset,
+  type PresetCategory,
+  type PresetOption,
+  type PresetGroup,
+} from './presets';
+export {
   allNodes,
   boundaryNodes,
   module1Nodes,
@@ -96,6 +107,13 @@ export type {
   SpeciesInfo,
   EdgeModulation,
   QuantitativeData,
+  // Biomarker types
+  DetectionTimeline,
+  DetectionMethod,
+  ATNCategory,
+  FDATestStatus,
+  CommercialTest,
+  BiomarkerPerformance,
 } from './types';
 
 // Import for building the complete framework
@@ -320,5 +338,72 @@ export const frameworkStats = {
   reinforcingLoops: feedbackLoops.filter(l => l.type === 'reinforcing').length,
   balancingLoops: feedbackLoops.filter(l => l.type === 'balancing').length,
 };
+
+// ============================================================================
+// BIOMARKER HELPER FUNCTIONS
+// ============================================================================
+
+import type { ATNCategory, MechanisticNode } from './types';
+
+/**
+ * Get all biomarker nodes that have detection timelines, sorted by years before symptoms (earliest first)
+ */
+export function getBiomarkersByTimeline(): MechanisticNode[] {
+  return allNodes
+    .filter(n => n.detectionTimeline)
+    .sort((a, b) => {
+      const aYears = a.detectionTimeline?.yearsBeforeSymptoms ?? 0;
+      const bYears = b.detectionTimeline?.yearsBeforeSymptoms ?? 0;
+      return bYears - aYears; // Descending (earliest detection first)
+    });
+}
+
+/**
+ * Get biomarker nodes by ATN+ category
+ * @param category - ATN+ category: 'A' (Amyloid), 'T' (Tau), 'N' (Neurodegeneration), 'I' (Inflammation), 'V' (Vascular)
+ */
+export function getBiomarkersByATN(category: ATNCategory): MechanisticNode[] {
+  return allNodes.filter(
+    n => n.detectionTimeline?.atnCategory === category
+  );
+}
+
+/**
+ * Get biomarker nodes with FDA-cleared commercial tests
+ */
+export function getCommercialBiomarkers(): MechanisticNode[] {
+  return allNodes.filter(
+    n => n.detectionTimeline?.commercialTest?.fdaStatus === 'cleared'
+  );
+}
+
+/**
+ * Get biomarker nodes with pending FDA approval
+ */
+export function getPendingBiomarkers(): MechanisticNode[] {
+  return allNodes.filter(
+    n => n.detectionTimeline?.commercialTest?.fdaStatus === 'pending'
+  );
+}
+
+/**
+ * Get biomarker nodes by detection method
+ * @param method - Detection method: 'CSF', 'Plasma', 'PET', 'MRI', 'Retinal', 'EEG'
+ */
+export function getBiomarkersByMethod(method: MechanisticNode['detectionTimeline'] extends { detectionMethod: infer M } ? M : never): MechanisticNode[] {
+  return allNodes.filter(
+    n => n.detectionTimeline?.detectionMethod === method
+  );
+}
+
+/**
+ * Get biomarkers detectable at a given years-before-symptoms threshold
+ * @param yearsBeforeSymptoms - Minimum years before symptoms when biomarker is detectable
+ */
+export function getBiomarkersDetectableAt(yearsBeforeSymptoms: number): MechanisticNode[] {
+  return allNodes.filter(
+    n => n.detectionTimeline && n.detectionTimeline.yearsBeforeSymptoms >= yearsBeforeSymptoms
+  );
+}
 
 export default mechanisticFramework;

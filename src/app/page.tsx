@@ -4,13 +4,13 @@ import { Header, Footer } from '@/components/layout';
 import { ChapterBreak, SectionDivider, PauseCard } from '@/components/ui';
 import {
   Hero,
+  AlzheimerLegacy,
   InvestmentWaterfall,
   HistoricalTimeline,
   TrialBarriers,
   PromisingFrontier,
   FailureCascade,
   TranslationalFailures,
-  ForgottenObservations,
   CaseStudies,
   HopefulDevelopments,
 } from '@/components/sections';
@@ -18,21 +18,22 @@ import {
 // Act I pause card content
 const actIPauseContent = {
   actLabel: 'Act I',
-  summary: "Alzheimer's research investment is driven by patent status, not scientific promise—creating a 85:1 funding disparity.",
+  summary: "We can now detect Alzheimer's pathology 15-45 years before symptoms—yet research investment is driven by patent status, not scientific promise.",
   claimsWithEvidence: [
     {
-      claim: '$42.5 billion went to patented drugs (mainly amyloid-targeting) while only ~$500 million funded generic alternatives.',
+      claim: 'Biomarkers can detect AD pathology decades before symptoms: pericyte injury (45 years), BBB breakdown (18 years), tau changes (15 years).',
+      evidence: 'CSF sPDGFRβ elevates by age 20 in APOE4 carriers; plasma p-tau217 detects disease 15+ years pre-symptom with >95% accuracy.',
+      sourceNote: 'Montagne et al., 2020; Hansson 2024',
+    },
+    {
+      claim: '$42.5 billion went to patented drugs while only ~$500 million funded generic alternatives—an 85:1 funding disparity.',
       evidence: 'Analysis of clinical trial spending from 1995-2021 shows systematic underinvestment in off-patent compounds.',
       sourceNote: 'Cummings et al., 2022',
     },
     {
-      claim: 'Clinical trials cost $300-600M and take 6+ years, creating an insurmountable barrier for non-patentable treatments.',
-      evidence: 'Phase 3 Alzheimer\'s trials require 1,500-3,000 patients with 18-24 month follow-up, averaging $460M.',
+      claim: 'The patent system abandons promising compounds: metformin, lithium, and TNF inhibitors lack Phase 3 trials despite epidemiological evidence.',
+      evidence: 'Clinical trials cost $300-600M and take 6+ years, making generic drug development economically impossible.',
       sourceNote: 'PhRMA, Cummings 2018',
-    },
-    {
-      claim: 'The patent system creates a structural gap where promising generic compounds are abandoned regardless of efficacy.',
-      evidence: 'Multiple drugs showing epidemiological benefit (metformin, lithium, TNF inhibitors) lack Phase 3 trials due to economics, not science.',
     },
   ],
   lookAhead: 'Next: How this funding structure creates interconnected market failures.',
@@ -63,23 +64,24 @@ const actIIPauseContent = {
 // Act III pause card content
 const actIIIPauseContent = {
   actLabel: 'Act III',
-  summary: 'For the first time, we have FDA-approved treatments that slow decline, plus evidence-based interventions available today.',
+  summary: 'Precision medicine is transforming AD treatment: molecular subtyping reveals 5 distinct disease variants requiring different therapeutic approaches.',
   claimsWithEvidence: [
     {
-      claim: 'Lecanemab and donanemab are the first drugs proven to slow cognitive decline in Alzheimer\'s patients.',
-      evidence: 'Phase 3 trials showed 27% (lecanemab) and 35% (donanemab) slowing of cognitive decline vs placebo.',
-      sourceNote: 'CLARITY-AD (2023), TRAILBLAZER-ALZ 2 (2024)',
+      claim: 'CSF proteomics identifies 5 molecular subtypes with different pathways—"hyperplasticity" (36-59%), "innate immune" (26-29%), and "BBB dysfunction" (7-10%).',
+      evidence: 'Tijms et al. (2024) replicated subtypes across 419 patients; each shows distinct progression rates and treatment responses.',
+      sourceNote: 'Tijms et al., Nature Aging 2024',
     },
     {
-      claim: 'Lifestyle interventions can reduce dementia risk by 30-50%, addressing many of the same upstream mechanisms.',
-      evidence: 'FINGER trial, MIND diet studies, and meta-analyses of exercise show consistent risk reduction across populations.',
+      claim: 'APOE4 carriers respond differently to treatments: HRT benefits APOE4 women more than non-carriers; intranasal insulin helps only APOE4-negative patients.',
+      evidence: 'EPAD cohort showed larger HRT cognitive benefit in APOE4 women; SNIFF trials showed genotype-specific insulin response.',
+      sourceNote: 'Saleh 2023; SNIFF trials',
     },
     {
-      claim: 'The pipeline includes drugs targeting mechanisms beyond amyloid: neuroinflammation, metabolism, and the gut-brain axis.',
-      evidence: 'Phase 2/3 trials underway for ISRIB-like compounds, GLP-1 agonists, and multi-target approaches.',
+      claim: 'Combination therapy matching subtype may finally succeed where single-target approaches failed.',
+      evidence: 'Anti-amyloid + anti-inflammatory for immune subtypes; BBB-protective + metabolic agents for vascular subtypes now in development.',
     },
   ],
-  lookAhead: 'The best time to act is now-whether through available interventions or by advocating for research funding reform.',
+  lookAhead: 'The future is personalized: biomarker-guided stratification could finally deliver the right treatment to the right patient.',
 };
 
 export default function Home() {
@@ -88,6 +90,9 @@ export default function Home() {
       <Header />
       <main className="relative mt-14 lg:mt-0">
         <Hero />
+
+        {/* Intro: Alzheimer's Legacy */}
+        <AlzheimerLegacy />
 
         {/* Act I: The Paradox */}
         <ChapterBreak label="Act I" variant="default">
@@ -112,8 +117,6 @@ export default function Home() {
         <FailureCascade />
         <SectionDivider variant="tick" />
         <TranslationalFailures />
-        <SectionDivider variant="tick" />
-        <ForgottenObservations />
         <SectionDivider variant="tick" />
         <CaseStudies />
 

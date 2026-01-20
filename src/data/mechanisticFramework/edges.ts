@@ -50,7 +50,8 @@ export const module1Edges: MechanisticEdge[] = [
     moduleId: 'M01',
     edgeType: 'MODULATION', // SBSF v2.0: Rate control (kinase → substrate)
     mechanismLabel: 'mTORC1_TFEB_phosphorylation',
-    mechanismDescription: 'mTORC1 directly phosphorylates TFEB at Ser211 and Ser142. pSer211 creates 14-3-3 binding site → cytoplasmic retention',
+    mechanismDescription: 'mTORC1 directly phosphorylates TFEB at Ser211 and Ser142. pSer211 creates 14-3-3 binding site → cytoplasmic retention. Rapamycin/rapalogs inhibit mTORC1 allosterically via FKBP12.',
+    timescale: 'minutes',
     causalConfidence: 'L5',
     evidence: [
       {
@@ -70,7 +71,14 @@ export const module1Edges: MechanisticEdge[] = [
         },
       },
     ],
-    keyInsight: 'Direct biochemical + intervention reversal establishes causality',
+    // Rapamycin kinetics: PMID:31324781, PMID:19461842
+    quantitative: {
+      ic50: 0.1,            // nM - Rapamycin IC50 for mTORC1 (HEK293 cells)
+      // Note: IC50 varies 0.1-100 nM depending on cell line and readout
+      // Rapamycin is allosteric; mTOR kinase inhibitors (Torin1) IC50 = 2-10 nM
+      // TFEB nuclear translocation occurs within 30 min of mTORC1 inhibition
+    },
+    keyInsight: 'Direct biochemical + intervention reversal establishes causality. Rapamycin IC50 ≈ 0.1 nM.',
   },
   {
     id: 'E01.003',
@@ -1082,7 +1090,8 @@ export const module4Edges: MechanisticEdge[] = [
     relation: 'directlyIncreases',
     moduleId: 'M04',
     mechanismLabel: 'GSK3B_tau_phosphorylation',
-    mechanismDescription: 'GSK-3β phosphorylates tau at multiple pathological sites: pSer199, pSer202/Thr205 (AT8), pThr231, pSer396/Ser404 (PHF-1)',
+    mechanismDescription: 'GSK-3β phosphorylates tau at multiple pathological sites: pSer199, pSer202/Thr205 (AT8), pThr231, pSer396/Ser404 (PHF-1). Priming at Ser-404 enables phosphorylation cascade. Lithium inhibits GSK-3β competitively vs Mg²⁺.',
+    timescale: 'minutes',
     causalConfidence: 'L5',
     crossModule: 'Output to Module 7 (Tau)',
     evidence: [
@@ -1096,6 +1105,16 @@ export const module4Edges: MechanisticEdge[] = [
         causalConfidence: 'L5',
       },
     ],
+    // Kinetic parameters: Lithium IC50 from PMID:8622901, PMID:7568149
+    // GSK-3β requires priming phosphorylation for efficient tau modification
+    quantitative: {
+      // Lithium IC50 = 1-2 mM (competitive inhibitor vs Mg²⁺)
+      // Therapeutic range: 0.5-1.5 mM (overlaps with IC50)
+      // Note: GSK3β is the principal tau kinase; inhibition reduces p-tau at Ser396, Ser404
+      foldChange: 0.5,      // ~50% reduction in tau phosphorylation at therapeutic lithium levels
+      direction: 'decrease',
+    },
+    keyInsight: 'GSK-3β is the principal tau kinase; lithium IC50 ≈ 1-2 mM overlaps therapeutic range',
   },
   {
     id: 'E04.008',
@@ -1945,6 +1964,7 @@ export const module6Edges: MechanisticEdge[] = [
     moduleId: 'M06',
     mechanismLabel: 'BACE1_APP_cleavage',
     mechanismDescription: 'BACE1 cleaves APP at β-site → releases sAPPβ and membrane-bound β-CTF (C99)',
+    timescale: 'minutes',
     causalConfidence: 'L5',
     evidence: [
       {
@@ -1959,6 +1979,13 @@ export const module6Edges: MechanisticEdge[] = [
         species: { ncbiTaxon: 'NCBITaxon:10090', commonName: 'mouse' },
       },
     ],
+    // Kinetic parameters from PMID:18177262, PMID:21604208
+    quantitative: {
+      km: 18.3,             // μM - Michaelis constant for APP substrate
+      kcat: 0.133,          // s⁻¹ (8.0 min⁻¹) - catalytic rate constant
+      // Note: kcat/Km = 1.3-4.5 mM⁻¹s⁻¹; relatively low catalytic efficiency (~50 M⁻¹s⁻¹)
+      // Swedish mutation (KM→NL) increases kcat ~10-fold, making BACE1 more efficient
+    },
     keyInsight: 'BACE1 is rate-limiting for Aβ production; validated therapeutic target',
   },
   {
@@ -1988,7 +2015,8 @@ export const module6Edges: MechanisticEdge[] = [
     relation: 'increases',
     moduleId: 'M06',
     mechanismLabel: 'oligomerization',
-    mechanismDescription: 'Aβ monomers aggregate into soluble oligomers (dimers, trimers, Aβ*56). Oligomers are the TOXIC species',
+    mechanismDescription: 'Aβ monomers aggregate into soluble oligomers (dimers, trimers, Aβ*56). Oligomers are the TOXIC species. Aβ CNS half-life ~9h (age 30: 3.8h → age 80: 9.4h), synthesis 7.6%/h, clearance 8.3%/h.',
+    timescale: 'hours',
     causalConfidence: 'L4',
     evidence: [
       {
@@ -2002,7 +2030,27 @@ export const module6Edges: MechanisticEdge[] = [
         causalConfidence: 'L4',
         species: { ncbiTaxon: 'NCBITaxon:10090', commonName: 'mouse', model: 'Tg2576' },
       },
+      {
+        pmid: '26221020',
+        doi: '10.1002/ana.24489',
+        firstAuthor: 'Patterson',
+        year: 2015,
+        title: 'Age and Amyloid Effects on Human CNS Amyloid-Beta Kinetics',
+        quote: 'Aβ turnover rate was highly correlated with age, showing a remarkable 2.5-fold longer Aβ half-life (from 3.8 hours at 30 years to 9.4 hours at 80 years)',
+        methodType: 'cohort',
+        methodDetails: 'SILK stable isotope labeling kinetics in human CSF',
+        causalConfidence: 'L5',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+      },
     ],
+    // Aβ kinetics from SILK studies: PMID:26221020, PMID:28756332
+    quantitative: {
+      // CNS Aβ half-life: 3.8h (age 30) → 9.4h (age 80), average ~9h
+      // Synthesis rate: 7.6%/h, Clearance rate: 8.3%/h
+      // Plasma half-life: ~3h (faster than CSF)
+      foldChange: 2.5,      // Age 30→80 = 2.5× longer half-life
+      direction: 'increase',
+    },
     translationalGap: 'NOTE: Lesne 2006 has image manipulation concerns; oligomer toxicity supported by independent studies',
   },
   {
@@ -2264,7 +2312,8 @@ export const module7Edges: MechanisticEdge[] = [
     relation: 'increases',
     moduleId: 'M07',
     mechanismLabel: 'phospho_tau_conformational_change',
-    mechanismDescription: 'Hyperphosphorylation promotes tau detachment from microtubules and conformational changes exposing aggregation-prone regions',
+    mechanismDescription: 'Hyperphosphorylation promotes tau detachment from microtubules and conformational changes exposing aggregation-prone regions. Wild-type tau t½ ~16h; phosphomimetic tau t½ >24h; autophagy is primary clearance pathway.',
+    timescale: 'hours',
     causalConfidence: 'L5',
     evidence: [
       {
@@ -2276,7 +2325,28 @@ export const module7Edges: MechanisticEdge[] = [
         methodType: 'in_vitro',
         causalConfidence: 'L5',
       },
+      {
+        pmid: '32586946',
+        doi: '10.1038/s41467-020-16984-1',
+        firstAuthor: 'Silva',
+        year: 2020,
+        title: 'Prolonged tau clearance and stress vulnerability rescue by pharmacological activation of autophagy in tauopathy neurons',
+        quote: 'mTOR inhibitors followed by washout leads to a prolonged reduction of tau levels for 12 days',
+        methodType: 'intervention_cells',
+        methodDetails: 'iPSC-derived neurons, mTOR inhibitors',
+        causalConfidence: 'L4',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human', strain: 'iPSC-neurons' },
+      },
     ],
+    // Tau turnover: PMID:22817709, PMID:32586946
+    quantitative: {
+      // Wild-type tau half-life: ~16h in MEFs, ~60h in HT22 cells
+      // Phosphomimetic tau: >24h (slower degradation)
+      // Autophagy inhibition: minimal degradation after 24h
+      foldChange: 1.5,      // ~50% longer half-life for phospho-tau vs WT
+      direction: 'increase',
+    },
+    keyInsight: 'Phosphorylation extends tau half-life; autophagy is primary clearance route',
   },
   {
     id: 'E07.002',
@@ -4372,6 +4442,195 @@ export const module12Edges: MechanisticEdge[] = [
         causalConfidence: 'L4',
       },
     ],
+  },
+
+  // ============================================================================
+  // BIOMARKER OUTPUT EDGES (added 2026-01-19)
+  // These connect mechanistic nodes to their measurable biomarker outputs
+  // ============================================================================
+  {
+    id: 'E12.028',
+    source: 'pericyte_injury',
+    target: 'plasma_spdgfrbeta',
+    relation: 'directlyIncreases',
+    moduleId: 'M12',
+    edgeType: 'BIOMARKER_EFFECT',
+    mechanismLabel: 'pericyte_spdgfrbeta_release',
+    mechanismDescription:
+      'Pericyte injury releases soluble PDGFRβ into CSF. This is the EARLIEST known biomarker of AD pathology, detectable ~45 years before symptom onset in APOE4 carriers.',
+    timescale: 'years',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '32860352',
+        doi: '10.1038/s41591-020-1007-6',
+        firstAuthor: 'Montagne',
+        year: 2020,
+        title: 'APOE4 leads to blood-brain barrier dysfunction predicting cognitive decline',
+        quote: 'CSF sPDGFRβ was significantly elevated in cognitively unimpaired APOE4 carriers as young as 20 years',
+        methodType: 'cohort',
+        causalConfidence: 'L4',
+      },
+    ],
+    keyInsight: 'LANDMARK: Earliest detectable AD biomarker, precedes Aβ/tau by decades',
+  },
+  {
+    id: 'E12.029',
+    source: 'lrp1_apoe4_impaired',
+    target: 'abeta_monomers',
+    relation: 'increases',
+    moduleId: 'M12',
+    edgeType: 'MODULATION',
+    mechanismLabel: 'lrp1_abeta_clearance_failure',
+    mechanismDescription:
+      'LRP1 is the primary receptor for Aβ clearance at the BBB. ApoE4 reduces LRP1 expression and function, leading to impaired Aβ transcytosis from brain to blood. This establishes BBB dysfunction as UPSTREAM of amyloid accumulation.',
+    timescale: 'years',
+    causalConfidence: 'L3',
+    crossModule: 'Output to Module 6 (Amyloid)',
+    evidence: [
+      {
+        pmid: '21576468',
+        doi: '10.1073/pnas.1016888108',
+        firstAuthor: 'Castellano',
+        year: 2011,
+        title: 'Human apoE isoforms differentially regulate brain amyloid-β peptide clearance',
+        quote: 'ApoE4 mice showed 50% slower elimination of Aβ from brain compared to ApoE3',
+        methodType: 'transgenic',
+        causalConfidence: 'L3',
+      },
+    ],
+    keyInsight: 'BBB clearance failure PRECEDES amyloid accumulation',
+  },
+  {
+    id: 'E12.030',
+    source: 'bbb_breakdown',
+    target: 'abeta_monomers',
+    relation: 'increases',
+    moduleId: 'M12',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'bbb_abeta_accumulation',
+    mechanismDescription:
+      'BBB breakdown reduces Aβ clearance via two mechanisms: (1) reduced LRP1-mediated efflux, (2) peripheral proteins entering brain can nucleate Aβ aggregation. BBB dysfunction is detectable before amyloid PET positivity.',
+    timescale: 'years',
+    causalConfidence: 'L4',
+    crossModule: 'Output to Module 6 (Amyloid)',
+    evidence: [
+      {
+        pmid: '32860352',
+        firstAuthor: 'Montagne',
+        year: 2020,
+        title: 'APOE4 leads to blood-brain barrier dysfunction predicting cognitive decline',
+        methodType: 'cohort',
+        causalConfidence: 'L4',
+      },
+    ],
+    keyInsight: 'Vascular dysfunction is UPSTREAM of amyloid pathology',
+  },
+  {
+    id: 'E12.031',
+    source: 'tau_aggregated',
+    target: 'plasma_ptau217',
+    relation: 'directlyIncreases',
+    moduleId: 'M12',
+    edgeType: 'BIOMARKER_EFFECT',
+    mechanismLabel: 'tau_ptau217_release',
+    mechanismDescription:
+      'Hyperphosphorylated tau at T217 is actively secreted from neurons and released upon neuronal damage. pTau217 in plasma closely tracks tau PET signal and predicts progression.',
+    timescale: 'months',
+    causalConfidence: 'L4',
+    crossModule: 'Input from Module 7 (Tau)',
+    evidence: [
+      {
+        pmid: '32333900',
+        doi: '10.1001/jama.2020.12134',
+        firstAuthor: 'Palmqvist',
+        year: 2020,
+        title: 'Discriminative Accuracy of Plasma Phospho-tau217 for Alzheimer Disease vs Other Neurodegenerative Disorders',
+        quote: 'Plasma P-tau217 showed high accuracy for discriminating Alzheimer disease from other neurodegenerative diseases',
+        methodType: 'cohort',
+        causalConfidence: 'L4',
+      },
+    ],
+    keyInsight: 'Best-performing blood tau biomarker (AUC 0.96)',
+  },
+  {
+    id: 'E12.032',
+    source: 'tau_aggregated',
+    target: 'plasma_ptau181',
+    relation: 'directlyIncreases',
+    moduleId: 'M12',
+    edgeType: 'BIOMARKER_EFFECT',
+    mechanismLabel: 'tau_ptau181_release',
+    mechanismDescription:
+      'pTau181 is released from neurons undergoing tau pathology. Less specific than pTau217 but FDA-cleared as first blood AD biomarker.',
+    timescale: 'months',
+    causalConfidence: 'L4',
+    crossModule: 'Input from Module 7 (Tau)',
+    evidence: [
+      {
+        pmid: '32589318',
+        doi: '10.1016/S1474-4422(20)30071-5',
+        firstAuthor: 'Karikari',
+        year: 2020,
+        title: 'Blood phosphorylated tau 181 as a biomarker for Alzheimer\'s disease',
+        quote: 'Plasma p-tau181 predicted Alzheimer disease dementia with high accuracy',
+        methodType: 'cohort',
+        causalConfidence: 'L4',
+      },
+    ],
+    keyInsight: 'First FDA-cleared plasma AD biomarker',
+  },
+  {
+    id: 'E12.033',
+    source: 'neuronal_count',
+    target: 'plasma_nfl',
+    relation: 'directlyIncreases',
+    moduleId: 'M12',
+    edgeType: 'BIOMARKER_EFFECT',
+    mechanismLabel: 'neuronal_loss_nfl_release',
+    mechanismDescription:
+      'Neurofilament light chain (NfL) is released from axons upon neuronal damage. Plasma NfL is a sensitive but non-specific marker of neurodegeneration.',
+    timescale: 'months',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '30282774',
+        doi: '10.1038/s41591-018-0304-7',
+        firstAuthor: 'Preische',
+        year: 2019,
+        title: 'Serum neurofilament dynamics predicts neurodegeneration and clinical progression in presymptomatic Alzheimer\'s disease',
+        quote: 'Serum NfL increased approximately 16 years before estimated symptom onset',
+        methodType: 'cohort',
+        causalConfidence: 'L4',
+      },
+    ],
+    keyInsight: 'Neurodegeneration marker, tracks disease progression',
+  },
+  {
+    id: 'E12.034',
+    source: 'neuronal_count',
+    target: 'retinal_rnfl',
+    relation: 'decreases',
+    moduleId: 'M12',
+    edgeType: 'BIOMARKER_EFFECT',
+    mechanismLabel: 'neuronal_loss_rnfl_thinning',
+    mechanismDescription:
+      'Retinal nerve fiber layer thickness (measured by OCT) reflects retinal ganglion cell loss, which parallels central neurodegeneration. Non-invasive marker.',
+    timescale: 'months',
+    causalConfidence: 'L6',
+    evidence: [
+      {
+        pmid: '31174836',
+        doi: '10.1002/alz.12046',
+        firstAuthor: 'den Haan',
+        year: 2019,
+        title: 'Retinal thickness in Alzheimer\'s disease: A systematic review and meta-analysis',
+        quote: 'RNFL thickness was significantly reduced in AD patients compared with healthy controls',
+        methodType: 'meta_analysis',
+        causalConfidence: 'L6',
+      },
+    ],
+    keyInsight: 'Non-invasive OCT measure correlates with brain atrophy',
   },
 ];
 

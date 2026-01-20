@@ -223,9 +223,18 @@ function generateFailureHypotheses(
   }
 
   // Check if target breaks any feedback loops
-  const nodeInLoop = feedbackLoops.some(loop =>
-    loop.nodeIds && loop.nodeIds.some(n => matchedNodes.includes(n))
-  );
+  // Derive nodes from edge IDs in each loop
+  const nodeInLoop = feedbackLoops.some(loop => {
+    const loopNodes = new Set<string>();
+    loop.edgeIds.forEach(edgeId => {
+      const edge = allEdges.find(e => e.id === edgeId);
+      if (edge) {
+        loopNodes.add(edge.source);
+        loopNodes.add(edge.target);
+      }
+    });
+    return matchedNodes.some(n => loopNodes.has(n));
+  });
 
   if (!nodeInLoop) {
     hypotheses.push('Target does not interrupt any feedback loops - pathology may regenerate');
@@ -264,7 +273,17 @@ function suggestAlternatives(matchedNodes: string[], matchedModules: string[]): 
   }
 
   // If no loop involvement, suggest loop-breakers
-  const loopNodes = new Set(feedbackLoops.flatMap(l => l.nodeIds || []));
+  // Derive loop nodes from edge IDs
+  const loopNodes = new Set<string>();
+  feedbackLoops.forEach(loop => {
+    loop.edgeIds.forEach(edgeId => {
+      const edge = allEdges.find(e => e.id === edgeId);
+      if (edge) {
+        loopNodes.add(edge.source);
+        loopNodes.add(edge.target);
+      }
+    });
+  });
   if (!matchedNodes.some(n => loopNodes.has(n))) {
     suggestions.push('Consider adding treatment that breaks feedback loops (e.g., Colchicine, Semaglutide)');
   }
@@ -591,9 +610,19 @@ if (topFailedModule) {
 }
 
 // Count trials with no loop involvement
+// Derive all loop nodes from edge IDs
+const allLoopNodes = new Set<string>();
+feedbackLoops.forEach(loop => {
+  loop.edgeIds.forEach(edgeId => {
+    const edge = allEdges.find(e => e.id === edgeId);
+    if (edge) {
+      allLoopNodes.add(edge.source);
+      allLoopNodes.add(edge.target);
+    }
+  });
+});
 const noLoopTrials = analyses.filter(a => {
-  const loopNodes = new Set(feedbackLoops.flatMap(l => l.nodeIds || []));
-  return !a.matchedNodes.some(n => loopNodes.has(n));
+  return !a.matchedNodes.some(n => allLoopNodes.has(n));
 }).length;
 
 console.log(`2. FEEDBACK LOOP ANALYSIS`);

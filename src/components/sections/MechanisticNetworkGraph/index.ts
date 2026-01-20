@@ -14,6 +14,7 @@ export {
 
 // Re-export drug pathway components
 export { DrugLibraryPicker } from './DrugLibraryPicker';
+export { PresetPicker } from './PresetPicker';
 export { PathwayFocusPanel } from './PathwayFocusPanel';
 
 // The main component is still in the parent file

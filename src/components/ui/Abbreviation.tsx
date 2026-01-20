@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, Fragment, useMemo, memo } from 'react';
+import { useState, Fragment, useMemo, memo, useRef, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { abbreviations, getAbbreviationPattern, type AbbreviationKey } from '@/data/abbreviations';
 
@@ -14,31 +15,70 @@ interface AbbreviationProps {
 
 // Memoized abbreviation component to prevent unnecessary re-renders
 export const Abbreviation = memo(function Abbreviation({ abbr, full }: AbbreviationProps) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [coords, setCoords] = useState({ top: 0, left: 0 });
+  const triggerRef = useRef<HTMLSpanElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const updatePosition = useCallback(() => {
+    if (!triggerRef.current) return;
+    const rect = triggerRef.current.getBoundingClientRect();
+    setCoords({
+      top: rect.top + window.scrollY - 8,
+      left: rect.left + rect.width / 2 + window.scrollX,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (isVisible) {
+      updatePosition();
+      window.addEventListener('scroll', updatePosition, true);
+      window.addEventListener('resize', updatePosition);
+      return () => {
+        window.removeEventListener('scroll', updatePosition, true);
+        window.removeEventListener('resize', updatePosition);
+      };
+    }
+  }, [isVisible, updatePosition]);
+
+  const tooltipContent = (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.span
+          initial={{ opacity: 0, y: 4 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 4 }}
+          transition={{ duration: 0.15 }}
+          className="fixed px-3 py-1.5 bg-[var(--text-primary)] text-white text-sm rounded-md whitespace-nowrap shadow-lg pointer-events-none"
+          style={{
+            top: coords.top,
+            left: coords.left,
+            transform: 'translate(-50%, -100%)',
+            zIndex: 9999,
+          }}
+        >
+          {full}
+          <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[var(--text-primary)]" />
+        </motion.span>
+      )}
+    </AnimatePresence>
+  );
 
   return (
     <span
+      ref={triggerRef}
       className="relative inline-block"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={() => setIsVisible(false)}
     >
       <span className="underline decoration-dotted decoration-[var(--text-muted)] underline-offset-2 cursor-help">
         {abbr}
       </span>
-      <AnimatePresence>
-        {isHovered && (
-          <motion.span
-            initial={{ opacity: 0, y: 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 4 }}
-            transition={{ duration: 0.15 }}
-            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-[var(--text-primary)] text-white text-sm rounded-md whitespace-nowrap z-50 shadow-lg pointer-events-none"
-          >
-            {full}
-            <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[var(--text-primary)]" />
-          </motion.span>
-        )}
-      </AnimatePresence>
+      {mounted && createPortal(tooltipContent, document.body)}
     </span>
   );
 });

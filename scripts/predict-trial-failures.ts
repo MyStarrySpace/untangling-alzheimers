@@ -17,7 +17,8 @@
 import * as XLSX from 'xlsx';
 import * as path from 'path';
 import { allNodes, type MechanisticNode } from '../src/data/mechanisticFramework/nodes';
-import { allEdges, type MechanisticEdge } from '../src/data/mechanisticFramework/edges';
+import { allEdges } from '../src/data/mechanisticFramework/edges';
+import type { MechanisticEdge } from '../src/data/mechanisticFramework/types';
 import { modules } from '../src/data/mechanisticFramework/modules';
 import { feedbackLoops } from '../src/data/mechanisticFramework/feedbackLoops';
 import {
@@ -347,8 +348,16 @@ function checkLoopInvolvement(nodeIds: string[]): { broken: number; participatin
   let participating = 0;
 
   for (const loop of feedbackLoops) {
-    const loopNodes = loop.nodeIds || [];
-    const inLoop = nodeIds.some(n => loopNodes.includes(n));
+    // Derive loop nodes from edge IDs
+    const loopNodes = new Set<string>();
+    loop.edgeIds.forEach(edgeId => {
+      const edge = allEdges.find(e => e.id === edgeId);
+      if (edge) {
+        loopNodes.add(edge.source);
+        loopNodes.add(edge.target);
+      }
+    });
+    const inLoop = nodeIds.some(n => loopNodes.has(n));
 
     if (inLoop) {
       participating++;
@@ -690,8 +699,8 @@ const trials: Trial[] = data.map(row => ({
   population: String(row['Pivotal population'] || ''),
   isCompleted: row['Outcome label (1=fail, 0=success)'] !== undefined &&
                row['Outcome label (1=fail, 0=success)'] !== '',
-  actualOutcome: row['Outcome label (1=fail, 0=success)'] === 1 ? 'failure' :
-                 row['Outcome label (1=fail, 0=success)'] === 0 ? 'success' : 'unknown',
+  actualOutcome: (row['Outcome label (1=fail, 0=success)'] === 1 ? 'failure' :
+                 row['Outcome label (1=fail, 0=success)'] === 0 ? 'success' : 'unknown') as 'success' | 'failure' | 'unknown',
   redFlags: String(row['Framework red flags (from DAG logic)'] || ''),
   notes: String(row['Notes'] || ''),
 })).filter(t => t.name);

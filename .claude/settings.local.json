@@ -37,7 +37,15 @@
       "Bash(npm run predict-failures:*)",
       "Bash(npm run analyze-sex-ancestry:*)",
       "WebFetch(domain:pubchem.ncbi.nlm.nih.gov)",
-      "Bash(node --experimental-specifier-resolution=node -e:*)"
+      "Bash(node --experimental-specifier-resolution=node -e:*)",
+      "Bash(git revert:*)",
+      "Bash(timeout 10 npm run dev:*)",
+      "Bash(find:*)",
+      "Skill(plan)",
+      "WebFetch(domain:www.clinicaleducation.org)",
+      "WebFetch(domain:wiki.apoe4.info)",
+      "WebFetch(domain:fastlifehacks.com)",
+      "WebFetch(domain:www.apollohealthco.com)"
     ]
   }
 }

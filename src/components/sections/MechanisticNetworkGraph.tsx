@@ -30,7 +30,13 @@ import {
 } from '@/data/mechanisticFramework/drugLibrary';
 import { calculateDrugPathway, getPathwayStats } from '@/lib/pathwayCalculation';
 import { DrugLibraryPicker } from './MechanisticNetworkGraph/DrugLibraryPicker';
+import { PresetPicker } from './MechanisticNetworkGraph/PresetPicker';
 import { PathwayFocusPanel } from './MechanisticNetworkGraph/PathwayFocusPanel';
+import {
+  type PresetOption,
+  getTreatmentsForPreset,
+  isHypothesisPreset,
+} from '@/data/mechanisticFramework/presets';
 
 // Import modular types and constants
 import type {
@@ -2414,6 +2420,11 @@ function MechanisticNetworkGraphInner({
   const [showDrugLibrary, setShowDrugLibrary] = useState(false);
   const [drugPathwayFocusMode, setDrugPathwayFocusMode] = useState(false);
 
+  // Preset/hypothesis visualization state
+  const [selectedPreset, setSelectedPreset] = useState<PresetOption | null>(null);
+  const [showPresetPicker, setShowPresetPicker] = useState(false);
+  const [highlightedNodes, setHighlightedNodes] = useState<Set<string>>(new Set());
+
   // Calculate pathway when drug is selected
   useEffect(() => {
     if (selectedDrug) {
@@ -2447,6 +2458,52 @@ function MechanisticNetworkGraphInner({
       });
       return updated;
     });
+  }, []);
+
+  // Handle preset selection
+  const handleSelectPreset = useCallback((preset: PresetOption) => {
+    setSelectedPreset(preset);
+    setShowPresetPicker(false);
+
+    if (isHypothesisPreset(preset)) {
+      // Hypothesis preset: highlight specified nodes
+      setHighlightedNodes(new Set(preset.nodeIds || []));
+      // Clear any selected drug
+      setSelectedDrug(null);
+      setDrugPathway(null);
+
+      // Enable modules containing highlighted nodes
+      const modulesToEnable = new Set<string>();
+      preset.nodeIds?.forEach(nodeId => {
+        const node = allNodes.find(n => n.id === nodeId);
+        if (node) modulesToEnable.add(node.moduleId);
+      });
+      setModuleFilters(prev => {
+        const updated = { ...prev };
+        modulesToEnable.forEach(moduleId => {
+          if (updated[moduleId] === 'off') {
+            updated[moduleId] = 'on';
+          }
+        });
+        return updated;
+      });
+    } else if (preset.treatmentIds && preset.treatmentIds.length > 0) {
+      // Treatment preset: select the first treatment (could be enhanced to show multi-select)
+      const treatments = getTreatmentsForPreset(preset.id);
+      if (treatments.length > 0) {
+        handleSelectDrug(treatments[0]);
+      }
+      setHighlightedNodes(new Set());
+    }
+  }, [handleSelectDrug]);
+
+  // Clear preset selection
+  const handleClearPreset = useCallback(() => {
+    setSelectedPreset(null);
+    setHighlightedNodes(new Set());
+    setSelectedDrug(null);
+    setDrugPathway(null);
+    setDrugPathwayFocusMode(false);
   }, []);
 
   // Close drug pathway view
@@ -2786,6 +2843,63 @@ function MechanisticNetworkGraphInner({
       })
     );
   }, [drugPathwayFocusMode, drugPathway, pathwayNodeSet, pathwayEdgeSet, setNodes, setEdges]);
+
+  // Apply hypothesis preset highlighting when highlightedNodes changes
+  useEffect(() => {
+    if (highlightedNodes.size === 0) {
+      // Clear any preset highlighting when no nodes are highlighted
+      setNodes(currentNodes =>
+        currentNodes.map(node => {
+          if (node.id.startsWith('__waypoint_') || node.id.startsWith('__pseudo_') || node.id.startsWith('__dummy_')) {
+            return node;
+          }
+          // Remove hypothesis highlighting styles
+          const { boxShadow, filter, ...restStyle } = node.style || {};
+          return {
+            ...node,
+            style: {
+              ...restStyle,
+              opacity: node.data?.isPartial ? 0.5 : 1,
+            },
+          };
+        })
+      );
+      return;
+    }
+
+    // Apply highlighting to preset nodes
+    setNodes(currentNodes =>
+      currentNodes.map(node => {
+        if (node.id.startsWith('__waypoint_') || node.id.startsWith('__pseudo_') || node.id.startsWith('__dummy_')) {
+          return node;
+        }
+
+        const isHighlighted = highlightedNodes.has(node.id);
+
+        if (isHighlighted) {
+          return {
+            ...node,
+            style: {
+              ...node.style,
+              opacity: 1,
+              border: `3px solid ${selectedPreset?.color || '#a78bfa'}`,
+              boxShadow: `0 0 8px ${selectedPreset?.color || '#a78bfa'}80`,
+            },
+          };
+        } else {
+          // Dim non-highlighted nodes
+          return {
+            ...node,
+            style: {
+              ...node.style,
+              opacity: 0.25,
+              filter: 'grayscale(80%)',
+            },
+          };
+        }
+      })
+    );
+  }, [highlightedNodes, selectedPreset, setNodes]);
 
   // Recreate all nodes when module filters, pinned nodes, boundary expansion, cross-module toggle, or sort config change
   useEffect(() => {
@@ -3529,32 +3643,48 @@ function MechanisticNetworkGraphInner({
               />
             </label>
 
-            {/* Treatment Library Button */}
+            {/* Load Preset Button */}
             <div className="relative">
               <button
-                onClick={() => setShowDrugLibrary(!showDrugLibrary)}
+                onClick={() => setShowPresetPicker(!showPresetPicker)}
                 className={`px-1.5 py-0.5 border rounded transition-colors flex items-center gap-1 ${
-                  selectedDrug || showDrugLibrary
+                  selectedPreset || showPresetPicker
                     ? 'bg-[var(--accent-orange)] text-white border-[var(--accent-orange)]'
                     : 'bg-white border-[var(--border)] hover:border-[var(--accent-orange)]'
                 }`}
-                title="Browse treatment library to visualize pathways"
+                title="Load a preset to highlight pathways or hypotheses"
               >
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
-                Treatments
+                Load Preset
+                {selectedPreset && (
+                  <span className="ml-1 text-[9px] opacity-80">
+                    ({selectedPreset.label.split(' ')[0]}...)
+                  </span>
+                )}
               </button>
-              {showDrugLibrary && (
+              {showPresetPicker && (
                 <div className="absolute top-full right-0 mt-1 z-50">
-                  <DrugLibraryPicker
-                    onSelectDrug={handleSelectDrug}
-                    onClose={() => setShowDrugLibrary(false)}
-                    selectedDrugId={selectedDrug?.id}
+                  <PresetPicker
+                    onSelectPreset={handleSelectPreset}
+                    onClose={() => setShowPresetPicker(false)}
+                    selectedPresetId={selectedPreset?.id}
                   />
                 </div>
               )}
             </div>
+
+            {/* Clear Preset Button (shown when preset is active) */}
+            {selectedPreset && (
+              <button
+                onClick={handleClearPreset}
+                className="px-1.5 py-0.5 border border-[var(--border)] rounded hover:bg-[var(--bg-secondary)] transition-colors text-[var(--text-muted)]"
+                title="Clear current preset"
+              >
+                Clear
+              </button>
+            )}
 
             {/* Add Node Button */}
             <button

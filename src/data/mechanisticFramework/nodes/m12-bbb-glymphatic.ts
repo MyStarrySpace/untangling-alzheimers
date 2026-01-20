@@ -41,9 +41,32 @@ export const module12Nodes: MechanisticNode[] = [
     category: 'STATE',
     subtype: 'DiseaseStage',
     moduleId: 'M12',
-    description: 'sPDGFRβ in CSF = pericyte injury biomarker',
-    mechanism: 'Predicts cognitive decline independent of Aβ/tau',
+    description: 'sPDGFRβ in CSF = pericyte injury biomarker - EARLIEST detectable AD pathology',
+    mechanism: 'Pericyte degeneration releases sPDGFRβ into CSF. Montagne 2020: detectable at age ~20 in APOE4 carriers, 45 years before symptom onset. Predicts cognitive decline independent of Aβ/tau. Links vascular to neurodegeneration.',
     roles: ['BIOMARKER'],
+    detectionTimeline: {
+      yearsBeforeSymptoms: 45,
+      detectionMethod: 'CSF',
+      atnCategory: 'V',
+      performance: {
+        auc: 0.85,
+        citation: '32860352', // Montagne 2020 Nature Medicine
+      },
+    },
+  },
+  {
+    id: 'lrp1_apoe4_impaired',
+    label: 'LRP1-ApoE4 Impairment',
+    category: 'STATE',
+    subtype: 'DiseaseStage',
+    moduleId: 'M12',
+    references: {
+      protein: 'UniProt:Q07954', // LRP1
+      process: 'GO:0006898', // receptor-mediated endocytosis
+    },
+    description: 'ApoE4 impairs LRP1-mediated Aβ clearance at BBB',
+    mechanism: 'LRP1 (low-density lipoprotein receptor-related protein 1) is the primary Aβ transporter at BBB. ApoE4 binds LRP1 with lower affinity than ApoE3, reducing Aβ transcytosis by ~50%. Additionally, ApoE4 promotes LRP1 internalization, further reducing clearance capacity. This establishes BBB dysfunction as UPSTREAM of amyloid accumulation.',
+    roles: ['THERAPEUTIC_TARGET', 'LEVERAGE_POINT'],
   },
   {
     id: 'glymphatic_clearance',
@@ -254,7 +277,7 @@ export const module12Nodes: MechanisticNode[] = [
     id: 'aria_edema',
     label: 'ARIA-E (Edema)',
     category: 'STATE',
-    subtype: 'AdverseEvent',
+    subtype: 'DiseaseStage',
     moduleId: 'M12',
     description: 'Amyloid-related imaging abnormality - edema/effusion',
     mechanism:
@@ -265,7 +288,7 @@ export const module12Nodes: MechanisticNode[] = [
     id: 'aria_hemorrhage',
     label: 'ARIA-H (Hemorrhage)',
     category: 'STATE',
-    subtype: 'AdverseEvent',
+    subtype: 'DiseaseStage',
     moduleId: 'M12',
     description: 'Amyloid-related imaging abnormality - microhemorrhage',
     mechanism:

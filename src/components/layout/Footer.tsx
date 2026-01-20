@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Container } from '@/components/ui';
-import { ExternalLink, BookOpen } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -31,21 +31,7 @@ export function Footer() {
             >
               Component Library
             </Link>
-            <a
-              href="https://goinvo.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[var(--text-muted)] hover:text-[var(--accent-orange)] text-sm flex items-center gap-1 transition-colors"
-            >
-              GoInvo
-              <ExternalLink className="w-3 h-3" />
-            </a>
           </div>
-        </div>
-        <div className="mt-8 pt-6 border-t border-[var(--border)] text-center">
-          <p className="text-[var(--text-muted)] text-xs">
-            Created by GoInvo Healthcare Design Studio
-          </p>
         </div>
       </Container>
     </footer>

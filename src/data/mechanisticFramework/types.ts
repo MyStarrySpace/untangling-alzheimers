@@ -114,6 +114,8 @@ export type StateSubtype =
   | 'MetabolicState'      // Glycolytic, oxidative
   | 'DiseaseStage'        // Preclinical, MCI, dementia
   | 'Homeostatic'         // Normal function state (capacity, integrity)
+  | 'PhysiologicalState'  // Normal physiological function (neuroprotection, etc.)
+  | 'SignalingPathway'    // Active signaling state (insulin signaling, etc.)
   // SBSF v2.0: Former PROCESS subtypes migrated to STATE
   | 'BiologicalProcess'   // GO Biological Process (activity state)
   | 'Phagocytosis'        // GO:0006909
@@ -135,11 +137,16 @@ export type BoundarySubtype =
   // External exposures
   | 'DietaryIntake'       // Nutrients, xenobiotics
   | 'EnvironmentalAgent'  // Pathogens, toxins
+  | 'EnvironmentalExposure' // Chronic stress, pollution
   | 'Excretion'           // Renal, biliary elimination
   // Interventions
   | 'SmallMolecule'       // Drugs, supplements
   | 'Biologic'            // Antibodies, vaccines
   | 'Lifestyle'           // Exercise, diet change, sleep
+  | 'LifestyleIntervention' // Specific lifestyle changes (stress reduction, diet)
+  | 'DrugIntervention'    // Pharmacological interventions (HRT, insulin)
+  // Hormonal signals
+  | 'HormoneSignal'       // Estrogen, testosterone, cortisol, thyroid
   // Degradation
   | 'Proteolysis'         // Proteasome, lysosome
   | 'CellDeath'           // Apoptosis, necrosis
@@ -153,6 +160,64 @@ export type BoundarySubtype =
  * Input boundaries go on the left, output boundaries on the right
  */
 export type BoundaryDirection = 'input' | 'output' | 'bidirectional';
+
+// ============================================================================
+// BIOMARKER DETECTION TIMELINE
+// ============================================================================
+
+/**
+ * Detection method for biomarkers
+ */
+export type DetectionMethod = 'CSF' | 'Plasma' | 'PET' | 'MRI' | 'Retinal' | 'EEG';
+
+/**
+ * ATN+ classification categories (NIA-AA extended)
+ * A = Amyloid, T = Tau, N = Neurodegeneration, I = Inflammation, V = Vascular
+ */
+export type ATNCategory = 'A' | 'T' | 'N' | 'I' | 'V';
+
+/**
+ * FDA regulatory status for commercial tests
+ */
+export type FDATestStatus = 'cleared' | 'pending' | 'none';
+
+/**
+ * Commercial test information
+ */
+export interface CommercialTest {
+  name: string;                 // e.g., "PrecivityAD2"
+  manufacturer: string;         // e.g., "C2N Diagnostics"
+  fdaStatus: FDATestStatus;
+}
+
+/**
+ * Diagnostic performance metrics
+ */
+export interface BiomarkerPerformance {
+  sensitivity?: number;         // 0-1
+  specificity?: number;         // 0-1
+  auc?: number;                 // Area under ROC curve, 0-1
+  citation?: string;            // PMID for performance data
+}
+
+/**
+ * Detection timeline for biomarkers
+ *
+ * Captures when a biomarker becomes detectable relative to symptom onset,
+ * enabling visualization of the preclinical cascade.
+ */
+export interface DetectionTimeline {
+  /** Years before symptom onset when biomarker becomes abnormal (e.g., 45 for sPDGFRβ) */
+  yearsBeforeSymptoms: number;
+  /** Primary detection method */
+  detectionMethod: DetectionMethod;
+  /** Commercial test availability (if any) */
+  commercialTest?: CommercialTest;
+  /** ATN+ classification category */
+  atnCategory?: ATNCategory;
+  /** Diagnostic performance metrics */
+  performance?: BiomarkerPerformance;
+}
 
 export type NodeSubtype = StockSubtype | RegulatorSubtype | StateSubtype | BoundarySubtype;
 
@@ -483,6 +548,9 @@ export interface MechanisticNode {
 
   // Boundary-specific: direction for layout positioning
   boundaryDirection?: BoundaryDirection;  // 'input' = left, 'output' = right
+
+  // Biomarker-specific: detection timeline
+  detectionTimeline?: DetectionTimeline;  // When biomarker becomes detectable
 }
 
 // ============================================================================

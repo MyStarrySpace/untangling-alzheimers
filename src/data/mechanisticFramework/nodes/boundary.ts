@@ -294,4 +294,194 @@ export const boundaryNodes: MechanisticNode[] = [
     units: 'Aβ42 pg/mL, pTau181 pg/mL, NfL pg/mL, sTREM2 pg/mL',
     roles: ['BIOMARKER'],
   },
+
+  // ============================================================================
+  // BIOMARKER NODES WITH DETECTION TIMELINES
+  // These capture the temporal cascade of biomarker abnormalities
+  // ============================================================================
+
+  {
+    id: 'plasma_spdgfrbeta',
+    label: 'sPDGFRβ (Pericyte Injury)',
+    category: 'BOUNDARY',
+    subtype: 'Biomarker',
+    moduleId: 'BOUNDARY',
+    boundaryDirection: 'output',
+    sharedWith: ['M12'],
+    description: 'Soluble PDGFRβ released from injured pericytes - earliest known AD biomarker',
+    mechanism: 'Pericyte injury releases sPDGFRβ into CSF. Detectable at age ~20 in APOE4 carriers, 45 years before symptom onset. Predicts cognitive decline independent of Aβ/tau (Montagne 2020).',
+    roles: ['BIOMARKER'],
+    units: 'pg/mL',
+    detectionTimeline: {
+      yearsBeforeSymptoms: 45,
+      detectionMethod: 'CSF',
+      atnCategory: 'V',
+      performance: {
+        auc: 0.85,
+        citation: '32860352', // Montagne 2020 Nature Medicine
+      },
+    },
+  },
+  {
+    id: 'plasma_ptau217',
+    label: 'p-tau217',
+    category: 'BOUNDARY',
+    subtype: 'Biomarker',
+    moduleId: 'BOUNDARY',
+    boundaryDirection: 'output',
+    sharedWith: ['M07'],
+    description: 'Plasma phospho-tau at threonine 217 - most accurate blood tau marker',
+    mechanism: 'pTau217 increases with amyloid positivity, outperforms pTau181 for early detection. Correlates with tau PET. AUC 0.94-0.98 for distinguishing AD from other dementias.',
+    roles: ['BIOMARKER'],
+    units: 'pg/mL',
+    detectionTimeline: {
+      yearsBeforeSymptoms: 15,
+      detectionMethod: 'Plasma',
+      atnCategory: 'T',
+      commercialTest: {
+        name: 'PrecivityAD2',
+        manufacturer: 'C2N Diagnostics',
+        fdaStatus: 'pending',
+      },
+      performance: {
+        sensitivity: 0.96,
+        specificity: 0.92,
+        auc: 0.96,
+        citation: '32333900', // Palmqvist 2020 JAMA
+      },
+    },
+  },
+  {
+    id: 'plasma_ptau181',
+    label: 'p-tau181',
+    category: 'BOUNDARY',
+    subtype: 'Biomarker',
+    moduleId: 'BOUNDARY',
+    boundaryDirection: 'output',
+    sharedWith: ['M07'],
+    description: 'Plasma phospho-tau at threonine 181 - FDA-cleared blood tau marker',
+    mechanism: 'pTau181 elevates ~10 years before symptoms, tracks with amyloid pathology. First FDA-cleared plasma AD biomarker (Lumipulse, Fujirebio 2022).',
+    roles: ['BIOMARKER'],
+    units: 'pg/mL',
+    detectionTimeline: {
+      yearsBeforeSymptoms: 10,
+      detectionMethod: 'Plasma',
+      atnCategory: 'T',
+      commercialTest: {
+        name: 'Lumipulse G pTau181',
+        manufacturer: 'Fujirebio',
+        fdaStatus: 'cleared',
+      },
+      performance: {
+        sensitivity: 0.88,
+        specificity: 0.85,
+        auc: 0.91,
+        citation: '32589318', // Karikari 2020 Lancet Neurol
+      },
+    },
+  },
+  {
+    id: 'plasma_abeta42_40_ratio',
+    label: 'Aβ42/40 Ratio',
+    category: 'BOUNDARY',
+    subtype: 'Biomarker',
+    moduleId: 'BOUNDARY',
+    boundaryDirection: 'output',
+    sharedWith: ['M06'],
+    description: 'Plasma Aβ42/40 ratio - correlates with amyloid PET status',
+    mechanism: 'Decreased Aβ42/40 ratio indicates brain amyloid deposition (sequestration hypothesis). More reliable than absolute Aβ42 levels. FDA-cleared (PrecivityAD, C2N).',
+    roles: ['BIOMARKER'],
+    units: 'ratio',
+    detectionTimeline: {
+      yearsBeforeSymptoms: 18,
+      detectionMethod: 'Plasma',
+      atnCategory: 'A',
+      commercialTest: {
+        name: 'PrecivityAD',
+        manufacturer: 'C2N Diagnostics',
+        fdaStatus: 'cleared',
+      },
+      performance: {
+        sensitivity: 0.81,
+        specificity: 0.84,
+        auc: 0.88,
+        citation: '31738165', // Schindler 2019 Neurology
+      },
+    },
+  },
+  {
+    id: 'plasma_nfl',
+    label: 'Neurofilament Light (NfL)',
+    category: 'BOUNDARY',
+    subtype: 'Biomarker',
+    moduleId: 'BOUNDARY',
+    boundaryDirection: 'output',
+    sharedWith: ['M07'],
+    description: 'Plasma neurofilament light chain - marker of axonal injury',
+    mechanism: 'NfL released from damaged neurons. Non-specific but sensitive neurodegeneration marker. Elevates ~5 years before symptoms, tracks disease progression.',
+    roles: ['BIOMARKER'],
+    units: 'pg/mL',
+    detectionTimeline: {
+      yearsBeforeSymptoms: 5,
+      detectionMethod: 'Plasma',
+      atnCategory: 'N',
+      commercialTest: {
+        name: 'Simoa NfL',
+        manufacturer: 'Quanterix',
+        fdaStatus: 'cleared',
+      },
+      performance: {
+        sensitivity: 0.82,
+        specificity: 0.78,
+        auc: 0.85,
+        citation: '30282774', // Preische 2019 Nature Medicine
+      },
+    },
+  },
+  {
+    id: 'retinal_rnfl',
+    label: 'Retinal Nerve Fiber Layer',
+    category: 'BOUNDARY',
+    subtype: 'Biomarker',
+    moduleId: 'BOUNDARY',
+    boundaryDirection: 'output',
+    description: 'RNFL thickness measured by OCT - non-invasive neurodegeneration marker',
+    mechanism: 'RNFL thinning reflects retinal ganglion cell loss, correlates with hippocampal atrophy. Detectable ~7 years before symptoms via standard OCT.',
+    roles: ['BIOMARKER'],
+    units: 'μm',
+    detectionTimeline: {
+      yearsBeforeSymptoms: 7,
+      detectionMethod: 'Retinal',
+      atnCategory: 'N',
+      performance: {
+        sensitivity: 0.73,
+        specificity: 0.70,
+        auc: 0.76,
+        citation: '31174836', // den Haan 2019 Alz Dementia
+      },
+    },
+  },
+  {
+    id: 'retinal_amyloid',
+    label: 'Retinal Aβ Deposits',
+    category: 'BOUNDARY',
+    subtype: 'Biomarker',
+    moduleId: 'BOUNDARY',
+    boundaryDirection: 'output',
+    sharedWith: ['M06'],
+    description: 'Curcumin-labeled amyloid deposits in retina - experimental screening tool',
+    mechanism: 'Retina contains Aβ deposits detectable with curcumin fluorescence imaging (NeuroVision). Correlates with brain amyloid burden. Research stage, not FDA-cleared.',
+    roles: ['BIOMARKER'],
+    detectionTimeline: {
+      yearsBeforeSymptoms: 15,
+      detectionMethod: 'Retinal',
+      atnCategory: 'A',
+      performance: {
+        sensitivity: 0.85,
+        specificity: 0.79,
+        auc: 0.82,
+        citation: '32320011', // Koronyo 2017 JCI Insight
+      },
+    },
+  },
 ];

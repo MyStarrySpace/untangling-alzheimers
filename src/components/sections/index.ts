@@ -1,4 +1,5 @@
 export { Hero } from './Hero';
+export { AlzheimerLegacy } from './AlzheimerLegacy';
 export { InvestmentWaterfall } from './InvestmentWaterfall';
 export { HistoricalTimeline } from './HistoricalTimeline';
 export { TrialBarriers } from './TrialBarriers';

@@ -549,6 +549,58 @@ Crucially, these changes occur 10-20 YEARS before cognitive symptoms, making thi
     color: '#DDA0DD',
     icon: 'GitBranch',
   },
+
+  // ============================================================================
+  // HORMONAL INFLUENCES MODULE (20)
+  // ============================================================================
+  {
+    id: 'M20',
+    name: 'Hormonal Influences',
+    shortName: 'Hormones',
+    description: 'Sex hormones, stress hormones (HPA axis), and metabolic hormones in AD pathogenesis',
+    overview: `
+Module 20 captures the bidirectional relationships between hormones and AD pathology:
+
+SEX HORMONES (Estrogen, Testosterone):
+• Estrogen is neuroprotective: enhances synaptic plasticity, reduces Aβ, modulates microglia
+• Menopause triggers 60% E2 decline; APOE4 women most affected
+• HRT shows genotype-specific effects: APOE4 women benefit MORE (Saleh 2023)
+• Critical window hypothesis: HRT started early may protect; started late may harm
+• Testosterone decline correlates with dementia risk, but therapy benefits unclear
+
+STRESS HORMONES (Cortisol, HPA Axis):
+• Chronic stress is a MODIFIABLE risk factor for AD
+• Cortisol elevated in AD patients; predicts faster decline
+• VICIOUS CIRCLE: cortisol → hippocampal damage → HPA disinhibition → more cortisol
+• GR antagonists reduce Aβ and tau in animal models
+
+METABOLIC HORMONES (Thyroid, Insulin):
+• Hypothyroidism: 2-fold increased AD risk (Framingham)
+• Brain insulin resistance ("Type 3 diabetes") is core AD feature
+• Intranasal insulin helps APOE4-negative patients only
+
+Key insight: Hormone effects are GENOTYPE-DEPENDENT and TIME-DEPENDENT.
+Precision medicine must consider hormone status in treatment decisions.
+    `.trim(),
+    keyFindings: [
+      'APOE4 women show LARGER benefit from HRT (Saleh 2023 EPAD cohort)',
+      'Cortisol creates vicious circle with hippocampal damage (Ouanes 2019)',
+      'Hypothyroidism doubles AD risk (Tan 2008 Framingham)',
+      'Intranasal insulin benefits APOE4-negative only (SNIFF trials)',
+      'Chronic stress is modifiable risk factor for AD',
+    ],
+    upstreamModules: [],
+    downstreamModules: ['M05', 'M06', 'M07', 'M12'],
+    landmarkPapers: [
+      { pmid: '36631903', discovery: 'Saleh 2023 - HRT benefits APOE4 women most' },
+      { pmid: '30881301', discovery: 'Ouanes 2019 - Cortisol-hippocampus vicious circle' },
+      { pmid: '18663163', discovery: 'Tan 2008 - Hypothyroidism doubles AD risk' },
+    ],
+    therapeuticTargets: ['estrogen_level', 'cortisol_level', 'hpa_axis_activation', 'insulin_signaling'],
+    interventionWindow: 'prevention',
+    color: '#E91E63',
+    icon: 'Activity',
+  },
 ];
 
 export default modules;
