@@ -54,14 +54,14 @@ export const sections: SectionConfig[] = [
   {
     id: 'forgotten-observations',
     title: 'The Forgotten Observations',
-    subtitle: 'Half of what Alzheimer saw in 1907 was ignored for over a century—and it was the upstream half.',
+    subtitle: 'Half of what Alzheimer saw in 1907 was ignored for over a century, and it was the upstream half.',
     navLabel: 'Forgotten',
     act: 'II',
   },
   {
     id: 'cases',
     title: 'How Promising Treatments Get Lost',
-    subtitle: 'Real stories of promising treatments blocked by economics, regulation, paradigm, or stigma—not science.',
+    subtitle: 'Real stories of promising treatments blocked by economics, regulation, paradigm, or stigma (not science).',
     navLabel: 'Cases',
     act: 'II',
   },
@@ -77,7 +77,7 @@ export const sections: SectionConfig[] = [
   {
     id: 'promising-frontier',
     title: 'The Promising Frontier',
-    subtitle: 'Drugs with strong mechanistic rationale that deserve proper trials—but can\'t attract funding.',
+    subtitle: 'Drugs with strong mechanistic rationale that deserve proper trials yet can\'t attract funding.',
     navLabel: 'Frontier',
     act: 'III',
   },

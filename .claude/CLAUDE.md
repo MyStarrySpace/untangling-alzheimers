@@ -378,8 +378,22 @@ export function Component({ ...props }: ComponentProps) {
 - **COPY QUOTES EXACTLY AS THEY APPEAR** from the source—do not correct grammar, change capitalization, or modify punctuation
 - When using web search to gather citations, always verify quotes by fetching the actual source URL when possible
 
+## Writing Style
+- **Avoid em dashes (—)** in all content strings. Use alternatives instead:
+  - Comma + space: "for ALS, but no Western trials"
+  - Colon + space: "stuck in trials: too cheap to fund"
+  - Parentheses: "blocked by stigma (not science)"
+  - Semicolon + space: "Phase 3 for stroke; no AD trials"
+  - Period and new sentence for longer asides
+- **Avoid run-on sentences and awkward phrasing** when replacing em dashes:
+  - If a comma creates a run-on, split into two sentences instead
+  - Read the result aloud mentally to check for natural flow
+  - Restructure the sentence if no punctuation substitution sounds right
+  - Example: Instead of "The drug works, but only in mice, but no human trials exist" → "The drug works in mice. No human trials exist."
+- This applies to summaries, descriptions, subtitles, and any user-facing text in data files
+
 ## Research Requirements
 - **ALWAYS use web search** to verify factual claims before adding or modifying data content (drug information, trial results, researcher claims, statistics, etc.)
 - Only skip web search when making purely functional code changes (fixing bugs, refactoring, UI adjustments)
-- Never assume factual information is correct—verify with current sources
+- Never assume factual information is correct, verify with current sources
 - When adding drugs, treatments, or clinical trial information, search for the latest status and results

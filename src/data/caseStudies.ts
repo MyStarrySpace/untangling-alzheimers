@@ -11,7 +11,7 @@ export const caseStudies: CaseStudy[] = [
       'Novel gut-brain mechanism, approved in China in 2019, showed cognitive improvement in Phase 3. 439 patients enrolled in global trial before termination.',
     whatShouldHappen: 'Global Phase 3 confirmation to validate gut-brain axis approach',
     whatActuallyHappened:
-      'US trial terminated May 2022 after screening 1,308 patients. Company cited "global geopolitical situation" and funding collapse—NOT safety or efficacy concerns. Drug remains unavailable outside China.',
+      'US trial terminated May 2022 after screening 1,308 patients. Company cited "global geopolitical situation" and funding collapse, NOT safety or efficacy concerns. Drug remains unavailable outside China.',
     quote:
       'The company cited "the global geopolitical situation" and a "gloomy biotech capital market."',
     quoteSource: 'Green Valley Pharmaceuticals',
@@ -39,13 +39,13 @@ export const caseStudies: CaseStudy[] = [
     id: '40hz-gamma',
     title: 'The 40Hz Light Therapy Wait',
     drug: '40Hz Gamma Entrainment (GENUS)',
-    summary: 'A decade of MIT research stuck in trials—too cheap to fund.',
+    summary: 'A decade of MIT research stuck in trials: too cheap to fund.',
     year: 2025,
     keyFinding:
       'A decade of MIT research: 40Hz light/sound activates microglia, clears amyloid, reduces brain atrophy, improves memory in mice and early human trials. Cost: LED lights and speakers.',
     whatShouldHappen: 'Fast-track trials given low cost and safety profile',
     whatActuallyHappened:
-      'Still in Phase 3 after 10+ years of promising preclinical data. Only 15 patients in Phase 2a. No accelerated pathway. If it works, the intervention could potentially cost under $100 (LED lights and speakers are inexpensive)—but that means no blockbuster revenue to fund trials.',
+      'Still in Phase 3 after 10+ years of promising preclinical data. Only 15 patients in Phase 2a. No accelerated pathway. If it works, the intervention could potentially cost under $100 (LED lights and speakers are inexpensive). That means no blockbuster revenue to fund trials.',
     quote:
       'Safe; late-onset AD patients showed better cognitive scores than matched controls.',
     quoteSource: 'MIT long-term pilot study',
@@ -56,7 +56,7 @@ export const caseStudies: CaseStudy[] = [
     id: 'focused-ultrasound',
     title: 'The Blood-Brain Barrier Breakthrough',
     drug: 'Focused Ultrasound (FUS)',
-    summary: 'Could make AD drugs 5-8x more effective—no pharma interest.',
+    summary: 'Could make AD drugs 5-8x more effective, yet draws no pharma interest.',
     year: 2024,
     keyFinding:
       'Non-invasively opens the BBB to enhance drug delivery 5-8x. In Phase 2a, reduced amyloid WITHOUT any drug co-administration. Could make existing treatments far more effective.',
@@ -90,15 +90,15 @@ export const caseStudies: CaseStudy[] = [
     id: 'butylphthalide',
     title: 'The Phthalide Gap',
     drug: 'Butylphthalide (NBP)',
-    summary: 'Positive Phase 3 for AD in China, FDA orphan status for ALS—but no Western AD trials.',
+    summary: 'Positive Phase 3 for AD in China. FDA orphan status for ALS, yet no Western AD trials.',
     year: 2024,
     keyFinding:
       'A multi-target neuroprotectant derived from celery seeds, approved in China since 2002 for stroke. The EBMCI trial (2024) showed significant cognitive improvement in MCI due to AD. Reduces Aβ/tau, inhibits NLRP3 inflammasome, protects mitochondria, and improves microcirculation. Has 20+ years of human safety data.',
     whatShouldHappen: 'Western replication of the positive EBMCI trial; Phase 3 AD prevention study; inclusion in combination therapy trials with approved anti-amyloid antibodies',
     whatActuallyHappened:
-      'FDA granted orphan drug designation—but for ALS (2018), not AD. A US Phase 3 trial is underway—but for stroke, not AD. The positive EBMCI results for MCI due to AD have no Western replication pathway. The drug is being developed where orphan economics work (rare ALS) rather than where the evidence points (common AD).',
+      'FDA granted orphan drug designation for ALS (2018), not AD. A US Phase 3 trial is underway for stroke, not AD. The positive EBMCI results for MCI due to AD have no Western replication pathway. The drug is being developed where orphan economics work (rare ALS) rather than where the evidence points (common AD).',
     quote:
-      'NBP was associated with lower odds of deterioration (OR=0.19) and cognitive decline (OR=0.10) in AD patients. Yet Western development focuses on stroke and ALS—not the disease where it shows the strongest signal.',
+      'NBP was associated with lower odds of deterioration (OR=0.19) and cognitive decline (OR=0.10) in AD patients. Yet Western development focuses on stroke and ALS, not the disease where it shows the strongest signal.',
     quoteSource: 'EBMCI trial and cohort studies, 2021-2024',
     cost: '<$100/month (generic in China)',
     patentStatus: 'generic',
@@ -114,7 +114,7 @@ export const evidenceGraveyardData = [
     source: 'J Alzheimers Dis',
     shouldHappen: 'Head-to-head cognitive trial vs metoprolol',
     actuallyHappened: 'Nothing for 12+ years',
-    whyNotFunded: 'Benefits are likely preventive, vascular, and slow—but AD trial designs favor symptomatic treatments with rapid, measurable cognitive changes. A drug that works over decades doesn\'t fit the 18-month trial paradigm, so nebivolol was never seriously evaluated against the right criteria.',
+    whyNotFunded: 'Benefits are likely preventive, vascular, and slow, but AD trial designs favor symptomatic treatments with rapid, measurable cognitive changes. A drug that works over decades doesn\'t fit the 18-month trial paradigm, so nebivolol was never seriously evaluated against the right criteria.',
   },
   {
     id: 'gv-971',
