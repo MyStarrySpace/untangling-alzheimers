@@ -133,6 +133,101 @@ export const module13Nodes: MechanisticNode[] = [
     mechanism: 'Requires OPC pool + differentiation signals + cholesterol supply. Declines with age: OPC senescence, LINGO1↑, Nogo receptor activation. Neumann 2019 (PMID:31497960): Remyelination efficiency declines with age due to impaired OPC differentiation',
     roles: ['THERAPEUTIC_TARGET'],
   },
+
+  // ============================================================================
+  // SLIT2-ROBO1 Demyelination Axis (Chen et al. 2025)
+  // Key insight: Demyelination in AD is NOT microglial attack on myelin,
+  // but oligodendrocyte SELF-WITHDRAWAL triggered by aberrant neuronal SLIT2 signaling
+  // ============================================================================
+  {
+    id: 'slit2_neuronal',
+    label: 'Neuronal SLIT2',
+    category: 'STOCK',
+    subtype: 'ProteinPool',
+    moduleId: 'M13',
+    references: {
+      gene: 'HGNC:11086', // SLIT2
+      protein: 'UniProt:O94813',
+    },
+    description: 'SLIT2 secreted by excitatory neurons; upregulated in tauopathy',
+    mechanism: 'SLIT2 is a developmental axon guidance cue reactivated in AD. Tau pathology → microglia activation (DAP12/TREM2) → unknown signal → excitatory neurons upregulate SLIT2 → secreted SLIT2 binds ROBO1 on OLs. Chen 2025 (PMID pending): SLIT2 elevated in AD grey matter; colocalized with myelinated axons',
+    sharedWith: ['M07'], // Tau module - trigger for SLIT2 upregulation
+  },
+  {
+    id: 'robo1_ol',
+    label: 'OL ROBO1 Receptor',
+    category: 'STOCK',
+    subtype: 'SurfaceReceptor',
+    moduleId: 'M13',
+    references: {
+      gene: 'HGNC:10249', // ROBO1
+      protein: 'UniProt:Q9Y6N7',
+    },
+    description: 'Roundabout guidance receptor 1 on oligodendrocytes',
+    mechanism: 'ROBO1 is the primary receptor for SLIT2 on OLs. SLIT2 binds ROBO1 Ig1 domain → Fyn dissociates from ROBO1 cytoplasmic domain → RhoA activation → process retraction. ROBO1 also upregulated in tauopathy. Liu 2012 (PMID:22447934): SLIT2-ROBO1-Fyn-RhoA pathway regulates OPC migration',
+    roles: ['THERAPEUTIC_TARGET'],
+  },
+  {
+    id: 'fyn_kinase_ol',
+    label: 'OL Fyn Kinase Activity',
+    category: 'STATE',
+    subtype: 'BiologicalProcess',
+    moduleId: 'M13',
+    references: {
+      gene: 'HGNC:4037', // FYN
+      protein: 'UniProt:P06241',
+    },
+    description: 'Fyn kinase activity in oligodendrocytes; normally promotes OL maturation',
+    mechanism: 'Fyn normally bound to ROBO1 cytoplasmic domain, maintaining OL process extension. SLIT2 binding → Fyn dissociates → Fyn DEACTIVATED → p190RhoGAP activity decreases → RhoA-GTP increases. Fyn also promotes OL differentiation via MBP regulation. Saracatinib (Fyn inhibitor) failed Phase 2a in AD but tested wrong patient subtype',
+    roles: ['THERAPEUTIC_TARGET'],
+  },
+  {
+    id: 'rhoa_gtp_ol',
+    label: 'OL RhoA-GTP',
+    category: 'STOCK',
+    subtype: 'ActiveProteinPool',
+    moduleId: 'M13',
+    references: {
+      gene: 'HGNC:667', // RHOA
+      protein: 'UniProt:P61586',
+    },
+    description: 'Active RhoA (GTP-bound) in oligodendrocytes; drives cytoskeletal contraction',
+    mechanism: 'RhoA-GTP activates ROCK kinase → actin stress fibers → OL process RETRACTION. SLIT2-ROBO1 signaling increases RhoA-GTP via: (1) Fyn dissociation → p190RhoGAP↓ → RhoA-GTP↑; (2) SRGAP recruitment → Cdc42/Rac1↓. Fasudil (ROCK inhibitor) could theoretically block downstream but non-selective',
+    roles: ['THERAPEUTIC_TARGET'],
+  },
+  {
+    id: 'ol_process_retraction',
+    label: 'OL Process Retraction',
+    category: 'STATE',
+    subtype: 'BiologicalProcess',
+    moduleId: 'M13',
+    description: 'Oligodendrocyte process retraction from axons; primary mechanism of Class B AD demyelination',
+    mechanism: 'SLIT2-ROBO1-Fyn-RhoA cascade causes OLs to physically WITHDRAW processes from axons. NOT microglial attack (as in MS). Physical changes: process retraction, failed membrane spreading, blocked differentiation, disrupted myelin compaction. Chen 2025: DAP12 KO reduces demyelination by interrupting SLIT2 induction, NOT by removing microglial attackers',
+  },
+  {
+    id: 'myelin_sheath_withdrawal',
+    label: 'Myelin Sheath Withdrawal',
+    category: 'STATE',
+    subtype: 'Neurodegeneration',
+    moduleId: 'M13',
+    description: 'Active myelin sheath withdrawal/retraction (distinct from degradation)',
+    mechanism: 'Myelin sheaths RETRACT rather than being attacked. Key distinction from MS: in AD Class B, demyelination is inside-out (OL withdrawal) not outside-in (immune attack). This explains why complement inhibitors may not help Class B AD. Results in: axonal exposure, conduction slowing, secondary OPC exhaustion via myelin debris inhibition',
+  },
+  {
+    id: 'dap12_signaling',
+    label: 'DAP12 Signaling',
+    category: 'STATE',
+    subtype: 'BiologicalProcess',
+    moduleId: 'M13',
+    sharedWith: ['M05', 'M11'], // Microglia, TREM2/DAM modules
+    references: {
+      gene: 'HGNC:12449', // TYROBP (DAP12)
+      protein: 'UniProt:O43914',
+    },
+    description: 'DAP12/TYROBP signaling in microglia; triggers SLIT2 induction in neurons',
+    mechanism: 'DAP12 is TREM2 signaling adaptor with ITAM motif. Tau internalization → DAP12/TREM2 signaling → pAKT↑, pERK↑, pNFκB↑, IFN↑ → unknown signal to neurons → neuronal SLIT2↑. Chen 2025: DAP12 KO reduces demyelination DESPITE increasing tau pathology. Paradox: DAP12 needed for debris clearance but harmful during active tauopathy',
+    roles: ['THERAPEUTIC_TARGET'],
+  },
 ];
 
 // ============================================================================

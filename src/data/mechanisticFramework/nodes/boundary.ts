@@ -330,8 +330,15 @@ export const boundaryNodes: MechanisticNode[] = [
     moduleId: 'BOUNDARY',
     boundaryDirection: 'output',
     sharedWith: ['M07'],
-    description: 'Plasma phospho-tau at threonine 217 - most accurate blood tau marker',
-    mechanism: 'pTau217 increases with amyloid positivity, outperforms pTau181 for early detection. Correlates with tau PET. AUC 0.94-0.98 for distinguishing AD from other dementias.',
+    description: 'Plasma phospho-tau at threonine 217 - most accurate blood tau marker for population screening',
+    mechanism: `pTau217 increases with amyloid positivity, outperforms pTau181 for early detection.
+      HUNT Study (Aarsland 2025, n=11,486): First large population-based prevalence data.
+      Diagnostic cut-offs (Global CEO Initiative): <0.40 pg/mL = negative (95% sensitivity for ruling out ADNC),
+      0.40-0.62 = intermediate (requires further workup), >=0.63 = positive (95% specificity for ADNC).
+      CRITICAL: 40% of people with clinical dementia do NOT have AD pathology by pTau217.
+      Age-dependent prevalence: 70-74y ~18%, 80-84y ~40%, 90+ ~65% ADNC+.
+      23.5% of cognitively unimpaired 70+ are ADNC+ (preclinical AD).
+      P7C3-A20 (NAD restorer) shown to normalize pTau217 levels (Chaubey 2025).`,
     roles: ['BIOMARKER'],
     units: 'pg/mL',
     detectionTimeline: {
@@ -339,15 +346,23 @@ export const boundaryNodes: MechanisticNode[] = [
       detectionMethod: 'Plasma',
       atnCategory: 'T',
       commercialTest: {
-        name: 'PrecivityAD2',
-        manufacturer: 'C2N Diagnostics',
+        name: 'ALZpath pTau217 Advantage PLUS',
+        manufacturer: 'Quanterix (Simoa HD-X)',
         fdaStatus: 'pending',
       },
       performance: {
-        sensitivity: 0.96,
-        specificity: 0.92,
+        sensitivity: 0.95,
+        specificity: 0.95,
         auc: 0.96,
-        citation: '32333900', // Palmqvist 2020 JAMA
+        ppv: 0.774, // Overall from HUNT study
+        npv: 0.954, // Overall from HUNT study
+        citation: '10.1038/s41586-025-09841-y', // Aarsland 2025 Nature
+      },
+      // Diagnostic cut-offs from HUNT study
+      cutoffs: {
+        negative: 0.40,      // <0.40 pg/mL = 95% sensitivity for ruling out ADNC
+        intermediate: 0.62,  // 0.40-0.62 requires further workup
+        positive: 0.63,      // >=0.63 pg/mL = 95% specificity for ADNC
       },
     },
   },
@@ -481,6 +496,46 @@ export const boundaryNodes: MechanisticNode[] = [
         specificity: 0.79,
         auc: 0.82,
         citation: '32320011', // Koronyo 2017 JCI Insight
+      },
+    },
+  },
+
+  // ============================================================================
+  // AUTOANTIBODY BIOMARKERS
+  // May detect AD earlier than pTau217 (4+ years pre-symptom)
+  // ============================================================================
+  {
+    id: 'ad_autoantibody_panel',
+    label: 'AD Autoantibody Panel',
+    category: 'BOUNDARY',
+    subtype: 'Biomarker',
+    moduleId: 'BOUNDARY',
+    boundaryDirection: 'output',
+    sharedWith: ['M07', 'M17'], // Tau and immunomodulatory modules
+    description: '7-autoantibody panel for AD detection; may precede pTau217 elevations',
+    mechanism: `Fang 2023 (n=1,686) identified 7 AD-specific autoantibodies achieving AUC=0.94:
+      1. Anti-MAPT (tau protein) - direct marker of tau autoimmunity
+      2. Anti-DNAJC8 - chaperone protein
+      3. Anti-KDM4D - histone demethylase
+      4. Anti-SERF1A - small EDRK-rich factor
+      5. Anti-CDKN1A (p21) - cell cycle regulator
+      6. Anti-AGER (RAGE) - receptor for advanced glycation endproducts
+      7. Anti-ASXL1 - chromatin regulator
+      CRITICAL: Outperforms CSF Aβ and tau for predicting cognitive decline (p<0.001).
+      DeMarshall 2023: 8-autoantibody panel detects AD ~4 years BEFORE MCI onset (AUC=0.96 with age).
+      Proposed mechanism: Autoantibodies may trigger neuronal hyperactivity (cf. IgLON5 model) OR
+      represent immune response to early neuronal damage. Causality vs reactivity TBD.`,
+    roles: ['BIOMARKER'],
+    units: 'multiplex signal',
+    detectionTimeline: {
+      yearsBeforeSymptoms: 19, // ~4 years before MCI onset, add ~15 years MCI→dementia
+      detectionMethod: 'Plasma',
+      atnCategory: 'I', // Inflammation category
+      performance: {
+        sensitivity: 0.89,
+        specificity: 0.91,
+        auc: 0.94,
+        citation: '37989443', // Fang 2023 Brain Behav Immun
       },
     },
   },

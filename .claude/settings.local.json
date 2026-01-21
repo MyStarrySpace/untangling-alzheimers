@@ -56,7 +56,8 @@
       "WebFetch(domain:www.globenewswire.com)",
       "Bash(cd:*)",
       "Bash(start /B npm run dev)",
-      "Bash(timeout /t 8 /nobreak)"
+      "Bash(timeout /t 8 /nobreak)",
+      "Bash(dir:*)"
     ]
   }
 }

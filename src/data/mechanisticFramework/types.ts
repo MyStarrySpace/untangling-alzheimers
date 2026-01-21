@@ -63,7 +63,9 @@ export type StockSubtype =
   | 'CytokineLevel'       // IL-6, TNF-α, IFN-γ concentrations
   | 'CytokineSignal'      // Secreted cytokine (TGF-β1, etc.)
   | 'HormoneLevel'        // Hepcidin, insulin, cortisol
-  | 'MetaboliteSignal';   // When metabolite acts as signal
+  | 'MetaboliteSignal'    // When metabolite acts as signal
+  // Immune stocks
+  | 'Autoantibody';       // Self-reactive antibodies (anti-IgLON5, AD autoantibodies)
 
 /**
  * Regulator subtypes - things that control rates
@@ -197,7 +199,18 @@ export interface BiomarkerPerformance {
   sensitivity?: number;         // 0-1
   specificity?: number;         // 0-1
   auc?: number;                 // Area under ROC curve, 0-1
-  citation?: string;            // PMID for performance data
+  ppv?: number;                 // Positive predictive value, 0-1
+  npv?: number;                 // Negative predictive value, 0-1
+  citation?: string;            // PMID or DOI for performance data
+}
+
+/**
+ * Diagnostic cut-off values for quantitative biomarkers
+ */
+export interface BiomarkerCutoffs {
+  negative: number;             // Below this value = negative (rules out disease)
+  intermediate?: number;        // Below this value = intermediate (needs workup)
+  positive: number;             // Above or equal to this value = positive (confirms disease)
 }
 
 /**
@@ -217,6 +230,8 @@ export interface DetectionTimeline {
   atnCategory?: ATNCategory;
   /** Diagnostic performance metrics */
   performance?: BiomarkerPerformance;
+  /** Diagnostic cut-offs for quantitative biomarkers (e.g., pTau217 pg/mL) */
+  cutoffs?: BiomarkerCutoffs;
 }
 
 export type NodeSubtype = StockSubtype | RegulatorSubtype | StateSubtype | BoundarySubtype;

@@ -5,6 +5,68 @@
 import type { MechanisticNode } from '../types';
 
 export const module7Nodes: MechanisticNode[] = [
+  // ============================================================================
+  // Hyperactivity-Tau Initiation Cascade (IgLON5 Model - Askin/Wegmann 2024)
+  // Key insight: Neuronal hyperactivity INITIATES tau pathology, not just a consequence
+  // ============================================================================
+  {
+    id: 'neuronal_hyperactivity',
+    label: 'Neuronal Hyperactivity',
+    category: 'STATE',
+    subtype: 'BiologicalProcess',
+    moduleId: 'M07',
+    references: {
+      process: 'GO:0019228', // neuronal action potential
+      phenotype: 'HP:0011169', // generalized tonic-clonic seizures (related)
+    },
+    description: 'Increased neuronal firing rate; UPSTREAM trigger for tau pathology',
+    mechanism: `IgLON5 disease model demonstrates hyperactivity INITIATES tau pathology:
+      Autoantibodies → IgLON5 surface clustering + KCNA2 (Kv1.2) ion channel co-clustering →
+      Increased firing frequency → Tau missorting → Tau hyperphosphorylation.
+      CRITICAL: Dampening activity with TTX or CNQX PREVENTED tau changes, proving hyperactivity is UPSTREAM.
+      In sporadic AD: Early hippocampal hyperactivity on fMRI may be a CAUSE, not consequence, of tau spread.
+      Therapeutic implication: Anti-epileptic drugs (levetiracetam) may slow tau propagation.`,
+    roles: ['THERAPEUTIC_TARGET'],
+  },
+  {
+    id: 'tau_missorting',
+    label: 'Tau Somatodendritic Missorting',
+    category: 'STATE',
+    subtype: 'BiologicalProcess',
+    moduleId: 'M07',
+    references: {
+      protein: 'UniProt:P10636', // tau
+      process: 'GO:0043025', // neuronal cell body
+    },
+    description: 'Tau redistributes from axonal to somatodendritic compartment; precedes hyperphosphorylation',
+    mechanism: `Normally tau is axonal; hyperactivity causes mislocalization to dendrites/soma.
+      Askin/Wegmann 2024: Anti-IgLON5 AABs → neuronal hyperactivity → tau missorting → THEN hyperphosphorylation.
+      Missorting exposes tau to kinases (GSK3β, p38-MAPK) concentrated in soma.
+      Missorting also disrupts microtubule function in dendrites → synaptic dysfunction.
+      Key biomarker: Dendritic tau precedes PHF formation and may be earliest intraneuronal marker.`,
+  },
+  {
+    id: 'iglon5_autoantibodies',
+    label: 'Anti-IgLON5 Autoantibodies',
+    category: 'STOCK',
+    subtype: 'Autoantibody',
+    moduleId: 'M07',
+    sharedWith: ['BOUNDARY'], // Also relevant as biomarker
+    references: {
+      protein: 'UniProt:O94865', // IgLON5
+    },
+    description: 'Autoantibodies against IgLON5 neuronal adhesion molecule; causes autoimmune tauopathy',
+    mechanism: `Anti-IgLON5 disease is a rare autoimmune tauopathy providing causal insight:
+      1. AABs bind IgLON5 → surface clustering + KCNA2 ion channel co-clustering
+      2. Neuronal hyperactivity (Ca imaging, MEA confirmed)
+      3. Tau missorting to dendrites/soma
+      4. Tau hyperphosphorylation at AT8, PHF-1 epitopes (pSer396/404)
+      5. In vivo: 33% astrocytosis, 100% microgliosis, C3/MHC-II/TNF-α/IL-6 all elevated
+      HLA association: DRB1*10:01, DQB1*05:01. Short-duration patients lack tau deposits (autoimmunity precedes tau).`,
+    roles: ['BIOMARKER'],
+  },
+
+  // Original tau nodes continue below
   {
     id: 'tau_misfolded',
     label: 'Tau Misfolded',
