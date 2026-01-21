@@ -115,7 +115,7 @@ const TARGET_TO_NODES: Record<string, string[]> = {
   'GSK-3β inhibitor': ['gsk3b', 'tau_hyperphosphorylated'],
 
   // Additional mappings using actual network nodes
-  'NMDA receptor antagonist': ['ltp_inhibition', 'synaptic_abeta_binding', 'neuronal_dysfunction'],
+  // Note: 'NMDA receptor antagonist' already defined above with ['nmda_receptor', 'glutamate_excitotoxicity']
   'Oligosaccharide / gut microbiome modulator': ['nlrp3_active', 'neuroinflammation', 'microglia_activated'],
   'Histamine H3 receptor antagonist': ['ach_reduced', 'cholinergic_degeneration'],
   'α7 nicotinic ACh receptor agonist': ['ach_reduced', 'cholinergic_degeneration', 'nlrp3_active'],
@@ -130,7 +130,7 @@ const TARGET_TO_NODES: Record<string, string[]> = {
   'Deuterated dextromethorphan/quinidine (BPSD)': ['neuronal_dysfunction', 'ltp_inhibition'],
   'Gamma oscillation entrainment': ['microglia_activated', 'glymphatic_clearance', 'phagocytosis_impaired'],
   '40Hz sensory stimulation': ['microglia_activated', 'glymphatic_clearance', 'phagocytosis_impaired'],
-  'GLP-1 receptor agonist': ['insulin_resistance', 'mtorc1_hyperactive', 'nlrp3_active'],
+  // Note: 'GLP-1 receptor agonist' already defined above with ['insulin_resistance', 'glp1_signaling']
   'Incretin mimetic': ['insulin_resistance', 'mtorc1_hyperactive'],
   'DPP-4 inhibitor': ['insulin_resistance', 'mtorc1_hyperactive'],
   'Multimodal (synaptogenesis / neuroprotection)': ['synapses', 'synapse_elimination', 'neuronal_dysfunction'],
@@ -141,9 +141,9 @@ const TARGET_TO_NODES: Record<string, string[]> = {
   'CSF1R inhibitor': ['microglia_activated', 'dam_stage1', 'dam_stage2'],
 
   // More unmapped targets
-  'Atypical antipsychotic': ['neuronal_dysfunction', 'chronic_stress'],
-  '5-HT6 receptor antagonist': ['ach_reduced', 'cholinergic_degeneration', 'cognitive_score'],
-  'AMPA receptor modulator (ampakine)': ['ltp_inhibition', 'synapses', 'cognitive_score'],
+  // Note: 'Atypical antipsychotic' already defined above with ['dopamine_signaling', 'serotonin_signaling']
+  // Note: '5-HT6 receptor antagonist' already defined above with ['serotonin_signaling', 'neurotransmitter_deficit']
+  // Note: 'AMPA receptor modulator (ampakine)' already defined above with ['ampa_receptor', 'synaptic_plasticity']
   'Nicotinic receptor agonist': ['ach_reduced', 'cholinergic_degeneration'],
   'Muscarinic receptor agonist': ['ach_reduced', 'cholinergic_degeneration'],
   'Glial modulator / PDE inhibitor': ['microglia_activated', 'nlrp3_active'],
@@ -154,7 +154,7 @@ const TARGET_TO_NODES: Record<string, string[]> = {
   'Vitamin E (α-tocopherol)': ['lipid_peroxidation', 'mito_ros'],
   'Vitamin D supplementation': ['nlrp3_active', 'nf_kb_active'],
   'Huperzine A': ['ach_reduced', 'cholinergic_degeneration'],
-  'Active Aβ immunotherapy': ['abeta_oligomers', 'abeta_plaques', 'phagocytosis_impaired'],
+  // Note: 'Active Aβ immunotherapy' already defined above with ['abeta_oligomers', 'abeta_plaques', 'microglial_phagocytosis']
   'Passive Aβ immunotherapy': ['abeta_oligomers', 'abeta_plaques'],
 };
 
