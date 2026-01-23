@@ -12,12 +12,14 @@ import {
   Clock,
   FlaskConical,
   AlertTriangle,
+  Syringe,
 } from 'lucide-react';
 import { Container, Section, SectionHeader, TextWithAbbreviations, GraphLink } from '@/components/ui';
 import {
   getApprovedTreatments,
   getPipelineDrugs,
   getLifestyleInterventions,
+  getVaccines,
   getDevelopmentsByCategory,
   type HopefulDevelopment,
   type DevelopmentCategory,
@@ -35,6 +37,12 @@ const statusStyles: Record<string, { bg: string; text: string; label: string; we
   evidence_based: { bg: 'bg-[#007385]/10', text: 'text-[#007385]', label: 'Evidence-Based', weight: 'font-medium' },
 };
 
+// Treatment type badge styles
+const treatmentTypeStyles: Record<string, { bg: string; text: string; label: string }> = {
+  disease_modifying: { bg: 'bg-[var(--accent-orange-light)]', text: 'text-[var(--accent-orange)]', label: 'Disease-modifying' },
+  symptomatic: { bg: 'bg-[var(--bg-secondary)]', text: 'text-[var(--text-muted)]', label: 'Symptomatic' },
+};
+
 // Category icons
 function getCategoryIcon(category: DevelopmentCategory) {
   switch (category) {
@@ -50,6 +58,8 @@ function getCategoryIcon(category: DevelopmentCategory) {
       return <Sparkles className="w-4 h-4" />;
     case 'research_tool':
       return <Lightbulb className="w-4 h-4" />;
+    case 'vaccine':
+      return <Syringe className="w-4 h-4" />;
     default:
       return <Pill className="w-4 h-4" />;
   }
@@ -80,7 +90,14 @@ function DevelopmentsList({ developments, emptyMessage }: { developments: Hopefu
                 onClick={() => setSelectedId(isSelected ? null : dev.id)}
               >
                 <div className="flex-1 min-w-0">
-                  <h4 className={`font-semibold text-sm ${isSelected ? 'text-[var(--accent-orange)]' : 'text-[var(--text-primary)]'}`}>{dev.name}</h4>
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <h4 className={`font-semibold text-sm ${isSelected ? 'text-[var(--accent-orange)]' : 'text-[var(--text-primary)]'}`}>{dev.name}</h4>
+                    {dev.treatmentType && (
+                      <span className={`text-[10px] px-1.5 py-0.5 ${treatmentTypeStyles[dev.treatmentType].bg} ${treatmentTypeStyles[dev.treatmentType].text}`}>
+                        {treatmentTypeStyles[dev.treatmentType].label}
+                      </span>
+                    )}
+                  </div>
                   <p className="text-[var(--text-muted)] text-xs truncate">
                     <TextWithAbbreviations text={dev.description} />
                   </p>
@@ -234,16 +251,18 @@ function SummaryStat({
 }
 
 export function HopefulDevelopments() {
-  const [activeTab, setActiveTab] = useState<'approved' | 'pipeline' | 'lifestyle'>('approved');
+  const [activeTab, setActiveTab] = useState<'approved' | 'pipeline' | 'vaccines' | 'lifestyle'>('approved');
 
   const approvedTreatments = getApprovedTreatments();
   const pipelineDrugs = getPipelineDrugs();
   const supplements = getDevelopmentsByCategory('supplement');
+  const vaccines = getVaccines();
   const lifestyleInterventions = getLifestyleInterventions();
 
   const tabs = [
     { id: 'approved', label: 'Approved Treatments', count: approvedTreatments.length },
     { id: 'pipeline', label: 'Promising Pipeline', count: pipelineDrugs.length + supplements.length },
+    { id: 'vaccines', label: 'Protective Vaccines', count: vaccines.length },
     { id: 'lifestyle', label: 'Lifestyle Interventions', count: lifestyleInterventions.length },
   ] as const;
 
@@ -256,16 +275,21 @@ export function HopefulDevelopments() {
         />
 
         {/* Summary stats - typography-driven */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 py-8 border-y border-[var(--border)]">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-12 py-8 border-y border-[var(--border)]">
           <SummaryStat
             icon={<CheckCircle2 className="w-6 h-6" />}
             value={approvedTreatments.length}
-            label="FDA-approved disease-modifying treatments"
+            label="FDA-approved Alzheimer's treatments"
           />
           <SummaryStat
             icon={<FlaskConical className="w-6 h-6" />}
             value={pipelineDrugs.length + supplements.length}
             label="Promising approaches in development"
+          />
+          <SummaryStat
+            icon={<Syringe className="w-6 h-6" />}
+            value={vaccines.length}
+            label="Vaccines with dementia protection"
           />
           <SummaryStat
             icon={<Heart className="w-6 h-6" />}
@@ -321,8 +345,9 @@ export function HopefulDevelopments() {
               <div>
                 <div className="text-center mb-6 max-w-2xl mx-auto">
                   <p className="text-[var(--text-body)] mb-2">
-                    These are the first treatments ever shown to slow Alzheimer&apos;s progression in clinical trials.
-                    While benefits are modest, they represent a historic milestone.
+                    Two types of FDA-approved treatments exist: <strong>disease-modifying</strong> drugs
+                    (lecanemab, donanemab) that slow underlying progression, and <strong>symptomatic</strong> drugs
+                    that treat symptoms without altering disease course.
                   </p>
                   <GraphLink presetId="all_approved" variant="inline" label="View approved drugs in graph" />
                 </div>
@@ -345,6 +370,24 @@ export function HopefulDevelopments() {
                 <DevelopmentsList
                   developments={[...pipelineDrugs, ...supplements]}
                   emptyMessage="No pipeline developments to display."
+                />
+              </div>
+            )}
+
+            {activeTab === 'vaccines' && (
+              <div>
+                <div className="text-center mb-6 max-w-2xl mx-auto">
+                  <p className="text-[var(--text-body)] mb-2">
+                    Multiple vaccines show <strong>17-45% reductions</strong> in dementia risk via
+                    trained immunity. Protection extends beyond preventing the target infection.
+                  </p>
+                  <p className="text-sm text-[var(--accent-orange)] mt-2">
+                    Both adjuvanted and non-adjuvanted vaccines show benefit, suggesting multiple protective mechanisms.
+                  </p>
+                </div>
+                <DevelopmentsList
+                  developments={vaccines}
+                  emptyMessage="No vaccines to display."
                 />
               </div>
             )}

@@ -367,7 +367,7 @@ export function TrialBarriers() {
 
         {/* Key statistics */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -396,6 +396,19 @@ export function TrialBarriers() {
             <p className="text-xs text-[var(--text-muted)] mt-1">FDA approvals (26 years)</p>
           </div>
         </motion.div>
+
+        {/* How to read this */}
+        <motion.p
+          className="text-xs text-[var(--text-muted)] border-l-2 border-[var(--border)] pl-3 mb-8 max-w-2xl"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          viewport={{ once: true }}
+        >
+          <strong>How to read:</strong> Charts show why AD trials are uniquely expensive. Hover for details.
+          The <span className="text-[var(--danger)]">red dashed line</span> marks Phase 3 cost ($462M) for comparison.
+          Expand &quot;Why not rely on NIH?&quot; below to see funding constraints.
+        </motion.p>
 
         {/* Phase costs + Funding gap side by side */}
         <div className="grid lg:grid-cols-2 gap-8 mb-12 items-end">

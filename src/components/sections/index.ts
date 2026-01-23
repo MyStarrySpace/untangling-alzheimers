@@ -16,3 +16,4 @@ export { SexAncestryEffects, MenopauseComparison, AncestryRiskChart, FatDistribu
 export { MechanisticNetworkGraph } from './MechanisticNetworkGraph';
 export { TranslationalFailures } from './TranslationalFailures';
 export { ForgottenObservations } from './ForgottenObservations';
+export { EmergingRiskFactors } from './EmergingRiskFactors';

@@ -63,6 +63,15 @@ export function Hero() {
             The science, the system, and the search for a cure
           </motion.p>
 
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-4 text-sm text-[var(--text-muted)] max-w-xl mx-auto"
+          >
+            Three acts: why funding follows patents over science, how promising drugs die in translation, and what&apos;s finally working.
+          </motion.p>
+
           {/* Hero stat - the most impactful number */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}

@@ -551,6 +551,65 @@ Crucially, these changes occur 10-20 YEARS before cognitive symptoms, making thi
   },
 
   // ============================================================================
+  // POST-INFECTIOUS / AUTOIMMUNE MODULE (19)
+  // ============================================================================
+  {
+    id: 'M19',
+    name: 'Post-Infectious / Autoimmune Pathways',
+    shortName: 'Post-Infectious',
+    description: 'ME/CFS-AD connection, GPCR autoantibodies, trained immunity, and Long COVID neurodegeneration',
+    overview: `
+Module 19 captures the emerging understanding that post-infectious autoimmunity is a major
+driver of neurodegeneration. Key discoveries:
+
+ME/CFS-ALZHEIMER'S CONNECTION:
+- Same GPCR autoantibody signature in ME/CFS, Long COVID, and AD
+- 91% of AD patients have GPCR-AABs vs 33% in Lewy body dementia (Wallukat 2018)
+- Suggests AD may be fundamentally an autoimmune vascular disease
+
+COVID-19 PUBLIC HEALTH WARNING:
+- 69% increased AD risk within 1 year of infection (Wang 2022)
+- 59% increase in pTau-181 in Long COVID with CNS symptoms (Yang 2026)
+- We may see a massive wave of early-onset AD in 10-20 years
+
+GPCR AUTOANTIBODY PATHWAY:
+- Infection → chronic immune activation → GPCR-AAB production
+- GPCR-AABs → vasoregulatory dysfunction → microcirculatory impairment
+- Hypoperfusion → LDAM formation → neurodegeneration
+
+TRAINED IMMUNITY (BIDIRECTIONAL):
+- PROTECTIVE: Vaccines (Zostavax 17%, BCG ~45%, RSV 29% dementia reduction)
+- MALADAPTIVE: Infections program sustained inflammation
+
+KEY INSIGHT: AD vs LBD may be fundamentally different diseases.
+AD = autoimmune/vascular. LBD = true proteinopathy.
+    `.trim(),
+    keyFindings: [
+      '91% of AD patients have GPCR autoantibodies vs 33% in LBD (Wallukat 2018)',
+      'COVID-19 increases AD risk by 69% within 1 year (Wang 2022)',
+      'IgG transfer from Long COVID patients causes disease in mice (Chen 2024)',
+      'Vaccines reduce dementia risk via trained immunity, not just infection prevention',
+      'Same AAB signature across ME/CFS, Long COVID, and AD suggests common mechanism',
+    ],
+    paradigmShifts: [
+      { year: 2018, discovery: 'GPCR autoantibodies distinguish AD from LBD', pmid: '29576863' },
+      { year: 2022, discovery: 'COVID-19 increases AD risk 69%', pmid: '36101931' },
+      { year: 2024, discovery: 'Long COVID IgG transfer proves autoimmune mechanism', pmid: '38452134' },
+    ],
+    upstreamModules: [],
+    downstreamModules: ['M05', 'M12', 'M18'],
+    landmarkPapers: [
+      { pmid: '29576863', discovery: 'Wallukat 2018 - GPCR-AABs in AD vs LBD' },
+      { pmid: '36101931', discovery: 'Wang 2022 - COVID increases AD risk 69%' },
+      { pmid: '38452134', discovery: 'Chen 2024 - Long COVID IgG transfer' },
+    ],
+    therapeuticTargets: ['gpcr_autoantibodies', 'chronic_immune_activation', 'trained_immunity_protective'],
+    interventionWindow: 'prevention',
+    color: '#FF6B6B',
+    icon: 'ShieldAlert',
+  },
+
+  // ============================================================================
   // HORMONAL INFLUENCES MODULE (20)
   // ============================================================================
   {

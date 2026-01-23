@@ -829,6 +829,8 @@ export const MODULE_COLORS: Record<string, string> = {
   M16: '#5a8a6e',   // Sex/Ancestry - Sage green
   M17: '#9B59B6',   // Immunomodulatory - Purple (complementary)
   M18: '#DDA0DD',   // Endfoot Integrity - Plum (suggests astrocytes)
+  M19: '#FF6B6B',   // Post-Infectious - Coral red (alert/warning color)
+  M20: '#E91E63',   // Hormones - Pink (estrogen association)
 };
 
 // ============================================================================

@@ -84,8 +84,85 @@ export const module6Nodes: MechanisticNode[] = [
     category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M06',
-    description: 'TREM2/microglia-dependent protective compaction',
-    mechanism: 'Microglia barrier around plaques prevents toxic oligomer release',
+    description: 'TREM2/microglia-dependent PROTECTIVE compaction',
+    mechanism: `Yuan 2016 (Neuron): Microglia COMPACT plaques as a protective response.
+
+      Dense-core plaques = successful containment:
+      - Microglia form tight barriers around plaque
+      - Toxic oligomers sequestered in fibrillar core
+      - Less neuritic dystrophy in surrounding neuropil
+
+      TREM2 deficiency → plaque compaction failure:
+      - Diffuse, filamentous plaques (failed containment)
+      - MORE neurotoxicity, not less
+      - Greater tau hyperphosphorylation in surrounding neurons
+
+      CRITICAL PARADIGM SHIFT: Dense-core plaques may be PROTECTIVE.
+      Anti-amyloid therapies that disrupt plaque structure might
+      release toxic oligomers - explains ARIA and cognitive worsening.`,
+    roles: ['THERAPEUTIC_TARGET'],
+  },
+
+  // ============================================================================
+  // PLAQUE BARRIER - Dense-Core vs Diffuse
+  // Key insight: Plaque morphology reflects containment success/failure
+  // ============================================================================
+  {
+    id: 'dense_core_plaque',
+    label: 'Dense-Core Plaque',
+    category: 'STATE',
+    subtype: 'Homeostatic', // Counterintuitively, this is a PROTECTED state
+    moduleId: 'M06',
+    description: 'Successfully compacted plaque with microglial barrier - PROTECTIVE',
+    mechanism: `Dense-core plaques represent SUCCESSFUL microglial response:
+      - Compact fibrillar core sequesters toxic species
+      - Microglial barrier prevents oligomer diffusion
+      - Less neuritic dystrophy in surrounding tissue
+      - Associated with slower cognitive decline
+
+      Yuan 2016: "Dense-core plaques are surrounded by microglia that
+      form a barrier limiting neurotoxicity"
+
+      This challenges the "plaques are bad" narrative:
+      Dense-core plaques may be the best outcome given pathology.`,
+  },
+  {
+    id: 'diffuse_filamentous_plaque',
+    label: 'Diffuse Filamentous Plaque',
+    category: 'STATE',
+    subtype: 'DiseaseStage',
+    moduleId: 'M06',
+    description: 'Uncompacted plaque with failed microglial barrier - MORE toxic',
+    mechanism: `Diffuse plaques represent FAILED microglial containment:
+      - No compact core - amyloid spreads diffusely
+      - Toxic oligomers leak into surrounding tissue
+      - Greater neuritic dystrophy
+      - Associated with faster cognitive decline
+
+      TREM2 loss-of-function → diffuse plaques:
+      - Microglia cannot form effective barrier
+      - Paradoxically LESS plaque but MORE neurotoxicity
+      - This explains why some anti-amyloid trials worsened outcomes`,
+    roles: ['BIOMARKER'],
+  },
+  {
+    id: 'plaque_associated_microglia',
+    label: 'Plaque-Associated Microglia',
+    category: 'STOCK',
+    subtype: 'PhenotypePool',
+    moduleId: 'M06',
+    sharedWith: ['M05', 'M11'], // Links to Microglia and TREM2 modules
+    description: 'Microglia forming protective barrier around plaques',
+    mechanism: `Specialized microglial phenotype at plaque interface:
+      - TREM2-dependent recruitment and activation
+      - Barrier-forming morphology (flat, adherent processes)
+      - Express DAM markers (Apoe, Lpl, Cst7, Itgax)
+
+      Function: Physical containment of toxic amyloid species.
+
+      CRITICAL: These are PROTECTIVE, not harmful microglia.
+      Therapies should enhance, not suppress, barrier function.`,
+    roles: ['THERAPEUTIC_TARGET'],
   },
   {
     id: 'synaptic_abeta_binding',

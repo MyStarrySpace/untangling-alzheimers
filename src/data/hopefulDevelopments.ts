@@ -14,7 +14,12 @@ export type DevelopmentCategory =
   | 'research_tool' // New research methodologies
   | 'device_therapy' // Non-drug interventions
   | 'lifestyle' // Evidence-based lifestyle interventions
-  | 'supplement'; // Supplements with clinical evidence
+  | 'supplement' // Supplements with clinical evidence
+  | 'vaccine'; // Vaccines showing dementia protection
+
+export type TreatmentType =
+  | 'disease_modifying' // Slows underlying disease progression
+  | 'symptomatic'; // Treats symptoms without slowing progression
 
 export interface ClinicalEvidence {
   trialName?: string;
@@ -31,6 +36,7 @@ export interface HopefulDevelopment {
   name: string;
   category: DevelopmentCategory;
   status: DevelopmentStatus;
+  treatmentType?: TreatmentType; // For approved_drug category: disease-modifying vs symptomatic
   description: string;
   mechanism: string;
   whyHopeful: string;
@@ -50,6 +56,7 @@ export const hopefulDevelopments: HopefulDevelopment[] = [
     name: 'Lecanemab (Leqembi)',
     category: 'approved_drug',
     status: 'fda_approved',
+    treatmentType: 'disease_modifying',
     description:
       'Monoclonal antibody that targets amyloid-beta (Aβ) protofibrils. First disease-modifying therapy with clear evidence of slowing decline.',
     mechanism: 'Binds to soluble Aβ protofibrils and promotes their clearance from the brain.',
@@ -89,6 +96,7 @@ export const hopefulDevelopments: HopefulDevelopment[] = [
     name: 'Donanemab (Kisunla)',
     category: 'approved_drug',
     status: 'fda_approved',
+    treatmentType: 'disease_modifying',
     description:
       'Monoclonal antibody targeting a modified form of Aβ (N3pG). Can be stopped once amyloid is cleared.',
     mechanism:
@@ -122,6 +130,7 @@ export const hopefulDevelopments: HopefulDevelopment[] = [
     name: 'Donepezil (Aricept)',
     category: 'approved_drug',
     status: 'fda_approved',
+    treatmentType: 'symptomatic',
     description:
       'Cholinesterase inhibitor that boosts acetylcholine levels in the brain. The most widely prescribed AD medication for over 25 years.',
     mechanism:
@@ -154,6 +163,7 @@ export const hopefulDevelopments: HopefulDevelopment[] = [
     name: 'Rivastigmine (Exelon)',
     category: 'approved_drug',
     status: 'fda_approved',
+    treatmentType: 'symptomatic',
     description:
       'Cholinesterase inhibitor available as oral medication or transdermal patch. Also approved for Parkinson\'s disease dementia.',
     mechanism:
@@ -183,6 +193,7 @@ export const hopefulDevelopments: HopefulDevelopment[] = [
     name: 'Galantamine (Razadyne)',
     category: 'approved_drug',
     status: 'fda_approved',
+    treatmentType: 'symptomatic',
     description:
       'Cholinesterase inhibitor and α7 nAChR positive allosteric modulator. Recent research reveals a previously unrecognized BBB-protective mechanism via the splenic anti-inflammatory pathway.',
     mechanism:
@@ -228,6 +239,7 @@ export const hopefulDevelopments: HopefulDevelopment[] = [
     name: 'Memantine (Namenda)',
     category: 'approved_drug',
     status: 'fda_approved',
+    treatmentType: 'symptomatic',
     description:
       'NMDA receptor antagonist for moderate-to-severe AD. Works through a different mechanism than cholinesterase inhibitors and can be used in combination.',
     mechanism:
@@ -760,6 +772,130 @@ export const hopefulDevelopments: HopefulDevelopment[] = [
   },
 
   // ============================================
+  // VACCINES WITH DEMENTIA PROTECTION
+  // ============================================
+  {
+    id: 'shingrix',
+    name: 'Shingrix (Recombinant VZV Vaccine)',
+    category: 'vaccine',
+    status: 'evidence_based',
+    description:
+      'Recombinant varicella zoster virus vaccine with AS01B adjuvant. Shows 17-18% reduction in dementia diagnoses beyond shingles prevention.',
+    mechanism:
+      'Induces trained immunity via AS01B adjuvant (MPL + QS-21). TLR4 activation → microglial reprogramming → enhanced phagocytic capacity → improved Aβ clearance. Protection extends beyond preventing VZV reactivation.',
+    whyHopeful:
+      'Demonstrates vaccines can protect against neurodegeneration via trained immunity, not just infection prevention. FDA-approved, widely available, well-established safety profile.',
+    evidence: [
+      {
+        trialName: 'Multiple cohort studies 2023-2025',
+        trialPhase: 'Observational',
+        primaryOutcome: 'Dementia incidence',
+        result: '17-18% reduction in dementia risk in vaccinated individuals',
+      },
+    ],
+    cost: '~$200 for 2-dose series (often covered by insurance)',
+    availability: 'FDA approved; recommended for adults 50+',
+    caveats: [
+      'Observational data; RCT for dementia endpoint not conducted',
+      'More reactogenic than Zostavax (local reactions common)',
+      'Two-dose series required',
+    ],
+    sourceIds: ['shingrix-dementia-2024'],
+  },
+
+  {
+    id: 'zostavax',
+    name: 'Zostavax (Live Attenuated VZV Vaccine)',
+    category: 'vaccine',
+    status: 'evidence_based',
+    description:
+      'Live attenuated varicella zoster virus vaccine. Shows 17% dementia reduction WITHOUT adjuvant, suggesting antigen-specific mechanisms.',
+    mechanism:
+      'Unlike Shingrix, Zostavax contains NO adjuvant. Yet it still reduces dementia risk. This suggests protection may come from: (1) immune response to VZV antigens specifically, (2) preventing VZV reactivation, or (3) unknown trained immunity mechanisms. Key scientific question remains open.',
+    whyHopeful:
+      'Proves dementia protection can occur WITHOUT adjuvant. This has major implications: either VZV-specific immunity matters, or adjuvant-independent trained immunity pathways exist.',
+    evidence: [
+      {
+        trialName: 'Pomirchy 2026',
+        trialPhase: 'Observational',
+        primaryOutcome: 'Dementia incidence',
+        result: '17% reduction in dementia risk independent of herpes zoster prevention',
+      },
+    ],
+    cost: 'Lower than Shingrix',
+    availability: 'Largely replaced by Shingrix but historically available',
+    caveats: [
+      'Live vaccine - not suitable for immunocompromised',
+      'Less effective than Shingrix for shingles prevention',
+      'Mechanism of dementia protection unclear',
+      'No longer the preferred shingles vaccine',
+    ],
+    sourceIds: ['zostavax-dementia-2026'],
+  },
+
+  {
+    id: 'bcg-vaccine',
+    name: 'BCG Vaccine',
+    category: 'vaccine',
+    status: 'preclinical',
+    description:
+      'Bacillus Calmette-Guérin tuberculosis vaccine. Shows ~45% dementia reduction in bladder cancer patients who receive repeated intravesical BCG.',
+    mechanism:
+      'BCG is the canonical trained immunity stimulus. Induces epigenetic reprogramming (H3K4me3, H3K9me3) of myeloid cells including microglia. Enhances metabolic flexibility and phagocytic capacity.',
+    whyHopeful:
+      'Shows the largest effect size of any vaccine for dementia protection (~45%). Demonstrates the power of trained immunity for neuroprotection. Well-established safety profile over 100 years of use.',
+    evidence: [
+      {
+        trialName: 'Bladder cancer patient cohorts',
+        trialPhase: 'Observational',
+        primaryOutcome: 'Dementia incidence',
+        result: '~45% reduction in dementia in patients receiving repeated BCG instillations',
+        limitation: 'Specific population (bladder cancer); may not generalize',
+      },
+    ],
+    cost: 'Very low (generic)',
+    availability: 'Not routinely used for dementia prevention; research ongoing',
+    caveats: [
+      'Bladder cancer cohort may not generalize to general population',
+      'Route of administration matters (intravesical vs intradermal)',
+      'No RCT for dementia indication',
+      'Clinical trials for AD indication needed',
+    ],
+    sourceIds: ['bcg-dementia-2023'],
+  },
+
+  {
+    id: 'rsv-vaccines',
+    name: 'RSV Vaccines (Arexvy, Abrysvo)',
+    category: 'vaccine',
+    status: 'evidence_based',
+    description:
+      'Newly approved RSV vaccines for older adults. Early data shows 29% reduction in dementia diagnoses.',
+    mechanism:
+      'Arexvy uses AS01B adjuvant (same as Shingrix). Abrysvo is unadjuvanted. Both show protection, supporting multiple mechanisms: (1) preventing RSV infection reduces inflammatory burden, (2) vaccine-induced trained immunity.',
+    whyHopeful:
+      'Brand new vaccines showing dementia protection adds to the evidence that vaccines in general may protect the aging brain. The fact that both adjuvanted (Arexvy) and unadjuvanted (Abrysvo) vaccines show benefit suggests multiple protective mechanisms.',
+    evidence: [
+      {
+        trialName: 'Early observational data 2024-2025',
+        trialPhase: 'Observational',
+        primaryOutcome: 'Dementia diagnoses',
+        result: '29% reduction in dementia diagnoses in vaccinated individuals',
+        limitation: 'Very new vaccines; limited follow-up time',
+      },
+    ],
+    cost: '~$200-300 per dose',
+    availability: 'FDA approved 2023; recommended for adults 60+',
+    caveats: [
+      'Very new vaccines - long-term data limited',
+      'Observational data only so far',
+      'Mechanism of protection unclear',
+      'Cost may be barrier for some',
+    ],
+    sourceIds: ['rsv-dementia-2025'],
+  },
+
+  // ============================================
   // EVIDENCE-BASED LIFESTYLE INTERVENTIONS
   // ============================================
   {
@@ -955,6 +1091,10 @@ export function getPipelineDrugs(): HopefulDevelopment[] {
   return hopefulDevelopments.filter(
     d => d.category === 'pipeline_drug' || d.category === 'device_therapy'
   );
+}
+
+export function getVaccines(): HopefulDevelopment[] {
+  return hopefulDevelopments.filter(d => d.category === 'vaccine');
 }
 
 // Summary statistics for the hopeful section

@@ -14,6 +14,7 @@ import {
   Users,
   Clock,
   Target,
+  Dna,
 } from 'lucide-react';
 import {
   Container,
@@ -238,37 +239,49 @@ export function TranslationalFailures() {
           </p>
         </motion.div>
 
-        {/* Filter + Legend Row */}
+        {/* How to read this + Filter + Legend */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-4 flex flex-wrap items-center justify-between gap-4"
+          className="mb-4 space-y-3"
         >
-          <div className="flex flex-wrap gap-1">
-            {ORGANISM_FILTERS.map((filter) => (
-              <button
-                key={filter.id}
-                onClick={() => {
-                  setFilterOrganism(filter.id);
-                  setExpandedModel(null);
-                }}
-                className={`px-3 py-1 text-xs transition-colors ${
-                  filterOrganism === filter.id
-                    ? 'bg-[var(--accent-orange)] text-white'
-                    : 'bg-[var(--bg-card)] text-[var(--text-body)] hover:bg-[var(--bg-primary)] border border-[var(--border)]'
-                }`}
-              >
-                {filter.label}
-              </button>
-            ))}
-          </div>
+          {/* How to read */}
+          <p className="text-xs text-[var(--text-muted)] border-l-2 border-[var(--border)] pl-3">
+            <strong>How to read:</strong> Each row is an animal model. Columns show which AD features it replicates.
+            <span className="text-[var(--success)] font-bold ml-1">✓</span> = human-relevant,
+            <span className="text-[var(--accent-orange)] ml-1">◐</span> = partial,
+            <span className="text-[var(--danger)] ml-1">✗</span> = absent.
+            Click any row to see failed drug translations.
+          </p>
 
-          <div className="flex items-center gap-4 text-xs text-[var(--text-muted)]">
-            <span><span className="text-[var(--success)] font-bold">✓</span> High</span>
-            <span><span className="text-[var(--accent-orange)]">✓</span> Moderate</span>
-            <span><span className="text-[var(--accent-orange)]">◐</span> Partial</span>
-            <span><span className="text-[var(--danger)]">✗</span> Absent</span>
+          {/* Filter + Legend Row */}
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex flex-wrap gap-1">
+              {ORGANISM_FILTERS.map((filter) => (
+                <button
+                  key={filter.id}
+                  onClick={() => {
+                    setFilterOrganism(filter.id);
+                    setExpandedModel(null);
+                  }}
+                  className={`px-3 py-1 text-xs transition-colors ${
+                    filterOrganism === filter.id
+                      ? 'bg-[var(--accent-orange)] text-white'
+                      : 'bg-[var(--bg-card)] text-[var(--text-body)] hover:bg-[var(--bg-primary)] border border-[var(--border)]'
+                  }`}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-4 text-xs text-[var(--text-muted)]">
+              <span><span className="text-[var(--success)] font-bold">✓</span> High</span>
+              <span><span className="text-[var(--accent-orange)]">✓</span> Moderate</span>
+              <span><span className="text-[var(--accent-orange)]">◐</span> Partial</span>
+              <span><span className="text-[var(--danger)]">✗</span> Absent</span>
+            </div>
           </div>
         </motion.div>
 
@@ -532,6 +545,43 @@ export function TranslationalFailures() {
                   </p>
                   <p className="text-sm text-[var(--accent-orange)]">
                     If natural plaques don&apos;t cause dementia, what does?
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Card 5: The Prion Myth */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-[var(--bg-card)] border border-[var(--border)] p-6 lg:col-span-2"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-[var(--danger-light)] flex items-center justify-center flex-shrink-0">
+                  <Dna className="w-6 h-6 text-[var(--danger)]" />
+                </div>
+                <div>
+                  <h4 className="font-serif font-bold text-lg text-[var(--text-primary)] mb-2">
+                    The Prion Myth
+                  </h4>
+                  <p className="text-[var(--text-body)] text-sm leading-relaxed mb-3">
+                    Tau and Aβ don&apos;t actually self-template. In vitro studies require{' '}
+                    <strong>polyanion cofactors</strong> (HSPGs, RNA) for aggregation.
+                    Fichou 2018 showed brain-derived tau seeds are &quot;exhausted after one
+                    generation&quot; without cofactor supplementation—they simply depolymerize.
+                  </p>
+                  <p className="text-[var(--text-body)] text-sm leading-relaxed mb-3">
+                    The &quot;prion-like spread&quot; narrative assumes autonomous self-templating.
+                    But the data suggests <strong>spread follows cofactor availability</strong>,
+                    not intrinsic seeding. Cellular dysfunction releases cofactors (RNA, DNA,
+                    polyanions), creating a permissive environment. The aggregation is a{' '}
+                    <em>consequence</em> of cell damage, not the cause.
+                  </p>
+                  <p className="text-sm text-[var(--danger)]">
+                    Therapies targeting &quot;prion spread&quot; may be chasing a phantom mechanism.
+                    The real target is the upstream cell damage that releases cofactors.
                   </p>
                 </div>
               </div>

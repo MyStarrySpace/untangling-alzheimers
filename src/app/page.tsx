@@ -13,6 +13,7 @@ import {
   TranslationalFailures,
   CaseStudies,
   HopefulDevelopments,
+  EmergingRiskFactors,
 } from '@/components/sections';
 
 // Act I pause card content
@@ -120,6 +121,8 @@ export default function Home() {
           <TranslationalFailures />
           <SectionDivider variant="tick" />
           <CaseStudies />
+          <SectionDivider variant="tick" />
+          <EmergingRiskFactors />
 
           {/* Act II Summary */}
           <PauseCard {...actIIPauseContent} variant="default" />

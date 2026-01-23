@@ -57,7 +57,7 @@ export function FailureCascade() {
 
         {/* Narrative intro - compact */}
         <motion.div
-          className="max-w-2xl mx-auto mb-10 flex items-start gap-3 p-4 border border-[var(--accent-orange)] bg-[var(--accent-orange-light)]"
+          className="max-w-2xl mx-auto mb-6 flex items-start gap-3 p-4 border border-[var(--accent-orange)] bg-[var(--accent-orange-light)]"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -66,6 +66,20 @@ export function FailureCascade() {
           <AlertTriangle className="w-5 h-5 text-[var(--accent-orange)] flex-shrink-0 mt-0.5" />
           <p className="text-sm text-[var(--accent-orange)]">{failureCascadeNarrative}</p>
         </motion.div>
+
+        {/* How to read this */}
+        <motion.p
+          className="text-center text-xs text-[var(--text-muted)] mb-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <span className="inline-flex items-center gap-1">
+            <span className="w-4 h-4 rounded-full bg-[var(--bg-secondary)] border border-[var(--border)] inline-flex items-center justify-center text-[8px]">📊</span>
+            Click any card to see supporting data
+          </span>
+        </motion.p>
 
         {/* Descending Stairs Layout - 4 columns */}
         <div className="max-w-6xl mx-auto">

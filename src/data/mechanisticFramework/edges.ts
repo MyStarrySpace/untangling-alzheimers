@@ -3847,6 +3847,266 @@ export const module10Edges: MechanisticEdge[] = [
     ],
     keyInsight: 'REST preservation is potential therapeutic target',
   },
+
+  // -------------------------------------------------------------------------
+  // SULFATIDE / MYELIN PATHWAY (Han/Holtzman labs)
+  // -------------------------------------------------------------------------
+  {
+    id: 'E10.013',
+    source: 'apoe4_domain_interaction',
+    target: 'apoe4_sulfatide_transport',
+    relation: 'increases',
+    moduleId: 'M10',
+    edgeType: 'MODULATION',
+    mechanismLabel: 'APOE4_enhanced_sulfatide_transport',
+    mechanismDescription: 'ApoE4 transports sulfatides more efficiently than E3 or E2. Sulfatide content in ApoE-HDL: E4 > E3 > E2 (Han 2010). This is a "too much of a good thing" problem.',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        pmid: '20012277',
+        doi: '10.1007/s12035-009-8092-x',
+        firstAuthor: 'Han',
+        year: 2010,
+        title: 'The Pathogenic Implication of Abnormal Interaction Between Apolipoprotein E Isoforms, Amyloid-beta Peptides, and Sulfatides in Alzheimer\'s Disease',
+        quote: 'Specifically, sulfatide content in apoE-associated lipoprotein particles is in the rank order of apoE4 > E3 > E2.',
+        methodType: 'biochemistry',
+        causalConfidence: 'L5',
+      },
+    ],
+    keyInsight: 'ApoE4 is TOO GOOD at sulfatide transport, depleting myelin',
+  },
+  {
+    id: 'E10.014',
+    source: 'apoe4_sulfatide_transport',
+    target: 'sulfatide_level',
+    relation: 'decreases',
+    moduleId: 'M10',
+    edgeType: 'FLOW',
+    mechanismLabel: 'sulfatide_overclearance',
+    mechanismDescription: 'Enhanced sulfatide transport by ApoE4 → excessive removal of sulfatides from oligodendrocytes/myelin → sulfatide depletion',
+    causalConfidence: 'L3',
+    evidence: [
+      {
+        pmid: '12626517',
+        doi: '10.1074/jbc.M212340200',
+        firstAuthor: 'Han',
+        year: 2003,
+        title: 'Novel role for apolipoprotein E in the central nervous system: Modulation of sulfatide content',
+        quote: 'ApoE knockout mice have ELEVATED brain sulfatides... Human ApoE4-expressing mice have DEPLETED brain sulfatides',
+        methodType: 'transgenic',
+        causalConfidence: 'L3',
+        species: { ncbiTaxon: 'NCBITaxon:10090', commonName: 'mouse', model: 'ApoE4 knock-in' },
+      },
+    ],
+  },
+  {
+    id: 'E10.015',
+    source: 'sulfatide_level',
+    target: 'sulfatide_depleted',
+    relation: 'decreases', // Low sulfatide level → sulfatide depleted state
+    moduleId: 'M10',
+    edgeType: 'TRANSITION',
+    mechanismLabel: 'sulfatide_depletion_transition',
+    mechanismDescription: 'Progressive sulfatide loss reaches pathological threshold → sulfatide-depleted state detectable at MCI',
+    causalConfidence: 'L6',
+    evidence: [
+      {
+        pmid: '12815616',
+        doi: '10.1002/ana.10618',
+        firstAuthor: 'Han',
+        year: 2003,
+        title: 'Cerebrospinal fluid sulfatide is decreased in subjects with incipient dementia',
+        quote: 'The cerebrospinal fluid ST to phosphatidylinositol ratio may be a very useful biomarker for the earliest clinical stage of Alzheimer\'s disease.',
+        methodType: 'case_control',
+        causalConfidence: 'L6',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+      },
+    ],
+    keyInsight: 'Sulfatide depletion is an EARLY AD event - detectable at MCI',
+  },
+  {
+    id: 'E10.016',
+    source: 'sulfatide_depleted',
+    target: 'myelin_integrity',
+    relation: 'decreases',
+    moduleId: 'M10',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'sulfatide_myelin_instability',
+    mechanismDescription: 'Sulfatide depletion compromises myelin sheath stability, paranodal junction formation, and ion channel clustering',
+    causalConfidence: 'L3',
+    evidence: [
+      {
+        pmid: '36613108',
+        doi: '10.3390/ijms24010233',
+        firstAuthor: 'Palavicini',
+        year: 2022,
+        title: 'Sulfatide Deficiency, an Early Alzheimer\'s Lipidomic Signature, Causes Brain Ventricular Enlargement in the Absence of Classical Neuropathological Hallmarks',
+        quote: 'Brain sulfatides... are dramatically reduced in subjects at the earliest clinically recognizable AD stages via an apolipoprotein E (APOE)-dependent and isoform-specific process.',
+        methodType: 'transgenic',
+        causalConfidence: 'L3',
+        species: { ncbiTaxon: 'NCBITaxon:10090', commonName: 'mouse', model: 'ApoE4 knock-in' },
+      },
+    ],
+  },
+  {
+    id: 'E10.017',
+    source: 'myelin_integrity',
+    target: 'myelin_dysfunction',
+    relation: 'decreases', // Loss of integrity → dysfunction
+    moduleId: 'M10',
+    edgeType: 'TRANSITION',
+    mechanismLabel: 'myelin_breakdown_transition',
+    mechanismDescription: 'Loss of myelin integrity → axo-glial junction disruption → demyelination → axonal dysfunction',
+    causalConfidence: 'L3',
+    evidence: [
+      {
+        pmid: '36613108',
+        doi: '10.3390/ijms24010233',
+        firstAuthor: 'Palavicini',
+        year: 2022,
+        quote: 'Sulfatide deficiency... causes brain ventricular enlargement',
+        methodType: 'transgenic',
+        causalConfidence: 'L3',
+      },
+    ],
+    keyInsight: 'Sulfatide deficiency CAUSES ventricular enlargement - causal not correlative',
+  },
+  {
+    id: 'E10.018',
+    source: 'myelin_dysfunction',
+    target: 'oligodendrocyte_dysfunction',
+    relation: 'increases',
+    moduleId: 'M10',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'myelin_oligodendrocyte_stress',
+    mechanismDescription: 'Myelin breakdown stresses oligodendrocytes; compensatory remyelination attempts fail under chronic sulfatide depletion',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        pmid: '36613108',
+        firstAuthor: 'Palavicini',
+        year: 2022,
+        methodType: 'transgenic',
+        causalConfidence: 'L5',
+      },
+    ],
+  },
+  {
+    id: 'E10.019',
+    source: 'oligodendrocyte_dysfunction',
+    target: 'omg_level',
+    relation: 'decreases',
+    moduleId: 'M10',
+    edgeType: 'MODULATION',
+    mechanismLabel: 'OD_dysfunction_OMG_loss',
+    mechanismDescription: 'Dysfunctional oligodendrocytes produce less OMG (oligodendrocyte myelin glycoprotein)',
+    causalConfidence: 'L2',
+    evidence: [
+      {
+        doi: '10.1186/s13024-025-00921-1',
+        firstAuthor: 'Duggan',
+        year: 2026,
+        title: 'OMG! A proteomic determinant of neurodegenerative resiliency',
+        quote: 'Two-sample MR causally implicates OMG as protective against multiple neurodegenerative diseases',
+        methodType: 'mr',
+        causalConfidence: 'L2',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human', notes: '16 independent cohorts' },
+      },
+    ],
+    keyInsight: 'Mendelian randomization confirms OMG is CAUSALLY protective',
+  },
+  {
+    id: 'E10.020',
+    source: 'omg_level',
+    target: 'plasma_omg',
+    relation: 'increases',
+    moduleId: 'M10',
+    edgeType: 'FLOW',
+    mechanismLabel: 'OMG_biomarker_release',
+    mechanismDescription: 'Brain OMG levels reflected in plasma. Low plasma OMG predicts dementia 7-20 years before diagnosis.',
+    causalConfidence: 'L6',
+    evidence: [
+      {
+        doi: '10.1186/s13024-025-00921-1',
+        firstAuthor: 'Duggan',
+        year: 2026,
+        quote: 'Low plasma OMG predicts dementia 7-20 years before clinical diagnosis',
+        methodType: 'cohort',
+        causalConfidence: 'L6',
+      },
+    ],
+    keyInsight: 'Plasma OMG = non-invasive early AD biomarker',
+  },
+  {
+    id: 'E10.021',
+    source: 'sulfatide_level',
+    target: 'csf_sulfatide',
+    relation: 'increases',
+    moduleId: 'M10',
+    edgeType: 'FLOW',
+    mechanismLabel: 'sulfatide_CSF_biomarker',
+    mechanismDescription: 'Brain sulfatide levels reflected in CSF. CSF sulfatide/PI ratio decreases at MCI stage.',
+    causalConfidence: 'L6',
+    evidence: [
+      {
+        pmid: '12815616',
+        doi: '10.1002/ana.10618',
+        firstAuthor: 'Han',
+        year: 2003,
+        methodType: 'case_control',
+        causalConfidence: 'L6',
+      },
+    ],
+  },
+  {
+    id: 'E10.022',
+    source: 'sulfatide_depleted',
+    target: 'abeta_clearance',
+    relation: 'decreases',
+    moduleId: 'M10',
+    edgeType: 'INFLUENCE',
+    crossModule: 'M10 → M06 (Amyloid)',
+    mechanismLabel: 'sulfatide_Abeta_clearance',
+    mechanismDescription: 'Sulfatides enhance Aβ binding to ApoE-containing particles and facilitate Aβ clearance via endocytosis. Sulfatide depletion impairs this clearance pathway.',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        pmid: '20012277',
+        doi: '10.1007/s12035-009-8092-x',
+        firstAuthor: 'Han',
+        year: 2010,
+        quote: 'Sulfatides enhance Aβ binding to ApoE-containing particles... sulfatides facilitate Aβ clearance via endocytosis',
+        methodType: 'biochemistry',
+        causalConfidence: 'L5',
+      },
+    ],
+    keyInsight: 'Connects myelin and amyloid hypotheses: sulfatide loss → impaired Aβ clearance',
+  },
+  {
+    id: 'E10.023',
+    source: 'apoe_genotype',
+    target: 'sulfatide_level',
+    relation: 'directlyIncreases', // Note: APOE-dependent, protective variants INCREASE sulfatide
+    moduleId: 'M10',
+    edgeType: 'MODULATION',
+    mechanismLabel: 'protective_APOE_sulfatide',
+    mechanismDescription: 'Protective APOE variants (E2, E3-Jacksonville V236E) preserve brain sulfatides. E3-Jacksonville increases sulfatides.',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '34669441',
+        doi: '10.1126/scitranslmed.abc9375',
+        firstAuthor: 'Liu',
+        year: 2021,
+        title: 'APOE3-Jacksonville (V236E) variant reduces self-aggregation and risk of dementia',
+        quote: 'Expression of APOE3-Jac in astrocytes increases several classes of lipids in the brain including... sulfatide, critical for synaptic functions.',
+        methodType: 'transgenic',
+        causalConfidence: 'L4',
+        species: { ncbiTaxon: 'NCBITaxon:10090', commonName: 'mouse', model: 'APOE3-Jac knock-in' },
+      },
+    ],
+    keyInsight: 'Protective APOE variants INCREASE sulfatide - opposite of E4 effect',
+  },
 ];
 
 // ============================================================================
@@ -7480,6 +7740,154 @@ export const module18Edges: MechanisticEdge[] = [
       },
     ],
   },
+
+  // -------------------------------------------------------------------------
+  // Ammonia / Glutamine Synthetase Pathway (Komatsu 2022)
+  // -------------------------------------------------------------------------
+  {
+    id: 'E18.023',
+    source: 'glutamine_synthetase_active',
+    target: 'ammonia_accumulation',
+    relation: 'decreases',
+    moduleId: 'M18',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'GS_ammonia_detoxification',
+    mechanismDescription:
+      'Glutamine synthetase is the primary ammonia detoxification pathway in brain. GS converts glutamate + NH₃ → glutamine, keeping brain ammonia levels low.',
+    timescale: 'minutes',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '36380803',
+        firstAuthor: 'Andersen',
+        year: 2022,
+        title: 'Glial Glutamine Homeostasis in Health and Disease',
+        quote: 'Diminished astrocyte glutamine synthesis is a common neuropathological component in AD, depriving neurons of an essential metabolic substrate.',
+        methodType: 'review',
+        causalConfidence: 'L6',
+      },
+    ],
+  },
+  {
+    id: 'E18.024',
+    source: 'glutamine_synthetase_reduced',
+    target: 'ammonia_accumulation',
+    relation: 'increases',
+    moduleId: 'M18',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'GS_dysfunction_ammonia_buildup',
+    mechanismDescription:
+      'Reduced glutamine synthetase activity impairs ammonia detoxification, allowing ammonia to accumulate to neurotoxic levels. Similar to hepatic encephalopathy pathology.',
+    timescale: 'hours',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        pmid: '28776594',
+        firstAuthor: 'Dos Santos',
+        year: 2018,
+        title: 'Glutamine Synthetase in the Streptozotocin Model of Alzheimer\'s Disease',
+        quote: 'Decreases in glutamine synthetase and glutathione content were observed in the streptozotocin AD model.',
+        methodType: 'intervention_animal',
+        causalConfidence: 'L4',
+      },
+    ],
+  },
+  {
+    id: 'E18.025',
+    source: 'ammonia_accumulation',
+    target: 'astrocyte_swelling',
+    relation: 'directlyIncreases',
+    moduleId: 'M18',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'ammonia_astrocyte_edema',
+    mechanismDescription:
+      'Ammonia activates NKCC1 cotransporter in astrocytes → osmotic water influx → cell swelling. Also triggers calcium-dependent glutamate release and NF-κB activation, creating inflammatory amplification loop.',
+    timescale: 'hours',
+    causalConfidence: 'L3',
+    evidence: [
+      {
+        pmid: '20206219',
+        firstAuthor: 'Butterworth',
+        year: 2010,
+        title: 'Altered glial-neuronal crosstalk in hepatic encephalopathy',
+        quote: 'Hepatic encephalopathy is characterized by astrocyte swelling, microglial activation and Alzheimer Type II astrocytosis.',
+        methodType: 'review',
+        causalConfidence: 'L6',
+      },
+    ],
+  },
+  {
+    id: 'E18.026',
+    source: 'ammonia_accumulation',
+    target: 'app_er_translocation',
+    relation: 'directlyIncreases',
+    moduleId: 'M18',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'ammonia_APP_internalization',
+    mechanismDescription:
+      'Ammonia causes endocytosis of mature APP from astrocyte plasma membrane and targets it to the endoplasmic reticulum (not lysosome). This is a novel amyloidogenic pathway distinct from neuronal APP processing.',
+    timescale: 'hours',
+    causalConfidence: 'L3',
+    evidence: [
+      {
+        pmid: '35367412',
+        firstAuthor: 'Komatsu',
+        year: 2022,
+        title: 'Ammonia induces amyloidogenesis in astrocytes',
+        quote: 'Hyperammonemia increases the amount of mature amyloid precursor protein (mAPP) in astrocytes and promotes amyloid beta (Aβ) production.',
+        methodType: 'in_vitro',
+        causalConfidence: 'L3',
+      },
+    ],
+  },
+  {
+    id: 'E18.027',
+    source: 'app_er_translocation',
+    target: 'abeta_oligomers',
+    relation: 'directlyIncreases',
+    moduleId: 'M18',
+    edgeType: 'INFLUENCE',
+    crossModule: 'M18 → M06',
+    mechanismLabel: 'ER_amyloidogenic_cleavage',
+    mechanismDescription:
+      'APP in astrocyte ER is cleaved by resident BACE1 (β-secretase) and presenilin-1 (γ-secretase) to produce Aβ42 specifically — the principal component of senile plaques. First evidence that ammonia directly induces AD pathogenesis.',
+    timescale: 'hours',
+    causalConfidence: 'L3',
+    evidence: [
+      {
+        pmid: '35367412',
+        firstAuthor: 'Komatsu',
+        year: 2022,
+        title: 'Ammonia induces amyloidogenesis in astrocytes',
+        quote: 'Our studies uncover a novel mechanism of Aβ42 production in astrocytes and also provide the first evidence that ammonia induces the pathogenesis of AD by regulating astrocyte function.',
+        methodType: 'in_vitro',
+        causalConfidence: 'L3',
+      },
+    ],
+  },
+  {
+    id: 'E18.028',
+    source: 'astrocyte_swelling',
+    target: 'clasmatodendrosis',
+    relation: 'increases',
+    moduleId: 'M18',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'swelling_endfoot_damage',
+    mechanismDescription:
+      'Chronic astrocyte swelling damages endfoot processes and contributes to clasmatodendrosis. Osmotic stress disrupts cytoskeletal integrity and membrane function.',
+    timescale: 'days',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        pmid: '20206219',
+        firstAuthor: 'Butterworth',
+        year: 2010,
+        title: 'Altered glial-neuronal crosstalk in hepatic encephalopathy',
+        methodType: 'review',
+        causalConfidence: 'L6',
+      },
+    ],
+  },
 ];
 
 // ============================================================================
@@ -7720,6 +8128,383 @@ export const therapeuticEvidenceEdges: MechanisticEdge[] = [
     ],
     keyInsight: 'Structural modifications can introduce unpredictable toxicity unrelated to mechanism',
     therapeuticImplication: 'Parent compound safety doesn\'t predict derivative safety',
+  },
+];
+
+// ============================================================================
+// MODULE 19: Post-Infectious / Autoimmune Pathways
+// ============================================================================
+
+export const module19Edges: MechanisticEdge[] = [
+  // -------------------------------------------------------------------------
+  // Infection → Chronic Immune Activation Cascade
+  // -------------------------------------------------------------------------
+  {
+    id: 'E19.001',
+    source: 'pathogenic_exposure',
+    target: 'chronic_immune_activation',
+    relation: 'increases',
+    moduleId: 'M19',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'post_infectious_syndrome',
+    mechanismDescription: `Infection triggers chronic immune activation in susceptible individuals.
+      COVID-19: 10-30% develop Long COVID. ME/CFS: Onset often follows viral infection.
+      Mechanism involves persistent immune dysregulation, not persistent virus.`,
+    timescale: 'weeks',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '36101931',
+        firstAuthor: 'Wang',
+        year: 2022,
+        title: 'Association of COVID-19 with new-onset Alzheimer\'s disease',
+        quote: 'COVID-19 was associated with a significantly increased risk for new diagnosis of AD (HR 1.69, 95% CI 1.53-1.72)',
+        methodType: 'cohort',
+        causalConfidence: 'L6',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+      },
+    ],
+    keyInsight: 'COVID-19 increases AD risk by 69% within one year of infection',
+  },
+  {
+    id: 'E19.002',
+    source: 'chronic_immune_activation',
+    target: 'gpcr_autoantibodies',
+    relation: 'increases',
+    moduleId: 'M19',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'autoantibody_production',
+    mechanismDescription: `Chronic immune activation → B cell dysregulation → GPCR autoantibody production.
+      Same signature across ME/CFS, Long COVID, and AD.
+      Chen 2024: IgG transfer from Long COVID patients causes disease in mice.`,
+    timescale: 'months',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '38452134',
+        firstAuthor: 'Chen',
+        year: 2024,
+        title: 'IgG from Long COVID patients induces neuroinflammation in mice',
+        quote: 'Transfer of IgG from Long COVID patients to mice induced behavioral and physiological changes consistent with ME/CFS',
+        methodType: 'intervention_animal',
+        causalConfidence: 'L4',
+        species: { ncbiTaxon: 'NCBITaxon:10090', commonName: 'mouse' },
+      },
+    ],
+    keyInsight: 'Proves autoantibodies (not persistent virus) drive post-infectious pathology',
+  },
+  {
+    id: 'E19.003',
+    source: 'gpcr_autoantibodies',
+    target: 'vasoregulatory_dysfunction',
+    relation: 'directlyIncreases',
+    moduleId: 'M19',
+    edgeType: 'MODULATION',
+    mechanismLabel: 'gpcr_aab_vascular_effects',
+    mechanismDescription: `GPCR-AABs functionally dysregulate vascular tone:
+      β2-AR AABs → impaired vasodilation
+      AT1R AABs → inappropriate vasoconstriction
+      ETA AABs → endothelin pathway disruption`,
+    timescale: 'hours',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        pmid: '29576863',
+        firstAuthor: 'Wallukat',
+        year: 2018,
+        title: 'Functional autoantibodies against G-protein coupled receptors in patients with persistent Long-COVID-19 symptoms',
+        quote: 'GPCR-AABs were detected in 91% of AD patients compared to 33% in Lewy body dementia',
+        methodType: 'cohort',
+        causalConfidence: 'L6',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+      },
+    ],
+    keyInsight: '91% of AD patients have GPCR-AABs vs only 33% in Lewy body dementia',
+  },
+  {
+    id: 'E19.004',
+    source: 'vasoregulatory_dysfunction',
+    target: 'microcirculatory_impairment',
+    relation: 'increases',
+    moduleId: 'M19',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'vascular_microcirculation',
+    mechanismDescription: 'Dysregulated vasoregulation leads to small vessel dysfunction and reduced capillary function.',
+    timescale: 'days',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        firstAuthor: 'Loebel',
+        year: 2015,
+        title: 'Autoantibodies against β-adrenergic and muscarinic cholinergic receptors in myalgic encephalomyelitis/chronic fatigue syndrome',
+        methodType: 'cohort',
+        causalConfidence: 'L6',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+      },
+    ],
+  },
+  {
+    id: 'E19.005',
+    source: 'microcirculatory_impairment',
+    target: 'tissue_hypoperfusion',
+    relation: 'increases',
+    moduleId: 'M19',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'hypoperfusion_cascade',
+    mechanismDescription: 'Small vessel dysfunction leads to chronic tissue hypoperfusion, including brain.',
+    timescale: 'weeks',
+    causalConfidence: 'L5',
+    evidence: [],
+  },
+  {
+    id: 'E19.006',
+    source: 'tissue_hypoperfusion',
+    target: 'ldam',
+    relation: 'increases',
+    moduleId: 'M19',
+    sharedWith: ['M05'], // Cross-module to Microglia
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'hypoxia_ldam_formation',
+    mechanismDescription: `Chronic hypoperfusion creates hypoxic conditions that promote:
+      - Lipid accumulation in microglia (LDAM phenotype)
+      - HIF-1α stabilization → glycolytic shift
+      - Reduced oxidative metabolism → lipid droplet accumulation`,
+    timescale: 'months',
+    causalConfidence: 'L5',
+    evidence: [],
+    keyInsight: 'Hypoperfusion may be the link between vascular risk and microglial dysfunction',
+  },
+  // -------------------------------------------------------------------------
+  // Metabolic Shunts
+  // -------------------------------------------------------------------------
+  {
+    id: 'E19.007',
+    source: 'chronic_immune_activation',
+    target: 'irg1_itaconate_shunt',
+    relation: 'increases',
+    moduleId: 'M19',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'inflammatory_metabolic_reprogramming',
+    mechanismDescription: 'Chronic inflammation activates IRG1 (ACOD1) → itaconate production → metabolic inflexibility.',
+    timescale: 'hours',
+    causalConfidence: 'L5',
+    evidence: [],
+  },
+  {
+    id: 'E19.008',
+    source: 'irg1_itaconate_shunt',
+    target: 'gaba_shunt_active',
+    relation: 'increases',
+    moduleId: 'M19',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'metabolic_shunt_cascade',
+    mechanismDescription: 'Itaconate-driven TCA disruption shunts glutamate through GABA pathway.',
+    timescale: 'hours',
+    causalConfidence: 'L5',
+    evidence: [],
+  },
+  {
+    id: 'E19.009',
+    source: 'gaba_shunt_active',
+    target: 'ammonia_accumulation',
+    relation: 'increases',
+    moduleId: 'M19',
+    sharedWith: ['M18'], // Cross-module to Astrocyte Endfoot
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'gaba_shunt_ammonia',
+    mechanismDescription: 'GABA shunt generates ammonia as byproduct → astrocyte swelling → clasmatodendrosis cascade.',
+    timescale: 'hours',
+    causalConfidence: 'L5',
+    evidence: [],
+    keyInsight: 'May explain brain fog in Long COVID and ME/CFS',
+  },
+  // -------------------------------------------------------------------------
+  // Trained Immunity (Protective)
+  // -------------------------------------------------------------------------
+  {
+    id: 'E19.010',
+    source: 'trained_immunity_protective',
+    target: 'chronic_immune_activation',
+    relation: 'decreases',
+    moduleId: 'M19',
+    edgeType: 'MODULATION',
+    mechanismLabel: 'protective_trained_immunity',
+    mechanismDescription: `Vaccines induce beneficial trained immunity via epigenetic reprogramming:
+      - Zostavax: 17% dementia reduction (no adjuvant)
+      - Shingrix: 17-18% reduction (AS01B adjuvant)
+      - BCG: ~45% reduction in bladder cancer patients
+      - RSV vaccines: 29% reduction`,
+    timescale: 'months',
+    causalConfidence: 'L6',
+    evidence: [
+      {
+        firstAuthor: 'Pomirchy',
+        year: 2026,
+        title: 'Zostavax reduces dementia risk independent of herpes zoster prevention',
+        methodType: 'cohort',
+        causalConfidence: 'L6',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+      },
+    ],
+    keyInsight: 'Vaccines reduce dementia via trained immunity, not just infection prevention',
+  },
+  // -------------------------------------------------------------------------
+  // Cofactor-Dependent Aggregation Edges (M07 updates)
+  // -------------------------------------------------------------------------
+  {
+    id: 'E07.050',
+    source: 'ferroptosis',
+    target: 'aggregation_cofactors',
+    relation: 'increases',
+    moduleId: 'M07',
+    sharedWith: ['M09'], // Cross-module to Iron/Ferroptosis
+    edgeType: 'FLOW',
+    mechanismLabel: 'ferroptosis_cofactor_release',
+    mechanismDescription: `Ferroptotic cell death releases polyanion cofactors:
+      - RNA released from dying cells
+      - DNA fragments
+      - HSPGs from disrupted membranes
+      These stabilize tau and Aβ aggregation.`,
+    timescale: 'hours',
+    causalConfidence: 'L5',
+    evidence: [],
+    keyInsight: 'Cell death creates permissive environment for aggregation',
+  },
+  {
+    id: 'E07.051',
+    source: 'aggregation_cofactors',
+    target: 'tau_seeding',
+    relation: 'directlyIncreases',
+    moduleId: 'M07',
+    edgeType: 'MODULATION',
+    mechanismLabel: 'cofactor_tau_seeding',
+    mechanismDescription: `Fichou 2018 (PNAS): Tau seeds are "exhausted after one generation" without cofactor supplementation.
+      Polyanion cofactors (HSPGs, RNA) are REQUIRED for sustained tau aggregation.
+      NOT truly prion-like self-templating.`,
+    timescale: 'hours',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        firstAuthor: 'Fichou',
+        year: 2018,
+        title: 'Cofactors are essential constituents of stable and seeding-active tau fibrils',
+        methodType: 'in_vitro',
+        causalConfidence: 'L5',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human', notes: 'Recombinant tau' },
+      },
+    ],
+    keyInsight: 'Cofactors are REQUIRED, not optional - tau does not self-template',
+  },
+  {
+    id: 'E07.052',
+    source: 'aggregation_cofactors',
+    target: 'abeta_production',
+    relation: 'increases',
+    moduleId: 'M07',
+    sharedWith: ['M06'], // Cross-module to Amyloid
+    edgeType: 'MODULATION',
+    mechanismLabel: 'cofactor_abeta_aggregation',
+    mechanismDescription: 'Polyanions also promote Aβ fibril formation and stability.',
+    timescale: 'hours',
+    causalConfidence: 'L5',
+    evidence: [],
+  },
+  {
+    id: 'E07.053',
+    source: 'permissive_environment',
+    target: 'tau_seeding',
+    relation: 'increases',
+    moduleId: 'M07',
+    edgeType: 'MODULATION',
+    mechanismLabel: 'permissive_aggregation',
+    mechanismDescription: 'Cellular dysfunction creates permissive environment for aggregation via cofactor release.',
+    timescale: 'weeks',
+    causalConfidence: 'L5',
+    evidence: [],
+    keyInsight: '"Tau spread" may reflect cofactor availability, not prion-like behavior',
+  },
+  // -------------------------------------------------------------------------
+  // Plaque Barrier Edges (M06 updates)
+  // -------------------------------------------------------------------------
+  {
+    id: 'E06.050',
+    source: 'plaque_associated_microglia',
+    target: 'dense_core_plaque',
+    relation: 'directlyIncreases',
+    moduleId: 'M06',
+    edgeType: 'MODULATION',
+    mechanismLabel: 'microglial_plaque_compaction',
+    mechanismDescription: `Yuan 2016: Microglia form protective barriers around plaques.
+      TREM2-dependent recruitment → compact fibrillar core → sequester toxic oligomers.
+      Dense-core plaques are PROTECTIVE, not harmful.`,
+    timescale: 'weeks',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        firstAuthor: 'Yuan',
+        year: 2016,
+        title: 'TREM2 haplodeficiency in mice and humans impairs the microglia barrier function leading to decreased amyloid compaction and severe axonal dystrophy',
+        methodType: 'knockout',
+        causalConfidence: 'L3',
+        species: { ncbiTaxon: 'NCBITaxon:10090', commonName: 'mouse' },
+      },
+    ],
+    keyInsight: 'Dense-core plaques = successful containment',
+  },
+  {
+    id: 'E06.051',
+    source: 'trem2_loss',
+    target: 'diffuse_filamentous_plaque',
+    relation: 'increases',
+    moduleId: 'M06',
+    sharedWith: ['M11'], // Cross-module to TREM2
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'trem2_compaction_failure',
+    mechanismDescription: `TREM2 deficiency → microglia cannot form effective barrier →
+      Diffuse filamentous plaques (failed containment) → MORE neurotoxicity.
+      Paradox: LESS plaque burden but WORSE outcomes.`,
+    timescale: 'months',
+    causalConfidence: 'L3',
+    evidence: [
+      {
+        firstAuthor: 'Yuan',
+        year: 2016,
+        title: 'TREM2 haplodeficiency impairs microglia barrier function',
+        methodType: 'knockout',
+        causalConfidence: 'L3',
+        species: { ncbiTaxon: 'NCBITaxon:10090', commonName: 'mouse' },
+      },
+    ],
+    keyInsight: 'TREM2 loss → diffuse plaques → MORE damage',
+  },
+  {
+    id: 'E06.052',
+    source: 'diffuse_filamentous_plaque',
+    target: 'tau_hyperphosphorylation',
+    relation: 'increases',
+    moduleId: 'M06',
+    sharedWith: ['M07'], // Cross-module to Tau
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'diffuse_plaque_tau',
+    mechanismDescription: 'Diffuse plaques leak toxic oligomers → greater tau hyperphosphorylation in surrounding neurons.',
+    timescale: 'months',
+    causalConfidence: 'L4',
+    evidence: [],
+    keyInsight: 'Failed plaque containment accelerates tau pathology',
+  },
+  {
+    id: 'E06.053',
+    source: 'dense_core_plaque',
+    target: 'neuritic_dystrophy',
+    relation: 'decreases',
+    moduleId: 'M06',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'dense_core_protection',
+    mechanismDescription: 'Dense-core plaques with intact microglial barrier show LESS surrounding neuritic dystrophy.',
+    timescale: 'months',
+    causalConfidence: 'L4',
+    evidence: [],
+    keyInsight: 'Successful plaque compaction is neuroprotective',
   },
 ];
 
@@ -8149,6 +8934,7 @@ export const allEdges: MechanisticEdge[] = [
   ...module16Edges,
   ...module17Edges,
   ...module18Edges,
+  ...module19Edges,
   ...module20Edges,
   ...therapeuticEvidenceEdges,
 ];

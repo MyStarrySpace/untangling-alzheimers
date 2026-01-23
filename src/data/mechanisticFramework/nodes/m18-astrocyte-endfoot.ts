@@ -152,6 +152,72 @@ export const module18Nodes: MechanisticNode[] = [
   },
 
   // -------------------------------------------------------------------------
+  // Ammonia / Glutamine Metabolism Nodes
+  // -------------------------------------------------------------------------
+  {
+    id: 'glutamine_synthetase_active',
+    label: 'Glutamine Synthetase (Active)',
+    category: 'STOCK',
+    subtype: 'ActiveProteinPool',
+    moduleId: 'M18',
+    references: {
+      protein: 'UniProt:P15104', // GLUL
+      process: 'GO:0004356', // Glutamate-ammonia ligase activity
+    },
+    description: 'Astrocyte-specific enzyme that detoxifies ammonia',
+    mechanism: 'Converts glutamate + NH₃ → glutamine. Primary ammonia detoxification pathway in brain. Also recycles glutamate for neurons.',
+    roles: ['REGULATOR'],
+  },
+  {
+    id: 'glutamine_synthetase_reduced',
+    label: 'Glutamine Synthetase (Reduced)',
+    category: 'STATE',
+    subtype: 'DiseaseStage',
+    moduleId: 'M18',
+    references: {
+      protein: 'UniProt:P15104', // GLUL
+    },
+    description: 'Reduced GS activity in AD astrocytes',
+    mechanism: 'GS oxidation, nitration, and reduced expression in AD. Impairs ammonia detoxification and disrupts glutamate-glutamine cycle. Neurons lose essential metabolic substrate.',
+    roles: ['THERAPEUTIC_TARGET'],
+  },
+  {
+    id: 'ammonia_accumulation',
+    label: 'Brain Ammonia',
+    category: 'STOCK',
+    subtype: 'MetabolitePool',
+    moduleId: 'M18',
+    description: 'Accumulated ammonia in brain parenchyma',
+    mechanism: 'Ammonia accumulates when GS activity is insufficient or GABA shunt is overactive. Directly toxic to astrocytes. Induces Alzheimer Type II astrocytosis (same morphology as hepatic encephalopathy).',
+    units: 'μM',
+    roles: ['THERAPEUTIC_TARGET'],
+  },
+  {
+    id: 'astrocyte_swelling',
+    label: 'Astrocyte Swelling',
+    category: 'STATE',
+    subtype: 'DiseaseStage',
+    moduleId: 'M18',
+    description: 'Ammonia-induced astrocyte edema',
+    mechanism: 'Ammonia activates NKCC1 cotransporter → osmotic water influx → cell swelling. Also triggers calcium-dependent glutamate release, exacerbating excitotoxicity. Creates NF-κB amplification loop.',
+  },
+  {
+    id: 'app_er_translocation',
+    label: 'APP→ER Translocation',
+    category: 'STATE',
+    subtype: 'BiologicalProcess',
+    moduleId: 'M18',
+    sharedWith: ['M06'], // Cross-module to amyloid
+    references: {
+      protein: 'UniProt:P05067', // APP
+      process: 'GO:0030433', // ER-associated ubiquitin-dependent protein catabolic process
+    },
+    description: 'Ammonia-induced APP internalization to ER',
+    mechanism: 'Ammonia causes endocytosis of mature APP from astrocyte plasma membrane → ER (not lysosome). ER contains BACE1 and presenilin-1 → cleaves APP to produce Aβ42 specifically. Novel amyloidogenic pathway (Komatsu 2022).',
+    roles: ['THERAPEUTIC_TARGET'],
+  },
+
+  // -------------------------------------------------------------------------
   // Risk Factor / Trigger Nodes
   // -------------------------------------------------------------------------
   {

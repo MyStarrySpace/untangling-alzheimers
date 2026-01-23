@@ -145,8 +145,81 @@ export const module7Nodes: MechanisticNode[] = [
     category: 'STATE', // SBSF v2.0: Was PROCESS, now STATE (process activity as categorical state)
     subtype: 'BiologicalProcess',
     moduleId: 'M07',
-    description: 'Prion-like templated misfolding',
-    mechanism: 'Tau seeds template misfolding of native tau → Braak staging',
+    description: 'Cofactor-dependent templated misfolding (NOT truly prion-like)',
+    mechanism: `CRITICAL NUANCE: Tau does NOT self-template without cofactors.
+      Requires polyanion COFACTORS: heparan sulfate proteoglycans (HSPGs), RNA, polyanions.
+
+      Fichou 2018 (PNAS): Brain-derived tau seeds are "exhausted after one generation"
+      without cofactor supplementation. The seeds depolymerize.
+
+      Cohen 2013: Secondary nucleation (fibril surfaces catalyze new aggregation)
+      is the dominant mechanism, not true self-templating.
+
+      Bhatt 2020: Aggregation reproducibility problems across labs suggest
+      cofactor availability varies, not intrinsic prion-like behavior.
+
+      IMPLICATION: "Tau spread" may reflect cofactor release from dying cells,
+      not autonomous prion propagation. Cellular dysfunction PERMITS aggregation.`,
+    roles: ['THERAPEUTIC_TARGET'],
+  },
+
+  // ============================================================================
+  // COFACTOR-DEPENDENT AGGREGATION
+  // Key insight: Aggregation requires permissive environment
+  // ============================================================================
+  {
+    id: 'aggregation_cofactors',
+    label: 'Aggregation Cofactors',
+    category: 'STOCK',
+    subtype: 'MetabolitePool',
+    moduleId: 'M07',
+    sharedWith: ['M06'], // Also relevant to amyloid aggregation
+    description: 'Polyanions (HSPGs, RNA, nucleic acids) required for tau and Aβ aggregation',
+    mechanism: `Cofactors essential for pathological aggregation:
+      - Heparan sulfate proteoglycans (HSPGs) - on cell surfaces and ECM
+      - RNA (released from dying cells)
+      - DNA fragments
+      - Polyglutamate, polyphosphate
+
+      These polyanions provide the template/scaffold for fibril formation.
+      Without them, tau and Aβ fibrils are unstable and depolymerize.
+
+      KEY INSIGHT: Cellular dysfunction releases cofactors, creating
+      a permissive environment for aggregation. Aggregation is a
+      CONSEQUENCE of cellular damage, not the primary cause.`,
+  },
+  {
+    id: 'permissive_environment',
+    label: 'Permissive Environment',
+    category: 'STATE',
+    subtype: 'DiseaseStage',
+    moduleId: 'M07',
+    description: 'Cellular dysfunction creates conditions allowing aggregation',
+    mechanism: `The "permissive environment" hypothesis:
+      1. Cellular stress/death releases polyanion cofactors
+      2. Cofactors stabilize misfolded protein aggregates
+      3. Aggregation propagates through regions with cofactor availability
+
+      This explains why:
+      - Plaques/tangles follow patterns of cellular vulnerability
+      - Aggregation accelerates once pathology is established
+      - Early intervention may prevent permissive environment formation`,
+    roles: ['LEVERAGE_POINT'],
+  },
+  {
+    id: 'secondary_nucleation',
+    label: 'Secondary Nucleation',
+    category: 'STATE',
+    subtype: 'BiologicalProcess',
+    moduleId: 'M07',
+    description: 'Fibril surfaces catalyze new aggregate formation (dominant mechanism)',
+    mechanism: `Cohen 2013 showed secondary nucleation is the DOMINANT aggregation mechanism:
+      - Existing fibril surfaces catalyze new monomer aggregation
+      - NOT true self-templating (prion-like)
+      - Requires both fibrils AND monomers AND cofactors
+
+      Therapeutic implication: Clearing existing fibrils may slow secondary
+      nucleation, but cofactor removal may be more effective.`,
   },
   // Module 7B: Transsulfuration Pathway
   {
