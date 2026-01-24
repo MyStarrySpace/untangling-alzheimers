@@ -246,7 +246,7 @@ export const boundaryNodes: MechanisticNode[] = [
     subtype: 'CognitiveScore',
     moduleId: 'BOUNDARY',
     boundaryDirection: 'output',
-    sharedWith: ['M06', 'M07', 'M08', 'M13', 'M17'], // Amyloid, Tau, Complement, Cholinergic, AS01
+    sharedWith: ['M06', 'M07', 'M08', 'M13', 'M17'], // Amyloid, Tau, Complement, Cholinergic, Trained Immunity
     description: 'Psychometric assessment of cognition - primary clinical endpoint',
     units: 'MMSE (0-30), ADAS-Cog (0-70), CDR-SB (0-18), MoCA (0-30)',
     roles: ['BIOMARKER'],

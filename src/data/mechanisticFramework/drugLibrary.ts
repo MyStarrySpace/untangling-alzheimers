@@ -883,6 +883,57 @@ export const treatmentLibrary: TreatmentLibraryEntry[] = [
     notes: 'Poor brain penetration despite promising preclinical data. Nano-formulations being tested.',
   },
 
+  // ---------------------------------------------------------------------------
+  // BACOPA MONNIERI (Multi-targeted Botanical)
+  // ---------------------------------------------------------------------------
+  {
+    id: 'bacopa_monnieri',
+    name: 'Bacopa monnieri',
+    type: 'supplement',
+    fdaStatus: 'phase2', // Phase II GWI trial active (NCT04927338)
+    availability: 'supplement',
+    mechanismSummary: 'Multi-targeted botanical: AChE inhibition, anti-inflammatory, antioxidant, anti-amyloidogenic',
+    primaryTargets: [
+      {
+        nodeId: 'ach_reduced',
+        effect: 'inhibits',
+        strength: 'moderate',
+        mechanism: 'AChE inhibition enhances cholinergic transmission. Comparable to donepezil in 52-week RCT (Prabhakar 2013).',
+      },
+      {
+        nodeId: 'neuroinflammation',
+        effect: 'inhibits',
+        strength: 'moderate',
+        mechanism: 'Reduces IL-6, IL-1β, TNF-α >75% at 1nM in 1h in synaptosomes (Gościniak 2025).',
+      },
+      {
+        nodeId: 'abeta_oligomers',
+        effect: 'inhibits',
+        strength: 'moderate',
+        mechanism: 'Aβ dissociation and reduced deposition in animal models (Limpeanchob 2008).',
+      },
+      {
+        nodeId: 'mito_ros',
+        effect: 'inhibits',
+        strength: 'moderate',
+        mechanism: 'Antioxidant activity reduces ROS, lipid peroxidation.',
+      },
+    ],
+    adEvidence: {
+      level: 'L3', // RCT evidence
+      summary: 'Comparable efficacy to donepezil in 52-week RCT (Prabhakar 2013, n=48). Active Phase II trial in GWI (NCT04927338). Multi-targeted mechanism may address heterogeneous conditions.',
+      pmids: ['24252493', '22747190', '22254423', '12404706'],
+    },
+    annualCost: 150, // BacoMind standardized extract
+    notes: `GWI/ME/CFS/AD CONVERGENCE POINT: Active clinical trial (NCT04927338) testing BacoMind in Gulf War Illness.
+      Key insight: Unlike single-target drugs that fail in heterogeneous conditions, multi-targeted botanicals
+      may succeed by hitting multiple nodes in shared pathological network.
+
+      Active compounds: Bacosides A (38% standardized extract), brahmine alkaloids.
+      Cautions: CYP enzyme inhibition (2C9, 2C19, 1A2, 2D6, 3A4); may interact with AChE inhibitors;
+      can increase T4 (avoid in hyperthyroidism).`,
+  },
+
   // ===========================================================================
   // NON-PHARMACOLOGICAL INTERVENTIONS
   // ===========================================================================

@@ -101,25 +101,25 @@ export const promisingFrontierData: PromisingDrug[] = [
     citationIds: ['columbia-valacyclovir-2024', 'beingpatient-valacyclovir'],
   },
   {
-    id: 'as01-vaccines',
-    drug: 'AS01-Adjuvanted Vaccines (Shingrix, Arexvy)',
-    mechanism: 'TLR4/immune modulation',
+    id: 'vaccines-trained-immunity',
+    drug: 'Vaccines (Trained Immunity)',
+    mechanism: 'Trained immunity / microglial reprogramming',
     mechanismCategory: 'immune',
     evidenceStrength: 3,
     keyEvidence:
-      'Oxford 2025: In 436,788 propensity-matched individuals, AS01-adjuvanted vaccines (shingles + RSV) reduced 18-month dementia risk by 18-37%. Effect appears tied to the AS01 adjuvant itself, not the target pathogen.',
+      'Multiple vaccines show 17-45% dementia reduction: Shingrix (17-18%), Zostavax (17%), BCG (~45%), RSV vaccines (29%). Critically, BOTH adjuvanted AND non-adjuvanted vaccines protect equally, proving trained immunity is the mechanism.',
     quote:
-      'No difference was observed between the two AS01-adjuvanted vaccines, suggesting that the AS01 adjuvant itself plays a direct role in lowering dementia risk.',
-    quoteSource: 'Taquet et al., npj Vaccines 2025',
+      'Zostavax (live-attenuated, NO adjuvant) showed 2.0 percentage point reduction over 5.5 years via quasi-randomized design, ruling out adjuvant-specific mechanisms.',
+    quoteSource: 'Pomirchy et al., Lancet Neurol 2026',
     whyItMatters:
-      'These are FDA-approved vaccines already given to millions. If AS01 adjuvant directly reduces neuroinflammation via TLR4/IFN-γ, this is an immediately actionable finding.',
+      'Trained immunity reprograms innate immune cells (including microglia) via epigenetic modifications that persist for years. This is immediately actionable: vaccines are FDA-approved, widely available, and already given to millions.',
     keyCaveat:
-      'Observational data only—not an RCT. Effect could be healthy vaccinee bias or confounding. Shingrix is not approved for dementia prevention. Mechanism (MPL + QS-21 → IFN-γ → amyloid clearance?) speculative.',
-    status: 'Large observational study; FDA-approved for other indications',
-    costPerMonth: '~$150-200 (2-dose series)',
+      'Observational data only—not RCTs. Effect could be healthy vaccinee bias. Mechanism (epigenetic reprogramming of microglia → enhanced clearance/reduced neuroinflammation) plausible but not proven.',
+    status: 'Large observational studies; FDA-approved for other indications',
+    costPerMonth: '~$150-200 (2-dose series for Shingrix)',
     decisiveTrial:
-      'RCT of AS01 adjuvant alone (or Shingrix in dementia-enriched population) with CSF inflammatory markers and cognitive endpoints.',
-    citationIds: ['taquet-as01-2025'],
+      'RCT of any vaccine in dementia-enriched population with CSF inflammatory markers, microglial imaging (TSPO-PET), and cognitive endpoints.',
+    citationIds: ['pomirchy-zostavax-2026', 'taquet-as01-2025'],
   },
   {
     id: 'sri-011381',

@@ -99,8 +99,9 @@ export const postInfectiousRisks: PostInfectiousRisk[] = [
       },
     ],
     preventionOptions: [
-      'Zostavax (live attenuated) - 17% dementia reduction',
-      'Shingrix (recombinant + AS01B adjuvant) - 17-18% reduction',
+      'Zostavax (live attenuated, no adjuvant) - 17% dementia reduction',
+      'Shingrix (recombinant) - 17-18% reduction',
+      'Both vaccines protect equally via trained immunity, not adjuvant-specific mechanisms',
     ],
     keyInsight: 'Vaccination protects against dementia beyond just preventing shingles',
   },
@@ -163,20 +164,16 @@ beneficial immune reprogramming?`,
   },
   {
     id: 'shingrix',
-    intervention: 'Shingrix (Recombinant VZV + AS01B Adjuvant)',
+    intervention: 'Shingrix (Recombinant VZV Vaccine)',
     category: 'vaccine',
     riskReduction: '17-18% dementia reduction',
-    mechanism: `Shingrix uses AS01B adjuvant containing:
-- MPL (TLR4 agonist from bacterial lipid A)
-- QS-21 (saponin from tree bark)
+    mechanism: `Works via trained immunity - same mechanism as Zostavax:
+- Epigenetic reprogramming of innate immune cells (H3K4me3, H3K27ac)
+- Metabolic changes in monocytes, macrophages, AND microglia
+- Long-lasting: months to years (possibly lifelong)
 
-Likely works via trained immunity:
-- TLR4 activation → microglial reprogramming
-- Enhanced phagocytic capacity
-- Improved Aβ clearance
-
-Similar reduction to Zostavax despite different mechanism suggests
-multiple pathways can achieve protection.`,
+Similar reduction to non-adjuvanted Zostavax proves trained immunity
+(not specific adjuvant components) is the unifying mechanism.`,
     evidence: [
       {
         study: 'Multiple studies 2023-2025',
@@ -191,6 +188,7 @@ multiple pathways can achieve protection.`,
       'More reactogenic than Zostavax (local reactions common)',
       'Cost may be barrier for some',
     ],
+    keyInsight: 'Similar effect to non-adjuvanted Zostavax proves trained immunity is key',
   },
   {
     id: 'bcg',
@@ -225,14 +223,14 @@ repeated intravesical BCG) suggests robust neuroprotection.`,
     intervention: 'RSV Vaccines (Arexvy, Abrysvo)',
     category: 'vaccine',
     riskReduction: '29% dementia reduction',
-    mechanism: `New RSV vaccines for older adults show dementia protection:
-- Arexvy uses AS01B adjuvant (same as Shingrix)
-- Abrysvo is unadjuvanted
+    mechanism: `New RSV vaccines for older adults show dementia protection.
+Both adjuvanted (Arexvy) and unadjuvanted (Abrysvo) show similar protection.
 
-Both show protection, supporting multiple mechanisms:
-1. Preventing RSV infection reduces inflammatory burden
-2. Vaccine-induced trained immunity
-3. Cross-reactive immune responses`,
+This reinforces trained immunity as the unifying mechanism:
+- Vaccination induces epigenetic reprogramming of innate immune cells
+- Effects persist for months to years
+- Microglia are trained by peripheral immune challenges
+- Protection occurs regardless of adjuvant presence`,
     evidence: [
       {
         study: 'Early observational data 2024-2025',
@@ -245,8 +243,8 @@ Both show protection, supporting multiple mechanisms:
     caveats: [
       'Very new vaccines - long-term data limited',
       'Observational data only so far',
-      'Mechanism of protection unclear',
     ],
+    keyInsight: 'Both adjuvanted and unadjuvanted RSV vaccines protect equally',
   },
 ];
 

@@ -112,6 +112,98 @@ export const module9Nodes: MechanisticNode[] = [
     mechanism: 'Iron drives senescence; targets for ferroptotic senolysis',
     roles: ['THERAPEUTIC_TARGET'],
   },
+
+  // -------------------------------------------------------------------------
+  // Cell-Type-Specific Senescence (Lund 2026 - Cell)
+  // PARADIGM SHIFT: Microglia vs excitatory neuron senescence have OPPOSITE
+  // effects on brain volume. First study with living brain biopsies.
+  // -------------------------------------------------------------------------
+  {
+    id: 'microglial_senescence',
+    label: 'Microglial Senescence',
+    category: 'STATE',
+    subtype: 'DiseaseStage',
+    moduleId: 'M09',
+    sharedWith: ['M05'], // Cross-module to Microglia
+    description: 'Senescent microglia - paradoxically associated with LARGER brain volume',
+    mechanism: `Lund et al. Cell 2026 (Living Brain Project):
+      - 23/25 senescence-volume correlations POSITIVE in microglia
+      - Higher microglial senescence → LARGER brain volumes
+      - Conserved from early development through aging
+
+      Key transcription factors:
+      - ETV6: positive correlation with senescence
+      - CREB5: NEGATIVE correlation (↓ CREB5 → ↑ senescence)
+
+      PARADOX: Senescent microglia may help maintain brain structure,
+      while excitatory neuron senescence causes volume loss.`,
+    roles: ['BIOMARKER'],
+  },
+  {
+    id: 'excitatory_neuron_senescence',
+    label: 'Excitatory Neuron Senescence',
+    category: 'STATE',
+    subtype: 'DiseaseStage',
+    moduleId: 'M09',
+    sharedWith: ['M07', 'M18'], // Cross-module to tau, astrocyte
+    description: 'Senescent excitatory neurons - associated with brain VOLUME LOSS',
+    mechanism: `Lund et al. Cell 2026 (Living Brain Project):
+      - ALL senescence-volume correlations NEGATIVE in excitatory neurons
+      - Higher excitatory neuron senescence → SMALLER brain volumes
+      - Conserved from early development through aging
+
+      Key transcription factors:
+      - ZEB1: positive correlation (neural progenitor function)
+      - SREBF2: positive correlation (oligodendrocyte myelination)
+
+      CRITICAL CONNECTION: Excitatory neuron hyperactivity (from Aβ, reduced
+      inhibition) → senescence → volume loss. Explains Gabitto 2024 finding
+      that excitatory neurons are hyperactive BEFORE dying.`,
+    roles: ['THERAPEUTIC_TARGET', 'BIOMARKER'],
+  },
+  {
+    id: 'creb5_expression',
+    label: 'CREB5 Expression',
+    category: 'STOCK',
+    subtype: 'ActiveProteinPool',
+    moduleId: 'M09',
+    sharedWith: ['M05'], // Primarily microglial
+    description: 'Transcription factor reduced in AD - regulates oxidative stress',
+    mechanism: `Lund et al. Cell 2026:
+      - CREB5 negatively correlated with microglial senescence
+      - **CREB5 is DECREASED in Alzheimer's disease**
+      - CREB5 normally reduces oxidative stress and promotes neural plasticity
+
+      Implication: CREB5 downregulation → ↑ microglial senescence
+      → disrupted senescence balance → brain dysfunction.
+
+      Therapeutic potential: CREB5 activation could restore healthy
+      senescence patterns.`,
+    roles: ['THERAPEUTIC_TARGET', 'BIOMARKER'],
+  },
+  {
+    id: 'senescence_volume_loss',
+    label: 'Senescence-Driven Volume Loss',
+    category: 'STATE',
+    subtype: 'DiseaseStage',
+    moduleId: 'M09',
+    sharedWith: ['M07'], // Cross-module to tau pathology
+    description: 'Brain volume reduction from excitatory neuron senescence',
+    mechanism: `Lund et al. Cell 2026 established direct relationship:
+      ↑ excitatory neuron senescence → ↓ brain volume
+
+      This integrates with AD cascade:
+      1. Aβ oligomers → inhibitory neuron loss (SST+, PVALB+)
+      2. Disinhibition → excitatory neuron hyperactivity
+      3. Hyperactivity → excitatory neuron senescence
+      4. Senescence → VOLUME LOSS
+
+      Same relationship seen in GWI:
+      - Hippocampal atrophy (Chao 2010-2011)
+      - Ventricular enlargement
+      - MCI at median age 49`,
+    roles: ['BIOMARKER'],
+  },
   // SASP removed - it's a phenotypic category, not a discrete node
   // Downstream effects (IL-6, IL-8, IL-1β, TNF-α) are captured by edge to IL1B
 ];

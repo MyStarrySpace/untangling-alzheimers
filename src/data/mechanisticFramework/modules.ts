@@ -159,17 +159,31 @@ export const modules: MechanisticModule[] = [
     id: 'M05',
     name: 'Microglial Phenotypes',
     shortName: 'Microglia',
-    description: 'LDAM, DAM, and A1 astrocyte induction',
+    description: 'PARADIGM SHIFT: Microglia SEED plaques, not clear them. LDAM, DAM, A1 astrocyte induction.',
     overview: `
-      Module 5 describes how neuroinflammation drives dysfunctional microglial
-      phenotypes: LDAM (lipid-droplet accumulating), DAM (disease-associated),
-      and how microglia induce neurotoxic A1 astrocytes via IL-1α/TNF/C1q.
+      PARADIGM SHIFT: Microglia don't just fail to clear Aβ—they actively SEED plaques.
+
+      The LDAM (Lipid-Droplet Accumulating Microglia) phenotype represents metabolically
+      dysfunctional cells where:
+      1. mTOR-HIF1α axis drives glycolytic shift (validated in human AD tissue)
+      2. IRG1/itaconate shunt disrupts TCA cycle
+      3. Compensatory glutaminolysis produces toxic ammonia
+      4. Iron accumulation + lysosomal dysfunction = "super-seeder" state
+      5. These microglia AGGREGATE Aβ, not clear it (Baligács 2024)
+
+      This explains why anti-amyloid therapies have limited success: they target the
+      OUTPUT of microglial dysfunction, not the upstream metabolic collapse.
+
+      40Hz gamma therapy works by enhancing glymphatic clearance—removing Aβ BEFORE
+      microglia can process it.
     `.trim(),
     keyFindings: [
+      'PARADIGM SHIFT: Microglia SEED plaques—when depleted, insoluble Aβ DECREASES (Baligács 2024)',
+      'mTOR-HIF1α axis drives glycolytic shift in AD microglia (validated in human tissue)',
       'LDAM microglia are defective in phagocytosis and produce high ROS',
       'DAM is a two-step TREM2-dependent protective response',
       'IL-1α + TNF + C1q from microglia induce neurotoxic A1 astrocytes',
-      'LDAM produces C1q → complement-mediated synapse pruning',
+      '~40-50% of Aβ accumulation comes from microglial ASC specks (Venegas 2017)',
     ],
     upstreamModules: ['M04'],
     downstreamModules: ['M06', 'M08'],
@@ -177,6 +191,7 @@ export const modules: MechanisticModule[] = [
       { pmid: '31959936', discovery: 'Marschallinger 2020 - LDAM discovery' },
       { pmid: '28099414', discovery: 'Liddelow 2017 - A1 astrocyte induction' },
       { pmid: '28602351', discovery: 'Keren-Shaul 2017 - DAM discovery' },
+      { pmid: 'PENDING', discovery: 'Baligács 2024 - Microglia SEED plaques paradigm reversal' },
     ],
     color: '#f472b6',
     icon: 'Brain',
@@ -482,20 +497,30 @@ export const modules: MechanisticModule[] = [
   },
 
   // ============================================================================
-  // IMMUNOMODULATORY MODULE (17)
+  // TRAINED IMMUNITY / VACCINE-MEDIATED NEUROPROTECTION MODULE (17)
   // ============================================================================
   {
     id: 'M17',
-    name: 'Immunomodulatory Interventions',
-    shortName: 'Immunomodulatory',
-    description: 'Vaccine adjuvant-based immunomodulation and IFN-γ pathways',
+    name: 'Trained Immunity / Vaccine-Mediated Neuroprotection',
+    shortName: 'Trained Immunity',
+    description: 'Vaccine-induced epigenetic reprogramming of innate immune cells including microglia',
     overview: `
-      Module 17 describes immunomodulatory interventions, particularly the unexpected
-      cognitive protection observed with AS01-adjuvanted vaccines (Shingrix, Arexvy).
-      TLR4 activation by MPL leads to IFN-γ production, which may enhance amyloid clearance.
+      Module 17 describes trained immunity as the mechanism by which vaccines protect against dementia.
+
+      CRITICAL FINDING: Both adjuvanted (Shingrix, Arexvy) AND non-adjuvanted (Zostavax, BCG) vaccines
+      show 17-45% dementia reduction. This rules out adjuvant-specific mechanisms and points to
+      trained immunity as the unifying mechanism.
+
+      Trained immunity is long-term functional reprogramming of innate immune cells via:
+      - Epigenetic modifications (H3K4me3, H3K27ac)
+      - Metabolic reprogramming (glycolysis, TCA cycle)
+      - Duration: months to years (possibly lifelong)
+
+      Microglia are ideal substrates: long-lived, self-renewing, and can be trained by peripheral
+      immune challenges. This may explain why vaccination protects the aging brain.
     `.trim(),
     upstreamModules: [],
-    downstreamModules: ['M06'],
+    downstreamModules: ['M06', 'M08'],
     color: '#9B59B6',
     icon: 'Shield',
   },

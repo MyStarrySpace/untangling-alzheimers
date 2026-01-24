@@ -58,7 +58,8 @@
       "Bash(start /B npm run dev)",
       "Bash(timeout /t 8 /nobreak)",
       "Bash(dir:*)",
-      "Bash(comm:*)"
+      "Bash(comm:*)",
+      "Bash(timeout 60 bash -c 'while [ ! -s \"\"C:\\\\Users\\\\quest\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-quest-Programming-alz-market-viz\\\\tasks\\\\bfbfaf9.output\"\" ]; do sleep 1; done; cat \"\"C:\\\\Users\\\\quest\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-quest-Programming-alz-market-viz\\\\tasks\\\\bfbfaf9.output\"\"')"
     ]
   }
 }

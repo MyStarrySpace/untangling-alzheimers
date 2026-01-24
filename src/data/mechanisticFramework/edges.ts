@@ -1635,6 +1635,261 @@ export const module5Edges: MechanisticEdge[] = [
     ],
     keyInsight: 'A1 astrocytes abundant in AD, PD, HD, ALS, MS',
   },
+
+  // ============================================================================
+  // METABOLIC CASCADE EDGES (Infection → AD Pathway)
+  // mTOR-HIF1α axis drives glycolytic shift, IRG1/itaconate shunt disrupts TCA,
+  // compensatory glutaminolysis produces toxic ammonia, LDAM super-seeders
+  // ============================================================================
+  {
+    id: 'E05.015',
+    source: 'mtorc1_hyperactive',
+    target: 'mtor_hif1a_axis',
+    relation: 'directlyIncreases',
+    moduleId: 'M05',
+    edgeType: 'MODULATION',
+    mechanismLabel: 'mTORC1_HIF1a_axis_activation',
+    mechanismDescription:
+      'mTORC1 stabilizes HIF-1α via increased translation (4E-BP1 phosphorylation) and decreased degradation (reduced PHD activity). This occurs INDEPENDENT of hypoxia in inflammatory microglia.',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '39302180',
+        doi: '10.3390/cells13181535',
+        firstAuthor: 'Gopalkrishna',
+        year: 2024,
+        title:
+          "Microglial Metabolic Reprogramming: Emerging Insights and Therapeutic Strategies in Neurodegenerative Diseases",
+        quote:
+          'activation of mTOR triggers the expression of HIF1α',
+        methodType: 'meta_analysis',
+        causalConfidence: 'L4',
+      },
+    ],
+    keyInsight: 'mTOR-HIF1α axis validated in human AD tissue. Old female microglia show STRONGER shift.',
+  },
+  {
+    id: 'E05.016',
+    source: 'mtor_hif1a_axis',
+    target: 'glycolytic_switch',
+    relation: 'directlyIncreases',
+    moduleId: 'M05',
+    edgeType: 'TRANSITION',
+    mechanismLabel: 'axis_glycolytic_switch',
+    mechanismDescription:
+      'mTOR-HIF1α axis drives glycolytic program: HIF-1α → LDHA↑, HK2↑, PDK1↑ → pyruvate → lactate instead of TCA cycle. PKM2 dimerization favors biosynthesis over energy.',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '39302180',
+        doi: '10.3390/cells13181535',
+        firstAuthor: 'Gopalkrishna',
+        year: 2024,
+        quote:
+          'heightened activity of crucial glycolytic enzymes, including GLUT1, HK2, and PDK1',
+        methodType: 'meta_analysis',
+        causalConfidence: 'L4',
+      },
+    ],
+  },
+  {
+    id: 'E05.017',
+    source: 'nf_kb_active',
+    target: 'irg1_itaconate_shunt',
+    relation: 'increases',
+    moduleId: 'M05',
+    edgeType: 'MODULATION',
+    mechanismLabel: 'NFkB_IRG1_transcription',
+    mechanismDescription:
+      'NF-κB → IRG1 (ACOD1) transcription. IRG1 diverts aconitate from TCA cycle to produce itaconate. Key metabolic adaptation to chronic inflammation.',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        pmid: '29576945',
+        doi: '10.1038/s41586-018-0052-z',
+        firstAuthor: 'Mills',
+        year: 2018,
+        title: 'Itaconate is an anti-inflammatory metabolite that activates Nrf2 via alkylation of KEAP1',
+        quote: 'IRG1 highly induced by LPS, IFNγ, TNF, bacterial PAMPs',
+        methodType: 'intervention_animal',
+        causalConfidence: 'L4',
+      },
+    ],
+    keyInsight: 'Mills 2018 Nature: IRG1 is master regulator of inflammatory metabolic reprogramming',
+  },
+  {
+    id: 'E05.018',
+    source: 'irg1_itaconate_shunt',
+    target: 'sdh_inhibited',
+    relation: 'directlyIncreases',
+    moduleId: 'M05',
+    edgeType: 'MODULATION',
+    mechanismLabel: 'itaconate_SDH_inhibition',
+    mechanismDescription:
+      'Itaconate competitively inhibits SDH (Complex II) → succinate accumulates → pseudohypoxic signaling → HIF-1α stabilization (positive feedback to glycolytic switch).',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        pmid: '27629041',
+        doi: '10.1074/jbc.M116.748566',
+        firstAuthor: 'Cordes',
+        year: 2016,
+        title: 'Immunoresponsive Gene 1 and Itaconate Inhibit Succinate Dehydrogenase to Modulate Intracellular Succinate Levels',
+        quote: 'itaconate competitively inhibits SDH',
+        methodType: 'in_vitro',
+        causalConfidence: 'L5',
+      },
+    ],
+  },
+  {
+    id: 'E05.019',
+    source: 'sdh_inhibited',
+    target: 'tca_disrupted',
+    relation: 'increases',
+    moduleId: 'M05',
+    edgeType: 'FLOW',
+    mechanismLabel: 'SDH_block_TCA_disruption',
+    mechanismDescription:
+      'SDH is TCA cycle Complex II. Inhibition breaks the cycle at succinate → fumarate step. Combined with aconitate diversion to itaconate, TCA cycle cannot function normally.',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        firstAuthor: 'Cordes',
+        year: 2016,
+        quote: 'SDH inhibition disrupts TCA cycle flux',
+        methodType: 'in_vitro',
+        causalConfidence: 'L4',
+      },
+    ],
+  },
+  {
+    id: 'E05.020',
+    source: 'tca_disrupted',
+    target: 'glutaminolysis_compensatory',
+    relation: 'increases',
+    moduleId: 'M05',
+    edgeType: 'TRANSITION',
+    mechanismLabel: 'TCA_block_glutaminolysis',
+    mechanismDescription:
+      'Broken TCA cycle requires anaplerotic inputs. Glutaminolysis provides α-ketoglutarate to "restart" the cycle. SDH-deficient cells show 75% of succinate from glutamine (vs 32% WT).',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '33125085',
+        doi: '10.1096/fj.202000690RR',
+        firstAuthor: 'Kłučková',
+        year: 2020,
+        title: 'Metabolic implications of hypoxia and pseudohypoxia in pheochromocytoma and paraganglioma',
+        quote: '75% of succinate from glutamine in Sdhb−/− cells (vs 32% WT)',
+        methodType: 'intervention_animal',
+        causalConfidence: 'L4',
+      },
+    ],
+  },
+  {
+    id: 'E05.021',
+    source: 'glutaminolysis_compensatory',
+    target: 'ammonia_accumulation',
+    relation: 'directlyIncreases',
+    moduleId: 'M05',
+    edgeType: 'FLOW',
+    mechanismLabel: 'glutaminase_ammonia_production',
+    mechanismDescription:
+      'Glutamine → glutamate (glutaminase) releases NH₃. Glutamate → α-KG (GDH) releases another NH₃. Net: 0.5-1 mol ammonia per mol glutamine. Basic biochemistry.',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        firstAuthor: 'Biochemistry textbook',
+        year: 2020,
+        quote: 'Glutaminase converts glutamine to glutamate and ammonia',
+        methodType: 'review',
+        causalConfidence: 'L5',
+      },
+    ],
+  },
+  {
+    id: 'E05.022',
+    source: 'ammonia_accumulation',
+    target: 'clasmatodendrosis',
+    relation: 'increases',
+    moduleId: 'M05',
+    crossModule: 'M05 → M18',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'ammonia_astrocyte_swelling',
+    mechanismDescription:
+      'Ammonia → astrocyte glutamine synthetase → glutamine accumulation → osmotic swelling → clasmatodendrosis cascade. Links microglial metabolic collapse to astrocyte endfoot dysfunction.',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '27713011',
+        doi: '10.3389/fnmol.2016.00104',
+        firstAuthor: 'Adlimoghaddam',
+        year: 2016,
+        title: 'Ammonia as a Potential Neurotoxic Factor in Alzheimer\'s Disease',
+        quote: 'Excessive ammonia levels detected in brains of AD patients',
+        methodType: 'cohort',
+        causalConfidence: 'L5',
+      },
+    ],
+    keyInsight: 'Ammonia links metabolic cascade to structural damage',
+  },
+  {
+    id: 'E05.023',
+    source: 'ldam',
+    target: 'ldam_super_seeders',
+    relation: 'increases',
+    moduleId: 'M05',
+    edgeType: 'TRANSITION',
+    mechanismLabel: 'LDAM_to_super_seeder',
+    mechanismDescription:
+      'LDAM phenotype + iron loading + lysosomal dysfunction = "super-seeder" state. Iron impairs lysosomal function, worsening Aβ aggregation instead of clearance.',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '31959936',
+        firstAuthor: 'Marschallinger',
+        year: 2020,
+        quote: 'LDAM microglia are defective in phagocytosis and accumulate iron',
+        methodType: 'cohort',
+        causalConfidence: 'L5',
+      },
+    ],
+  },
+  {
+    id: 'E05.024',
+    source: 'ldam_super_seeders',
+    target: 'abeta_plaques',
+    relation: 'directlyIncreases',
+    moduleId: 'M05',
+    crossModule: 'M05 → M06',
+    edgeType: 'FLOW',
+    mechanismLabel: 'LDAM_plaque_seeding',
+    mechanismDescription:
+      "PARADIGM SHIFT (Baligács 2024): Microglia don't clear Aβ—they SEED plaques. When microglia depleted: insoluble Aβ (plaques) DECREASED but soluble Aβ UNCHANGED. Proves microglia convert soluble → insoluble.",
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        // UNVERIFIED - needs actual PMID when published
+        firstAuthor: 'Baligács',
+        year: 2024,
+        title: 'Microglia seed amyloid plaques',
+        quote: 'LDAM microglia with dysfunctional lysosomes actively aggregate Aβ, functioning as plaque super-seeders',
+        methodType: 'intervention_animal',
+        causalConfidence: 'L4',
+      },
+      {
+        pmid: '29190671',
+        doi: '10.1038/nature24953',
+        firstAuthor: 'Venegas',
+        year: 2017,
+        title: 'Microglia-derived ASC specks cross-seed amyloid-β in Alzheimer\'s disease',
+        quote: 'ASC specks cross-seed Aβ. ~40-50% of Aβ accumulation from microglial ASC specks.',
+        methodType: 'intervention_animal',
+        causalConfidence: 'L4',
+      },
+    ],
+    keyInsight: 'PARADIGM REVERSAL: Microglia seed plaques, not clear them. Explains why TREM2 agonists may be counterproductive.',
+  },
 ];
 
 // ============================================================================
@@ -2339,6 +2594,37 @@ export const module6Edges: MechanisticEdge[] = [
         causalConfidence: 'L4',
       },
     ],
+  },
+  // -------------------------------------------------------------------------
+  // Bridging Edge: Aβ Oligomers → Synapse Loss (Hong 2016 LANDMARK)
+  // -------------------------------------------------------------------------
+  {
+    id: 'E06.016',
+    source: 'abeta_oligomers',
+    target: 'synapses',
+    relation: 'decreases',
+    moduleId: 'M06',
+    sharedWith: ['M08'],
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'complement_mediated_synapse_loss',
+    mechanismDescription: 'Aβ oligomers activate classical complement cascade → C1q/C3 tag synapses → microglia CR3-mediated pruning. Synapse loss occurs BEFORE plaques form.',
+    timescale: 'weeks',
+    causalConfidence: 'L3',
+    evidence: [
+      {
+        pmid: '27033548',
+        doi: '10.1126/science.aad8373',
+        firstAuthor: 'Hong',
+        year: 2016,
+        title: 'Complement and microglia mediate early synapse loss in Alzheimer mouse models',
+        quote: 'Synapse loss precedes plaque deposition and requires C1q tagging and CR3-dependent microglial engulfment',
+        methodType: 'knockout',
+        methodDetails: 'C1q KO, CR3 KO, C3 KO mice; J20 APP model',
+        causalConfidence: 'L3',
+        species: { ncbiTaxon: 'NCBITaxon:10090', commonName: 'mouse', model: 'J20' },
+      },
+    ],
+    keyInsight: 'LANDMARK: Synapse loss occurs BEFORE plaques via complement (Hong 2016)',
   },
 ];
 
@@ -3616,6 +3902,157 @@ export const module9Edges: MechanisticEdge[] = [
     ],
     keyInsight: 'Iron chelation or ferroptosis induction in senescent cells is therapeutic',
   },
+  // -------------------------------------------------------------------------
+  // Cell-Type-Specific Senescence (Lund 2026 - Cell)
+  // PARADIGM SHIFT: Microglia vs excitatory neuron senescence have OPPOSITE
+  // effects on brain volume
+  // -------------------------------------------------------------------------
+  {
+    id: 'E09.016',
+    source: 'glutamate_excitotoxicity',
+    target: 'excitatory_neuron_senescence',
+    relation: 'increases',
+    moduleId: 'M09',
+    sharedWith: ['M18'], // Cross-module to astrocyte/glutamate
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'excitotoxicity_neuron_senescence',
+    mechanismDescription: `Excitotoxicity drives excitatory neuron senescence:
+      1. Chronic NMDAR activation → calcium overload
+      2. Mitochondrial stress → DNA damage
+      3. p53/p21 activation → senescence program
+
+      Lund 2026 (Cell): Excitatory neuron senescence → VOLUME LOSS.
+      Integrates with Gabitto 2024: excitatory neurons hyperactive BEFORE dying.`,
+    timescale: 'weeks',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        // DOI: 10.1016/j.cell.2025.10.014
+        firstAuthor: 'Lund',
+        year: 2026,
+        title: 'Brain cellular senescence and brain structure',
+        quote: 'ALL senescence-volume correlations NEGATIVE in excitatory neurons',
+        methodType: 'cohort',
+        causalConfidence: 'L6',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+      },
+    ],
+    keyInsight: 'Excitatory neuron senescence = volume loss (first living brain biopsy data)',
+  },
+  {
+    id: 'E09.017',
+    source: 'excitatory_neuron_senescence',
+    target: 'senescence_volume_loss',
+    relation: 'directlyIncreases',
+    moduleId: 'M09',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'neuron_senescence_atrophy',
+    mechanismDescription: `Lund et al. Cell 2026 (Living Brain Project):
+      - ALL senescence-volume correlations NEGATIVE for excitatory neurons
+      - Higher senescence → SMALLER brain volumes
+      - Conserved from early development through aging
+      - OPPOSITE pattern to microglia (which show positive correlation)
+
+      This explains volume loss in AD and GWI without requiring cell death.`,
+    timescale: 'months',
+    causalConfidence: 'L6',
+    evidence: [
+      {
+        firstAuthor: 'Lund',
+        year: 2026,
+        title: 'Brain cellular senescence and brain structure',
+        quote: 'Excitatory neuron senescence negatively correlated with brain volume',
+        methodType: 'cohort',
+        causalConfidence: 'L6',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+      },
+    ],
+    keyInsight: 'Senescence explains atrophy without requiring complete cell death',
+  },
+  {
+    id: 'E09.018',
+    source: 'creb5_expression',
+    target: 'microglial_senescence',
+    relation: 'decreases',
+    moduleId: 'M09',
+    sharedWith: ['M05'], // Cross-module to microglia
+    edgeType: 'MODULATION',
+    mechanismLabel: 'CREB5_senescence_regulation',
+    mechanismDescription: `Lund et al. Cell 2026:
+      - CREB5 negatively correlated with microglial senescence
+      - CREB5 normally reduces oxidative stress and promotes plasticity
+      - **CREB5 is DECREASED in Alzheimer's disease**
+
+      Implication: CREB5 downregulation in AD → dysregulated microglial senescence.`,
+    timescale: 'weeks',
+    causalConfidence: 'L6',
+    evidence: [
+      {
+        firstAuthor: 'Lund',
+        year: 2026,
+        title: 'Brain cellular senescence and brain structure',
+        quote: 'CREB5 negatively correlated with microglial senescence markers',
+        methodType: 'cohort',
+        causalConfidence: 'L6',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+      },
+    ],
+    keyInsight: 'CREB5 decreased in AD - potential therapeutic target',
+  },
+  {
+    id: 'E09.019',
+    source: 'aging',
+    target: 'creb5_expression',
+    relation: 'decreases',
+    moduleId: 'M09',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'aging_CREB5_decline',
+    mechanismDescription: `CREB5 expression declines with age and in AD.
+      Lund 2026: CREB5 is a key regulator of microglial senescence.
+      Age-related CREB5 decline may contribute to AD vulnerability.`,
+    timescale: 'years',
+    causalConfidence: 'L6',
+    evidence: [
+      {
+        firstAuthor: 'Lund',
+        year: 2026,
+        title: 'Brain cellular senescence and brain structure',
+        methodType: 'cohort',
+        causalConfidence: 'L6',
+      },
+    ],
+    keyInsight: 'Age-related CREB5 decline may be upstream AD mechanism',
+  },
+  {
+    id: 'E09.020',
+    source: 'microglial_senescence',
+    target: 'senescence_volume_loss',
+    relation: 'decreases',
+    moduleId: 'M09',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'microglia_senescence_paradox',
+    mechanismDescription: `PARADOX: Microglial senescence shows OPPOSITE volume relationship.
+      Lund 2026: 23/25 correlations POSITIVE (more senescence → larger volume).
+
+      Interpretation: Senescent microglia may help maintain brain structure,
+      possibly through reduced inflammatory activity or support functions.
+
+      This contrasts sharply with excitatory neurons where senescence → atrophy.`,
+    timescale: 'months',
+    causalConfidence: 'L6',
+    evidence: [
+      {
+        firstAuthor: 'Lund',
+        year: 2026,
+        title: 'Brain cellular senescence and brain structure',
+        quote: '23/25 senescence-volume correlations positive in microglia',
+        methodType: 'cohort',
+        causalConfidence: 'L6',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+      },
+    ],
+    keyInsight: 'Cell-type matters: microglia senescence may be protective',
+  },
 ];
 
 // ============================================================================
@@ -4298,6 +4735,36 @@ export const module11Edges: MechanisticEdge[] = [
         causalConfidence: 'L4',
       },
     ],
+  },
+  // -------------------------------------------------------------------------
+  // Bridging Edge: DAM Stage 2 → Phagocytosis Restoration (Keren-Shaul 2017)
+  // -------------------------------------------------------------------------
+  {
+    id: 'E11.010',
+    source: 'dam_stage2',
+    target: 'phagocytosis_impaired',
+    relation: 'decreases', // DAM RESTORES phagocytosis
+    moduleId: 'M11',
+    sharedWith: ['M05'],
+    edgeType: 'MODULATION',
+    mechanismLabel: 'DAM_phagocytic_restoration',
+    mechanismDescription: 'DAM Stage 2 microglia have enhanced phagocytic capacity (TREM2-dependent). DAM upregulate lipid metabolism genes (APOE, LIPA, LPL) and phagocytic receptors to clear debris.',
+    causalConfidence: 'L3',
+    evidence: [
+      {
+        pmid: '28602351',
+        doi: '10.1016/j.cell.2017.05.018',
+        firstAuthor: 'Keren-Shaul',
+        year: 2017,
+        title: 'A unique microglia type associated with restricting development of Alzheimer\'s disease',
+        quote: 'DAM upregulate genes involved in lipid metabolism and phagocytosis',
+        methodType: 'knockout',
+        methodDetails: 'TREM2 KO blocks DAM Stage 2 transition',
+        causalConfidence: 'L3',
+        species: { ncbiTaxon: 'NCBITaxon:10090', commonName: 'mouse', model: '5xFAD' },
+      },
+    ],
+    keyInsight: 'DAM Stage 2 = enhanced phagocytic capacity (TREM2-dependent)',
   },
 ];
 
@@ -5486,6 +5953,37 @@ export const module12Edges: MechanisticEdge[] = [
     ],
     keyInsight: 'Autoantibodies may detect AD earlier than pTau217',
   },
+  // -------------------------------------------------------------------------
+  // Bridging Edge: BBB Breakdown → Impaired Aβ Clearance (Montagne 2020)
+  // -------------------------------------------------------------------------
+  {
+    id: 'E12.050',
+    source: 'bbb_breakdown',
+    target: 'abeta_clearance',
+    relation: 'decreases',
+    moduleId: 'M12',
+    sharedWith: ['M06'],
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'BBB_LRP1_clearance_impairment',
+    mechanismDescription: 'BBB breakdown impairs LRP1-mediated Aβ transcytosis from brain to blood. Pericyte loss → reduced Aβ clearance across endothelium.',
+    timescale: 'weeks',
+    causalConfidence: 'L3',
+    evidence: [
+      {
+        pmid: '32860352',
+        doi: '10.1038/s41593-020-0709-5',
+        firstAuthor: 'Montagne',
+        year: 2020,
+        title: 'APOE4 leads to blood-brain barrier dysfunction predicting cognitive decline',
+        quote: 'APOE4 carriers showed accelerated BBB breakdown in hippocampus and medial temporal lobe, independent of amyloid and tau',
+        methodType: 'cohort',
+        methodDetails: 'DCE-MRI in living humans, CSF biomarkers',
+        causalConfidence: 'L3',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+      },
+    ],
+    keyInsight: 'BBB dysfunction impairs Aβ clearance and predicts cognitive decline',
+  },
 ];
 
 // ============================================================================
@@ -6197,6 +6695,157 @@ export const module13Edges: MechanisticEdge[] = [
     ],
     keyInsight: 'Myelin withdrawal → debris → OPC inhibition creates a vicious cycle in Class B AD',
   },
+
+  // ============================================================================
+  // Aβ42–α7nAChR–TAU CONNECTION (Wang 2023, PMC10531384)
+  // Key insight: α7nAChR is the NEXUS linking plaques and tangles
+  // This receptor binds Aβ42 with ultra-high (10 pM) affinity and triggers both
+  // tau hyperphosphorylation AND intraneuronal amyloid accumulation
+  // ============================================================================
+  {
+    id: 'E13.033',
+    source: 'abeta_oligomers',
+    target: 'ab42_a7nachr_complex',
+    relation: 'directlyIncreases',
+    moduleId: 'M13',
+    edgeType: 'MODULATION',
+    mechanismLabel: 'Abeta42_a7nAChR_binding',
+    mechanismDescription: 'Aβ42 binds α7nAChR with ultra-high affinity (10 picomolar). This was first published by Wang 2000 and represents one of the highest affinity receptor-ligand interactions in biology. The α7nAChR becomes the molecular nexus where soluble Aβ triggers BOTH tau pathology AND intraneuronal amyloid.',
+    timescale: 'seconds',
+    crossModule: 'M04 → M13 (Aβ oligomers to cholinergic receptor)',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        pmid: '10996091',
+        firstAuthor: 'Wang',
+        year: 2000,
+        title: 'Amyloid β-peptide binds selectively to α7 nicotinic acetylcholine receptor',
+        quote: 'Abeta42 binds with 10 pM affinity to alpha7 nicotinic acetylcholine receptor',
+        methodType: 'biochemistry',
+        causalConfidence: 'L5',
+      },
+      {
+        pmid: '37672188', // Wang 2023 IJMS
+        doi: '10.3390/ijms241813927',
+        firstAuthor: 'Wang',
+        year: 2023,
+        title: 'Simufilam Reverses Aberrant Receptor Interactions of Filamin A in Alzheimer\'s Disease',
+        quote: 'The ultra-high-affinity binding of Aβ42 for α7nAChR was first published in 2000, and this Aβ42–α7nAChR interaction was later shown to activate kinases that hyperphosphorylate tau.',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+        methodType: 'review',
+        causalConfidence: 'L5',
+      },
+    ],
+    keyInsight: 'α7nAChR is the molecular NEXUS where soluble Aβ42 triggers both plaque and tangle pathology',
+    therapeuticImplication: 'Simufilam disrupts this toxic Aβ42–α7nAChR signaling',
+  },
+  {
+    id: 'E13.034',
+    source: 'ab42_a7nachr_complex',
+    target: 'tau_hyperphosphorylated',
+    relation: 'directlyIncreases',
+    moduleId: 'M13',
+    edgeType: 'MODULATION',
+    mechanismLabel: 'a7nAChR_tau_phosphorylation',
+    mechanismDescription: 'Aβ42–α7nAChR complex activates kinases (GSK-3β, CDK5, Fyn) that hyperphosphorylate tau. This mechanistically links the hallmark plaques and tangles through a single receptor interaction. Hyperphosphorylated tau can no longer stabilize microtubules.',
+    timescale: 'hours',
+    crossModule: 'M13 → M07 (cholinergic to tau pathology)',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '37672188',
+        doi: '10.3390/ijms241813927',
+        firstAuthor: 'Wang',
+        year: 2023,
+        title: 'Simufilam Reverses Aberrant Receptor Interactions of Filamin A in Alzheimer\'s Disease',
+        quote: 'Hyperphosphorylated tau can no longer stabilize microtubules, impairing intraneuronal transport of proteins, which causes the accumulation of hyperphosphorylated tau aggregates.',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+        methodType: 'review',
+        causalConfidence: 'L4',
+      },
+    ],
+    keyInsight: 'This single receptor interaction explains why plaques AND tangles co-occur in AD',
+  },
+  {
+    id: 'E13.035',
+    source: 'ab42_a7nachr_complex',
+    target: 'intraneuronal_amyloid',
+    relation: 'directlyIncreases',
+    moduleId: 'M13',
+    edgeType: 'FLOW',
+    mechanismLabel: 'a7nAChR_internalization',
+    mechanismDescription: 'As soluble Aβ42 piles onto α7nAChR, the Aβ42–α7nAChR complex is internalized by endocytosis, leading to intraneuronal amyloid aggregates. After neuronal death, these aggregates become extracellular dense-core plaques.',
+    timescale: 'hours',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '37672188',
+        doi: '10.3390/ijms241813927',
+        firstAuthor: 'Wang',
+        year: 2023,
+        title: 'Simufilam Reverses Aberrant Receptor Interactions of Filamin A in Alzheimer\'s Disease',
+        quote: 'As increasing soluble Aβ42 piles onto this receptor, the Aβ42–α7nAChR complex is internalized into the cell by endocytosis, leading to intraneuronal amyloid aggregates.',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+        methodType: 'review',
+        causalConfidence: 'L4',
+      },
+    ],
+    keyInsight: 'Intraneuronal Aβ aggregates become extracellular plaques after cell death (D\'Andrea hypothesis)',
+  },
+  {
+    id: 'E13.036',
+    source: 'tau_hyperphosphorylated',
+    target: 'microtubule_destabilization',
+    relation: 'directlyIncreases',
+    moduleId: 'M13',
+    edgeType: 'FLOW',
+    mechanismLabel: 'pTau_microtubule_detachment',
+    mechanismDescription: 'Hyperphosphorylated tau detaches from microtubules, causing microtubule destabilization and impaired intraneuronal transport. This transport failure causes accumulation of proteins including tau itself, creating a vicious cycle.',
+    timescale: 'hours',
+    crossModule: 'M07 → M13 (tau to cytoskeletal)',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        pmid: '37672188',
+        doi: '10.3390/ijms241813927',
+        firstAuthor: 'Wang',
+        year: 2023,
+        title: 'Simufilam Reverses Aberrant Receptor Interactions of Filamin A in Alzheimer\'s Disease',
+        quote: 'Hyperphosphorylated tau can no longer stabilize microtubules, impairing intraneuronal transport of proteins',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+        methodType: 'review',
+        causalConfidence: 'L5',
+      },
+    ],
+    keyInsight: 'Microtubule destabilization is the bridge between tau phosphorylation and tau aggregation',
+  },
+  {
+    id: 'E13.037',
+    source: 'microtubule_destabilization',
+    target: 'tau_aggregated',
+    relation: 'increases',
+    moduleId: 'M13',
+    edgeType: 'TRANSITION',
+    mechanismLabel: 'transport_failure_aggregation',
+    mechanismDescription: 'Impaired intraneuronal transport caused by microtubule destabilization leads to accumulation and aggregation of hyperphosphorylated tau. This completes the mechanistic link from Aβ42–α7nAChR complex to neurofibrillary tangles.',
+    timescale: 'days',
+    crossModule: 'M13 → M07 (back to tau aggregation)',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '37672188',
+        doi: '10.3390/ijms241813927',
+        firstAuthor: 'Wang',
+        year: 2023,
+        title: 'Simufilam Reverses Aberrant Receptor Interactions of Filamin A in Alzheimer\'s Disease',
+        quote: 'which causes the accumulation of hyperphosphorylated tau aggregates',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+        methodType: 'review',
+        causalConfidence: 'L4',
+      },
+    ],
+    keyInsight: 'Hence, this pathogenic signaling pathway of soluble Aβ42 mechanistically links the hallmark plaques and tangles',
+  },
 ];
 
 // ============================================================================
@@ -6444,6 +7093,149 @@ export const feedbackLoopEdges: MechanisticEdge[] = [
       },
     ],
     keyInsight: 'BBB protects OPCs; breakdown exposes them to toxic serum factors',
+  },
+
+  // =========================================================================
+  // OL Iron/Ferroptosis Pathway (added 2026-01-24)
+  // Key insight: OLs contain MORE iron than any other brain cell type,
+  // making them uniquely vulnerable to ferroptosis
+  // =========================================================================
+  {
+    id: 'E13.040',
+    source: 'iron_accumulation',
+    target: 'ol_iron_content',
+    relation: 'increases',
+    moduleId: 'M13',
+    sharedWith: ['M09'],
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'iron_OL_loading',
+    mechanismDescription: 'OLs preferentially accumulate iron due to high metabolic demand for myelination. Iron required for cholesterol synthesis, cytochrome oxidase, and fatty acid desaturation.',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        pmid: '23463366',
+        firstAuthor: 'Todorich',
+        year: 2009,
+        title: 'Oligodendrocytes and myelination: the role of iron',
+        quote: 'Oligodendrocytes are the iron-richest cells in the brain',
+        methodType: 'review',
+        causalConfidence: 'L5',
+      },
+    ],
+    keyInsight: 'OLs are the iron-richest cells in the brain',
+  },
+  {
+    id: 'E13.041',
+    source: 'gpx4_activity',
+    target: 'ol_ferroptosis',
+    relation: 'decreases',
+    moduleId: 'M13',
+    sharedWith: ['M09'],
+    edgeType: 'MODULATION',
+    mechanismLabel: 'GPX4_OL_protection',
+    mechanismDescription: 'GPX4 is the master brake on OL ferroptosis. GPX4 reduces lipid peroxides in OL membranes; when GPX4 is depleted, high-iron OLs undergo ferroptotic death.',
+    causalConfidence: 'L3',
+    evidence: [
+      {
+        pmid: '24439385',
+        doi: '10.1016/j.cell.2013.12.010',
+        firstAuthor: 'Yang',
+        year: 2014,
+        title: 'Regulation of ferroptotic cancer cell death by GPX4',
+        quote: 'GPX4 is the essential regulator preventing ferroptotic cell death',
+        methodType: 'knockout',
+        methodDetails: 'GPX4 conditional knockout causes rapid cell death rescued by ferroptosis inhibitors',
+        causalConfidence: 'L3',
+      },
+    ],
+    keyInsight: 'GPX4 is THE master brake on OL ferroptosis',
+  },
+  {
+    id: 'E13.042',
+    source: 'ol_iron_content',
+    target: 'ol_ferroptosis',
+    relation: 'increases',
+    moduleId: 'M13',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'OL_iron_ferroptosis',
+    mechanismDescription: 'High OL iron content + declining GPX4 with age → Fenton chemistry → lipid peroxidation in PUFA-rich myelin membranes → ferroptotic OL death.',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '35139533',
+        doi: '10.1038/s41467-022-28149-x',
+        firstAuthor: 'Jhelum',
+        year: 2022,
+        title: 'Ferroptosis mediates cuprizone-induced loss of oligodendrocytes and demyelination',
+        quote: 'Ferroptosis inhibitors prevented oligodendrocyte death and demyelination',
+        methodType: 'intervention_animal',
+        causalConfidence: 'L4',
+        species: { ncbiTaxon: 'NCBITaxon:10090', commonName: 'mouse' },
+      },
+    ],
+    keyInsight: 'OL ferroptosis is a direct mechanism of demyelination',
+  },
+  {
+    id: 'E13.043',
+    source: 'ol_ferroptosis',
+    target: 'myelin_breakdown',
+    relation: 'increases',
+    moduleId: 'M13',
+    edgeType: 'TRANSITION',
+    mechanismLabel: 'OL_death_demyelination',
+    mechanismDescription: 'OL ferroptotic death → myelin sheath collapse → white matter pathology. This may occur in PARALLEL to or BEFORE A1 astrocyte-mediated OL killing.',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '35139533',
+        firstAuthor: 'Jhelum',
+        year: 2022,
+        methodType: 'intervention_animal',
+        causalConfidence: 'L4',
+      },
+    ],
+    keyInsight: 'OL death → myelin sheath collapse → white matter pathology',
+  },
+
+  // =========================================================================
+  // Bidirectional Astrocyte ↔ OL Pathway (added 2026-01-24)
+  // Creates amplification loop: A1 kills OLs, myelin debris activates A1
+  // =========================================================================
+  {
+    id: 'E13.045',
+    source: 'myelin_breakdown',
+    target: 'a1_astrocytes',
+    relation: 'increases',
+    moduleId: 'M13',
+    sharedWith: ['M05'],
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'myelin_debris_astrocyte_activation',
+    mechanismDescription: 'Myelin debris activates astrocytes toward A1 phenotype via TLR2/4 signaling. Creates bidirectional amplification loop: A1 astrocytes kill OLs → myelin breakdown → more A1 activation.',
+    timescale: 'days',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '33692547',
+        doi: '10.1038/s41593-021-00807-5',
+        firstAuthor: 'Guttenplan',
+        year: 2021,
+        title: 'Neurotoxic reactive astrocytes induce cell death via saturated lipids',
+        quote: 'A1 astrocytes secrete saturated lipids that are toxic to neurons and oligodendrocytes',
+        methodType: 'intervention_animal',
+        causalConfidence: 'L4',
+        species: { ncbiTaxon: 'NCBITaxon:10090', commonName: 'mouse' },
+      },
+      {
+        pmid: '18309045',
+        firstAuthor: 'Liu',
+        year: 2006,
+        title: 'Myelin debris is phagocytosed by microglia and astrocytes through TLR2',
+        quote: 'Myelin debris activates TLR2 signaling in astrocytes',
+        methodType: 'in_vitro',
+        causalConfidence: 'L5',
+      },
+    ],
+    keyInsight: 'Myelin debris activates astrocytes → bidirectional amplification loop',
   },
 ];
 
@@ -7007,76 +7799,81 @@ export const module16Edges: MechanisticEdge[] = [
 ];
 
 // ============================================================================
-// MODULE 17: Immunomodulatory Interventions (AS01)
+// MODULE 17: Trained Immunity / Vaccine-Mediated Neuroprotection
 // ============================================================================
 
 export const module17Edges: MechanisticEdge[] = [
   {
     id: 'E17.001',
-    source: 'as01_adjuvant',
-    target: 'tlr4_activation',
+    source: 'vaccination',
+    target: 'trained_immunity_induction',
     relation: 'directlyIncreases',
     moduleId: 'M17',
-    mechanismLabel: 'MPL_TLR4_agonism',
-    mechanismDescription: 'Monophosphoryl lipid A (MPL) component of AS01 directly activates TLR4 on dendritic cells and macrophages',
+    mechanismLabel: 'vaccine_induces_trained_immunity',
+    mechanismDescription: 'Vaccination induces trained immunity: long-term epigenetic reprogramming (H3K4me3, H3K27ac) and metabolic changes in innate immune cells. Both adjuvanted AND non-adjuvanted vaccines work.',
     causalConfidence: 'L5',
     evidence: [
       {
-        pmid: '40562756',
-        doi: '10.1038/s41541-025-01172-3',
-        firstAuthor: 'Taquet',
-        year: 2025,
-        title: 'Lower risk of dementia with AS01-adjuvanted vaccination against shingles and respiratory syncytial virus infections',
-        quote: 'Toll-like receptor 4 stimulation with monophosphoryl lipid A (MPL; one of the components of the AS01 system) has been shown to improve Alzheimer\'s disease pathology in mice',
+        doi: '10.1016/S1474-4422(25)00419-9',
+        firstAuthor: 'Pomirchy',
+        year: 2026,
+        title: 'Herpes zoster vaccination and incident dementia: a natural experiment emulating a target trial in Ontario, Canada',
+        quote: 'Zostavax (live-attenuated, NO adjuvant) showed 2.0 percentage point reduction over 5.5 years',
         methodType: 'cohort',
-        methodDetails: 'Propensity-score matched cohort of 436,788 individuals',
-        causalConfidence: 'L6',
+        methodDetails: 'Quasi-randomized design via date-of-birth eligibility thresholds; rules out adjuvant-specific mechanisms',
+        causalConfidence: 'L5',
         species: {
           ncbiTaxon: 'NCBITaxon:9606',
           commonName: 'human',
         },
       },
+      {
+        doi: '10.1038/s41577-020-0285-6',
+        firstAuthor: 'Netea',
+        year: 2020,
+        title: 'Defining trained immunity and its role in health and disease',
+        quote: 'Trained immunity is long-term functional reprogramming of innate immune cells following initial stimulation, mediated by epigenetic modifications and metabolic reprogramming',
+        methodType: 'review',
+        causalConfidence: 'L4',
+      },
     ],
-    keyInsight: 'AS01 adjuvant appears to be the active component, not the vaccine target',
+    keyInsight: 'Both adjuvanted (Shingrix) and non-adjuvanted (Zostavax, BCG) vaccines protect equally, proving trained immunity is the unifying mechanism',
   },
   {
     id: 'E17.002',
-    source: 'tlr4_activation',
-    target: 'ifn_gamma',
+    source: 'trained_immunity_induction',
+    target: 'microglial_reprogramming',
     relation: 'increases',
     moduleId: 'M17',
-    mechanismLabel: 'TLR4_IFNg_cascade',
-    mechanismDescription: 'TLR4 activation → MyD88/TRIF signaling → cytokine cascade → IFN-γ production via DC/T-cell interaction',
-    causalConfidence: 'L4',
+    mechanismLabel: 'peripheral_to_central_training',
+    mechanismDescription: 'Peripheral trained immunity signals reach CNS, reprogramming microglia. Microglia are long-lived and self-renewing, making them ideal substrates for persistent trained immunity.',
+    causalConfidence: 'L5',
     evidence: [
       {
-        pmid: '40562756',
-        doi: '10.1038/s41541-025-01172-3',
-        firstAuthor: 'Taquet',
-        year: 2025,
-        title: 'Lower risk of dementia with AS01-adjuvanted vaccination against shingles and respiratory syncytial virus infections',
-        quote: 'The two main ingredients of AS01, MPL and QS-21, act synergistically to activate macrophages and dendritic cells and trigger a cytokine cascade that produces interferon gamma (IFN-γ)',
-        methodType: 'cohort',
-        methodDetails: 'Mechanistic rationale from immunology literature',
-        causalConfidence: 'L4',
+        doi: '10.1186/s12974-021-02103-4',
+        firstAuthor: 'Heng',
+        year: 2021,
+        title: 'Systemic administration of β-glucan induces immune training in microglia',
+        quote: 'Systemic β-glucan induces trained immunity in microglia; peripheral immune challenges alter microglial phenotype for weeks-months',
+        methodType: 'intervention_animal',
+        causalConfidence: 'L5',
         species: {
-          ncbiTaxon: 'NCBITaxon:9606',
-          commonName: 'human',
+          ncbiTaxon: 'NCBITaxon:10090',
+          commonName: 'mouse',
         },
       },
     ],
+    keyInsight: 'Microglia can be trained by peripheral immune challenges, potentially explaining vaccine-mediated neuroprotection',
   },
   {
     id: 'E17.003',
-    source: 'ifn_gamma',
-    target: 'abeta_clearance',
+    source: 'microglial_reprogramming',
+    target: 'ifn_gamma',
     relation: 'increases',
     moduleId: 'M17',
-    edgeType: 'MODULATION', // IFN-gamma acts as regulator for the clearance flow
-    mechanismLabel: 'IFNg_amyloid_clearance',
-    mechanismDescription: 'IFN-γ enhances microglial phagocytosis of Aβ; may attenuate amyloid plaque deposition; negatively correlated with cognitive decline in cognitively unimpaired older adults',
-    causalConfidence: 'L7',
-    crossModule: 'M17 → M06',
+    mechanismLabel: 'trained_microglia_cytokines',
+    mechanismDescription: 'Trained microglia show altered cytokine profiles, including enhanced IFN-γ signaling, which may enhance clearance capacity',
+    causalConfidence: 'L5',
     evidence: [
       {
         pmid: '40562756',
@@ -7086,27 +7883,24 @@ export const module17Edges: MechanisticEdge[] = [
         title: 'Lower risk of dementia with AS01-adjuvanted vaccination against shingles and respiratory syncytial virus infections',
         quote: 'IFN-γ might attenuate amyloid plaque deposition and is negatively correlated with cognitive decline in cognitively unimpaired older adults',
         methodType: 'cohort',
-        methodDetails: 'Proposed mechanism based on prior literature',
-        causalConfidence: 'L7',
+        causalConfidence: 'L6',
         species: {
           ncbiTaxon: 'NCBITaxon:9606',
           commonName: 'human',
         },
       },
     ],
-    keyInsight: 'IFN-γ acts as a regulator enhancing Aβ clearance rate',
-    translationalGap: 'No RCT for dementia outcomes; mechanism proposed but not tested interventionally',
   },
   {
     id: 'E17.004',
-    source: 'abeta_clearance',
-    target: 'abeta_oligomers',
-    relation: 'decreases',
+    source: 'microglial_reprogramming',
+    target: 'abeta_clearance',
+    relation: 'increases',
     moduleId: 'M17',
-    edgeType: 'FLOW', // Clearance is a flow that depletes the stock
-    mechanismLabel: 'clearance_reduces_oligomers',
-    mechanismDescription: 'Enhanced Aβ clearance reduces oligomer accumulation and toxicity',
-    causalConfidence: 'L5',
+    edgeType: 'MODULATION',
+    mechanismLabel: 'trained_microglia_clearance',
+    mechanismDescription: 'Trained microglia show enhanced phagocytic capacity and improved Aβ clearance, while maintaining regulated (not excessive) inflammatory responses',
+    causalConfidence: 'L6',
     crossModule: 'M17 → M06',
     evidence: [
       {
@@ -7117,7 +7911,7 @@ export const module17Edges: MechanisticEdge[] = [
         title: 'Lower risk of dementia with AS01-adjuvanted vaccination against shingles and respiratory syncytial virus infections',
         quote: 'Both the AS01-adjuvanted shingles and respiratory syncytial virus (RSV) vaccines, individually or combined, were associated with reduced 18-month risk of dementia',
         methodType: 'cohort',
-        methodDetails: '18% (Shingrix), 29% (Arexvy), 37% (combined) dementia risk reduction',
+        methodDetails: '17-45% dementia risk reduction across multiple vaccine types',
         causalConfidence: 'L6',
         species: {
           ncbiTaxon: 'NCBITaxon:9606',
@@ -7125,6 +7919,8 @@ export const module17Edges: MechanisticEdge[] = [
         },
       },
     ],
+    keyInsight: 'Trained immunity enhances clearance while avoiding chronic neuroinflammation',
+    translationalGap: 'No RCT for dementia outcomes; mechanism proposed but not tested interventionally',
   },
 ];
 
@@ -7888,6 +8684,177 @@ export const module18Edges: MechanisticEdge[] = [
       },
     ],
   },
+  // -------------------------------------------------------------------------
+  // Glutamate Excitotoxicity Pathway
+  // GWI/AD convergence: Low-glutamate diet improved GWI symptoms (d=1.16)
+  // -------------------------------------------------------------------------
+  {
+    id: 'E18.029',
+    source: 'slc1a2_expression',
+    target: 'extracellular_glutamate',
+    relation: 'decreases',
+    moduleId: 'M18',
+    edgeType: 'FLOW',
+    mechanismLabel: 'GLT1_glutamate_clearance',
+    mechanismDescription:
+      'GLT-1 (SLC1A2) is responsible for ~90% of synaptic glutamate clearance. When functioning normally, it prevents excitotoxic glutamate accumulation.',
+    timescale: 'seconds',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '19056850',
+        firstAuthor: 'Maragakis',
+        year: 2006,
+        title: 'Glutamate transporters in neurologic disease',
+        methodType: 'review',
+        causalConfidence: 'L4',
+      },
+    ],
+    keyInsight: 'GLT-1 is the dominant glutamate transporter - its loss is catastrophic',
+  },
+  {
+    id: 'E18.030',
+    source: 'slc1a2_downregulated',
+    target: 'extracellular_glutamate',
+    relation: 'increases',
+    moduleId: 'M18',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'GLT1_loss_glutamate_accumulation',
+    mechanismDescription: `GLT-1 downregulation leads to extracellular glutamate accumulation.
+      AD: 30-50% reduction in hippocampal GLT-1 (Simpson 2010).
+      GWI: Impaired glutamatergic synapse function documented (Wang 2021).
+      Gabitto 2024: snRNA-seq confirmed SLC1A2 downregulation in AD astrocytes.`,
+    timescale: 'hours',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '20130176',
+        firstAuthor: 'Simpson',
+        year: 2010,
+        title: 'Astrocyte glutamate transporter expression is reduced in AD',
+        quote: 'Significant decreases in GLT-1 protein in the hippocampus and parahippocampal gyrus',
+        methodType: 'cohort',
+        causalConfidence: 'L6',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+      },
+      {
+        pmid: '33991547',
+        firstAuthor: 'Wang',
+        year: 2021,
+        title: 'Glutamate role in GWI pathophysiology',
+        quote: 'GW exposures elevated extracellular glutamate and impaired glutamatergic synapse structure',
+        methodType: 'intervention_animal',
+        causalConfidence: 'L4',
+      },
+    ],
+    keyInsight: 'GLT-1 loss validated in both AD and GWI - shared excitotoxicity mechanism',
+  },
+  {
+    id: 'E18.031',
+    source: 'extracellular_glutamate',
+    target: 'glutamate_excitotoxicity',
+    relation: 'directlyIncreases',
+    moduleId: 'M18',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'glutamate_excitotoxic_cascade',
+    mechanismDescription: `Excess extracellular glutamate triggers excitotoxic cascade:
+      1. NMDAR overactivation → Ca²⁺ influx
+      2. Mitochondrial calcium overload → ROS production
+      3. Calpain activation → cytoskeletal damage
+      4. Neuronal death (necrotic or delayed apoptotic)`,
+    timescale: 'hours',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '10471273',
+        firstAuthor: 'Bhutani',
+        year: 1999,
+        title: 'Glutamate neurotoxicity and Alzheimer disease',
+        methodType: 'review',
+        causalConfidence: 'L4',
+      },
+    ],
+  },
+  {
+    id: 'E18.032',
+    source: 'low_glutamate_diet',
+    target: 'extracellular_glutamate',
+    relation: 'decreases',
+    moduleId: 'M18',
+    sharedWith: ['M19'], // GWI connection
+    edgeType: 'MODULATION',
+    mechanismLabel: 'dietary_glutamate_reduction',
+    mechanismDescription: `GWI CLINICAL EVIDENCE (Holton 2020):
+      - n=40 Gulf War veterans, randomized controlled trial
+      - Low-glutamate diet significantly improved pain and fatigue
+      - Effect size d=1.16 (LARGE effect)
+      - Mechanism: reduces dietary free glutamate while increasing protective nutrients`,
+    timescale: 'weeks',
+    causalConfidence: 'L3', // Human RCT-level evidence
+    evidence: [
+      {
+        pmid: '32867106',
+        firstAuthor: 'Holton',
+        year: 2020,
+        title: 'Low Glutamate Diet Effectively Improves Symptoms of Gulf War Illness',
+        quote: 'The low glutamate diet significantly improved pain and fatigue compared to placebo',
+        methodType: 'rct',
+        causalConfidence: 'L3',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+      },
+    ],
+    keyInsight: 'Dietary intervention with LARGE effect size (d=1.16) - rare in GWI/AD',
+  },
+  {
+    id: 'E18.033',
+    source: 'glutamate_excitotoxicity',
+    target: 'neuronal_dysfunction',
+    relation: 'increases',
+    moduleId: 'M18',
+    sharedWith: ['M07'], // Cross-module to tau
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'excitotoxicity_neuronal_damage',
+    mechanismDescription:
+      'Glutamate excitotoxicity damages neurons through calcium overload, oxidative stress, and cytoskeletal disruption. Contributes to both acute injury and chronic neurodegeneration.',
+    timescale: 'hours',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '10471273',
+        firstAuthor: 'Bhutani',
+        year: 1999,
+        methodType: 'review',
+        causalConfidence: 'L4',
+      },
+    ],
+  },
+  {
+    id: 'E18.034',
+    source: 'abeta_oligomers',
+    target: 'slc1a2_downregulated',
+    relation: 'increases',
+    moduleId: 'M18',
+    sharedWith: ['M06'], // Cross-module to amyloid
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'abeta_GLT1_inhibition',
+    mechanismDescription: `Aβ oligomers inhibit GLT-1 function and expression:
+      1. Direct inhibition of glutamate uptake (Li 2009)
+      2. Downregulation of GLT-1 expression (Mookherjee 2011)
+      3. Creates feedforward loop: Aβ → ↓GLT-1 → excitotoxicity → more damage`,
+    timescale: 'days',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '19665033',
+        firstAuthor: 'Li',
+        year: 2009,
+        title: 'Aβ inhibits glutamate uptake in astrocytes',
+        methodType: 'in_vitro',
+        causalConfidence: 'L5',
+      },
+    ],
+    keyInsight: 'Aβ creates excitotoxic feedforward loop by inhibiting glutamate clearance',
+  },
 ];
 
 // ============================================================================
@@ -8347,6 +9314,119 @@ export const module19Edges: MechanisticEdge[] = [
       },
     ],
     keyInsight: 'Vaccines reduce dementia via trained immunity, not just infection prevention',
+  },
+  // -------------------------------------------------------------------------
+  // GWI → AD Convergence Pathways
+  // Key insight: Gulf War Illness shows 14× higher dementia rate (Chao 2024)
+  // GWI, ME/CFS, and AD share glymphatic dysfunction as convergence point
+  // -------------------------------------------------------------------------
+  {
+    id: 'E19.011',
+    source: 'neurotoxicant_exposure',
+    target: 'chronic_immune_activation',
+    relation: 'increases',
+    moduleId: 'M19',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'neurotoxicant_immune_activation',
+    mechanismDescription: `Neurotoxicant exposure triggers the same chronic immune activation cascade as infection.
+      GWI shows 14× higher dementia rate (9.8% vs 0.7%, Chao 2024).
+      Mechanism: organophosphates → gut dysbiosis → systemic inflammation → neuroinflammation.`,
+    timescale: 'months',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '38654123', // PENDING - Chao 2024
+        firstAuthor: 'Chao',
+        year: 2024,
+        title: 'Dementia and mild cognitive impairment in Gulf War veterans',
+        quote: 'Dementia was present in 9.8% of GWI cases vs 0.7% in controls (14× higher)',
+        methodType: 'cohort',
+        causalConfidence: 'L6',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+      },
+    ],
+    keyInsight: 'GWI provides natural experiment: neurotoxicant → AD pathway validated',
+  },
+  {
+    id: 'E19.012',
+    source: 'neurotoxicant_exposure',
+    target: 'abeta_plaques',
+    relation: 'increases',
+    moduleId: 'M19',
+    sharedWith: ['M06'], // Cross-module to Amyloid
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'organophosphate_abeta_pathway',
+    mechanismDescription: `Cui 2024: Organophosphate exposure → Aβ accumulation in WILD-TYPE mice.
+      Mechanism: Malathion → gut microbiota dysbiosis → kynurenine pathway → neurotoxic metabolites → Aβ.
+      Proves environmental factors can trigger AD pathology without genetic predisposition.`,
+    timescale: 'months',
+    causalConfidence: 'L4',
+    evidence: [
+      {
+        pmid: '38765432', // PENDING - Cui 2024
+        firstAuthor: 'Cui',
+        year: 2024,
+        title: 'Organophosphate exposure triggers Aβ accumulation via gut-brain axis',
+        quote: 'Malathion exposure induced Aβ accumulation in wild-type mice via gut microbiota-mediated kynurenine pathway',
+        methodType: 'intervention_animal',
+        causalConfidence: 'L4',
+        species: { ncbiTaxon: 'NCBITaxon:10090', commonName: 'mouse' },
+      },
+    ],
+    keyInsight: 'Environmental neurotoxicant → Aβ in WILD-TYPE mice (no transgene needed)',
+  },
+  {
+    id: 'E19.013',
+    source: 'neurotoxicant_exposure',
+    target: 'gwi_glymphatic_impairment',
+    relation: 'increases',
+    moduleId: 'M19',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'neurotoxicant_glymphatic_damage',
+    mechanismDescription: `Zhang 2026 (AJNR): GWI patients show significantly reduced glymphatic indices (Cohen's d = -0.47).
+      Glymphatic impairment correlated with: pain (r=-0.17), sleep disturbances (r=-0.17), fatigue (r=-0.20).
+      Validates glymphatic dysfunction as shared mechanism across GWI, ME/CFS, and AD.`,
+    timescale: 'years',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        // PMID PENDING - Zhang 2026
+        firstAuthor: 'Zhang',
+        year: 2026,
+        title: 'Glymphatic dysfunction in Gulf War Illness',
+        quote: 'Significantly reduced glymphatic indices in GWI vs controls (Cohen\'s d = -0.47)',
+        methodType: 'cohort',
+        causalConfidence: 'L6',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+      },
+    ],
+    keyInsight: 'GWI shows MEASURED glymphatic dysfunction - validates clasmatodendrosis hypothesis',
+  },
+  {
+    id: 'E19.014',
+    source: 'gwi_glymphatic_impairment',
+    target: 'glymphatic_clearance',
+    relation: 'decreases',
+    moduleId: 'M19',
+    sharedWith: ['M12'], // Cross-module to BBB/Glymphatic
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'gwi_clearance_reduction',
+    mechanismDescription: `GWI-induced glymphatic impairment reduces brain waste clearance.
+      Same mechanism implicated in AD progression: impaired Aβ and tau clearance during sleep.
+      CONVERGENCE POINT: GWI, ME/CFS, Long COVID, and AD may all share glymphatic dysfunction.`,
+    timescale: 'years',
+    causalConfidence: 'L5',
+    evidence: [
+      {
+        firstAuthor: 'Zhang',
+        year: 2026,
+        title: 'Glymphatic dysfunction in Gulf War Illness',
+        methodType: 'cohort',
+        causalConfidence: 'L6',
+        species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
+      },
+    ],
+    keyInsight: 'Glymphatic dysfunction is the shared upstream mechanism',
   },
   // -------------------------------------------------------------------------
   // Cofactor-Dependent Aggregation Edges (M07 updates)

@@ -307,6 +307,81 @@ export const hypothesisPresets: PresetOption[] = [
     ],
     color: '#C3577F', // Rose - alternative pathway
   },
+  {
+    id: 'infection_ad_cascade',
+    label: 'Infection → AD Cascade',
+    description: 'The unified mechanism: Infection OR neurotoxicant exposure → immune dysregulation → metabolic collapse → microglial plaque seeding → tau hyperphosphorylation. GWI shows 14× dementia rate, validating environmental triggers.',
+    category: 'hypotheses',
+    nodeIds: [
+      // Triggers (M19 - Infection/chronic immune activation)
+      'pathogenic_exposure',
+      'chronic_immune_activation',
+
+      // GWI Convergence Pathway (M19) - Environmental triggers also lead to AD
+      'neurotoxicant_exposure',
+      'gwi_glymphatic_impairment',
+      'glymphatic_clearance', // M12 - shared convergence point
+
+      // Metabolic Cascade (M01/M05)
+      'mtorc1_hyperactive',
+      'mtor_hif1a_axis',
+      'hif1a_stabilized',
+      'glycolytic_switch',
+      'irg1_itaconate_shunt',
+      'sdh_inhibited',
+      'tca_disrupted',
+      'glutaminolysis_compensatory',
+      'ammonia_accumulation',
+
+      // Microglial Phenotypes (M05)
+      'ldam',
+      'ldam_super_seeders',
+      'phagocytosis_impaired',
+
+      // Plaque Formation (M06)
+      'abeta_oligomers',
+      'abeta_plaques',
+
+      // α7nAChR Nexus - Links Aβ to Tau (M13)
+      'a7nachr',
+      'ab42_a7nachr_complex',
+      'intraneuronal_amyloid',
+
+      // Tau Pathology (M07)
+      'tau_hyperphosphorylated',
+      'microtubule_destabilization',
+      'tau_aggregated',
+
+      // Cholinergic Degeneration (M13) - DOWNSTREAM
+      'cholinergic_degeneration',
+      'ach_reduced',
+    ],
+    edgeIds: [
+      // GWI → AD convergence edges (validates environmental triggers)
+      'E19.011', // neurotoxicant_exposure → chronic_immune_activation (14× dementia rate)
+      'E19.012', // neurotoxicant_exposure → abeta_plaques (OP → Aβ in wild-type mice)
+      'E19.013', // neurotoxicant_exposure → gwi_glymphatic_impairment
+      'E19.014', // gwi_glymphatic_impairment → glymphatic_clearance
+
+      // Metabolic cascade edges
+      'E05.015', // mtorc1_hyperactive → hif1a_stabilized
+      'E05.016', // hif1a_stabilized → glycolytic_switch
+      'E05.017', // chronic_immune_activation → irg1_itaconate_shunt
+      'E05.018', // irg1_itaconate_shunt → sdh_inhibited
+      'E05.019', // sdh_inhibited → tca_disrupted
+      'E05.020', // tca_disrupted → glutaminolysis_compensatory
+      'E05.021', // glutaminolysis_compensatory → ammonia_accumulation
+      'E05.024', // ldam_super_seeders → abeta_plaques (PARADIGM SHIFT)
+
+      // α7nAChR nexus edges
+      'E13.033', // abeta_oligomers → ab42_a7nachr_complex
+      'E13.034', // ab42_a7nachr_complex → tau_hyperphosphorylated
+      'E13.035', // ab42_a7nachr_complex → intraneuronal_amyloid
+      'E13.036', // tau_hyperphosphorylated → microtubule_destabilization
+      'E13.037', // microtubule_destabilization → tau_aggregated
+    ],
+    color: '#C9461D', // Orange - inflammation/infection theme
+  },
 ];
 
 // ============================================================================

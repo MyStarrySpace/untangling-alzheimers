@@ -228,6 +228,107 @@ export const module13Nodes: MechanisticNode[] = [
     mechanism: 'DAP12 is TREM2 signaling adaptor with ITAM motif. Tau internalization → DAP12/TREM2 signaling → pAKT↑, pERK↑, pNFκB↑, IFN↑ → unknown signal to neurons → neuronal SLIT2↑. Chen 2025: DAP12 KO reduces demyelination DESPITE increasing tau pathology. Paradox: DAP12 needed for debris clearance but harmful during active tauopathy',
     roles: ['THERAPEUTIC_TARGET'],
   },
+
+  // ============================================================================
+  // Aβ42–α7nAChR–TAU CONNECTION
+  // Key insight: α7nAChR is the NEXUS linking plaques and tangles
+  // Wang 2023 (PMCID: PMC10531384): Simufilam disrupts this toxic signaling
+  // ============================================================================
+  {
+    id: 'a7nachr',
+    label: 'α7 Nicotinic AChR',
+    category: 'STOCK',
+    subtype: 'SurfaceReceptor',
+    moduleId: 'M13',
+    references: {
+      gene: 'HGNC:3599', // CHRNA7
+      protein: 'UniProt:P36544',
+    },
+    description: 'Nicotinic acetylcholine receptor with ultra-high affinity for Aβ42',
+    mechanism:
+      'α7nAChR binds Aβ42 with 10-picomolar affinity (ultra-high). This receptor is the NEXUS where soluble Aβ triggers BOTH tau hyperphosphorylation AND intraneuronal amyloid accumulation. Wang 2000 first published ultra-high affinity binding.',
+    roles: ['THERAPEUTIC_TARGET', 'LEVERAGE_POINT'],
+  },
+  {
+    id: 'ab42_a7nachr_complex',
+    label: 'Aβ42–α7nAChR Complex',
+    category: 'STATE',
+    subtype: 'Bound', // In complex with partner
+    moduleId: 'M13',
+    sharedWith: ['M06', 'M07'], // Links to amyloid and tau modules
+    description: 'Pathogenic complex that triggers tau phosphorylation and intraneuronal Aβ',
+    mechanism:
+      'Aβ42 binding to α7nAChR activates kinases (GSK-3β, CDK5, Fyn) that hyperphosphorylate tau. As Aβ42 piles onto receptor, the complex is internalized via endocytosis → intraneuronal Aβ aggregates. Wang 2023 (PMC10531384): "This pathogenic signaling pathway of soluble Aβ42 mechanistically links the hallmark plaques and tangles."',
+    roles: ['THERAPEUTIC_TARGET'],
+  },
+  {
+    id: 'intraneuronal_amyloid',
+    label: 'Intraneuronal Aβ',
+    category: 'STOCK',
+    subtype: 'Aggregate',
+    moduleId: 'M13',
+    sharedWith: ['M06'], // Links to amyloid module
+    description: 'Aβ42–α7nAChR complex internalized → intraneuronal aggregates',
+    mechanism:
+      'Aβ42–α7nAChR complex is internalized by endocytosis, leading to intraneuronal amyloid aggregates. After neuronal death, these aggregates become extracellular dense-core plaques. D\'Andrea: "eventual amyloid deposits or dense-core plaques after cell death."',
+  },
+  {
+    id: 'microtubule_destabilization',
+    label: 'Microtubule Destabilization',
+    category: 'STATE',
+    subtype: 'BiologicalProcess',
+    moduleId: 'M13',
+    sharedWith: ['M07'], // Links to tau module
+    references: {
+      process: 'GO:0015023', // microtubule destabilization
+    },
+    description: 'Hyperphosphorylated tau can no longer stabilize microtubules',
+    mechanism:
+      'Tau hyperphosphorylation → tau detaches from microtubules → microtubule destabilization → impaired intraneuronal transport of proteins → tau aggregates accumulate → neurodegeneration. This explains why BOTH plaques AND tangles arise from α7nAChR-mediated signaling.',
+    roles: ['THERAPEUTIC_TARGET'],
+  },
+
+  // ============================================================================
+  // OL Iron/Ferroptosis Pathway (added 2026-01-24)
+  // Key insight: OLs contain MORE iron than any other brain cell type,
+  // making them uniquely vulnerable to ferroptosis when GPX4/GSH are depleted
+  // ============================================================================
+  {
+    id: 'ol_iron_content',
+    label: 'OL Iron Content',
+    category: 'STOCK',
+    subtype: 'MetabolitePool',
+    moduleId: 'M13',
+    sharedWith: ['M09'],
+    description: 'Oligodendrocytes contain MORE iron than any other brain cell type',
+    mechanism: `OLs require iron for:
+      - Cholesterol synthesis (for myelin)
+      - Cytochrome oxidase (for ATP)
+      - Fatty acid desaturation
+
+      This high iron content makes OLs uniquely vulnerable to ferroptosis
+      when GPX4 or GSH are depleted. May explain why white matter is
+      affected early in AD.`,
+    roles: ['RATE_LIMITER'],
+  },
+  {
+    id: 'ol_ferroptosis',
+    label: 'OL Ferroptotic Death',
+    category: 'STATE',
+    subtype: 'Ferroptosis',
+    moduleId: 'M13',
+    sharedWith: ['M09'],
+    description: 'Iron-dependent oligodendrocyte death',
+    mechanism: `OL ferroptosis pathway:
+      1. High iron + declining GPX4 with age
+      2. High PUFA in myelin membranes (peroxidation substrate)
+      3. Lipid peroxidation overwhelms defenses
+      4. Membrane rupture → myelin breakdown
+
+      OL ferroptosis may PRECEDE or PARALLEL astrocyte damage,
+      not just follow from A1 astrocyte toxicity.`,
+    roles: ['THERAPEUTIC_TARGET'],
+  },
 ];
 
 // ============================================================================

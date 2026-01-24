@@ -396,10 +396,18 @@ The bibliography is organized into topic-specific modules:
 
 ### Adding New Sources
 When adding a new source:
-1. Choose the appropriate module file based on topic
-2. Follow the `Source` interface structure from `types.ts`
-3. Include at least one `Citation` with an exact quote
-4. Run `npx tsx scripts/dump-network-data.ts` to verify citations
+1. **ALWAYS use WebFetch or WebSearch** to verify citation details before adding
+2. Choose the appropriate module file based on topic
+3. Follow the `Source` interface structure from `types.ts`
+4. Include at least one `Citation` with an exact quote
+5. Verify quotes by fetching the actual source URL
+6. Run `npx tsx scripts/dump-network-data.ts` to verify citations
+
+**Citation Verification Protocol:**
+- Use `WebFetch` on the source URL (PubMed, PMC, DOI link) to extract exact title, authors, journal, year, DOI
+- Copy quotes EXACTLY as they appear in the source
+- If a URL redirects, follow the redirect to get the actual content
+- Mark any unverified citations with `// UNVERIFIED` comment until confirmed
 
 ### Citation Quality Rules
 - The `quote` field must contain **exact quotes** that can be found in the original source via Ctrl+F
@@ -529,6 +537,20 @@ For readers who want the full picture. Access via interaction.
 - [ ] Does the statistic/heading work without the body text?
 - [ ] Is there a clear path to more detail for curious readers?
 - [ ] Are interactive elements discoverable but not distracting?
+
+## Planning
+
+### Plan Storage
+All implementation plans should be written to `.claude/plans/` folder with descriptive filenames:
+- Format: `[topic]-[date].md` (e.g., `vaccine-updates-2026-01-22.md`)
+- Include: Overview, tasks with checkboxes, decision log, references
+- Update plan status as work progresses
+
+### When to Create Plans
+- Multi-file changes affecting data or components
+- New feature additions
+- Major refactoring efforts
+- Research-intensive updates requiring source verification
 
 ## Research Requirements
 - **ALWAYS use web search** to verify factual claims before adding or modifying data content (drug information, trial results, researcher claims, statistics, etc.)

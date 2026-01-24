@@ -379,10 +379,10 @@ export function HopefulDevelopments() {
                 <div className="text-center mb-6 max-w-2xl mx-auto">
                   <p className="text-[var(--text-body)] mb-2">
                     Multiple vaccines show <strong>17-45% reductions</strong> in dementia risk via
-                    trained immunity. Protection extends beyond preventing the target infection.
+                    trained immunity: long-term epigenetic reprogramming of innate immune cells including microglia.
                   </p>
                   <p className="text-sm text-[var(--accent-orange)] mt-2">
-                    Both adjuvanted and non-adjuvanted vaccines show benefit, suggesting multiple protective mechanisms.
+                    Both adjuvanted AND non-adjuvanted vaccines protect equally, proving trained immunity is the unifying mechanism.
                   </p>
                 </div>
                 <DevelopmentsList

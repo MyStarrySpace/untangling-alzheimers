@@ -526,7 +526,7 @@
         "sex",
         "apoe_genotype",
         "lipid_droplets",
-        "as01_adjuvant",
+        "vaccination",
         "h2s_production",
         "gsk3beta_sulfhydrated",
         "neuroinflammation"
@@ -758,7 +758,7 @@
         "sex",
         "apoe_genotype",
         "lipid_droplets",
-        "as01_adjuvant"
+        "vaccination"
       ],
       "targetNodes": [
         "abeta_plaques"
@@ -877,7 +877,7 @@
         "sex",
         "apoe_genotype",
         "lipid_droplets",
-        "as01_adjuvant",
+        "vaccination",
         "microglia_activated",
         "tfeb_phosphorylated",
         "srebp1_active"
@@ -1119,7 +1119,7 @@
         "sex",
         "apoe_genotype",
         "lipid_droplets",
-        "as01_adjuvant"
+        "vaccination"
       ],
       "targetNodes": [
         "abeta_plaques"
@@ -2254,7 +2254,7 @@
         "sex",
         "apoe_genotype",
         "lipid_droplets",
-        "as01_adjuvant",
+        "vaccination",
         "caspase1_active",
         "senescent_cells",
         "gsk3b_active",
@@ -2594,7 +2594,7 @@
         "lysosomal_genes_down",
         "apoe_genotype",
         "lipid_droplets",
-        "as01_adjuvant",
+        "vaccination",
         "nlrp3_active",
         "iron_accumulation",
         "cgas_active",

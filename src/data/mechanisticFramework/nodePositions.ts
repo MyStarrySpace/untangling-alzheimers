@@ -30,8 +30,16 @@ export const nodePositions: Record<string, { x: number; y: number }> = {
     "x": 50,
     "y": 860
   },
-  "as01_adjuvant": {
+  "vaccination": {
     "x": 50,
+    "y": 930
+  },
+  "trained_immunity_induction": {
+    "x": 200,
+    "y": 930
+  },
+  "microglial_reprogramming": {
+    "x": 350,
     "y": 930
   },
   "sex": {
@@ -655,5 +663,14 @@ export const nodePositions: Record<string, { x: number; y: number }> = {
   "bmp_lysosomal": {
     "x": 800,
     "y": 400
+  },
+  // OL Iron/Ferroptosis nodes (Module 13, added 2026-01-24)
+  "ol_iron_content": {
+    "x": 1100,
+    "y": 850
+  },
+  "ol_ferroptosis": {
+    "x": 1150,
+    "y": 900
   }
 };

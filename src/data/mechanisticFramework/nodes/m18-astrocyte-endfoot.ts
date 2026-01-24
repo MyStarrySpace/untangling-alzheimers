@@ -152,6 +152,110 @@ export const module18Nodes: MechanisticNode[] = [
   },
 
   // -------------------------------------------------------------------------
+  // Glutamate Clearance / Excitotoxicity Nodes
+  // Key insight: Astrocytes clear 90% of synaptic glutamate via GLT-1 (SLC1A2)
+  // GWI/AD convergence: Low-glutamate diet improved GWI symptoms (d=1.16)
+  // -------------------------------------------------------------------------
+  {
+    id: 'slc1a2_expression',
+    label: 'GLT-1/EAAT2 (SLC1A2)',
+    category: 'STOCK',
+    subtype: 'ActiveProteinPool',
+    moduleId: 'M18',
+    references: {
+      protein: 'UniProt:P43004', // SLC1A2 / GLT-1
+      process: 'GO:0015813', // L-glutamate transmembrane transport
+    },
+    description: 'Primary glutamate transporter responsible for 90% of synaptic glutamate clearance',
+    mechanism: `Astrocytic GLT-1 (EAAT2) is the dominant glutamate transporter in brain.
+      In AD: GLT-1 downregulated in hippocampus and cortex (Simpson 2010, Masliah 1996).
+      In GWI: Wang 2021 showed impaired glutamatergic synapse structure/function.
+
+      LOSS OF GLT-1 → extracellular glutamate accumulation → excitotoxicity.`,
+    roles: ['THERAPEUTIC_TARGET', 'REGULATOR'],
+  },
+  {
+    id: 'slc1a2_downregulated',
+    label: 'GLT-1 Downregulated',
+    category: 'STATE',
+    subtype: 'DiseaseStage',
+    moduleId: 'M18',
+    sharedWith: ['M13'], // Cross-module to cholinergic/white matter
+    references: {
+      protein: 'UniProt:P43004', // SLC1A2
+    },
+    description: 'Reduced astrocytic glutamate clearance capacity in AD/GWI',
+    mechanism: `GLT-1 (SLC1A2) downregulation documented in:
+      - AD: 30-50% reduction in hippocampus (Simpson 2010)
+      - GWI: Impaired glutamatergic synapse function (Wang 2021)
+
+      Gabitto 2024 (Nature Neurosci): Single-nucleus transcriptomics showed
+      SLC1A2 and GLUL downregulation in AD astrocytes, confirming impaired
+      glutamate clearance as upstream mechanism.`,
+    roles: ['THERAPEUTIC_TARGET'],
+  },
+  {
+    id: 'extracellular_glutamate',
+    label: 'Extracellular Glutamate ↑',
+    category: 'STOCK',
+    subtype: 'MetabolitePool',
+    moduleId: 'M18',
+    description: 'Elevated synaptic/extrasynaptic glutamate due to impaired clearance',
+    mechanism: `When GLT-1 is downregulated, glutamate accumulates in:
+      - Synaptic cleft → NMDAR overactivation
+      - Extrasynaptic space → NR2B-NMDAR activation (more toxic)
+
+      Wang 2021 (GWI): Showed elevated extracellular glutamate and impaired
+      glutamatergic synapse structure. Low-glutamate diet reduced symptoms.`,
+    units: 'μM',
+    roles: ['THERAPEUTIC_TARGET'],
+  },
+  {
+    id: 'glutamate_excitotoxicity',
+    label: 'Glutamate Excitotoxicity',
+    category: 'STATE',
+    subtype: 'DiseaseStage',
+    moduleId: 'M18',
+    sharedWith: ['M07', 'M19'], // Cross-module to tau, post-infectious
+    description: 'Neuronal damage from excessive glutamate receptor activation',
+    mechanism: `Excitotoxic cascade:
+      1. Excess glutamate → NMDAR overactivation
+      2. Ca²⁺ influx → mitochondrial overload → ROS
+      3. Calpain activation → cytoskeletal damage
+      4. Neuronal death (necrosis or delayed apoptosis)
+
+      GWI VALIDATION (Wang 2021):
+      - Low-glutamate diet significantly improved pain/fatigue (d=1.16, large effect)
+      - Holton 2020: n=40 GWI veterans, diet intervention study
+      - Mechanism: reducing excitotoxicity + increasing protective micronutrients
+
+      Aβ oligomers exacerbate excitotoxicity by inhibiting GLT-1 and
+      potentiating NMDAR currents. Creates feedforward loop.`,
+    roles: ['THERAPEUTIC_TARGET', 'LEVERAGE_POINT'],
+  },
+  {
+    id: 'low_glutamate_diet',
+    label: 'Low-Glutamate Diet',
+    category: 'BOUNDARY',
+    subtype: 'SmallMolecule', // Dietary intervention
+    moduleId: 'M18',
+    sharedWith: ['M19'], // GWI connection
+    boundaryDirection: 'input',
+    description: 'Dietary intervention reducing free glutamate intake',
+    mechanism: `GWI CLINICAL EVIDENCE (Holton 2020):
+      - n=40 Gulf War veterans
+      - Low-glutamate diet vs control
+      - Large effect size (d=1.16) for pain and fatigue improvement
+
+      2024 follow-up: Serum homocysteine and IFN-γ identified as biomarkers
+      for depression improvement on diet.
+
+      Mechanism: Reduces dietary free glutamate (MSG, hydrolyzed proteins)
+      while increasing protective micronutrients.`,
+    roles: ['THERAPEUTIC_TARGET'],
+  },
+
+  // -------------------------------------------------------------------------
   // Ammonia / Glutamine Metabolism Nodes
   // -------------------------------------------------------------------------
   {
