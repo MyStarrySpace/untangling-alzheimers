@@ -1,35 +1,18 @@
 'use client';
 
-import { useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Link2, Link2Off, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Construction } from 'lucide-react';
 import { useGraphSidebar } from '@/contexts/GraphSidebarContext';
-import { MechanisticNetworkGraph } from '@/components/sections/MechanisticNetworkGraph';
-import { getPresetById } from '@/data/mechanisticFramework/presets';
 
 /**
  * Fixed sidebar containing the mechanistic network graph
  * Only visible on xl screens (1280px+)
+ *
+ * NOTE: Graph component is being rebuilt with Excel-based data.
+ * This is a temporary placeholder.
  */
 export function GraphSidebar() {
-  const {
-    isOpen,
-    isSyncEnabled,
-    activePresetId,
-    isManuallySet,
-    toggleSidebar,
-    toggleSync,
-    setPresetManually,
-    clearManualSelection,
-  } = useGraphSidebar();
-
-  // Handle preset changes from the graph component
-  const handlePresetChange = useCallback((presetId: string | null) => {
-    setPresetManually(presetId);
-  }, [setPresetManually]);
-
-  // Get current preset info for display
-  const currentPreset = activePresetId ? getPresetById(activePresetId) : null;
+  const { isOpen, toggleSidebar } = useGraphSidebar();
 
   return (
     <>
@@ -58,97 +41,27 @@ export function GraphSidebar() {
           >
             {/* Header */}
             <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--border)] bg-[var(--bg-secondary)]">
-              <div className="flex items-center gap-2">
-                <h3 className="text-sm font-medium text-[var(--text-primary)]">
-                  Mechanistic Graph
-                </h3>
-                {currentPreset && (
-                  <span
-                    className="text-[10px] px-1.5 py-0.5 rounded"
-                    style={{
-                      backgroundColor: `${currentPreset.color}20`,
-                      color: currentPreset.color,
-                    }}
-                  >
-                    {currentPreset.label.split(' ')[0]}
-                  </span>
-                )}
-              </div>
-
-              <div className="flex items-center gap-1">
-                {/* Sync toggle with inline status */}
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={toggleSync}
-                    className={`flex items-center gap-1 px-2 py-1 text-[10px] rounded transition-colors ${
-                      isSyncEnabled
-                        ? 'bg-[var(--accent-orange)] text-white'
-                        : 'bg-[var(--bg-primary)] text-[var(--text-muted)] hover:text-[var(--text-primary)]'
-                    }`}
-                    title={isSyncEnabled ? 'Disable scroll sync' : 'Enable scroll sync'}
-                  >
-                    {isSyncEnabled ? (
-                      <>
-                        <Link2 className="w-3 h-3" />
-                        Sync
-                      </>
-                    ) : (
-                      <>
-                        <Link2Off className="w-3 h-3" />
-                        Manual
-                      </>
-                    )}
-                  </button>
-
-                  {/* Sync status indicator - inline with button */}
-                  {isSyncEnabled && !isManuallySet && (
-                    <span className="flex items-center gap-1 text-[10px] text-[var(--accent-orange)]">
-                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--accent-orange)] animate-pulse" />
-                      <span className="hidden sm:inline">Graph updates as you scroll</span>
-                    </span>
-                  )}
-
-                  {/* Manual mode indicator - inline */}
-                  {isManuallySet && (
-                    <span className="flex items-center gap-1 text-[10px] text-[var(--text-muted)]">
-                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--text-muted)]" />
-                      <span className="hidden sm:inline">Manual mode</span>
-                    </span>
-                  )}
-                </div>
-
-                {/* Clear manual selection (only shown when manually set) */}
-                {isManuallySet && (
-                  <button
-                    onClick={clearManualSelection}
-                    className="p-1 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
-                    title="Clear manual selection and resume sync"
-                  >
-                    <X className="w-3.5 h-3.5" />
-                  </button>
-                )}
-
-                {/* Collapse button */}
-                <button
-                  onClick={toggleSidebar}
-                  className="p-1 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
-                  title="Collapse sidebar"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
+              <h3 className="text-sm font-medium text-[var(--text-primary)]">
+                Mechanistic Graph
+              </h3>
+              <button
+                onClick={toggleSidebar}
+                className="p-1 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+                title="Collapse sidebar"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
             </div>
 
-            {/* Graph container */}
-            <div className="h-[calc(100%-45px)]">
-              <MechanisticNetworkGraph
-                height="100%"
-                showControls={true}
-                showMiniMap={false}
-                compactMode={true}
-                activePresetId={activePresetId}
-                onPresetChange={handlePresetChange}
-              />
+            {/* Placeholder content */}
+            <div className="h-[calc(100%-45px)] flex flex-col items-center justify-center p-6 text-center">
+              <Construction className="w-12 h-12 text-[var(--accent-orange)] mb-4" />
+              <h4 className="text-lg font-medium text-[var(--text-primary)] mb-2">
+                Graph Under Construction
+              </h4>
+              <p className="text-sm text-[var(--text-muted)] max-w-xs">
+                The mechanistic network graph is being rebuilt with a new Excel-based data system for easier editing and collaboration.
+              </p>
             </div>
           </motion.aside>
         )}

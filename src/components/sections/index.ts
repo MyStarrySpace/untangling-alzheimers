@@ -13,7 +13,7 @@ export { MechanisticCascade } from './MechanisticCascade';
 export { EvidenceHierarchy } from './EvidenceHierarchy';
 export { HopefulDevelopments } from './HopefulDevelopments';
 export { SexAncestryEffects, MenopauseComparison, AncestryRiskChart, FatDistributionChart, InterventionsTable } from './SexAncestryEffects';
-export { MechanisticNetworkGraph } from './MechanisticNetworkGraph';
+// MechanisticNetworkGraph temporarily removed - being rebuilt with Excel-based data
 export { TranslationalFailures } from './TranslationalFailures';
 export { ForgottenObservations } from './ForgottenObservations';
 export { EmergingRiskFactors } from './EmergingRiskFactors';

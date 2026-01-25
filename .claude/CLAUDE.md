@@ -417,14 +417,95 @@ When adding a new source:
 - **COPY QUOTES EXACTLY AS THEY APPEAR** from the source—do not correct grammar, change capitalization, or modify punctuation
 - When using web search to gather citations, always verify quotes by fetching the actual source URL when possible
 
-### Mechanistic Framework Edge Citations
-All edges in `src/data/mechanisticFramework/edges.ts` must have an `evidence` array with at least one citation. Each citation should include:
-- `pmid` or `doi` - PubMed ID or DOI for the source
-- `firstAuthor` and `year` - For quick reference
-- `methodType` - Study type (RCT, cohort, animal, in_vitro, etc.)
-- `causalConfidence` - Evidence level (L1-L7)
+## Mechanistic Framework (Excel-based)
 
-Run `npx tsx scripts/dump-network-data.ts --include-citations` to audit edge citations.
+The mechanistic framework data is stored in an **Excel file** for easier editing and collaboration:
+
+**File location:** `src/data/mechanisticFramework/framework.xlsx`
+
+### Editing the Framework
+
+1. **Open the Excel file** directly in Excel, Google Sheets, or LibreOffice Calc
+2. **Edit the appropriate sheet:**
+   - `Nodes` - Biological entities (proteins, organelles, states, processes)
+   - `Edges` - Causal relationships between nodes
+   - `Modules` - Groupings of related nodes (M01, M02, etc.)
+3. **Save the file** - changes are loaded automatically at build time
+
+### Node Columns (Nodes sheet)
+
+| Column | Required | Description |
+|--------|----------|-------------|
+| `id` | Yes | Unique identifier, snake_case (e.g., `lysosome`, `tau_aggregated`) |
+| `label` | Yes | Display name (e.g., "Lysosome", "Tau Aggregated") |
+| `category` | Yes | STOCK, STATE, BOUNDARY, or PROCESS |
+| `subtype` | Yes | More specific type (Organelle, ProteinPool, MetabolicState, etc.) |
+| `moduleId` | Yes | Module this belongs to (M01, M02, etc.) |
+| `description` | Yes | Brief 1-2 sentence description |
+| `mechanism` | No | Detailed mechanism explanation |
+| `references_protein` | No | UniProt ID (e.g., UniProt:P01234) |
+| `references_gene` | No | HGNC ID (e.g., HGNC:1234) |
+| `references_process` | No | GO term (e.g., GO:0005764) |
+| `references_cellType` | No | Cell Ontology ID |
+| `roles` | No | Comma-separated: THERAPEUTIC_TARGET, BIOMARKER, RATE_LIMITER, LEVERAGE_POINT |
+| `pmid` | No | Primary citation PubMed ID |
+| `notes` | No | Additional notes |
+
+### Edge Columns (Edges sheet)
+
+| Column | Required | Description |
+|--------|----------|-------------|
+| `id` | Yes | Unique identifier (E01.001 format) |
+| `source` | Yes | Source node id |
+| `target` | Yes | Target node id |
+| `relation` | Yes | increases, decreases, regulates, produces, etc. |
+| `moduleId` | Yes | Primary module for this edge |
+| `causalConfidence` | Yes | Evidence level: L1 (strongest) to L7 (weakest) |
+| `mechanismDescription` | No | How source affects target |
+| `keyInsight` | No | Important takeaway for this edge |
+| `pmid` | No | Primary citation PubMed ID |
+| `firstAuthor` | No | First author of citation |
+| `year` | No | Year of citation |
+| `methodType` | No | RCT, cohort, knockout, in_vitro, etc. |
+| `notes` | No | Additional notes |
+
+### Evidence Levels (causalConfidence)
+
+| Level | Description | Example Methods |
+|-------|-------------|-----------------|
+| L1 | RCT with clinical endpoints | Phase 3 trial, clinical outcome |
+| L2 | Mendelian randomization, natural experiments | Genetic instrument studies |
+| L3 | GWAS + functional validation, knockout studies | Mouse KO + human GWAS |
+| L4 | Animal intervention studies | Drug treatment in mice |
+| L5 | In vitro / cell culture | Cell line experiments |
+| L6 | Observational / correlational | Cohort studies, case-control |
+| L7 | Expert opinion / review | Review articles, expert consensus |
+
+### Module Columns (Modules sheet)
+
+| Column | Required | Description |
+|--------|----------|-------------|
+| `id` | Yes | Module ID (M01, M02, etc.) |
+| `name` | Yes | Full name |
+| `shortName` | Yes | Abbreviated name for UI |
+| `description` | Yes | What this module covers |
+| `color` | Yes | Hex color for visualization |
+
+### Using the Data in Code
+
+```typescript
+import { allNodes, allEdges, modules } from '@/data/mechanisticFramework';
+
+// Or use the loader directly for fresh data
+import { loadFramework } from '@/data/mechanisticFramework';
+const framework = loadFramework();
+```
+
+### Reference Files
+
+Old TypeScript-based implementation is preserved in `_reference/` for reference:
+- `_reference/scripts/` - Analysis scripts
+- `_reference/lib/` - Pathway calculation utilities
 
 ## Writing Style & Copywriting Guidelines
 

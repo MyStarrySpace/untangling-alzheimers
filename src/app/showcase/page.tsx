@@ -10,7 +10,8 @@ import {
   Info,
 } from 'lucide-react';
 import { Container, Section, Card, CardContent, CardHeader, Button, Heading, DataCard } from '@/components/ui';
-import { MenopauseComparison, AncestryRiskChart, FatDistributionChart, InterventionsTable, MechanisticNetworkGraph } from '@/components/sections';
+import { MenopauseComparison, AncestryRiskChart, FatDistributionChart, InterventionsTable } from '@/components/sections';
+import { Construction } from 'lucide-react';
 
 // Section definitions for navigation
 const sections = [
@@ -788,7 +789,14 @@ export default function ShowcasePage() {
             Interactive visualization of the AD mechanistic framework. Select a module to explore its nodes and edges.
             Click on nodes to see details. Drag to pan, scroll to zoom.
           </p>
-          <MechanisticNetworkGraph height="700px" />
+          {/* Placeholder while graph is being rebuilt */}
+          <div className="h-[700px] border border-[var(--border)] rounded flex flex-col items-center justify-center bg-[var(--bg-secondary)]">
+            <Construction className="w-16 h-16 text-[var(--accent-orange)] mb-4" />
+            <h4 className="text-xl font-medium text-[var(--text-primary)] mb-2">Graph Under Construction</h4>
+            <p className="text-[var(--text-muted)] max-w-md text-center">
+              The mechanistic network graph is being rebuilt with a new Excel-based data system.
+            </p>
+          </div>
         </Container>
       </Section>
     </main>
