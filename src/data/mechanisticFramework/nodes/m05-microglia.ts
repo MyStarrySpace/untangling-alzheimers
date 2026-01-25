@@ -140,7 +140,33 @@ export const module5Nodes: MechanisticNode[] = [
     subtype: 'A1_Astrocyte',
     moduleId: 'M05',
     description: 'Neurotoxic reactive astrocytes',
-    mechanism: 'Lose ability to promote neuronal survival; induce death of neurons and oligodendrocytes',
+    mechanism: `A1 astrocytes are induced by IL-1α + TNF + C1q from activated microglia.
+      They LOSE: synaptogenic support, phagocytosis, glutamate uptake (EAAT2).
+      They GAIN: secretion of toxic saturated lipids via ELOVL1 upregulation.
+      The toxic lipids are carried in APOE/APOJ lipoparticles (Guttenplan 2021).`,
+    roles: ['THERAPEUTIC_TARGET'],
+  },
+  {
+    id: 'a1_toxic_lipid_secretion',
+    label: 'A1 Toxic Lipid Secretion',
+    category: 'STATE',
+    subtype: 'PhysiologicalState',
+    moduleId: 'M05',
+    sharedWith: ['M10'], // APOE module - lipids are carried in APOE particles
+    description: 'Long-chain saturated lipids secreted by A1 astrocytes that kill neurons and OLs',
+    mechanism: `Guttenplan 2021 (Nature) identified the A1 toxic factor:
+      - NOT a protein - saturated LIPIDS
+      - Carried in APOE and APOJ lipoparticles
+      - Synthesized by ELOVL1 (elongation of very long chain fatty acids 1)
+      - ELOVL1 knockout in astrocytes ELIMINATES toxicity
+      - Specific toxic species: long-chain saturated fatty acids (C24:0, C26:0)
+
+      THERAPEUTIC IMPLICATION: ELOVL1 inhibitors could block A1 toxicity
+      without blocking beneficial astrocyte functions.`,
+    roles: ['THERAPEUTIC_TARGET'],
+    references: {
+      gene: 'HGNC:14417', // ELOVL1
+    },
   },
 
   // ============================================================================

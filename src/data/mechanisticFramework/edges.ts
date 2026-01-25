@@ -1943,7 +1943,60 @@ export const crossModuleEdges: MechanisticEdge[] = [
       },
     ],
   },
-  // A1 astrocytes → neuronal dysfunction (M05 → M07)
+  // A1 astrocytes → toxic lipid secretion (M05)
+  {
+    id: 'E_CM.003a',
+    source: 'a1_astrocytes',
+    target: 'a1_toxic_lipid_secretion',
+    relation: 'directlyIncreases',
+    moduleId: 'M05',
+    edgeType: 'TRANSITION',
+    mechanismLabel: 'A1_ELOVL1_lipid_synthesis',
+    mechanismDescription: 'A1 astrocytes upregulate ELOVL1 → synthesis of long-chain saturated fatty acids (C24:0, C26:0) → secretion in APOE/APOJ lipoparticles. ELOVL1 knockout ELIMINATES toxicity.',
+    causalConfidence: 'L3',
+    evidence: [
+      {
+        pmid: '34616039',
+        doi: '10.1038/s41586-021-03960-y',
+        firstAuthor: 'Guttenplan',
+        year: 2021,
+        title: 'Neurotoxic reactive astrocytes induce cell death via saturated lipids',
+        quote: 'Saturated lipids contained in APOE and APOJ lipoparticles mediate astrocyte-induced toxicity',
+        methodType: 'knockout',
+        methodDetails: 'ELOVL1 astrocyte-specific knockout eliminates toxicity',
+        causalConfidence: 'L3',
+        species: { ncbiTaxon: 'NCBITaxon:10090', commonName: 'mouse' },
+      },
+    ],
+    keyInsight: 'ELOVL1 is the key enzyme - astrocyte-specific KO eliminates toxicity',
+  },
+  // Toxic lipid secretion → neuronal dysfunction (M05 → M07)
+  {
+    id: 'E_CM.003b',
+    source: 'a1_toxic_lipid_secretion',
+    target: 'neuronal_dysfunction',
+    relation: 'increases',
+    moduleId: 'M05',
+    edgeType: 'INFLUENCE',
+    mechanismLabel: 'toxic_lipid_neuronal_death',
+    mechanismDescription: 'Long-chain saturated fatty acids in APOE/APOJ lipoparticles induce neuronal death. Mechanism likely involves membrane disruption or lipotoxicity.',
+    causalConfidence: 'L3',
+    crossModule: 'M05 → M07',
+    evidence: [
+      {
+        pmid: '34616039',
+        doi: '10.1038/s41586-021-03960-y',
+        firstAuthor: 'Guttenplan',
+        year: 2021,
+        title: 'Neurotoxic reactive astrocytes induce cell death via saturated lipids',
+        quote: 'Eliminating the formation of long-chain saturated lipids by astrocyte-specific knockout of ELOVL1 mitigates astrocyte-mediated toxicity',
+        methodType: 'knockout',
+        causalConfidence: 'L3',
+        species: { ncbiTaxon: 'NCBITaxon:10090', commonName: 'mouse' },
+      },
+    ],
+  },
+  // Legacy edge kept for backwards compatibility, now references intermediates
   {
     id: 'E_CM.003',
     source: 'a1_astrocytes',
@@ -1951,7 +2004,7 @@ export const crossModuleEdges: MechanisticEdge[] = [
     relation: 'increases',
     moduleId: 'M05',
     mechanismLabel: 'A1_neurotoxicity',
-    mechanismDescription: 'A1 astrocytes lose ability to promote neuronal survival and actively induce neuronal death',
+    mechanismDescription: 'A1 astrocytes induce neuronal death via ELOVL1-synthesized saturated lipids carried in APOE/APOJ particles (Guttenplan 2021). See E_CM.003a/b for detailed pathway.',
     causalConfidence: 'L3',
     crossModule: 'M05 → M07',
     evidence: [
@@ -1965,7 +2018,18 @@ export const crossModuleEdges: MechanisticEdge[] = [
         methodType: 'knockout',
         causalConfidence: 'L3',
       },
+      {
+        pmid: '34616039',
+        doi: '10.1038/s41586-021-03960-y',
+        firstAuthor: 'Guttenplan',
+        year: 2021,
+        title: 'Neurotoxic reactive astrocytes induce cell death via saturated lipids',
+        quote: 'Saturated lipids contained in APOE and APOJ lipoparticles mediate astrocyte-induced toxicity',
+        methodType: 'knockout',
+        causalConfidence: 'L3',
+      },
     ],
+    keyInsight: 'Toxic factor identified: ELOVL1-synthesized saturated lipids in APOE/APOJ particles',
   },
   // NF-κB → BACE1 upregulation (M05 → M06)
   {
@@ -3246,8 +3310,8 @@ export const module8Edges: MechanisticEdge[] = [
     relation: 'increases',
     moduleId: 'M08',
     mechanismLabel: 'age_C1q_upregulation',
-    mechanismDescription: 'C1q increases ~300-fold in aged brain (primarily from microglia). Reactivation of developmental pruning pathway',
-    causalConfidence: 'L3',
+    mechanismDescription: 'C1q increases ~300-fold in aged brain (primarily from microglia). MECHANISM UNKNOWN per Stephan 2013. Likely intermediates: microglial senescence, oxidative stress, or myelin debris accumulation. Reactivation of developmental pruning pathway.',
+    causalConfidence: 'L6', // Downgraded: Stephan 2013 states "molecular mechanisms responsible are unknown"
     evidence: [
       {
         pmid: '23946404',
@@ -3261,6 +3325,7 @@ export const module8Edges: MechanisticEdge[] = [
         species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
       },
     ],
+    translationalGap: 'Correlation only - specific aging mechanism driving C1q elevation not established',
     keyInsight: 'LANDMARK: C1q upregulation is universal feature of brain aging',
   },
   {
@@ -3401,8 +3466,8 @@ export const module8Edges: MechanisticEdge[] = [
     relation: 'increases',
     moduleId: 'M08',
     mechanismLabel: 'aging_C1q_elevation',
-    mechanismDescription: 'Aging causes dramatic C1q elevation (~300-fold); C1q_elevated captures sustained high levels beyond normal aging',
-    causalConfidence: 'L3',
+    mechanismDescription: 'Aging causes dramatic C1q elevation (~300-fold); c1q_elevated captures sustained high levels beyond normal aging. MECHANISM UNKNOWN - likely involves microglial senescence or debris accumulation.',
+    causalConfidence: 'L6', // Downgraded: mechanism not established, only correlation
     evidence: [
       {
         pmid: '23946404',
@@ -3412,6 +3477,7 @@ export const module8Edges: MechanisticEdge[] = [
         causalConfidence: 'L6',
       },
     ],
+    translationalGap: 'Correlation only - causal mechanism from aging to C1q not established',
   },
   {
     id: 'E08.009',
@@ -8995,18 +9061,18 @@ export const therapeuticEvidenceEdges: MechanisticEdge[] = [
     therapeuticImplication: 'Irreversible enzyme inhibitors require very wide therapeutic index for chronic use',
   },
   // -------------------------------------------------------------------------
-  // Canine-Human Translational Gap: Propentofylline
+  // Canine-Human Translational Gap: Propentofylline (FAILED HYPOTHESIS)
   // -------------------------------------------------------------------------
   {
     id: 'E-THER.005',
     source: 'neuroinflammation',
     target: 'cognitive_score',
-    relation: 'decreases',
+    relation: 'causesNoChange', // Changed from 'decreases' - trial FAILED to show benefit in humans
     moduleId: 'M15',
     edgeType: 'CLINICAL_OUTCOME',
     mechanismLabel: 'propentofylline_species_gap',
     mechanismDescription:
-      'Propentofylline APPROVED for canine cognitive dysfunction (Karsivan) but FAILED human AD trials. Dogs (A+T−N±) lack tau pathology; humans (A+T+N+) have autonomous tau cascade. 12-month success, 18-month failure.',
+      'FAILED HYPOTHESIS: Anti-inflammatory → cognition. Propentofylline APPROVED for canine cognitive dysfunction but FAILED human AD trials at 18 months. This documents a NEGATIVE result - targeting neuroinflammation directly did NOT improve cognition in humans, possibly because intermediates (synaptic loss, neuronal death) were already established.',
     timescale: 'months',
     causalConfidence: 'L1',
     evidence: [
@@ -9021,9 +9087,9 @@ export const therapeuticEvidenceEdges: MechanisticEdge[] = [
         species: { ncbiTaxon: 'NCBITaxon:9606', commonName: 'human' },
       },
     ],
-    keyInsight: 'Canine CCD models early AD frozen in time - drugs fail when tau cascade becomes autonomous',
-    therapeuticImplication: 'Stage-match preclinical models to clinical indication (A+T+N+ vs A+T−N±)',
-    translationalGap: 'Dogs: A+T−N± (no NFTs ever); Humans: A+T+N+ (tau drives progression)',
+    keyInsight: 'NEGATIVE RESULT: Targeting neuroinflammation alone is insufficient once downstream damage (synaptic loss, neuronal death) is established',
+    therapeuticImplication: 'Address downstream intermediates, not just upstream inflammation; stage-match models to indication',
+    translationalGap: 'Dogs: A+T−N± (inflammation drives disease); Humans: A+T+N+ (tau cascade autonomous, inflammation upstream of irreversible damage)',
   },
   // -------------------------------------------------------------------------
   // Biomarker-Clinical Dissociation: PDE9 Inhibitors

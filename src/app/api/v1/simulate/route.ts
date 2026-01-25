@@ -59,8 +59,10 @@ function mapRelationType(relation: string): 'activates' | 'inhibits' | 'modulate
   switch (relation) {
     case 'directlyIncreases':
     case 'increases':
-    case 'causesNoChange':
       return 'activates';
+    case 'causesNoChange': // Failed hypothesis - no causal effect demonstrated
+    case 'noCorrelation':
+      return 'modulates'; // Neutral - no directional effect
     case 'directlyDecreases':
     case 'decreases':
     case 'negativeCorrelation':

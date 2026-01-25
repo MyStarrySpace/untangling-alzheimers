@@ -1730,11 +1730,28 @@ function convertEdges(
   nodePositions: Map<string, LayoutPosition> = new Map(),
   showFeedbackLoops: boolean = true,
   pathwayEdgeSet: Set<string> = new Set(),
-  isPathwayFocusMode: boolean = false
+  isPathwayFocusMode: boolean = false,
+  evidenceFilter: 'strong' | 'moderate' | 'all' = 'strong'
 ): { edges: Edge[]; waypointNodes: Node[] } {
+  // Helper to check if edge passes evidence filter
+  const passesEvidenceFilter = (confidence: string | undefined): boolean => {
+    if (evidenceFilter === 'all') return true;
+    if (!confidence) return false; // Edges without confidence are excluded unless 'all'
+    const level = confidence.toUpperCase();
+    if (evidenceFilter === 'strong') {
+      return level === 'L1' || level === 'L2' || level === 'L3';
+    }
+    if (evidenceFilter === 'moderate') {
+      return level === 'L1' || level === 'L2' || level === 'L3' || level === 'L4' || level === 'L5';
+    }
+    return true;
+  };
+
   // Filter edges based on module filter state OR if connecting pinned nodes
   const filteredEdges = edges.filter(e => {
     if (excludedEdges.has(e.id)) return false;
+    // Filter by evidence level first (most impactful for performance)
+    if (!passesEvidenceFilter(e.causalConfidence)) return false;
     // Filter out back edges (feedback loops) if toggle is off
     if (!showFeedbackLoops && backEdges.has(e.id)) return false;
     // Include edge if either endpoint is pinned
@@ -2342,6 +2359,13 @@ function MechanisticNetworkGraphInner({
   // Show feedback loops (back edges that create cycles)
   const [showFeedbackLoops, setShowFeedbackLoops] = useState(true);
 
+  // Evidence filter - controls which edges are shown by causal confidence level
+  // 'strong' = L1-L3 only (default to prevent performance issues)
+  // 'moderate' = L1-L5
+  // 'all' = no filtering
+  type EvidenceFilterMode = 'strong' | 'moderate' | 'all';
+  const [evidenceFilter, setEvidenceFilter] = useState<EvidenceFilterMode>('strong');
+
   // Sort configuration for graph layout
   const [horizontalSort, setHorizontalSort] = useState<HorizontalSortMode>('topological');
   const [verticalSort, setVerticalSort] = useState<VerticalSortMode>('crossing');
@@ -2764,8 +2788,8 @@ function MechanisticNetworkGraphInner({
   const [currentNodePositions, setCurrentNodePositions] = useState<Map<string, LayoutPosition>>(new Map());
 
   const { edges: initialEdgeList, waypointNodes: initialWaypointNodes } = useMemo(
-    () => convertEdges(allEdges, moduleFilters, null, null, effectivePseudoNodes, showCrossModuleConnections ? initialExcludedEdges : new Set(), initialBackEdges, pinnedNodes, initialNodePositions, showFeedbackLoops, pathwayEdgeSet, drugPathwayFocusMode),
-    [moduleFilters, effectivePseudoNodes, showCrossModuleConnections, initialExcludedEdges, initialBackEdges, pinnedNodes, initialNodePositions, showFeedbackLoops, pathwayEdgeSet, drugPathwayFocusMode]
+    () => convertEdges(allEdges, moduleFilters, null, null, effectivePseudoNodes, showCrossModuleConnections ? initialExcludedEdges : new Set(), initialBackEdges, pinnedNodes, initialNodePositions, showFeedbackLoops, pathwayEdgeSet, drugPathwayFocusMode, evidenceFilter),
+    [moduleFilters, effectivePseudoNodes, showCrossModuleConnections, initialExcludedEdges, initialBackEdges, pinnedNodes, initialNodePositions, showFeedbackLoops, pathwayEdgeSet, drugPathwayFocusMode, evidenceFilter]
   );
 
   // Combine flow nodes with waypoint nodes (filter out pseudo-nodes if toggle is off)
@@ -3003,7 +3027,7 @@ function MechanisticNetworkGraphInner({
 
     // Get edges with waypoint nodes for back edge routing
     const { edges: newEdgeList, waypointNodes: newWaypointNodes } = convertEdges(
-      allEdges, moduleFilters, null, null, effectiveNewPseudoNodes, effectiveExcludedEdges, newBackEdges, pinnedNodes, newNodePositions, showFeedbackLoops, pathwayEdgeSet, drugPathwayFocusMode
+      allEdges, moduleFilters, null, null, effectiveNewPseudoNodes, effectiveExcludedEdges, newBackEdges, pinnedNodes, newNodePositions, showFeedbackLoops, pathwayEdgeSet, drugPathwayFocusMode, evidenceFilter
     );
 
     // Combine flow nodes with waypoint nodes (filter out pseudo-nodes if toggle is off)
@@ -3017,7 +3041,7 @@ function MechanisticNetworkGraphInner({
     setCurrentBackEdges(newBackEdges);
     setCurrentNodePositions(newNodePositions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [moduleFilters, pinnedNodes, boundaryExpansionConfig, showCrossModuleConnections, showFeedbackLoops, sortConfig]); // On module filter, pinned nodes, boundary expansion, cross-module toggle, feedback loops, or sort config changes
+  }, [moduleFilters, pinnedNodes, boundaryExpansionConfig, showCrossModuleConnections, showFeedbackLoops, sortConfig, evidenceFilter]); // On module filter, pinned nodes, boundary expansion, cross-module toggle, feedback loops, sort config, or evidence filter changes
 
   // Add custom nodes to the graph when they change
   useEffect(() => {
@@ -3131,7 +3155,7 @@ function MechanisticNetworkGraphInner({
     const effectiveCurrentExcludedEdges = showCrossModuleConnections ? currentExcludedEdges : new Set<string>();
 
     const { edges: newEdgeList, waypointNodes: newWaypointNodes } = convertEdges(
-      allEdges, moduleFilters, activeVariantNodeId, activeVariant, effectiveCurrentPseudoNodes, effectiveCurrentExcludedEdges, currentBackEdges, pinnedNodes, currentNodePositions, showFeedbackLoops, pathwayEdgeSet, drugPathwayFocusMode
+      allEdges, moduleFilters, activeVariantNodeId, activeVariant, effectiveCurrentPseudoNodes, effectiveCurrentExcludedEdges, currentBackEdges, pinnedNodes, currentNodePositions, showFeedbackLoops, pathwayEdgeSet, drugPathwayFocusMode, evidenceFilter
     );
     setEdges(newEdgeList);
     // Also update waypoint nodes in case positions changed
@@ -3140,7 +3164,7 @@ function MechanisticNetworkGraphInner({
       const nonWaypointNodes = currentNodes.filter(n => !n.id.startsWith('__waypoint_'));
       return [...nonWaypointNodes, ...newWaypointNodes];
     });
-  }, [activeVariantNodeId, activeVariant, currentPseudoNodes, currentExcludedEdges, currentBackEdges, pinnedNodes, currentNodePositions, showCrossModuleConnections, showFeedbackLoops, pathwayEdgeSet, drugPathwayFocusMode, setEdges, setNodes]);
+  }, [activeVariantNodeId, activeVariant, currentPseudoNodes, currentExcludedEdges, currentBackEdges, pinnedNodes, currentNodePositions, showCrossModuleConnections, showFeedbackLoops, pathwayEdgeSet, drugPathwayFocusMode, evidenceFilter, setEdges, setNodes]);
 
   // Simple on/off toggle for module filter (no tri-state cycling)
   const toggleModuleFilter = useCallback((moduleId: string) => {
@@ -3217,7 +3241,7 @@ function MechanisticNetworkGraphInner({
   // Export graph state to JSON file
   const exportGraphState = useCallback(() => {
     const state = {
-      version: '1.0',
+      version: '1.1',
       exportedAt: new Date().toISOString(),
       moduleFilters,
       pinnedNodes: Array.from(pinnedNodes),
@@ -3226,6 +3250,7 @@ function MechanisticNetworkGraphInner({
       outputBoundariesExpanded,
       showCrossModuleConnections,
       showFeedbackLoops,
+      evidenceFilter,
     };
     const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -3283,6 +3308,11 @@ function MechanisticNetworkGraphInner({
         }
         if (typeof state.showFeedbackLoops === 'boolean') {
           setShowFeedbackLoops(state.showFeedbackLoops);
+        }
+
+        // Import evidence filter (v1.1+)
+        if (state.evidenceFilter && ['strong', 'moderate', 'all'].includes(state.evidenceFilter)) {
+          setEvidenceFilter(state.evidenceFilter);
         }
       } catch (err) {
         alert('Failed to parse graph state file: ' + (err instanceof Error ? err.message : 'Unknown error'));
@@ -3382,18 +3412,58 @@ function MechanisticNetworkGraphInner({
           {/* Spacer */}
           <div className="flex-1" />
 
+          {/* Evidence filter - controls which edges are shown */}
+          <div className="flex items-center gap-0.5 bg-[var(--bg-secondary)] rounded px-1 py-0.5">
+            <span className="text-[8px] text-[var(--text-muted)] mr-1">Evidence:</span>
+            <button
+              onClick={() => setEvidenceFilter('strong')}
+              className={`text-[9px] px-1.5 py-0.5 rounded transition-colors ${
+                evidenceFilter === 'strong'
+                  ? 'bg-[var(--success)] text-white'
+                  : 'text-[var(--text-muted)] hover:bg-[var(--bg-card)]'
+              }`}
+              title="L1-L3: RCTs, Mendelian randomization, GWAS+KO (76 edges)"
+            >
+              Strong
+            </button>
+            <button
+              onClick={() => setEvidenceFilter('moderate')}
+              className={`text-[9px] px-1.5 py-0.5 rounded transition-colors ${
+                evidenceFilter === 'moderate'
+                  ? 'bg-[var(--category-amyloid)] text-white'
+                  : 'text-[var(--text-muted)] hover:bg-[var(--bg-card)]'
+              }`}
+              title="L1-L5: Includes animal intervention, in vitro (317 edges)"
+            >
+              Moderate
+            </button>
+            <button
+              onClick={() => setEvidenceFilter('all')}
+              className={`text-[9px] px-1.5 py-0.5 rounded transition-colors ${
+                evidenceFilter === 'all'
+                  ? 'bg-[var(--danger)] text-white'
+                  : 'text-[var(--text-muted)] hover:bg-[var(--bg-card)]'
+              }`}
+              title="All edges including correlational (406 edges) - may be slow"
+            >
+              All
+            </button>
+          </div>
+
           {/* Quick actions */}
           {!focusMode ? (
             <div className="flex items-center gap-1">
               <button
                 onClick={selectAllModules}
                 className="text-[9px] px-1.5 py-0.5 text-[var(--accent-orange)] hover:bg-[var(--accent-orange-light)] rounded"
+                title="Show all modules"
               >
-                All
+                All Modules
               </button>
               <button
                 onClick={clearAllModules}
                 className="text-[9px] px-1.5 py-0.5 text-[var(--text-muted)] hover:bg-[var(--bg-secondary)] rounded"
+                title="Hide all modules"
               >
                 Clear
               </button>

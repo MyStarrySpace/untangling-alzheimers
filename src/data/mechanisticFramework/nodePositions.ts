@@ -672,5 +672,10 @@ export const nodePositions: Record<string, { x: number; y: number }> = {
   "ol_ferroptosis": {
     "x": 1150,
     "y": 900
+  },
+  // A1 Astrocyte toxic lipid pathway (Module 5, added 2026-01-24)
+  "a1_toxic_lipid_secretion": {
+    "x": 1850,
+    "y": 3165
   }
 };
