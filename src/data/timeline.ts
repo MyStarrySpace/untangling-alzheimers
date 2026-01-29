@@ -477,6 +477,57 @@ export const timelineEvents: TimelineEvent[] = [
   },
 
   {
+    id: 'zlokovic-investigation',
+    year: 2023,
+    month: 11,
+    title: 'Science exposes Zlokovic lab misconduct',
+    shortTitle: 'Zlokovic fraud exposed',
+    description:
+      'A Science investigation reveals a 113-page whistleblower dossier identifying image manipulation across 35 papers from Berislav Zlokovic\'s lab at USC, accumulated over 8,400 citations.',
+    expandedDescription:
+      'Matthew Schrag (Vanderbilt) and Elisabeth Bik compiled a 113-page dossier identifying allegedly doctored images in 35 papers where Zlokovic was the sole common author. Four former lab members described a culture of intimidation and data manipulation. Zlokovic directed USC\'s Zilkha Neurogenetic Institute, which had grown to nearly $40 million in funding. Within days of publication, NIH halted the $30 million 3K3A-APC stroke trial and demanded $1.9 million returned. The investigation paralleled the same team\'s earlier work exposing Lesné\'s fraud, raising broader questions about image integrity in neuroscience.',
+    type: 'scandal',
+    framework: 'vascular',
+    significance: 'major',
+    sourceIds: ['piller-2023-zlokovic'],
+    citationIds: ['piller-2023-zlokovic-dossier', 'piller-2023-zlokovic-scope'],
+  },
+
+  {
+    id: 'zlokovic-retractions',
+    year: 2024,
+    month: 4,
+    title: 'Nature retracts two Zlokovic pericyte papers',
+    shortTitle: 'Pericyte papers retracted',
+    description:
+      'Nature Communications and Nature Medicine retract two foundational pericyte-AD papers from Zlokovic\'s lab due to image manipulation concerns.',
+    expandedDescription:
+      'The retracted papers are "Pericyte loss influences Alzheimer-like neurodegeneration in mice" (Nature Communications, 2013) and "Pericyte degeneration causes white matter dysfunction in the mouse central nervous system" (Nature Medicine, 2018). The retraction notes cite overlapping and duplicated images across figures, including cross-contamination between the two papers. The authors attributed issues to "incorrect selection of images during manuscript preparation." The original data for the 2013 paper was no longer available. These were key papers in the vascular hypothesis of AD, but independent evidence for pericyte-BBB relationships exists from other groups (Armulik 2010, Daneman 2010).',
+    type: 'scandal',
+    framework: 'vascular',
+    significance: 'major',
+    sourceIds: ['zlokovic-pericyte-retraction-2024', 'zlokovic-whitematter-retraction-2024'],
+    citationIds: ['zlokovic-pericyte-retraction', 'zlokovic-whitematter-retraction'],
+  },
+
+  {
+    id: 'zlokovic-leave',
+    year: 2024,
+    month: 10,
+    title: 'Zlokovic goes on indefinite leave from USC',
+    shortTitle: 'Zlokovic on leave',
+    description:
+      'Berislav Zlokovic goes on indefinite leave from USC and steps down as co-director of the Alzheimer\'s Disease Research Center. Journals have issued 4 retractions, 9 corrections, and 2 expressions of concern.',
+    expandedDescription:
+      'USC Keck School of Medicine Dean Carolyn Meltzer announced Zlokovic was on leave "for an indefinite period." Steve Kay took over as acting director of the Zilkha Neurogenetic Institute. The 3K3A-APC stroke trial was formally withdrawn from ClinicalTrials.gov. The case parallels the Lesné scandal: both were exposed by the same investigative team (Schrag, Bik, Piller), both involved image manipulation in high-impact journals, and both raised questions about the self-correcting mechanisms of science. Unlike Lesné, Zlokovic\'s work affected clinical trial safety, not just research direction.',
+    type: 'scandal',
+    framework: 'vascular',
+    significance: 'major',
+    sourceIds: ['zlokovic-leave-2024'],
+    citationIds: ['zlokovic-leave', 'zlokovic-trial-halted'],
+  },
+
+  {
     id: 'biogen-abandons-aducanumab',
     year: 2024,
     month: 1,

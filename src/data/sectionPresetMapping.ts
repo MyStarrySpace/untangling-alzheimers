@@ -51,6 +51,7 @@ export const caseStudyPresetMapping: Record<string, string | null> = {
   'focused-ultrasound': 'vascular_hypothesis',  // Focused ultrasound affects BBB
   'butylphthalide': 'vascular_hypothesis', // Butylphthalide is vascular/neuroprotective
   'lesne-scandal': 'amyloid_cascade',      // Lesne scandal is about amyloid
+  'zlokovic-scandal': 'vascular_hypothesis', // Zlokovic scandal is about pericytes/BBB
   'lithium': 'prion_like_spreading',       // Lithium affects tau/GSK-3β
   'nebivolol': 'vascular_hypothesis',      // Nebivolol is cardiovascular
   'rapamycin': 'mitochondrial_cascade',    // Rapamycin affects mTOR/autophagy

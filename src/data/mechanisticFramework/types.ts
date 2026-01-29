@@ -24,7 +24,18 @@ export type NodeSubtype =
   | 'RiskFactor'
   | 'ProtectiveFactor'
   | 'ClinicalOutcome'
-  | 'BiologicalProcess';
+  | 'BiologicalProcess'
+  | 'CellType'
+  | 'Barrier'
+  | 'ChemicalReaction'
+  | 'IonPool'
+  | 'Virus'
+  | 'Hormone'
+  | 'Receptor'
+  | 'TemporalPhase'
+  | 'GeneticVariant'
+  | 'Enzyme'
+  | 'ComplementFactor';
 
 // Node roles for special properties
 export type NodeRole =
@@ -32,7 +43,9 @@ export type NodeRole =
   | 'BIOMARKER'
   | 'RATE_LIMITER'
   | 'LEVERAGE_POINT'
-  | 'REGULATOR';
+  | 'REGULATOR'
+  | 'ANTI_TARGET'
+  | 'FEEDBACK_NODE';
 
 // Evidence levels for causal confidence (L1 = strongest)
 export type CausalConfidence = 'L1' | 'L2' | 'L3' | 'L4' | 'L5' | 'L6' | 'L7';
@@ -50,7 +63,13 @@ export type EdgeRelation =
   | 'binds'
   | 'transports'
   | 'causesNoChange'
-  | 'association';
+  | 'association'
+  | 'catalyzes'
+  | 'traps'
+  | 'protects'
+  | 'disrupts'
+  | 'requires'
+  | 'amplifies';
 
 // Study method types for evidence
 export type MethodType =
@@ -63,7 +82,9 @@ export type MethodType =
   | 'in_vitro'
   | 'observational'
   | 'review'
-  | 'expert_opinion';
+  | 'expert_opinion'
+  | 'clinical_trial_failure'
+  | 'epidemiological';
 
 /**
  * A node in the mechanistic framework

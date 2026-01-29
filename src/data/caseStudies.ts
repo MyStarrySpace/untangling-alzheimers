@@ -87,6 +87,23 @@ export const caseStudies: CaseStudy[] = [
     patentStatus: 'patented',
   },
   {
+    id: 'zlokovic-scandal',
+    title: 'The Zlokovic Scandal',
+    drug: 'Pericyte-BBB Research',
+    summary: 'Star neuroscientist\'s pericyte data questioned across 35 papers, $30M trial halted.',
+    year: 2024,
+    keyFinding:
+      'Berislav Zlokovic (USC) built the dominant model of pericyte loss driving BBB breakdown in AD. His lab\'s papers accumulated 8,400+ citations and influenced 49 patents. His work shaped how we think about vascular contributions to neurodegeneration.',
+    whatShouldHappen: 'Independent replication of key pericyte-BBB-AD claims before building clinical programs on them',
+    whatActuallyHappened:
+      'A 113-page whistleblower dossier identified image manipulation in 35 papers. Four lab members described a culture of data pressure. NIH halted a $30M stroke trial (3K3A-APC) and demanded $1.9M returned. Journals issued 4 retractions, 9 corrections, and 2 expressions of concern. Zlokovic went on indefinite leave from USC in October 2024.',
+    quote:
+      'Four former members of Zlokovic\'s lab said the anomalies were no accident. They described a culture of intimidation in which he regularly pushed them to adjust data.',
+    quoteSource: 'Science investigation, November 2023',
+    cost: '$30M trial halted, $1.9M returned to NIH',
+    patentStatus: 'patented',
+  },
+  {
     id: 'butylphthalide',
     title: 'The Phthalide Gap',
     drug: 'Butylphthalide (NBP)',
